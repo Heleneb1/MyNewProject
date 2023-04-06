@@ -1,0 +1,83 @@
+.books-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  color: #f6d171;
+}
+
+.book img {
+  width: 200px;
+  height: 300px;
+  margin-bottom: 30px;
+}
+
+.book h3 {
+  color: #f6d171;
+  font-size: 28px;
+  margin-bottom: 37px;
+}
+.book {
+  width: 300px;
+  margin: 20px;
+  text-align: center;
+  flex-basis: calc(33.33% - 40px);
+}
+
+.Changebook {
+  margin: 20px;
+  background: transparent;
+  border: 1px #f6d171 solid;
+  border-radius: 30px;
+  color: #f6d171;
+  width: 200px;
+  height: 30px;
+}
+.Changebook:active {
+  box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6),
+    inset 2px 2px 3px rgba(0, 0, 0, 0.6);
+}
+
+.books-container input[type="text"],
+.books-container input[type="image"] {
+  background-color: transparent;
+  border: 1px solid #f6d171;
+  border-radius: 5px;
+  color: #f6d171;
+  padding: 8px;
+  margin-right: 16px;
+}
+.books-container select {
+  background-color: rgb(30, 29, 29);
+  border: 1px solid #f6d171;
+  border-radius: 5px;
+  color: #f6d171;
+  width: 186px;
+  height: 30px;
+  padding: 5px;
+}
+.button {
+  background-color: white;
+  color: rgb(30, 29, 29);
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  margin-top: 8px;
+  cursor: pointer;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 16px;
+}
+
+.label {
+  margin: 16px;
+}
+.select {
+  background-color: rgb(30, 29, 29);
+  color: white;
+}
+.info {
+  margin-bottom: 30px;
+  height: 60px;
+}

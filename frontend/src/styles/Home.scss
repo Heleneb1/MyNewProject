@@ -1,0 +1,22 @@
+body {
+  background: rgb(30, 29, 29);
+  color: #f6d171;
+}
+.Presentation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.signature {
+  width: 600px;
+  filter: invert(90%) sepia(4%) saturate(5512%) hue-rotate(330deg)
+    brightness(100%) contrast(109%);
+}
+
+.Texte {
+  text-align: justify;
+  width: 800px;
+  font-size: 20px;
+}

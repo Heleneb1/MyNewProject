@@ -34,6 +34,31 @@ const ItemManager = require("./ItemManager");
 models.item = new ItemManager();
 models.item.setDatabase(pool);
 
+const BooksManager = require("./BooksManager");
+
+models.book = new BooksManager();
+models.book.setDatabase(pool);
+
+const CharactersManager = require("./CharactersManager");
+
+models.character = new CharactersManager();
+models.character.setDatabase(pool);
+
+const ImagesManager = require("./ImagesManager");
+
+models.image = new ImagesManager();
+models.image.setDatabase(pool);
+
+const QuotesManager = require("./QuotesManager");
+
+models.quote = new QuotesManager();
+models.quote.setDatabase(pool);
+
+const UserManager = require("./UserManager");
+
+models.user = new UserManager();
+models.user.setDatabase(pool);
+
 // bonus: use a proxy to personalize error message,
 // when asking for a non existing model
 

@@ -1,0 +1,31 @@
+.glitter-container {
+  top: 0;
+  left: 0;
+  z-index: -1000;
+  height: 150%;
+  width: 100%;
+}
+
+.glitter {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: linear-gradient(45deg, #f8d61e, transparent);
+  border-radius: 50%;
+  animation: glitter 4s infinite;
+}
+
+@keyframes glitter {
+  0% {
+    transform: translateY(-200%) rotate(0deg);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(0%) rotate(180deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(200%) rotate(360deg);
+    opacity: 0;
+  }
+}
