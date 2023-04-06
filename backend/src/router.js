@@ -8,7 +8,7 @@ const CharactersControllers = require("./controllers/CharactersControllers");
 const ImagesControllers = require("./controllers/ImagesControllers");
 const QuotesControllers = require("./controllers/QuotesControllers");
 const AuthContoller = require("./controllers/AuthController");
-const UserController = require("./controllers/UserController");
+const UserController = require("./controllers/UserControllers");
 
 router.get("/items", itemControllers.browse);
 router.get("/items/:id", itemControllers.read);

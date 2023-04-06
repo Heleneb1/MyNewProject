@@ -1,17 +1,17 @@
 import React from "react"
 import axios from "axios"
 
-const Login = () => {
+function Login() {
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(e.target.email.value)
+    console.info(e.target.email.value)
     axios
       .post("http://localhost:/auth/login", {
         email: e.target.email.value,
         password: e.target.password.value,
       })
       .then((res) => {
-        console.log(res.headers["x-access-token"])
+        console.info(res.headers["x-access-token"])
         localStorage.setItem("token", res.headers["x-access-token"])
       })
   }
