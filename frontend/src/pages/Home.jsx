@@ -1,4 +1,4 @@
-import Glitter from "@components/Glitter"
+import Glitter from "../components/Glitter"
 import Signature from "../assets/Alexandre_Dumas_Signature.svg.png"
 
 export default function Home() {

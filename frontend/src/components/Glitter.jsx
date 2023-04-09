@@ -1,3 +1,4 @@
+/* eslint-disable react/function-component-definition */
 import React from "react"
 
 const Glitter = () => {
@@ -9,6 +10,7 @@ const Glitter = () => {
   return (
     <div className="glitter-container">
       {glitterStyles.map((style, index) => (
+        // eslint-disable-next-line react/self-closing-comp, react/no-array-index-key
         <div key={index} className="glitter" style={style}></div>
       ))}
     </div>

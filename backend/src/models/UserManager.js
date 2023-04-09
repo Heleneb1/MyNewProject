@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 const AbstractManager = require("./AbstractManager");
 
 class UserManager extends AbstractManager {
@@ -21,14 +22,15 @@ class UserManager extends AbstractManager {
   // eslint-disable-next-line consistent-return
   async addOne(user) {
     try {
-      const { name, email, password } = user;
+      const { user_name, email, password } = user;
+      console.info("Qqqqq", user);
       const [result] = await this.database.query(
-        "insert into user (name, email, password) values (?,?,?)",
-        [name, email, password]
+        "insert into user (user_name, email, password) values (?,?,?)",
+        [user_name, email, password]
       );
-      return { id: result.insertId, name, email };
+      return { id: result.insertId, user_name, email };
     } catch (error) {
-      console.info(error);
+      console.error("Erreur lors de la création", error);
     }
   }
 

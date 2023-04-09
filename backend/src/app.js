@@ -2,12 +2,27 @@
 
 const fs = require("node:fs");
 const path = require("node:path");
-
+const cookieParser = require("cookie-parser");
 // create express app
 
 const express = require("express");
 
 const app = express();
+app.use(cookieParser());
+
+app.use(function (req, res, next) {
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:5173");
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PUT, DELETE, OPTIONS"
+  );
+  next();
+});
 
 // use some application-level middlewares
 
@@ -35,6 +50,7 @@ app.use(
 //   res.setHeader("Access-Control-Allow-Credentials", true);
 //   next();
 // });
+
 const router = require("./router"); // on importe notre routeur
 
 app.use(router); // on envoie la requet dans le fichier router.js
