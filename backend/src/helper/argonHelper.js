@@ -14,7 +14,7 @@ const hashPassword = (plainPassword) => {
 };
 
 const verifyPassword = (plainPassword, hashedPassword) => {
-  return argon2.verify(plainPassword, hashedPassword, hashingOptions);
+  return argon2.verify(hashedPassword, plainPassword, hashingOptions);
 };
 
 module.exports = { hashPassword, verifyPassword };

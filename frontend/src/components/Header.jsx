@@ -23,6 +23,9 @@ export default function Header() {
         <Link className="HeaderLink" to="/quotes">
           <p className="NavHeader">Quelques Citations</p>
         </Link>
+        <Link className="HeaderLink" to="/login">
+          <p className="NavHeader">Connexion</p>
+        </Link>
       </div>
     </div>
   )
