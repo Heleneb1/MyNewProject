@@ -2,10 +2,21 @@ import Glitter from "../components/Glitter"
 import Signature from "../assets/Alexandre_Dumas_Signature.svg.png"
 
 export default function Home() {
+  const handleSignature = () => {
+    document.querySelector(".signature").classList.add("active")
+  }
+
   return (
     <div>
       <div className="Presentation">
-        <img className="signature" src={Signature} alt="Les 3 mousquetaires" />
+        <div className="Signature">
+          <img
+            className="signature"
+            src={Signature}
+            alt="Signature Alexandre Dumas"
+          />
+        </div>
+
         <div className="Texte">
           <p>
             Le site consacré à Alexandre Dumas propose une exploration de sa vie
@@ -25,6 +36,7 @@ export default function Home() {
           </p>
         </div>
       </div>
+      {/* <button onClick={handleSignature}>Afficher la signature</button> */}
       <Glitter />
     </div>
   )

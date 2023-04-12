@@ -8,6 +8,7 @@ const cookieParser = require("cookie-parser");
 const express = require("express");
 
 const app = express();
+// Middleware pour parser les cookies
 app.use(cookieParser());
 
 app.use(function (req, res, next) {
@@ -57,8 +58,8 @@ app.use(router); // on envoie la requet dans le fichier router.js
 
 // serve the backend/public folder for public resources
 
-// app.use(express.static(path.join(__dirname, '../public')))
-app.use("/public", express.static("public"));
+app.use(express.static(path.join(__dirname, "../public")));
+// app.use("/public", express.static("public"));
 // app.get('*', (req, res) => {
 //   res.status(404).json({ message: 'Not found!' })
 // })

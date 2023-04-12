@@ -3,6 +3,7 @@ const fs = require("fs");
 const cookieParser = require("cookie-parser");
 // Ajout de multer
 const multer = require("multer");
+const upload = multer({ dest: "public/uploads" });
 
 // Ajout de uuid
 // const { v4: uuidv4 } = require("uuid");
@@ -11,7 +12,7 @@ const multer = require("multer");
 const sendEmail = require("../sendEmail");
 
 const router = express.Router();
-// const { authorization } = require("./middleware/auth"); // Modifie l'importation pour inclure uniquement le middleware authorization
+const { authorization } = require("./middleware/auth"); // Modifie l'importation pour inclure uniquement le middleware authorization
 
 // middleware cookieParser
 router.use(cookieParser());
@@ -30,12 +31,48 @@ router.put("/items/:id", itemControllers.edit);
 router.post("/items", itemControllers.add);
 router.delete("/items/:id", itemControllers.destroy);
 
+router.get("/user", authorization, (req, res) => {
+  // This route handler is only executed if the user is authenticated
+  res.send(`Hello, ${req.userName}!`);
+});
 router.get("/books", BooksControllers.browse);
 router.get("/books/:id", BooksControllers.read);
 router.put("/books/:id", BooksControllers.edit);
-router.post("/books", BooksControllers.add);
-router.delete("/books/:id", BooksControllers.destroy);
+router.post("/books", upload.single("picture_books"), BooksControllers.add); // ok
+// router.post("/avatar", upload.single("avatar"), BooksControllers.addBook); // ok
 
+// router.post("/books", upload.single("picture_books"), async (req, res) => {
+//   try {
+//     // On récupère le nom et le chemin du fichier
+//     const { originalname, path } = req.file;
+
+//     // On crée un objet Image avec les informations de l'image
+//     const newImage = new Image({
+//       name: originalname,
+//       path,
+//     });
+
+//     // On enregistre l'image dans la base de données
+//     const savedImage = await newImage.save();
+
+//     // On appelle la méthode add du controller BooksControllers
+//     await BooksControllers.add({ name_img: originalname, path_img: path });
+
+//     res
+//       .status(200)
+//       .json({ message: "Image uploaded successfully", image: savedImage });
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ message: "Error uploading image" });
+//   }
+// });
+// router.post("/books", BooksControllers.add);
+router.delete("/books/:id", BooksControllers.destroy);
+router.get("/books/:id", authorization, (req, res) => {
+  // This route handler is only executed if the user is authenticated
+  res.send(`Hello, ${req.userName}!`);
+});
+router.get("/bookshascharacters", BooksControllers.readHasBooks);
 router.get("/characters", CharactersControllers.browse);
 router.get("/characters/:id", CharactersControllers.read);
 router.put("/characters/:id", CharactersControllers.edit);
@@ -67,11 +104,9 @@ router.post("/contact", (req, res) => {
 
 router.get("/images", ImagesControllers.browse);
 router.get("/images/:id", ImagesControllers.read);
-router.put("/images/:id", ImagesControllers.edit);
-router.post("/images", ImagesControllers.add);
+router.put("/images/:id", upload.single("url_img"), ImagesControllers.edit);
+router.post("/images/", upload.single("url_img"), ImagesControllers.add); // ok
 router.delete("/images/:id", ImagesControllers.destroy);
-// On définit la destination de stockage de nos fichiers
-const upload = multer({ dest: "public/uploads" });
 
 // route POST pour recevoir un fichier
 router.post("/avatar", upload.single("avatar"), (req, res) => {
@@ -88,6 +123,7 @@ router.post("/avatar", upload.single("avatar"), (req, res) => {
     // `./public/uploads/${uuidv4()}-${originalname}`,
     (err) => {
       if (err) throw err;
+
       res.send("File uploaded");
     }
   );
