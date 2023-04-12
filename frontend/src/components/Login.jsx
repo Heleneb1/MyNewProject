@@ -65,6 +65,8 @@ function Login() {
       })
       .then((res) => {
         console.info(res.data)
+        alert("Votre compte a été créé avec succes")
+        navigate("/books")
       })
       .catch((err) => {
         console.error(err.response.data)
@@ -79,7 +81,7 @@ function Login() {
   }
 
   function myFunction() {
-    const x = document.getElementById("MDP")
+    const x = document.getElementsByClassName("MDP")
     if (x.type === "password") {
       x.type = "text"
     } else {
@@ -90,7 +92,7 @@ function Login() {
   return (
     <div className="Login">
       <h2>Connexion</h2>
-      <form onSubmit={handleLoginSubmit}>
+      <form className="Connexion" onSubmit={handleLoginSubmit}>
         <div className="email">
           <input
             className="email"
@@ -101,16 +103,16 @@ function Login() {
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
-        <div id="MDP">
-          <input
-            id="MDP"
-            type="password"
-            name="password"
-            placeholder="Mot de Passe"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
+
+        <input
+          className="MDP"
+          type="password"
+          name="password"
+          placeholder="Mot de Passe"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+
         <input className="check" type="checkbox" onClick={() => myFunction()} />
         {!isLoggedIn && (
           <button className="Changebook" type="submit">
@@ -141,20 +143,21 @@ function Login() {
           />
         </div>
         <input
-          id="MDP"
+          className="MDP"
           type="password"
           name="password"
           placeholder="Mot de passe"
           value={signupPassword}
           onChange={(e) => setSignupPassword(e.target.value)}
         />
-        {/* <input
+        <input
+          className="MDP"
           type="password"
           name="password"
-          placeholder="Confirm Password"
+          placeholder="Confirmer le mot de passe"
           value={signupPassword}
           onChange={(e) => setSignupPassword(e.target.value)}
-        /> */}
+        />
         <button className="Changebook" type="submit">
           Créer un compte
         </button>

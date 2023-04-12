@@ -4,16 +4,29 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-
-  .email {
-    background-color: rgb(30, 29, 29);
-    border: 1px solid #f6d171;
-    border-radius: 5px;
-    color: #f6d171;
-    width: 186px;
-    height: 30px;
-    padding: 5px;
-    margin-bottom: 10px;
-    outline: none;
+  width: 800px;
+  form.Connexion {
+    width: 686px;
+    /* height: 100px; */
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    .email {
+      display: flex;
+      justify-content: center;
+      input.email {
+        background-color: rgb(30, 29, 29);
+        border: 1px solid #f6d171;
+        border-radius: 5px;
+        color: #f6d171;
+        // background: transparent;
+        // color: white;
+        width: 200px;
+        height: 30px;
+        // border: 1px solid white;
+        // border-radius: 5px;
+      }
+    }
   }
 }

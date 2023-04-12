@@ -1,7 +1,6 @@
 const cookieParser = require("cookie-parser");
 const { decodeJWT } = require("../helper/jwtHelper");
 
-// eslint-disable-next-line consistent-return
 const authorization = async (req, res, next) => {
   try {
     const token = req.cookies.auth_token;
@@ -12,6 +11,9 @@ const authorization = async (req, res, next) => {
     req.userId = data.id;
     req.userName = data.user_name;
     req.role = data.role; // Stockez le rôle dans la requête
+    if (req.role !== 1) {
+      throw new Error("Unauthorized");
+    }
     return next();
   } catch (error) {
     console.error(error);
@@ -19,4 +21,4 @@ const authorization = async (req, res, next) => {
   }
 };
 
-module.exports = { authorization, cookieParser };
+module.exports = { cookieParser, authorization };

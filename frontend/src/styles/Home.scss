@@ -8,15 +8,42 @@ body {
   align-items: center;
   justify-content: center;
 }
-
-.signature {
-  width: 600px;
-  filter: invert(90%) sepia(4%) saturate(5512%) hue-rotate(330deg)
-    brightness(100%) contrast(109%);
+.Signature {
+  width: 100%;
+  height: 400px;
+  position: relative;
+  overflow: hidden;
 }
 
+.signature {
+  filter: invert(90%) sepia(4%) saturate(5512%) hue-rotate(330deg)
+    brightness(100%) contrast(109%);
+
+  top: 0%;
+  left: -37%;
+  transform: translateX(-100%);
+  opacity: 0;
+  animation: draw-signature 10s forwards;
+  z-index: 100;
+}
+
+@keyframes draw-signature {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
 .Texte {
   text-align: justify;
   width: 800px;
-  font-size: 20px;
+  font-size: 25px;
+  margin-bottom: 30px;
+}
+
+.signature.active {
+  opacity: 1;
 }

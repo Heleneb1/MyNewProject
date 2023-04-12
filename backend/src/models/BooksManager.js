@@ -13,6 +13,15 @@ class CharactersManager extends AbstractManager {
     );
   }
 
+  findAllBooksHasCharacters() {
+    return this.database.query(
+      `SELECT c.name_characters, c.associated_book, c.description, b.genre,b.images_id from characters as c
+      join books as b on b.id = c.id
+      join books_has_characters as bhc on books_id=characters_id ORDER BY b.title ASC
+      `
+    );
+  }
+
   findOneBook(id) {
     return this.database.query(
       `SELECT i.url_img,b.title, b.publication_date, b.genre, b.pages FROM books AS B JOIN images AS i ON i.books_id =b.id WHERE b.id = ?
@@ -34,14 +43,29 @@ class CharactersManager extends AbstractManager {
     );
   }
 
-  addOne(book) {
+  // addOne(book) {
+  //   const { title, publication_date, genre, pages, description } = book;
+  //   return this.database
+  //     .query(
+  //       `INSERT INTO book ${this.table} (title, publication_date, genre, pages, description, images_id)
+  //       VALUES (?, ?, ?, ?, ?, ?, ?)`[
+  //         (title, publication_date, genre, pages, description, images_id)
+  //       ]
+  //     )
+  //     .then(([result]) => {
+  //       return { id: result.insertId, title };
+  //     })
+  //     .catch((error) => {
+  //       console.error(error);
+  //     });
+  // }
+  addOne(book, images_id) {
     const { title, publication_date, genre, pages, description } = book;
     return this.database
       .query(
-        `INSERT INTO book ${this.table} (title, publication_date, genre, pages, description) 
-        VALUES (?, ?, ?, ?, ?, ?)`[
-          (title, publication_date, genre, pages, description)
-        ]
+        `INSERT INTO book ${this.table} (title, publication_date, genre, pages, description, images_id) 
+        VALUES (?, ?, ?, ?, ?, ?)`,
+        [title, publication_date, genre, pages, description, images_id]
       )
       .then(([result]) => {
         return { id: result.insertId, title };
