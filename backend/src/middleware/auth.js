@@ -1,6 +1,7 @@
 const cookieParser = require("cookie-parser");
 const { decodeJWT } = require("../helper/jwtHelper");
 
+// eslint-disable-next-line consistent-return
 const authorization = async (req, res, next) => {
   try {
     const token = req.cookies.auth_token;

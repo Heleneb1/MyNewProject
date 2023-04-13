@@ -6,7 +6,7 @@ export default function Characters() {
   const [selectedBook, setSelectedBook] = useState("")
   const [books, setBooks] = useState([])
   const [associations, setAssociations] = useState([])
-  const [filteredBook, setFilteredBook] = useState([])
+  const [, setFilteredBook] = useState([])
 
   useEffect(() => {
     const fetchBooks = async () => {

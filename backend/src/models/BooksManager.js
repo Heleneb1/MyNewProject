@@ -32,12 +32,13 @@ class CharactersManager extends AbstractManager {
 
   insert(book) {
     return this.database.query(
-      `insert into ${this.table} (title, publication_date, genre, pages,  description) values (?,?,?,?,?)`,
+      `insert into ${this.table} (title, publication_date, genre, pages, images_id, description) values (?,?,?,?,?,?)`,
       [
         book.title,
         book.publication_date,
         book.genre,
         book.pages,
+        book.images_id, // Add the image ID to the array of values
         book.description,
       ]
     );

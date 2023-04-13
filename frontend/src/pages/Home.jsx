@@ -2,6 +2,7 @@ import Glitter from "../components/Glitter"
 import Signature from "../assets/Alexandre_Dumas_Signature.svg.png"
 
 export default function Home() {
+  // eslint-disable-next-line no-unused-vars
   const handleSignature = () => {
     document.querySelector(".signature").classList.add("active")
   }

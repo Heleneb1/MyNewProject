@@ -11,6 +11,7 @@ const app = express();
 // Middleware pour parser les cookies
 app.use(cookieParser());
 
+// eslint-disable-next-line func-names
 app.use(function (req, res, next) {
   res.setHeader("Access-Control-Allow-Origin", "http://localhost:5173");
   res.setHeader("Access-Control-Allow-Credentials", "true");
