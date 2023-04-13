@@ -3,12 +3,23 @@ const fs = require("fs");
 const cookieParser = require("cookie-parser");
 // Ajout de multer
 const multer = require("multer");
+
+// const dotenv = require("dotenv");
+
+const mysql = require("mysql2");
+
 const upload = multer({ dest: "public/uploads" });
 
 // Ajout de uuid
 // const { v4: uuidv4 } = require("uuid");
 // On définit la destination de stockage de nos fichiers
-
+const pool = mysql.createPool({
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+  connectionLimit: 10,
+});
 const sendEmail = require("../sendEmail");
 
 const router = express.Router();
@@ -22,7 +33,8 @@ const BooksControllers = require("./controllers/BooksControllers");
 const CharactersControllers = require("./controllers/CharactersControllers");
 const ImagesControllers = require("./controllers/ImagesControllers");
 const QuotesControllers = require("./controllers/QuotesControllers");
-const AuthController = require("./controllers/authController");
+
+const AuthController = require("./controllers/AuthController");
 const UserController = require("./controllers/UserControllers");
 
 router.get("/items", itemControllers.browse);
@@ -37,35 +49,48 @@ router.get("/user", authorization, (req, res) => {
 });
 router.get("/books", BooksControllers.browse);
 router.get("/books/:id", BooksControllers.read);
+
 router.put("/books/:id", BooksControllers.edit);
-router.post("/books", upload.single("picture_books"), BooksControllers.add); // ok
+router.post("/books", upload.single("avatar"), BooksControllers.addWithImage); // ok
 // router.post("/avatar", upload.single("avatar"), BooksControllers.addBook); // ok
+router.post("/avatar", upload.single("avatar"), (req, res) => {
+  const { file } = req;
 
-// router.post("/books", upload.single("picture_books"), async (req, res) => {
-//   try {
-//     // On récupère le nom et le chemin du fichier
-//     const { originalname, path } = req.file;
+  // eslint-disable-next-line consistent-return
+  fs.rename(file.path, `./public/uploads/${file.originalname}`, (err) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).send("Error uploading image file");
+    }
 
-//     // On crée un objet Image avec les informations de l'image
-//     const newImage = new Image({
-//       name: originalname,
-//       path,
-//     });
+    console.info("File uploaded");
 
-//     // On enregistre l'image dans la base de données
-//     const savedImage = await newImage.save();
+    const imageUrl = `http://localhost:5000/uploads/${file.originalname}`;
+    const image = {
+      name_img: file.originalname,
+      url_img: imageUrl,
+    };
+    // eslint-disable-next-line consistent-return
+    pool.query("INSERT INTO images SET ?", image, (error, result) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).send("Error inserting image into database");
+      }
 
-//     // On appelle la méthode add du controller BooksControllers
-//     await BooksControllers.add({ name_img: originalname, path_img: path });
+      console.info(`Inserted image with id ${result.insertId}`);
 
-//     res
-//       .status(200)
-//       .json({ message: "Image uploaded successfully", image: savedImage });
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).json({ message: "Error uploading image" });
-//   }
-// });
+      const responseData = {
+        id: result.insertId,
+        name: image.name_img,
+        books_id: req.body.books_id,
+        url: imageUrl,
+      };
+
+      res.status(201).json(responseData);
+    });
+  });
+});
+
 // router.post("/books", BooksControllers.add);
 router.delete("/books/:id", BooksControllers.destroy);
 router.get("/books/:id", authorization, (req, res) => {
@@ -104,30 +129,10 @@ router.post("/contact", (req, res) => {
 
 router.get("/images", ImagesControllers.browse);
 router.get("/images/:id", ImagesControllers.read);
-router.put("/images/:id", upload.single("url_img"), ImagesControllers.edit);
-router.post("/images/", upload.single("url_img"), ImagesControllers.add); // ok
+router.put("/images/:id", upload.single("avatar"), ImagesControllers.edit);
+router.post("/images/", upload.single("avatar"), ImagesControllers.add); // ok
 router.delete("/images/:id", ImagesControllers.destroy);
 
-// route POST pour recevoir un fichier
-router.post("/avatar", upload.single("avatar"), (req, res) => {
-  // On récupère le nom du fichier
-  const { originalname } = req.file;
-
-  // On récupère le nom du fichier
-  const { filename } = req.file;
-
-  // On utilise la fonction rename de fs pour renommer le fichier
-  fs.rename(
-    `./public/uploads/${filename}`,
-    `./public/uploads/${originalname}`,
-    // `./public/uploads/${uuidv4()}-${originalname}`,
-    (err) => {
-      if (err) throw err;
-
-      res.send("File uploaded");
-    }
-  );
-});
 router.get("/quotes", QuotesControllers.browse);
 router.get("/quotes/:id", QuotesControllers.read);
 router.put("/quotes/:id", QuotesControllers.edit);

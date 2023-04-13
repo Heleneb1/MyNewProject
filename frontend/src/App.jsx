@@ -8,7 +8,8 @@ import Characters from "./pages/Characters"
 import Login from "./components/Login"
 // import SplashPageBook from "./pages/SplashPageBook"
 // import "./App.css"
-import Test from "@pages/test"
+import Test from "./pages/Test"
+
 function App() {
   return (
     <div className="App">

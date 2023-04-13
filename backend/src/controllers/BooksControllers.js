@@ -1,7 +1,9 @@
+/* eslint-disable no-shadow */
 const fs = require("fs");
+const multer = require("multer");
 // const Joi = require("joi");
 const models = require("../models");
-const multer = require("multer");
+
 const upload = multer({ dest: "uploads/" });
 
 const browse = (req, res) => {
@@ -140,6 +142,8 @@ const edit = (req, res) => {
 //     });
 //   }
 // };
+
+// eslint-disable-next-line consistent-return
 const addBook = (req, res) => {
   const book = req.body;
   if (!req.file) {
@@ -147,7 +151,6 @@ const addBook = (req, res) => {
   }
   const { originalname, filename } = req.file;
 
-  book.id = parseInt(req.params.id, 10);
   fs.rename(
     `./public/uploads/${filename}`,
     `./public/uploads/${originalname}`,
@@ -156,47 +159,42 @@ const addBook = (req, res) => {
         console.error(err);
         res.sendStatus(500);
       } else {
+        // Insert the book into the database
         models.book.insert(book).then(([result]) => {
           if (result.affectedRows === 0) {
             res.sendStatus(404);
           } else {
-            // Update the book's image ID with the newly created picture's ID
+            // Insert the image into the database
             const image = {
               books_id: result.insertId,
               path: `/public/uploads/${originalname}`,
             };
-            models.book.insert(
-              "INSERT INTO images SET ?",
-              image,
-              (error, result) => {
-                if (error) {
-                  console.error(error);
-                  res.sendStatus(500);
-                } else {
-                  // eslint-disable-next-line no-unused-vars
-                  const imageId = result.insertId;
-                  models.book.query(
-                    "UPDATE books SET images.id = ? WHERE id = ?",
-                    [image.id],
-                    (error, result) => {
-                      if (error) {
-                        console.error(error);
-                        res.sendStatus(500);
-                      } else {
-                        res.sendStatus(200);
-                      }
+            models.image.insert(image).then(([result]) => {
+              if (result.affectedRows === 0) {
+                res.sendStatus(404);
+              } else {
+                // Update the book's image ID with the newly created picture's ID
+                const imageId = result.insertId;
+                models.book.query(
+                  "UPDATE books SET images_id = ? WHERE id = ?",
+                  [imageId, result.insertId],
+                  (error) => {
+                    if (error) {
+                      console.error(error);
+                      res.sendStatus(500);
+                    } else {
+                      res.sendStatus(200);
                     }
-                  );
-                }
+                  }
+                );
               }
-            );
+            });
           }
         });
       }
     }
   );
 };
-
 // const add = (req, res) => {
 //   const template = {
 //     title: "",
@@ -228,6 +226,7 @@ const add = (req, res) => {
     genre: "",
     pages: "",
     images_id: "",
+
     description: "",
   };
   const book = { ...template, ...req.body };
@@ -246,35 +245,36 @@ const add = (req, res) => {
 };
 
 const addWithImage = (req, res) => {
-  const template = {
-    title: "",
-    publication_date: "",
-    genre: "",
-    pages: "",
-    images_id: "",
-    description: "",
-  };
-  const book = { ...template, ...req.body };
-
-  // TODO validations (length, format...)
-
-  upload.single("image")(req, res, (err) => {
+  // eslint-disable-next-line consistent-return
+  upload.single("avatar")(req, res, (err) => {
     if (err) {
       console.error(err);
       return res.status(400).json({ message: err.message });
     }
-    console.log(req.file); // to verify file object
+    console.info("HO", req.file); // to verify file object
+    const { name_img: originalname } = req.body;
 
+    console.info("WOW", req.body);
     // save image to database
     const image = {
-      filename: req.file.name_img,
-      mimetype: req.file.mimetype,
-      size: req.file.size,
+      name: "name_img",
+      url_img: `./public/uploads/${originalname}`,
     };
+    console.info("TEST", image);
     models.image
       .insert(image)
       .then(([result]) => {
         const newImage = { id: result.insertId, ...image };
+        const template = {
+          url_img: newImage.url_img,
+          title: "",
+          publication_date: "",
+          genre: "",
+          pages: "",
+          images_id: "",
+          description: "",
+        };
+        const book = { ...template, ...req.body };
         book.images_id = newImage.id;
         models.book.insert(book).then(([result]) => {
           console.info("YYYYYYYYYYYYYY", result);

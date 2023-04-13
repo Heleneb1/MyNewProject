@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-alert */
 // /* eslint-disable react/button-has-type */
 // /* eslint-disable camelcase */
@@ -11,7 +12,7 @@ export default function Books() {
   const [selectedGenre, setSelectedGenre] = useState(null)
   const [filteredBooks, setFilteredBooks] = useState([])
   const [selectedBook, setSelectedBook] = useState(null)
-  const [imageUrl, setImageUrl] = useState("")
+  // const [imageUrl, setImageUrl] = useState("")
   const [newPicture, setNewPicture] = useState(null)
   const inputRef = useRef(null)
   const token = localStorage.getItem("token")
@@ -25,6 +26,7 @@ export default function Books() {
     images_id: "",
     pages: null,
     description: "",
+    books_id: "",
   })
 
   const navigate = useNavigate()
@@ -54,6 +56,8 @@ export default function Books() {
       image: book.url_img,
       pages: book.pages,
       description: book.description,
+      url_img: book.url_img,
+      books_id: book.books_id,
     })
   }
 
@@ -77,22 +81,40 @@ export default function Books() {
       console.info("Book added successfully:", response.data)
 
       alert(`Ce livre est ajouté avec succès`)
-      // navigate("/books")
-      const uploadImage = async (file) => {
-        const newFormData = new FormData()
-        const fileRef = inputRef.current.files[0]
-        formData.append("name_img", fileRef, file.name)
-        newFormData.append("url_img", file)
-        newFormData.append("books_id", response.data.id)
-        await axios.post("http://localhost:5000/images", newFormData, {
-          // headers: {
-          //   "Content-Type": "multipart/form-data",
-          // },
+
+      // Upload de l'image
+      const imageFormData = new FormData()
+      imageFormData.append("avatar", inputRef.current.files[0])
+      const imageResponse = await axios.post(
+        "http://localhost:5000/avatar",
+        imageFormData
+      )
+      console.info(imageResponse)
+
+      // Ajout de l'image dans la base de données
+      const newBookPicture = imageResponse.data.picture
+      if (newBookPicture) {
+        const imageData = new FormData()
+        imageData.append("name_img", inputRef.current.files[0].name)
+        imageData.append("url_img", newBookPicture)
+        imageData.append("books_id", response.data.id) // Ajout de l'ID du livre nouvellement créé ici
+        const addImageResponse = await axios.post(
+          "http://localhost:5000/images",
+          imageData
+        )
+        console.info(addImageResponse)
+
+        // Mettre à jour le formulaire avec l'ID de l'image nouvellement créée
+        setFormData({
+          title: "",
+          publication_date: "",
+          genre: "",
+          images_id: addImageResponse.data.id, // Ajout de l'ID de l'image nouvellement créée ici
+          pages: null,
+          description: "",
+          url_img: "",
+          books_id: "",
         })
-      }
-      // Ajoutez les images avec l'ID de l'artefact (si elles existent)
-      if (newPicture) {
-        await uploadImage(newPicture)
       }
     } catch (error) {
       console.error("Error while adding book:", error)
@@ -116,6 +138,10 @@ export default function Books() {
     } catch (error) {
       console.error(error)
     }
+  }
+  const handleFileChange = (evt) => {
+    const file = evt.target.files[0]
+    setPicture(URL.createObjectURL(file))
   }
 
   return (
@@ -167,11 +193,7 @@ export default function Books() {
                 <h3>{book.title}</h3>
                 <div className="info">
                   <p>
-                    {/* {book.description}, */}
                     {book.genre}, {book.publication_date}, {book.pages} pages
-                    {/* <button onClick={() => handleBookSelection(book)}>
-                      Modifier
-                    </button> */}
                     {localStorage.getItem("role") === "1" ? (
                       <button
                         className="Changebook"
@@ -236,33 +258,16 @@ export default function Books() {
             value={formData.pages}
             onChange={handleInputChange}
           />
-          {/* <input
-            type="image"
-            placeholder="Image"
-            name="url_img"
-            value={formData.url_img}
-            onChange={handleInputChange}
-            alt={formData.title}
-          /> */}
-          <label htmlFor="image">Couverture</label>
-          <input
-            action="/books"
-            method="post"
-            encType="multipart/form-data"
-            type="file"
-            id="image"
-            name="image"
-            accept="images/*"
-            ref={inputRef}
-            onChange={(e) => setPicture(e.target.files[0])}
-          />{" "}
-          {picture && (
-            <img
-              className="picture"
-              src={URL.createObjectURL(picture)}
-              alt="Aperçu"
+          <form encType="multipart/form-data" onSubmit={handleSubmit}>
+            <input
+              type="file"
+              name="avatar"
+              ref={inputRef}
+              onChange={handleFileChange}
             />
-          )}
+            <button type="button">Envoyer</button>
+          </form>
+          {picture && <img className="picture" src={picture} alt="Aperçu" />}
           <button className="Changebook" type="submit">
             Nouvelle entrée
           </button>
