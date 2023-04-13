@@ -251,41 +251,50 @@ const addWithImage = (req, res) => {
       console.error(err);
       return res.status(400).json({ message: err.message });
     }
+
     console.info("HO", req.file); // to verify file object
     const { name_img: originalname } = req.body;
 
     console.info("WOW", req.body);
     // save image to database
-    const image = {
-      name: "name_img",
-      url_img: `./public/uploads/${originalname}`,
-    };
-    console.info("TEST", image);
-    models.image
-      .insert(image)
-      .then(([result]) => {
-        const newImage = { id: result.insertId, ...image };
-        const template = {
-          url_img: newImage.url_img,
-          title: "",
-          publication_date: "",
-          genre: "",
-          pages: "",
-          images_id: "",
-          description: "",
-        };
-        const book = { ...template, ...req.body };
-        book.images_id = newImage.id;
-        models.book.insert(book).then(([result]) => {
-          console.info("YYYYYYYYYYYYYY", result);
-          const newBook = { id: result.insertId, ...book };
-          res.status(201).json(newBook);
+    models.book.insert({}).then(([bookResult]) => {
+      const bookId = bookResult.insertId;
+
+      const image = {
+        name: "name_img",
+        url_img: `/uploads/${originalname}`,
+        books_id: bookId,
+      };
+      console.info("TEST", image);
+      models.image
+        .insert(image)
+        .then(([result]) => {
+          const newImage = { id: result.insertId, ...image };
+          const template = {
+            url_img: `/uploads/${originalname}`,
+            title: "",
+            publication_date: "",
+            genre: "",
+            pages: "",
+            images_id: newImage.id,
+            description: "",
+            books_id: bookId,
+          };
+          const book = { ...template, ...req.body };
+          book.images_id = newImage.id;
+          book.books_id = bookId;
+
+          models.book.insert(book).then(([result]) => {
+            console.info("YYYYYYYYYYYYYY", result);
+            const newBook = { id: result.insertId, ...book };
+            res.status(201).json(newBook);
+          });
+        })
+        .catch((error) => {
+          console.error(error);
+          return res.status(500).json({ message: "Internal server error" });
         });
-      })
-      .catch((error) => {
-        console.error(error);
-        return res.status(500).json({ message: "Internal server error" });
-      });
+    });
   });
 };
 
