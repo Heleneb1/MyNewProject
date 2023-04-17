@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom"
 
 export default function Books() {
   const [books, setBooks] = useState([])
+  const [bookId, setBookId] = useState(null)
   const [picture, setPicture] = useState(null)
   const [selectedGenre, setSelectedGenre] = useState(null)
   const [filteredBooks, setFilteredBooks] = useState([])
@@ -56,8 +57,8 @@ export default function Books() {
       image: book.url_img,
       pages: book.pages,
       description: book.description,
-      url_img: book.url_img,
-      books_id: book.books_id,
+      // url_img: book.url_img,
+      // books_id: book.books_id,
     })
   }
 
@@ -74,14 +75,54 @@ export default function Books() {
     }
   }, [selectedGenre, books])
 
-  const handleSubmit = async (event) => {
+  const handleImageSubmit = async (event) => {
     event.preventDefault()
     try {
-      const response = await axios.post("http://localhost:5000/books", formData)
-      console.info("Book added successfully:", response.data)
+      const imageFormData = new FormData()
+      imageFormData.append("avatar", inputRef.current.files[0])
+      const imageResponse = await axios.post(
+        "http://localhost:5000/avatar",
+        imageFormData
+      )
 
-      alert(`Ce livre est ajouté avec succès`)
+      const newBookPicture = imageResponse.data.picture
+      if (newBookPicture) {
+        const imageData = new FormData()
+        imageData.append("name_img", inputRef.current.files[0].name_img)
+        imageData.append("url_img", newBookPicture)
+        imageData.append("books_id", bookId)
+        const addImageResponse = await axios.post(
+          "http://localhost:5000/images",
+          imageData
+        )
 
+        // Ajouter l'ID de l'image au livre
+        const bookData = {
+          title: formData.title,
+          publication_date: formData.publication_date,
+          genre: formData.genre,
+          pages: formData.pages,
+          description: formData.description,
+          images_id: addImageResponse.data.id, // Ajouter l'ID de l'image à l'objet bookData
+        }
+
+        const response = await axios.post(
+          "http://localhost:5000/books",
+          bookData
+        )
+        console.info("Book added successfully:", response.data)
+        alert(`Ce livre est ajouté avec succès`)
+      }
+    } catch (error) {
+      console.error("Error while adding image:", error)
+      alert("Erreur lors de l'ajout de l'image")
+    }
+  }
+
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+
+    try {
       // Upload de l'image
       const imageFormData = new FormData()
       imageFormData.append("avatar", inputRef.current.files[0])
@@ -91,36 +132,89 @@ export default function Books() {
       )
       console.info(imageResponse)
 
-      // Ajout de l'image dans la base de données
-      const newBookPicture = imageResponse.data.picture
-      if (newBookPicture) {
-        const imageData = new FormData()
-        imageData.append("name_img", inputRef.current.files[0].name)
-        imageData.append("url_img", newBookPicture)
-        imageData.append("books_id", response.data.id) // Ajout de l'ID du livre nouvellement créé ici
-        const addImageResponse = await axios.post(
-          "http://localhost:5000/images",
-          imageData
-        )
-        console.info(addImageResponse)
+      // Récupération des détails de l'image
+      const lastImageResponse = await axios.get(
+        `http://localhost:5000/images/${imageResponse.data.id}`
+      )
+      console.info(lastImageResponse)
 
-        // Mettre à jour le formulaire avec l'ID de l'image nouvellement créée
-        setFormData({
-          title: "",
-          publication_date: "",
-          genre: "",
-          images_id: addImageResponse.data.id, // Ajout de l'ID de l'image nouvellement créée ici
-          pages: null,
-          description: "",
-          url_img: "",
-          books_id: "",
-        })
+      // Création du livre
+      const bookData = {
+        title: formData.title,
+        publication_date: formData.publication_date,
+        genre: formData.genre,
+        pages: formData.pages,
+        description: formData.description,
+        images_id: lastImageResponse.data.id, // Pass the ID of the selected image
       }
+      setFormData({
+        ...formData,
+        images_id: lastImageResponse.data.id,
+      })
+      const response = await axios.post("http://localhost:5000/books", bookData)
+      console.info("Book added successfully:", response.data)
+      alert(`Ce livre est ajouté avec succès`)
+      await axios.put(
+        `http://localhost:5000/images/${lastImageResponse.data.id}`,
+        {
+          books_id: response.data.id,
+        }
+      )
     } catch (error) {
       console.error("Error while adding book:", error)
       alert("Erreur lors de la création")
     }
   }
+  // const handleSubmit = async (event) => {
+  //   event.preventDefault()
+
+  //   try {
+  //     // Création du livre
+  //     const response = await axios.post("http://localhost:5000/books", {
+  //       ...formData,
+  //       images_id: null, // Ajoutez une clé 'images_id' initialement à null
+  //     })
+
+  //     console.info("Book added successfully:", response.data)
+
+  //     const bookId = response.data.id
+
+  //     // Upload de l'image
+  //     const imageFormData = new FormData()
+  //     imageFormData.append("avatar", inputRef.current.files[0])
+  //     const imageResponse = await axios.post(
+  //       "http://localhost:5000/avatar",
+  //       imageFormData
+  //     )
+  //     console.info(imageResponse)
+
+  //     // Ajout de l'image dans la base de données
+  //     const newBookPicture = imageResponse.data.picture
+  //     if (newBookPicture) {
+  //       const imageData = new FormData()
+  //       imageData.append("name_img", inputRef.current.files[0].name)
+  //       imageData.append("url_img", newBookPicture)
+  //       imageData.append("books_id", bookId)
+
+  //       const addImageResponse = await axios.post(
+  //         "http://localhost:5000/images",
+  //         imageData
+  //       )
+  //       console.info(addImageResponse)
+
+  //       // Mettre à jour le formulaire avec l'ID de l'image nouvellement créée
+  //       setFormData({
+  //         ...formData,
+  //         images_id: addImageResponse.data.id, // Ajoutez l'ID de l'image nouvellement créée
+  //       })
+
+  //       alert(`Ce livre est ajouté avec succès`)
+  //     }
+  //   } catch (error) {
+  //     console.error("Error while adding book:", error)
+  //     alert("Erreur lors de la création")
+  //   }
+  // }
 
   const handleInputChange = (event) => {
     const { name, value } = event.target
@@ -265,9 +359,12 @@ export default function Books() {
               ref={inputRef}
               onChange={handleFileChange}
             />
-            <button type="button">Envoyer</button>
+            <button type="button" onClick={handleImageSubmit}>
+              Envoyer l'image
+            </button>
+            {picture && <img className="picture" src={picture} alt="Aperçu" />}
           </form>
-          {picture && <img className="picture" src={picture} alt="Aperçu" />}
+
           <button className="Changebook" type="submit">
             Nouvelle entrée
           </button>

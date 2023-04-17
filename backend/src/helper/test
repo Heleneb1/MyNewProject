@@ -1,0 +1,294 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
+/* eslint-disable consistent-return */
+// const addWithImage = (req, res) => {
+//   const book = {
+//     title: req.body.title,
+//     publication_date: req.body.publication_date,
+//     genre: req.body.genre,
+//     pages: req.body.pages,
+//     description: req.body.description,
+//     images_id: null, // remplacé "image_id" par "null"
+//   };
+
+//   models.book
+//     .insert(book)
+//     .then(([bookResult]) => {
+//       const bookId = bookResult.insertId;
+//       const newBook = { id: bookId, ...book };
+//       res.status(201).json(newBook);
+//     })
+//     .catch((error) => {
+//       console.error(error);
+//       return res.status(500).json({ message: "Internal server error" });
+//     });
+// };
+
+// const addImageToBook = (req, res) => {
+//   const { file } = req;
+
+//   fs.rename(file.path, `./public/uploads/${file.originalname}`, (err) => {
+//     if (err) {
+//       console.error(err);
+//       return res.status(500).send("Error uploading image file");
+//     }
+
+//     console.info("File uploaded");
+
+//     const imageUrl = `http://localhost:5000/uploads/${file.originalname}`;
+//     const image = {
+//       name_img: file.originalname,
+//       url_img: imageUrl,
+//     };
+
+//     models.image
+//       .insert(image)
+//       .then(([imageResult]) => {
+//         const imageId = imageResult.insertId;
+//         const responseData = {
+//           id: imageId,
+//           name_img: image.name_img,
+//           books_id: null, // remplacé "book_id" par "null"
+//           url_img: imageUrl,
+//         };
+
+//         // Mettre à jour le champ books_id de l'image nouvellement créée avec l'ID du livre créé
+//         models.image
+//           .update(imageId, { books_id: newBook.id })
+//           .then(() => {
+//             // Mettre à jour le champ images_id du livre créé avec l'ID de l'image nouvellement créée
+//             models.book.update(newBook.id, { images_id: imageId }).then(() => {
+//               // Récupérer le livre créé avec l'image associée et le renvoyer dans la réponse
+//               models.book
+//                 .findOneBook(req.body.books_id)
+//                 .then((book) => {
+//                   book.images_id = imageId;
+//                   res.status(201).json(book);
+//                 })
+//                 .catch((err) => {
+//                   console.error(err);
+//                   return res.status(500).send("Error retrieving book");
+//                 });
+//             });
+//           })
+//           .catch((err) => {
+//             console.error(err);
+//             return res.status(500).send("Error updating book with image");
+//           });
+//       })
+//       .catch((err) => {
+//         console.error(err);
+//         return res.status(500).send("Error updating image with book ID");
+//       });
+//   }).catch((err) => {
+//     console.error(err);
+//     return res.status(500).send("Error inserting image into database");
+//   });
+// };
+
+// const addWithImage = (req, res) => {
+//   const book = {
+//     title: req.body.title,
+//     publication_date: req.body.publication_date,
+//     genre: req.body.genre,
+//     pages: req.body.pages,
+//     description: req.body.description,
+//   };
+
+//   models.book
+//     .insert(book)
+//     .then(([bookResult]) => {
+//       const bookId = bookResult.insertId;
+//       const newBook = { id: bookId, ...book };
+
+//       // Update the image with the book id
+//       models.image
+//         .update(req.body.images_id, { books_id: bookId })
+//         .then(() => {
+//           // Update the book with the image id
+//           models.book.update(bookId, { images_id: req.body.id }).then(() => {
+//             res.status(201).json(newBook);
+//           });
+//         })
+//         .catch((error) => {
+//           console.error(error);
+//           return res.status(500).json({ message: "Internal server error" });
+//         });
+//     })
+//     .catch((error) => {
+//       console.error(error);
+//       return res.status(500).json({ message: "Internal server error" });
+//     });
+// };
+// const addWithImage = (req, res) => {
+//   const { name_img: originalname, ...bookData } = req.body;
+//   let existingImage; // Define the variable in a higher scope
+
+//   createImage(originalname)
+//     .then((image) => {
+//       existingImage = image; // Assign the value to the higher-scoped variable
+//       const book = {
+//         ...bookData,
+//         images_id: existingImage,
+//       };
+//       return models.book.insert(book);
+//     })
+//     .then(([result]) => {
+//       const newBook = {
+//         id: result.insertId,
+//         ...bookData,
+//         images_id: existingImage,
+//       };
+//       console.info("New book created with ID", newBook.id);
+//       res.status(201).json(newBook);
+//     })
+//     .catch((error) => {
+//       console.error(error);
+//       return res.status(500).json({ message: "Internal server error" });
+//     });
+// };
+
+// save image to database
+// const image = {
+//   name_img: "name_img",
+//   url_img: `./public/uploads/${originalname}`,
+// };
+// const [result] = await models.image.insert(image);
+// const newImage = { id: result.insertId, ...image };
+// const template = {
+//   // url_img: newImage.url_img,
+//   title: "",
+//   publication_date: "",
+//   genre: "",
+//   pages: "",
+//   images_id: "",
+//   description: "",
+// };
+// console.info("NOOOOOO", template);
+// const bookWithTemplate = { ...template, ...req.body };
+// bookWithTemplate.images_id = existingImage;
+// const [bookResult] = await models.book.insert(bookWithTemplate);
+// const newBook = { id: bookResult.insertId, ...bookWithTemplate };
+// const addWithImage = async (req, res) => {
+//   const { name_img: originalname } = req.body;
+//   console.info("RAAAAA", req.body);
+//   try {
+//     const existingImage = await createImage(originalname);
+//     const bookData = {
+//       title: "",
+//       publication_date: "",
+//       genre: "",
+//       pages: "",
+//       description: "",
+//       images_id: existingImage,
+//     };
+
+//     const book = {
+//       ...bookData,
+//       images_id: existingImage,
+//     };
+//     await models.book.insert(book);
+
+//     const template = {
+//       title: "",
+//       publication_date: "",
+//       genre: "",
+//       pages: "",
+//       images_id: "",
+//       description: "",
+//     };
+//     console.info("NOOOOOO", template);
+//     const bookWithTemplate = { ...template, ...req.body };
+//     const [bookResult] = await models.book.insert(bookWithTemplate);
+//     const newBook = { id: bookResult.insertId, ...bookWithTemplate };
+//     res.status(201).json(newBook);
+//   } catch (error) {
+//     console.error(error);
+//     return res.status(500).json({ message: "Internal server error" });
+//   }
+// };
+// ///........................................
+// const createImage = async (originalname) => {
+//   const existingImage = await originalname;
+//   console.info("BBBBB", existingImage);
+//   if (existingImage) {
+//     return existingImage.id;
+//   }
+// };
+// const addWithImage = async (req, res) => {
+//   const { name_img: originalname } = req.body;
+//   console.info("RAAAAA", req.body);
+//   try {
+//     // eslint-disable-next-line no-unused-vars
+//     const existingImageId = await createImage(originalname);
+//     console.info("JJJJJJJJJ", existingImageId);
+//     const template = {
+//       title: "",
+//       publication_date: "",
+//       genre: "",
+//       pages: "",
+//       images_id: "",
+//       description: "",
+//     };
+//     console.info("NOOOOOO", template);
+//     const bookWithTemplate = { ...template, ...req.body };
+//     const [bookResult] = await models.book.insert(bookWithTemplate);
+//     const newBookId = bookResult.insertId;
+//     console.log("Alors", newBookId);
+//     await models.image.update(
+//       { books_id: newBookId },
+//       { where: { id: bookResult.images_id } }
+//     );
+//     const newBook = { id: bookResult.insertId, ...bookWithTemplate };
+//     console.log(newBook);
+//     await models.image.update(
+//       { books_id: newBookId },
+//       { where: { id: bookResult.images_id } }
+//     );
+//     res.status(201).json(newBook);
+//   } catch (error) {
+//     console.error(error);
+//     return res.status(500).json({ message: "Internal server error" });
+//   }
+// };
+
+const createImage = async (originalname) => {
+  const existingImage = await originalname;
+  if (existingImage) {
+    return existingImage.id;
+  }
+};
+const addWithImage = async (req, res) => {
+  const { name_img: originalname } = req.body;
+  console.info("RAAAAA", req.body);
+  try {
+    // eslint-disable-next-line no-unused-vars
+    const existingImageId = await createImage(originalname);
+    console.info("JJJJJJJJJ", existingImageId);
+    const template = {
+      title: "",
+      publication_date: "",
+      genre: "",
+      pages: "",
+      images_id: "",
+      description: "",
+    };
+    console.info("NOOOOOO", template);
+    const bookWithTemplate = { ...template, ...req.body };
+    const [bookResult] = await models.book.insert(bookWithTemplate);
+    const newBookId = bookResult.insertId;
+    console.info("Alors", newBookId);
+
+    const newBook = { id: bookResult.insertId, ...bookWithTemplate };
+    console.info("new", newBook);
+    await models.image.update(
+      { books_id: newBookId },
+      { where: { id: newBook.images_id } }
+    );
+    console.info("TTTTTTTTT", newBook.images_id);
+    res.status(201).json(newBook);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+};

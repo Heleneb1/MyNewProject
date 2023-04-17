@@ -52,7 +52,7 @@ router.get("/books/:id", BooksControllers.read);
 
 router.put("/books/:id", BooksControllers.edit);
 router.post("/books", upload.single("avatar"), BooksControllers.addWithImage); // ok
-// router.post("/avatar", upload.single("avatar"), BooksControllers.addBook); // ok
+// router.post("/books", upload.single("avatar"), BooksControllers.addBook); // ok
 router.post("/avatar", upload.single("avatar"), (req, res) => {
   const { file } = req;
 
@@ -69,6 +69,7 @@ router.post("/avatar", upload.single("avatar"), (req, res) => {
     const image = {
       name_img: file.originalname,
       url_img: imageUrl,
+      books_id: req.body.books_id,
     };
     // eslint-disable-next-line consistent-return
     pool.query("INSERT INTO images SET ?", image, (error, result) => {
@@ -77,12 +78,12 @@ router.post("/avatar", upload.single("avatar"), (req, res) => {
         return res.status(500).send("Error inserting image into database");
       }
 
-      console.info(`Inserted image with id ${result.insertId}`);
+      console.info(`Cool, Inserted image with id ${result.insertId}`);
 
       const responseData = {
         id: result.insertId,
         name: image.name_img,
-        books_id: req.body.books_id,
+        books_id: image.books_id,
         url: imageUrl,
       };
 

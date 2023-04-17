@@ -1,6 +1,6 @@
 const AbstractManager = require("./AbstractManager");
 
-class CharactersManager extends AbstractManager {
+class ImagesManager extends AbstractManager {
   constructor() {
     super({ table: "images" });
   }
@@ -12,9 +12,16 @@ class CharactersManager extends AbstractManager {
     );
   }
 
+  updateOne(image) {
+    return this.database.query(
+      `UPDATE ${this.table} SET books_id = ? WHERE id = ?`,
+      [image.books_id, image.id]
+    );
+  }
+
   update(image) {
     return this.database.query(
-      `update ${this.table} set characters_id = ?,books_id=?,name_img=?,  url_img=?, where id = ?`,
+      `update ${this.table} set characters_id = ?, books_id= ?, name_img= ? ,  url_img=? where id = ?`,
       [
         image.characters_id,
         image.books_id,
@@ -26,4 +33,4 @@ class CharactersManager extends AbstractManager {
   }
 }
 
-module.exports = CharactersManager;
+module.exports = ImagesManager;
