@@ -13,13 +13,10 @@ export default function Books() {
   const [selectedGenre, setSelectedGenre] = useState(null)
   const [filteredBooks, setFilteredBooks] = useState([])
   const [selectedBook, setSelectedBook] = useState(null)
-  // const [imageUrl, setImageUrl] = useState("")
   const [newPicture, setNewPicture] = useState(null)
   const inputRef = useRef(null)
   const token = localStorage.getItem("token")
   const uniqueGenres = [...new Set(filteredBooks.map((book) => book.genre))]
-  // const [description, setDescription] = useState("")
-  // const [images, setImages] = useState([])
   const [formData, setFormData] = useState({
     title: "",
     publication_date: "",
@@ -57,8 +54,6 @@ export default function Books() {
       image: book.url_img,
       pages: book.pages,
       description: book.description,
-      // url_img: book.url_img,
-      // books_id: book.books_id,
     })
   }
 
@@ -165,56 +160,6 @@ export default function Books() {
       alert("Erreur lors de la création")
     }
   }
-  // const handleSubmit = async (event) => {
-  //   event.preventDefault()
-
-  //   try {
-  //     // Création du livre
-  //     const response = await axios.post("http://localhost:5000/books", {
-  //       ...formData,
-  //       images_id: null, // Ajoutez une clé 'images_id' initialement à null
-  //     })
-
-  //     console.info("Book added successfully:", response.data)
-
-  //     const bookId = response.data.id
-
-  //     // Upload de l'image
-  //     const imageFormData = new FormData()
-  //     imageFormData.append("avatar", inputRef.current.files[0])
-  //     const imageResponse = await axios.post(
-  //       "http://localhost:5000/avatar",
-  //       imageFormData
-  //     )
-  //     console.info(imageResponse)
-
-  //     // Ajout de l'image dans la base de données
-  //     const newBookPicture = imageResponse.data.picture
-  //     if (newBookPicture) {
-  //       const imageData = new FormData()
-  //       imageData.append("name_img", inputRef.current.files[0].name)
-  //       imageData.append("url_img", newBookPicture)
-  //       imageData.append("books_id", bookId)
-
-  //       const addImageResponse = await axios.post(
-  //         "http://localhost:5000/images",
-  //         imageData
-  //       )
-  //       console.info(addImageResponse)
-
-  //       // Mettre à jour le formulaire avec l'ID de l'image nouvellement créée
-  //       setFormData({
-  //         ...formData,
-  //         images_id: addImageResponse.data.id, // Ajoutez l'ID de l'image nouvellement créée
-  //       })
-
-  //       alert(`Ce livre est ajouté avec succès`)
-  //     }
-  //   } catch (error) {
-  //     console.error("Error while adding book:", error)
-  //     alert("Erreur lors de la création")
-  //   }
-  // }
 
   const handleInputChange = (event) => {
     const { name, value } = event.target

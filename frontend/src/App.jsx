@@ -6,7 +6,7 @@ import Books from "./pages/Books"
 import Quotes from "./pages/Quotes"
 import Characters from "./pages/Characters"
 import Login from "./components/Login"
-// import SplashPageBook from "./pages/SplashPageBook"
+import SplashPageBook from "./pages/SplashPageBook"
 // import "./App.css"
 import Test from "./pages/Test"
 
@@ -15,8 +15,8 @@ function App() {
     <div className="App">
       <Header />
       <Routes>
-        {/* <Route path="/" element={<SplashPageBook />} /> */}
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<SplashPageBook />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/books" element={<Books />} />
         <Route path="/quotes" element={<Quotes />} />

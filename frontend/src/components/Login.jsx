@@ -7,6 +7,7 @@ import Contact from "./Contact"
 function Login() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const [signupConfirmPassword, setSignupConfirmPassword] = useState("")
   // eslint-disable-next-line no-unused-vars
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [signupName, setSignupName] = useState("")
@@ -55,13 +56,17 @@ function Login() {
 
   const handleSignupSubmit = (e) => {
     e.preventDefault()
+    if (signupPassword !== signupConfirmPassword) {
+      alert("Les mots de passe ne correspondent pas.")
+      return
+    }
     console.info(signupEmail)
     axios
       .post("http://localhost:5000/user", {
         user_name: signupName,
         email: signupEmail,
         password: signupPassword,
-        // confirmPassword: signupPassword,
+        confirmPassword: signupConfirmPassword,
       })
       .then((res) => {
         console.info(res.data)
@@ -73,7 +78,6 @@ function Login() {
         alert("Erreur lors de la création du compte.")
       })
   }
-
   const handleLogoutClick = (e) => {
     e.preventDefault()
     localStorage.removeItem("token")
@@ -81,91 +85,120 @@ function Login() {
   }
 
   function myFunction() {
-    const x = document.getElementsByClassName("MDP")
-    if (x.type === "password") {
-      x.type = "text"
-    } else {
-      x.type = "password"
+    const inputs = document.getElementsByClassName("MDP")
+    // eslint-disable-next-line no-plusplus
+    for (let i = 0; i < inputs.length; i++) {
+      if (inputs[i].type === "password") {
+        inputs[i].type = "text"
+      } else {
+        inputs[i].type = "password"
+      }
     }
   }
 
   return (
     <div className="Login">
-      <h2>Connexion</h2>
-      <form className="Connexion" onSubmit={handleLoginSubmit}>
-        <div className="email">
+      <div className="Connect">
+        <h2 className="title">Connexion</h2>
+        <form className="Connexion" onSubmit={handleLoginSubmit}>
+          <div className="email">
+            <input
+              className="email"
+              type="email"
+              name="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+
           <input
-            className="email"
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            className="MDP"
+            type="password"
+            name="password"
+            placeholder="Mot de Passe"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
-        </div>
 
-        <input
-          className="MDP"
-          type="password"
-          name="password"
-          placeholder="Mot de Passe"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-
-        <input className="check" type="checkbox" onClick={() => myFunction()} />
-        {!isLoggedIn && (
-          <button className="Changebook" type="submit">
-            Se connecter
-          </button>
-        )}
-      </form>
+          <input
+            className="check"
+            type="checkbox"
+            onClick={() => myFunction()}
+          />
+          {!isLoggedIn && (
+            <div className="Bouton_Connect">
+              <button className="Changebook" type="submit">
+                Se connecter
+              </button>
+            </div>
+          )}
+        </form>
+      </div>
       <h2>Inscription</h2>
-      <form onSubmit={handleSignupSubmit}>
-        <div className="user_name">
-          <input
-            className="user_name"
-            type="user_name"
-            name="user_name"
-            placeholder="Nom"
-            value={signupName}
-            onChange={(e) => setSignupName(e.target.value)}
-          />
+      <div className="Inscrip">
+        <form onSubmit={handleSignupSubmit}>
+          <div className="user_name">
+            <input
+              className="user_name"
+              type="user_name"
+              name="user_name"
+              placeholder="Nom"
+              value={signupName}
+              onChange={(e) => setSignupName(e.target.value)}
+            />
+          </div>
+          <div className="email">
+            <input
+              className="email"
+              type="email"
+              name="email"
+              placeholder="Email"
+              value={signupEmail}
+              onChange={(e) => setSignupEmail(e.target.value)}
+            />
+          </div>
+          <div className="Calendar">
+            <label htmlFor="datetime">Date et heure:</label>
+            <input type="datetime-local" id="datetime" name="datetime" />
+          </div>
+          <div className="I_MDP">
+            <input
+              className="MDP"
+              type="password"
+              name="password"
+              placeholder="Mot de passe"
+              value={signupPassword}
+              onChange={(e) => setSignupPassword(e.target.value)}
+            />
+            <input
+              className="check"
+              type="checkbox"
+              onClick={() => myFunction()}
+            />
+
+            <input
+              className="MDP"
+              type="password"
+              name="confirmPassword"
+              placeholder="Confirmer le mot de passe"
+              value={signupConfirmPassword}
+              onChange={(e) => setSignupConfirmPassword(e.target.value)}
+            />
+          </div>
+          <div className="Bouton_Connect">
+            <button className="Changebook" type="submit">
+              Créer un compte
+            </button>
+          </div>
+        </form>
+        <br />
+        <div className="Bouton_déco">
+          <button className="Bouton" type="button" onClick={handleLogoutClick}>
+            Déconnexion
+          </button>
         </div>
-        <div className="email">
-          <input
-            className="email"
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={signupEmail}
-            onChange={(e) => setSignupEmail(e.target.value)}
-          />
-        </div>
-        <input
-          className="MDP"
-          type="password"
-          name="password"
-          placeholder="Mot de passe"
-          value={signupPassword}
-          onChange={(e) => setSignupPassword(e.target.value)}
-        />
-        <input
-          className="MDP"
-          type="password"
-          name="password"
-          placeholder="Confirmer le mot de passe"
-          value={signupPassword}
-          onChange={(e) => setSignupPassword(e.target.value)}
-        />
-        <button className="Changebook" type="submit">
-          Créer un compte
-        </button>
-      </form>
-      <br />
-      <button className="Changebook" type="button" onClick={handleLogoutClick}>
-        Déconnexion
-      </button>
+      </div>
       <Contact />
     </div>
   )

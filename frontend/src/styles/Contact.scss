@@ -1,2 +1,62 @@
-// .Contact {
-// }
+.Contact {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+
+  h2 {
+    font-size: 30px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    div {
+      margin: 20px;
+      input[type="text"],
+      input[type="email"],
+      textarea {
+        background-color: rgb(30, 29, 29);
+        border: 1px solid #f6d171;
+        border-radius: 5px;
+        color: #f6d171;
+        width: 400px;
+        height: 30px;
+        padding: 10px;
+        font-size: 20px;
+      }
+    }
+    .message textarea {
+      height: 250px;
+      font-size: 20px;
+    }
+
+    .Bouton {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #f6d171;
+      border: none;
+      color: rgb(30, 29, 29);
+      border-radius: 5px;
+      height: 50px;
+      width: 150px;
+      font-size: 20px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    p {
+      font-size: 20px;
+    }
+  }
+  input[type="text"],
+  input[type="email"]:focus {
+    background-color: rgb(30, 29, 29);
+    color: #f6d171;
+  }
+}

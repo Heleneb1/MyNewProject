@@ -9,16 +9,16 @@ body {
   justify-content: center;
 }
 .Signature {
-  width: 100%;
+  width: 100vw;
   height: 400px;
-  position: relative;
+  display: flex;
+  justify-content: center;
   overflow: hidden;
 }
 
 .signature {
   filter: invert(90%) sepia(4%) saturate(5512%) hue-rotate(330deg)
     brightness(100%) contrast(109%);
-
   top: 0%;
   left: -37%;
   transform: translateX(-100%);
