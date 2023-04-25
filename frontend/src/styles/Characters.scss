@@ -1,43 +1,104 @@
-#character select {
-  padding: 0;
-  margin: 0;
-  border: 1px solid #ccc;
-  width: 120px;
-  border-radius: 3px;
-  overflow: hidden;
-  background-color: #fff;
-  background: #fff;
-  position: relative;
-}
+// #character select {
+//   padding: 0;
+//   margin: 0;
+//   border: 1px solid #ccc;
+//   width: 120px;
+//   border-radius: 3px;
+//   overflow: hidden;
+//   background-color: #fff;
+//   background: #fff;
+//   position: relative;
+// }
+.All {
+  display: flex;
+  justify-content: center;
 
-.select-style select {
-  padding: 5px 8px;
-  width: 130%;
-  border: none;
-  box-shadow: none;
-  background-color: transparent;
-  background-image: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
+  .Characters label {
+    margin: 20px;
+  }
+  .All div label {
+    margin: 20px;
+  }
+  select#character.select-style {
+    background-color: rgb(30, 29, 29);
+    border: 1px solid #f6d171;
+    border-radius: 5px;
+    color: #f6d171;
+    width: 186px;
+    height: 35px;
+    padding: 5px;
+    font-size: 15px;
+  }
+  select#book {
+    margin-top: 50px;
+    background-color: rgb(30, 29, 29);
+    border: 1px solid #f6d171;
+    border-radius: 5px;
+    color: #f6d171;
+    width: 186px;
+    height: 35px;
+    padding: 5px;
+    font-size: 15px;
+  }
+  .Charaters_Book {
+    position: fixed;
+    top: 0;
+    // left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-.select-style:after {
-  top: 50%;
-  left: 85%;
-  border: solid transparent;
-  content: " ";
-  height: 0;
-  width: 0;
-  position: absolute;
-  pointer-events: none;
-  border-color: rgba(0, 0, 0, 0);
-  border-top-color: #000000;
-  border-width: 5px;
-  margin-top: -2px;
-  z-index: 100;
-}
+    .Charaters_Book_content {
+      background-color: rgb(30, 29, 29);
+      padding: 20px;
+      border-radius: 5px;
+      width: 70%;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      font-size: 20px;
+      line-height: 1.5;
+    }
 
-.select-style select:focus {
-  outline: none;
+    .Charaters_Book_close {
+      margin-top: 10px;
+      padding: 5px 10px;
+      margin: 20px;
+      background: transparent;
+      border: 1px #f6d171 solid;
+      border-radius: 30px;
+      color: #f6d171;
+      width: 200px;
+      height: 30px;
+      cursor: pointer;
+    }
+
+    .Charaters_Book_close:hover {
+      box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6),
+        inset 2px 2px 3px rgba(0, 0, 0, 0.6);
+      background: #f6d171;
+      color: rgb(30, 29, 29);
+      scale: 1.1;
+    }
+  }
+  // .select-style:after {
+  //   top: 50%;
+  //   left: 85%;
+  //   border: solid transparent;
+  //   content: " ";
+  //   height: 0;
+  //   width: 0;
+  //   position: absolute;
+  //   pointer-events: none;
+  //   border-color: rgba(0, 0, 0, 0);
+  //   border-top-color: #000000;
+  //   border-width: 5px;
+  //   margin-top: -2px;
+  //   z-index: 100;
+  // }
+
+  // .select-style select:focus {
+  //   outline: none;
+  // }
 }

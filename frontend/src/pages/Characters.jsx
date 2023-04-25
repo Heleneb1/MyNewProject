@@ -7,6 +7,7 @@ export default function Characters() {
   const [books, setBooks] = useState([])
   const [associations, setAssociations] = useState([])
   const [, setFilteredBook] = useState([])
+  const [openModal, setOpenModal] = useState(false)
 
   useEffect(() => {
     const fetchBooks = async () => {
@@ -40,20 +41,12 @@ export default function Characters() {
     setSelectedBook("")
   }
 
-  // const handleBookSelection = (e) => {
-  //   setSelectedBook(e.target.value)
-  // }
   const handleBookSelection = (e) => {
     setSelectedBook(e.target.value)
-    const filteredBooks = associations
-      .filter(
-        (association) =>
-          association.character === selectedCharacter &&
-          (e.target.value === "" ||
-            association.book.associated_book === e.target.value)
-      )
-      .map((association) => association.book)
-    setFilteredBook(filteredBooks)
+    if (e.target.value !== "") {
+      setOpenModal(true)
+    }
+    setFilteredBook([])
   }
 
   const filteredBooks = associations.filter(
@@ -66,8 +59,25 @@ export default function Characters() {
     .map((book) => book.name_characters)
     .filter((character, index, self) => self.indexOf(character) === index)
 
+  const resetFilters = () => {
+    setSelectedCharacter("")
+    setSelectedBook("")
+    setFilteredBook([])
+  }
+
+  const handleModalClose = () => {
+    setOpenModal(false)
+    setSelectedBook("")
+    resetFilters()
+  }
+
+  // code pour supprimer les doublons
+  const bookOptions = [
+    ...new Set(filteredBooks.map((b) => b.book.associated_book)),
+  ]
+
   return (
-    <div>
+    <div className="All">
       <div className="Characters">
         <label htmlFor="character">Filtrer par personnage:</label>
         <select
@@ -75,6 +85,7 @@ export default function Characters() {
           name="character"
           value={selectedCharacter}
           onChange={handleCharacterSelection}
+          className="select-style"
         >
           <option value="">Tous les personnages</option>
           {filteredCharacters.map((character) => (
@@ -93,27 +104,35 @@ export default function Characters() {
           onChange={handleBookSelection}
         >
           <option value="">Tous les livres</option>
-          {filteredBooks.map((association) => (
-            <option
-              key={association.book.associated_book}
-              value={association.book.associated_book}
-            >
-              {association.book.associated_book}
+          {bookOptions.map((book) => (
+            <option key={book} value={book}>
+              {book}
             </option>
           ))}
         </select>
       </div>
-      {filteredBooks
-        .filter(
-          (book, index, self) =>
-            index === self.findIndex((b) => b.book.title === book.book.title)
-        )
-        .map((association) => (
-          <div key={association.book.title}>
-            <h2>{association.book.title}</h2>
-            <p>{association.book.description}</p>
-          </div>
-        ))}
+      {/* <div className="Charaters_Book"> */}
+      {openModal &&
+        filteredBooks
+          .filter(
+            (book, index, self) =>
+              index === self.findIndex((b) => b.book.id === book.book.id)
+          )
+          .map((association) => (
+            <div className="Charaters_Book" key={association.book.title}>
+              <div className="Charaters_Book_content">
+                <h2>{association.book.title}</h2>
+                <p>{association.book.description}</p>
+                <button
+                  className="Charaters_Book_close"
+                  type="button"
+                  onClick={handleModalClose}
+                >
+                  Fermer
+                </button>
+              </div>
+            </div>
+          ))}
     </div>
   )
 }

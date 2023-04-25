@@ -73,7 +73,7 @@ function Contact() {
               onChange={(e) => setMessage(e.target.value)}
             />
           </div>
-          <button className="Changebook" type="submit">
+          <button className="Bouton" type="submit">
             Envoyer
           </button>
         </form>

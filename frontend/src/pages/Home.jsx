@@ -37,7 +37,7 @@ export default function Home() {
           </p>
         </div>
       </div>
-      {/* <button onClick={handleSignature}>Afficher la signature</button> */}
+
       <Glitter />
     </div>
   )
