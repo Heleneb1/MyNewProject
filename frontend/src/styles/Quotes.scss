@@ -6,10 +6,41 @@
     line-height: 1.5;
   }
   .Epée {
-    filter: hue-rotate(330deg) brightness(100%) contrast(100%);
     display: flex;
     align-items: center;
     transform: rotate(90deg);
-    height: 120px;
+    height: 70px;
+  }
+  .Epée {
+    display: flex;
+    align-items: center;
+    transform: rotate(-30deg);
+    height: 70px;
+  }
+  .Find {
+    display: flex;
+    justify-content: center;
+  }
+  .Find input[type="search"] {
+    margin: 20px;
+    background: transparent;
+    border: 1px #f6d171 solid;
+    border-radius: 30px;
+    color: #f6d171;
+    width: 200px;
+    height: 30px;
+    padding: 10px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .Quotes {
+    font-size: 15px;
+    margin: 10px;
+    line-height: 1;
+  }
+  .Find {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
   }
 }

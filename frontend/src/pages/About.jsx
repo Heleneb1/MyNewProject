@@ -1,10 +1,40 @@
-import AlexandreDumasPere from "../assets/AlexandreDumasPere.jpg"
+import { useState, useEffect } from "react"
+import Pere from "../assets/AlexandreDumasPere.jpg"
+import Mère from "../assets/Marie_Louise_Élisabeth_Labouret.jpg"
+// import Box from "../components/Box"
 
 export default function About() {
+  const [isOpen, setIsOpen] = useState(false)
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsOpen(true)
+    })
+
+    return () => clearTimeout(timer)
+  }, [])
   return (
     <div className="About-All">
-      <img className="SonPere" src={AlexandreDumasPere} alt="son père" />
+      <div className={`Picture ${isOpen ? "open" : ""}`}>
+        <div className="Père">
+          <img className="FamilyP" src={Pere} alt="son père" />
+          <div className="Info">
+            <p>
+              Thomas Alexandre Davy de La Pailleterie, dit le général Dumas, son
+              père
+            </p>
+          </div>
+        </div>
+        <div className="Test">*</div>
+        <div className="Mère">
+          <img className="FamilyM" src={Mère} alt="sa mère" />
+          <div className="Info">
+            <p>Marie-Louise Élisabeth Labouret, sa mère </p>
+          </div>
+        </div>
+      </div>
+
       <div className="Biography">
+        <h3 className="Title">Biographie</h3>
         <p>
           Alexandre Dumas est l'un des plus célèbres écrivains français du XIXe
           siècle, connu pour des œuvres telles que "Les Trois Mousquetaires" et
@@ -46,18 +76,18 @@ export default function About() {
           travers le monde et a inspiré de nombreuses adaptations
           cinématographiques et théâtrales.
         </p>
-        <h2>Citation célèbre d'Alexandre Dumas</h2>
+        {/* <h2>Citation célèbre d'Alexandre Dumas</h2> */}
 
-        <p>
+        {/* <p>
           {" "}
           Au fait, cher Maître, vous devez bien vous y connaître en nègres ?{" "}
           <br />
           Mais très certainement. Mon père était un mulâtre, mon grand-père
           était un nègre et mon arrière-grand-père était un singe. Vous voyez,
           Monsieur : ma famille commence où la vôtre finit.
-        </p>
+        </p> */}
       </div>
-      <div className="test">test</div>
+      {/* <Box /> */}
     </div>
   )
 }

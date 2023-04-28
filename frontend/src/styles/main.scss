@@ -8,3 +8,18 @@
 @import "./Characters.scss";
 @import "./Login.scss";
 @import "./Quotes.scss";
+@import "./NavBar.scss";
+body {
+  height: 100vh;
+  width: 100%;
+  margin: 0;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Birthstone&display=swap");
+@import url("https://fonts.googleapis.com/css2? family= Carattere & display=swap");
+:root {
+  --background: #1e1d1d;
+  --font: #f6d171;
+  --navbar: #141414;
+  --red: #4d0408;
+}

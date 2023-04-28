@@ -182,7 +182,10 @@ export default function Books() {
     const file = evt.target.files[0]
     setPicture(URL.createObjectURL(file))
   }
-
+  const resetPicture = () => {
+    setPicture("")
+    setNewPicture([])
+  }
   return (
     <div className="books-container">
       <div>
@@ -212,6 +215,10 @@ export default function Books() {
               <div className="modal-content">
                 <h2>{selectedBook.title}</h2>
                 <p>{selectedBook.description}</p>
+                <p>{selectedBook.pages} pages</p>
+                <p>
+                  {selectedBook.genre}, {selectedBook.publication_date}{" "}
+                </p>
                 <button
                   className="modal-close"
                   type="button"
@@ -228,11 +235,13 @@ export default function Books() {
           {filteredBooks.length > 0 ? (
             filteredBooks.map((book) => (
               <div key={book.id} className="book">
-                <img src={book.url_img} alt={book.title} />
+                <div className="book-style">
+                  <img src={book.url_img} alt={book.title} />
+                </div>
                 <h3>{book.title}</h3>
                 <div className="info">
                   <p>
-                    {book.genre}, {book.publication_date}, {book.pages} pages
+                    {book.genre}, {book.publication_date}
                     {localStorage.getItem("role") === "1" ? (
                       <button
                         className="Changebook"
@@ -260,61 +269,76 @@ export default function Books() {
           )}
         </div>
       </div>
-      {localStorage.getItem("role") === "1" ? (
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            placeholder="Titre"
-            name="title"
-            value={formData.title}
-            onChange={handleInputChange}
-          />
-          <input
-            type="text"
-            placeholder="Date de publication"
-            name="publication_date"
-            value={formData.publication_date}
-            onChange={handleInputChange}
-          />
-          <input
-            type="text"
-            placeholder="Genre"
-            name="genre"
-            value={formData.genre}
-            onChange={handleInputChange}
-          />
-          <input
-            type="text"
-            placeholder="Résumé"
-            name="description"
-            value={formData.description}
-            onChange={handleInputChange}
-          />
-          <input
-            type="text"
-            placeholder="Nombre de pages"
-            name="pages"
-            value={formData.pages}
-            onChange={handleInputChange}
-          />
-          <form encType="multipart/form-data" onSubmit={handleSubmit}>
+      <div className="Add-Book">
+        {localStorage.getItem("role") === "1" ? (
+          <form onSubmit={handleSubmit}>
             <input
-              type="file"
-              name="avatar"
-              ref={inputRef}
-              onChange={handleFileChange}
+              type="text"
+              placeholder="Titre"
+              name="title"
+              value={formData.title}
+              onChange={handleInputChange}
             />
-            <button type="button" onClick={handleImageSubmit}>
-              Envoyer l'image
-            </button>
-            {picture && <img className="picture" src={picture} alt="Aperçu" />}
-          </form>
+            <input
+              type="text"
+              placeholder="Date de publication"
+              name="publication_date"
+              value={formData.publication_date}
+              onChange={handleInputChange}
+            />
+            <input
+              type="text"
+              placeholder="Genre"
+              name="genre"
+              value={formData.genre}
+              onChange={handleInputChange}
+            />
+            <input
+              type="text"
+              placeholder="Résumé"
+              name="description"
+              value={formData.description}
+              onChange={handleInputChange}
+            />
+            <input
+              type="text"
+              placeholder="Nombre de pages"
+              name="pages"
+              value={formData.pages}
+              onChange={handleInputChange}
+            />
+            <form encType="multipart/form-data" onSubmit={handleSubmit}>
+              <input
+                id="select-picture"
+                type="file"
+                name="avatar"
+                ref={inputRef}
+                onChange={handleFileChange}
+              />
+              <button
+                className="Changebook"
+                type="button"
+                onClick={handleImageSubmit}
+              >
+                Envoyer l'image
+              </button>
+              {picture && (
+                <img className="picture" src={picture} alt="Aperçu" />
+              )}
+              <input
+                id="reset"
+                type="reset"
+                name="reset"
+                onClick={() => resetPicture}
+              />
+            </form>
 
-          <button className="Changebook" type="submit">
-            Nouvelle entrée
-          </button>
-        </form>
-      ) : null}
+            <button className="Changebook" type="submit">
+              Nouvelle entrée
+            </button>
+          </form>
+        ) : null}
+      </div>
     </div>
   )
 }

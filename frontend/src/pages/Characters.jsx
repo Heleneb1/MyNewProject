@@ -95,7 +95,7 @@ export default function Characters() {
           ))}
         </select>
       </div>
-      <div>
+      <div className="Books">
         <label htmlFor="book">Filtrer par livre:</label>
         <select
           id="book"

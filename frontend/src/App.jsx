@@ -7,6 +7,7 @@ import Quotes from "./pages/Quotes"
 import Characters from "./pages/Characters"
 import Login from "./components/Login"
 import SplashPageBook from "./pages/SplashPageBook"
+import Navbar from "@components/Navbar"
 // import "./App.css"
 import Test from "./pages/Test"
 
@@ -14,6 +15,7 @@ function App() {
   return (
     <div className="App">
       <Header />
+      <Navbar />
       <Routes>
         <Route path="/" element={<SplashPageBook />} />
         <Route path="/home" element={<Home />} />

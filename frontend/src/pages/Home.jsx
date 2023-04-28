@@ -8,7 +8,7 @@ export default function Home() {
   }
 
   return (
-    <div>
+    <div className="all">
       <div className="Presentation">
         <div className="Signature">
           <img

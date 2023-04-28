@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import axios from "axios"
-import Epee from "../assets/Epée_mousquetaire.svg"
+import Epee from "../assets/Epée2.svg"
 
 export default function Quotes() {
   const [quotes, setQuotes] = useState([])
@@ -41,7 +41,7 @@ export default function Quotes() {
             value={searchTerm}
             onChange={handleInputChange}
           />
-          <button type="button" onClick={handleSearch}>
+          <button className="Changebook" type="button" onClick={handleSearch}>
             Rechercher
           </button>
         </div>
