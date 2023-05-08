@@ -1,0 +1,32 @@
+.All-Cart {
+  h2 {
+    display: flex;
+    justify-content: center;
+  }
+  p {
+    display: flex;
+    justify-content: center;
+  }
+  h3 {
+    display: flex;
+    justify-content: center;
+  }
+  .Contenu {
+    display: flex;
+    height: 70px;
+    margin: 20px;
+    color: var(--font);
+    p {
+      display: flex;
+      justify-content: center;
+    }
+    .cartBook {
+      display: flex;
+      list-style: decimal;
+      flex-direction: row;
+      .cartPicture img {
+        display: flex;
+      }
+    }
+  }
+}

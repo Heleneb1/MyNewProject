@@ -1,6 +1,7 @@
 /* eslint-disable no-alert */
 import React, { useState } from "react"
 import axios from "axios"
+import Encrier from "../assets/encrier.svg"
 
 function Contact() {
   const [name, setName] = useState("")
@@ -34,6 +35,7 @@ function Contact() {
   return (
     <div className="Contact">
       <h2>Contactez-nous</h2>
+      <img className="Encrier" src={Encrier} alt="son père" />
       {isSent ? (
         <p>Votre message a été envoyé avec succès.</p>
       ) : (

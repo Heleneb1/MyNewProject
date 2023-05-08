@@ -3,8 +3,8 @@ import React from "react"
 
 const Glitter = () => {
   const glitterStyles = [...Array(100)].map(() => ({
-    left: `${Math.random() * 99}%`,
-    top: `${Math.random() * 100}%`,
+    // left: `${Math.random() * 99}%`,
+    // top: `${Math.random() * 100}%`,
   }))
 
   return (

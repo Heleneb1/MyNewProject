@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg14551"
+   inkscape:version="1.2.2 (732a01da63, 2022-12-09)"
+   sodipodi:docname="bgbook.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview14553"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.2973261"
+     inkscape:cx="121.07918"
+     inkscape:cy="534.76637"
+     inkscape:window-width="1152"
+     inkscape:window-height="487"
+     inkscape:window-x="1599"
+     inkscape:window-y="1"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs14548">
+    <filter
+       style="color-interpolation-filters:sRGB;"
+       inkscape:menu-tooltip="Paper like emboss effect"
+       inkscape:menu="Bumps"
+       inkscape:label="Paper Bump"
+       id="filter17764"
+       x="-0.00061570641"
+       y="-0.00044237728"
+       width="1.0012314"
+       height="1.0008848">
+      <feTurbulence
+         result="result0"
+         seed="0"
+         baseFrequency="1"
+         numOctaves="5"
+         type="fractalNoise"
+         id="feTurbulence17746" />
+      <feConvolveMatrix
+         result="result5"
+         order="5 5"
+         kernelMatrix="-2 0 0 0 -2 0 -2 0 -2 0 0 0 -10 0 0 0 -2 0 -2 0 -2 0 0 0 -2 "
+         targetX="2"
+         targetY="2"
+         id="feConvolveMatrix17748" />
+      <feComposite
+         result="result2"
+         k3="0.5"
+         k2="0.5"
+         k1="1.5"
+         operator="arithmetic"
+         in="result5"
+         in2="SourceGraphic"
+         id="feComposite17750" />
+      <feColorMatrix
+         in="result2"
+         type="luminanceToAlpha"
+         result="result2"
+         id="feColorMatrix17752" />
+      <feDiffuseLighting
+         surfaceScale="5"
+         result="result1"
+         diffuseConstant="0.6"
+         id="feDiffuseLighting17756">
+        <feDistantLight
+           elevation="35"
+           azimuth="225"
+           id="feDistantLight17754" />
+      </feDiffuseLighting>
+      <feComposite
+         operator="arithmetic"
+         in="result1"
+         k1="1.5"
+         k3="0.5"
+         result="result3"
+         in2="SourceGraphic"
+         id="feComposite17758" />
+      <feBlend
+         in="result3"
+         mode="normal"
+         result="result6"
+         in2="result1"
+         id="feBlend17760" />
+      <feComposite
+         operator="in"
+         in2="SourceGraphic"
+         id="feComposite17762" />
+    </filter>
+  </defs>
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="opacity:1;fill:#4d0408;stroke:#000000;stroke-width:0.264999;fill-opacity:1;filter:url(#filter17764)"
+       id="rect16850"
+       width="215.19916"
+       height="299.51697"
+       x="0"
+       y="1.2584745" />
+  </g>
+</svg>

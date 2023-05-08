@@ -1,18 +1,14 @@
-// .Header {
-//   height: 650px;
-//   margin-bottom: 100px;
-// }
 .Login {
   font-size: 30px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  width: 100vw;
-
+  height: 100%;
+  font-family: "Birthstone", cursive;
+  // margin-left: 20px;
   h2 {
-    font-size: 30px;
+    font-size: 40px;
   }
   input[type="checkbox"] {
     accent-color: #f6d171;
@@ -22,6 +18,7 @@
     flex-direction: column;
     align-content: center;
     justify-content: center;
+
     .title {
       display: flex;
       align-content: center;
@@ -30,11 +27,13 @@
     form.Connexion {
       align-items: center;
       justify-content: center;
-      // width: 686px;
-      background-color: rgb(30, 29, 29);
+      // padding: 20px;
+      // background-color: rgb(30, 29, 29);
+      // margin-left: 30px;
       .Bouton_Connect {
         display: flex;
         justify-content: center;
+        margin: 0 10px 0 10px;
         .Changebook {
           display: flex;
           align-items: center;
@@ -52,6 +51,7 @@
         display: flex;
         justify-content: center;
         flex-direction: column;
+        margin: 0 10px 0 10px;
         input.email {
           background-color: rgb(30, 29, 29);
           border: 1px solid #f6d171;
@@ -59,7 +59,7 @@
           color: #f6d171;
           width: 400px;
           height: 30px;
-          margin: 20px;
+          margin: 0 10px 0 10px;
           padding: 10px;
           font-size: 20px;
         }
@@ -83,6 +83,7 @@
   flex-direction: column;
   align-content: center;
   justify-content: center;
+  margin: 30px;
   form .Bouton_Connect {
     display: flex;
     justify-content: center;
@@ -108,30 +109,17 @@
       width: 150px;
       font-size: 20px;
       cursor: pointer;
-      margin-top: 20px;
+      margin: 0 10px 0 10px;
     }
   }
   .I_MDP {
     display: flex;
     flex-direction: column;
     align-content: center;
-    // .check:before {
-    //   content: "";
-    //   display: inline-block;
-    //   width: 30px;
-    //   height: 30px;
-    //   background-color: rgb(30, 29, 29);
-    //   border: 1px solid #f6d171;
-    //   border-radius: 5px;
-    //   margin-right: 10px;
-    // }
-    // .check:checked:before {
-    //   background-color: rgb(30, 29, 29);
-    // }
 
     input.check[type="checkbox"] {
       flex-direction: row;
-      margin: 10px 0 0 20px;
+      margin: 10px 0 10px 20px;
       height: 30px;
       width: 30px;
     }
@@ -144,9 +132,9 @@
       color: #f6d171;
       width: 400px;
       height: 30px;
-      margin: 20px;
-      font-size: 20px;
+      margin: 0 10px 0 10px;
       padding: 10px;
+      font-size: 20px;
     }
   }
   input.user_name {
@@ -156,7 +144,7 @@
     color: #f6d171;
     width: 400px;
     height: 30px;
-    margin: 20px;
+    margin: 0 10px 0 10px;
     padding: 10px;
     font-size: 20px;
   }
@@ -167,13 +155,13 @@
     color: #f6d171;
     width: 400px;
     height: 30px;
-    margin: 20px;
+    margin: 10px;
     padding: 10px;
     font-size: 20px;
   }
 }
 .Calendar {
-  background-color: rgb(30, 29, 29);
+  // background-color: rgb(30, 29, 29);
   label {
     margin: 10px;
     padding: 10px;
@@ -187,5 +175,8 @@
     height: 30px;
     font-size: 15px;
     padding: 15px;
+    margin: 10px;
   }
+}
+@media screen and (max-width: 768px) {
 }

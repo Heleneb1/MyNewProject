@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2.2 (732a01da63, 2022-12-09)"
+   sodipodi:docname="bg2.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.2102413"
+     inkscape:cx="397.16269"
+     inkscape:cy="347.22007"
+     inkscape:window-width="1152"
+     inkscape:window-height="487"
+     inkscape:window-x="1344"
+     inkscape:window-y="66"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2">
+    <filter
+       y="-0.013608467"
+       height="1.0272169"
+       x="-0.018188884"
+       width="1.0363778"
+       inkscape:menu-tooltip="Combine a HSL edges detection bump with a leathery or woody and colorizable texture"
+       inkscape:menu="Bumps"
+       inkscape:label="Embossed Leather"
+       style="color-interpolation-filters:sRGB"
+       id="filter7846">
+      <feTurbulence
+         type="fractalNoise"
+         baseFrequency="0.04"
+         numOctaves="5"
+         seed="0"
+         result="result4"
+         id="feTurbulence7832" />
+      <feDisplacementMap
+         in="SourceGraphic"
+         in2="result4"
+         yChannelSelector="G"
+         xChannelSelector="R"
+         scale="10"
+         result="result3"
+         id="feDisplacementMap7834" />
+      <feDiffuseLighting
+         lighting-color="#e9e6d7"
+         diffuseConstant="1"
+         surfaceScale="2"
+         result="result1"
+         in="result4"
+         id="feDiffuseLighting7838">
+        <feDistantLight
+           azimuth="235"
+           elevation="40"
+           id="feDistantLight7836" />
+      </feDiffuseLighting>
+      <feComposite
+         operator="in"
+         in="result3"
+         in2="result1"
+         result="result2"
+         id="feComposite7840" />
+      <feComposite
+         in2="result1"
+         result="result5"
+         operator="arithmetic"
+         k1="1.7"
+         id="feComposite7842"
+         k2="0"
+         k3="0"
+         k4="0" />
+      <feBlend
+         in="result5"
+         in2="result3"
+         mode="normal"
+         id="feBlend7844"
+         result="fbSourceGraphic" />
+      <feColorMatrix
+         result="fbSourceGraphicAlpha"
+         in="fbSourceGraphic"
+         values="0 0 0 -1 0 0 0 0 -1 0 0 0 0 -1 0 0 0 0 1 0"
+         id="feColorMatrix13040" />
+      <feGaussianBlur
+         id="feGaussianBlur13042"
+         result="result14"
+         stdDeviation="1.5"
+         in="fbSourceGraphic" />
+      <feFlood
+         id="feFlood13044"
+         result="result12"
+         flood-color="rgb(146,94,26)" />
+      <feTurbulence
+         id="feTurbulence13046"
+         type="turbulence"
+         seed="25"
+         baseFrequency="0.001 0.002"
+         numOctaves="5"
+         result="result5" />
+      <feDisplacementMap
+         in2="result14"
+         id="feDisplacementMap13048"
+         scale="100"
+         xChannelSelector="R"
+         in="result5"
+         result="result8"
+         yChannelSelector="G" />
+      <feComposite
+         in2="result5"
+         id="feComposite13050"
+         in="result8"
+         result="result10"
+         operator="arithmetic"
+         k1="0.5"
+         k2="0.5"
+         k3="0"
+         k4="0" />
+      <feSpecularLighting
+         id="feSpecularLighting13052"
+         specularExponent="15"
+         specularConstant="1"
+         surfaceScale="-15"
+         result="result2">
+        <feDistantLight
+           id="feDistantLight13054"
+           elevation="90"
+           azimuth="225" />
+      </feSpecularLighting>
+      <feGaussianBlur
+         id="feGaussianBlur13056"
+         result="result13"
+         stdDeviation="0.4" />
+      <feDiffuseLighting
+         id="feDiffuseLighting13058"
+         surfaceScale="-20"
+         result="result1"
+         diffuseConstant="0.60000002"
+         in="result13">
+        <feDistantLight
+           id="feDistantLight13060"
+           elevation="10"
+           azimuth="225" />
+      </feDiffuseLighting>
+      <feComposite
+         in2="result1"
+         id="feComposite13062"
+         result="result4"
+         in="fbSourceGraphic"
+         operator="arithmetic"
+         k2="1"
+         k3="0.6"
+         k1="0"
+         k4="0" />
+      <feComposite
+         in2="fbSourceGraphic"
+         id="feComposite13064"
+         result="result11"
+         operator="in" />
+      <feBlend
+         in2="result11"
+         id="feBlend13066"
+         in="result11"
+         result="result9"
+         mode="normal" />
+    </filter>
+  </defs>
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="opacity:1;fill:#1e1d1d;fill-opacity:1;stroke:#000000;stroke-width:0.264999;filter:url(#filter7846)"
+       id="rect788"
+       width="257.98721"
+       height="344.82205"
+       x="-41.529659"
+       y="-44.046612"
+       ry="0" />
+    <rect
+       style="opacity:1;fill:#1e1d1d;fill-opacity:1;stroke:#000000;stroke-width:0.264999"
+       id="rect10968"
+       width="15.101694"
+       height="1.2584763"
+       x="-8.8093214"
+       y="66.69915" />
+  </g>
+</svg>

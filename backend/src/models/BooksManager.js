@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 const AbstractManager = require("./AbstractManager");
 
-class CharactersManager extends AbstractManager {
+class BooksManager extends AbstractManager {
   constructor() {
     super({ table: "books" });
   }
@@ -96,4 +96,4 @@ class CharactersManager extends AbstractManager {
   // }
 }
 
-module.exports = CharactersManager;
+module.exports = BooksManager;
