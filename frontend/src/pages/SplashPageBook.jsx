@@ -13,8 +13,8 @@ export default function SplashPageBook() {
 
   return (
     <div className={`Book-container ${isOpen ? "open" : ""}`}>
-      <div className="Book-left">µ</div>
-      <div className="Book-leftsecond">µ</div>
+      <div className="Book-left" />
+      <div className="Book-leftsecond" />
 
       <div className="splash-home">
         <Home />

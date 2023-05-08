@@ -11,7 +11,7 @@
     border-radius: 100%;
     border: 5px solid var(--font);
     border-style: inset;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    // box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -21,9 +21,9 @@
     transition-delay: 1s, 250ms;
     transition: all 2s ease-in-out;
     transform-style: preserve-3d;
-    perspective-origin: 50% 50%;
-    perspective: 1000px;
-    transform-style: preserve-3d;
+    perspective-origin: 40% 50%;
+    // perspective: 1000px;
+    // transform-style: preserve-3d;
     background-color: var(--font);
   }
 
@@ -57,7 +57,7 @@
   }
   .Père img {
     opacity: 0;
-    animation: apparition 7s ease 2s forwards;
+    animation: apparition 4s ease 2s forwards;
   }
   @keyframes apparition {
     0% {
@@ -69,8 +69,9 @@
     }
   }
   .Test {
-    background-image: url(../assets/medaillon2.png);
+    background-image: url(../assets/medaillon3.jpg);
     position: absolute;
+    object-fit: contain;
     height: 350px;
     width: 272px;
     border-radius: 100%;
@@ -116,11 +117,18 @@
     display: flex;
     justify-content: center;
   }
-  .Biography {
+  .Biography p {
     margin: 100px;
     width: 800px;
     text-align: justify;
     justify-content: center;
+  }
+  .Biography p::first-letter {
+    line-height: 0.2;
+    font-size: 3em; /* taille de la police de caractères de la lettrine */
+    font-weight: bold; /* graisse de la lettrine */
+    float: left; /* alignement de la lettrine avec le texte */
+    margin-right: 5px; /* espacement entre la lettrine et le texte */
   }
 }
 .Info {
@@ -156,19 +164,7 @@
 }
 @media screen and (max-width: 768px) {
   .About-All {
-    display: flex;
-    justify-content: center;
-    .Picture {
-      width: 180px;
-      margin-left: 180px;
-      .Père {
-        width: 180px;
-      }
-      .Test {
-        width: 180px;
-      }
-    }
-    .Biography {
+    .Biography p {
       margin: 30px;
       width: 300px;
       // text-align: justify;

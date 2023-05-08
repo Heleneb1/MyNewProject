@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import { useState } from "react"
 import { Link } from "react-router-dom"
 
@@ -10,7 +11,13 @@ export default function Navbar() {
 
   return (
     <div className="Navbar">
-      <div className="BurgerMenu" onClick={toggleMenu}>
+      <div
+        className="BurgerMenu"
+        onClick={toggleMenu}
+        role="button"
+        // ajouter l'attribut tabIndex="0" pour indiquer que l'élément peut être mis en surbrillance par la touche Tab du clavier.
+        tabIndex="0"
+      >
         <div className={isOpen ? "BurgerLine Open" : "BurgerLine"}> </div>
         <div className={isOpen ? "BurgerLine Open" : "BurgerLine"}> </div>
         <div className={isOpen ? "BurgerLine Open" : "BurgerLine"}> </div>
@@ -30,6 +37,9 @@ export default function Navbar() {
         </Link>
         <Link className="HeaderLink" to="/quotes">
           <p className="NavHeader">Citations</p>
+        </Link>
+        <Link className="HeaderLink" to="/cart">
+          <p className="NavHeader">Panier</p>
         </Link>
         <Link className="HeaderLink" to="/login">
           <p className="NavHeader">Connexion</p>
@@ -51,6 +61,9 @@ export default function Navbar() {
           </Link>
           <Link className="MobileLink" to="/quotes" onClick={toggleMenu}>
             Citations
+          </Link>
+          <Link className="HeaderLink" to="/cart">
+            <p className="NavHeader">Panier</p>
           </Link>
           <Link className="MobileLink" to="/login" onClick={toggleMenu}>
             Connexion

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import Pere from "../assets/AlexandreDumasPere.jpg"
 import Mère from "../assets/Marie_Louise_Élisabeth_Labouret.jpg"
-// import Box from "../components/Box"
+import Medaillon from "../assets/medaillon4b.jpg"
 
 export default function About() {
   const [isOpen, setIsOpen] = useState(false)
@@ -24,7 +24,9 @@ export default function About() {
             </p>
           </div>
         </div>
-        <div className="Test">*</div>
+        <div className="Test">
+          <img className="FamilyM" src={Medaillon} alt="sa mère" />
+        </div>
         <div className="Mère">
           <img className="FamilyM" src={Mère} alt="sa mère" />
           <div className="Info">
@@ -43,22 +45,26 @@ export default function About() {
           Cependant, pour comprendre les origines d'Alexandre Dumas, il est
           important de se pencher sur celles de son père, également appelé
           Alexandre Dumas.
-          <br />
-          <br /> Le père d'Alexandre Dumas était né en 1762 en Haïti, alors
-          appelée Saint-Domingue, une colonie française dans les Antilles. Il
-          était le fils d'un noble français et d'une esclave africaine. Le père
+        </p>
+        <p>
+          Le père d'Alexandre Dumas était né en 1762 en Haïti, alors appelée
+          Saint-Domingue, une colonie française dans les Antilles. Il était le
+          fils d'un noble français et d'une esclave africaine. Le père
           d'Alexandre Dumas a commencé sa carrière en tant que soldat et est
           rapidement devenu général sous la Révolution française.
-          <br />
-          <br /> Il a combattu dans plusieurs batailles importantes, notamment à
-          Valmy et à Jemappes, avant d'être capturé par les Autrichiens en 1792.
-          Il a ensuite été emprisonné à Naples pendant deux ans avant d'être
-          libéré et de retourner en France. Après la Révolution française, le
-          père d'Alexandre Dumas est devenu un partisan de Napoléon Bonaparte et
-          a continué à combattre dans les guerres napoléoniennes en Italie et en
+        </p>
+        <p>
+          {" "}
+          Il a combattu dans plusieurs batailles importantes, notamment à Valmy
+          et à Jemappes, avant d'être capturé par les Autrichiens en 1792. Il a
+          ensuite été emprisonné à Naples pendant deux ans avant d'être libéré
+          et de retourner en France. Après la Révolution française, le père
+          d'Alexandre Dumas est devenu un partisan de Napoléon Bonaparte et a
+          continué à combattre dans les guerres napoléoniennes en Italie et en
           Égypte. Il a finalement été fait comte de l'Empire par Napoléon en
-          1806. <br />
-          <br />
+          1806.{" "}
+        </p>
+        <p>
           C'est dans ce contexte que le fils d'Alexandre Dumas, également nommé
           Alexandre Dumas, est né en 1802. Son père était absent pendant une
           grande partie de son enfance, mais il a été élevé par sa mère
@@ -67,10 +73,12 @@ export default function About() {
           carrière de l'écrivain Alexandre Dumas a commencé à l'âge de 23 ans
           lorsqu'il a déménagé à Paris et a commencé à écrire des pièces de
           théâtre.
-          <br />
-          <br /> Il est rapidement devenu un écrivain populaire et a publié
-          plusieurs romans à succès, notamment "Les Trois Mousquetaires" en 1844
-          et "Le Comte de Monte-Cristo" en 1845. Alexandre Dumas est décédé le 5
+        </p>
+        <p>
+          {" "}
+          Il est rapidement devenu un écrivain populaire et a publié plusieurs
+          romans à succès, notamment "Les Trois Mousquetaires" en 1844 et "Le
+          Comte de Monte-Cristo" en 1845. Alexandre Dumas est décédé le 5
           décembre 1870 à Puys, près de Dieppe, en France, à l'âge de 68 ans.
           Son œuvre continue d'être appréciée par des millions de lecteurs à
           travers le monde et a inspiré de nombreuses adaptations
@@ -87,7 +95,6 @@ export default function About() {
           Monsieur : ma famille commence où la vôtre finit.
         </p> */}
       </div>
-      {/* <Box /> */}
     </div>
   )
 }

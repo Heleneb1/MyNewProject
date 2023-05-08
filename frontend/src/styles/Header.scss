@@ -1,14 +1,54 @@
+// .Header-All {
+//   border-bottom: 1px solid;
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+
+//   .Title {
+//     background-color: var(--red);
+//     height: 200px;
+//     width: 100%;
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//     color: var(--font);
+//     font-size: 20px;
+//   }
+
+//   .Test {
+//     height: 200px;
+//   }
+
+//   .Title h3 {
+//     margin-bottom: 0;
+//     font-family: "Birthstone";
+//     font-size: 30px;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//   }
+// }
 .Header-All {
+  background-color: var(--red);
   border-bottom: 1px solid;
+  position: relative; /* Ajout de position relative */
   .Title {
-    background-color: var(--navbar);
+    background-color: var(--red);
     height: 200px;
-    width: 100%;
+    // width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     color: var(--font);
     font-size: 20px;
+    z-index: 1; /* Ajout de z-index pour empêcher la div Box de recouvrir le titre */
+  }
+  .Test {
+    height: 200px;
+    position: absolute; /* Ajout de position absolute */
+    top: 0; /* Déplacement de la div Test en haut de la div parente */
+    right: 0; /* Déplacement de la div Test sur la droite de la div parente */
+    z-index: 2; /* Ajout de z-index pour placer la div Box au-dessus du titre */
   }
   .Title h3 {
     margin-bottom: 0;
@@ -18,9 +58,14 @@
     flex-direction: column;
     justify-content: center;
   }
+  .Line {
+    height: 25px;
+  }
 }
+
 @media screen and (max-width: 768px) {
   .Header-All {
+    background-color: var(--red);
     margin-top: 30px;
     border-bottom: none;
   }

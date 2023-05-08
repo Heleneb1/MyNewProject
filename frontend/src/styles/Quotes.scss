@@ -1,21 +1,26 @@
 .All_Quotes {
   margin: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   .Quotes {
     font-size: 20px;
     margin: 10px;
     line-height: 1.5;
   }
-  .Epée {
-    display: flex;
-    align-items: center;
-    transform: rotate(90deg);
-    height: 70px;
+  h3 p {
+    text-transform: uppercase;
+    font-size: 20px;
+    margin: 10px;
+    line-height: 1.5;
+    text-align: center;
   }
-  .Epée {
+
+  .Line {
     display: flex;
-    align-items: center;
-    transform: rotate(-30deg);
-    height: 70px;
+    justify-content: center;
+    height: 25px;
   }
   .Find {
     display: flex;

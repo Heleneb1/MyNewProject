@@ -1,4 +1,5 @@
 import Line from "../assets/head_line.svg"
+// import Box from "./Box"
 
 export default function Header() {
   return (
@@ -10,6 +11,7 @@ export default function Header() {
           <h3>Métissage et littérature</h3>
         </div>
       </div>
+      <div className="Test">{/* <Box /> */}</div>
     </div>
   )
 }

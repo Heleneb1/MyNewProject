@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import axios from "axios"
-import Epee from "../assets/Epée2.svg"
+import Line from "../assets/head_line.svg"
 
 export default function Quotes() {
   const [quotes, setQuotes] = useState([])
@@ -51,7 +51,9 @@ export default function Quotes() {
                 <div key={quote.id}>
                   <h3>{quote.text}</h3>
                   <p>{quote.associated_character}</p>
-                  <img className="Epée" src={Epee} alt="Épée" />
+                  <div className="Line">
+                    <img src={Line} alt="ligne entre chaque citation" />
+                  </div>
                 </div>
               </div>
             ))

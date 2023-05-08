@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-alert */
 // /* eslint-disable react/button-has-type */
@@ -5,6 +6,7 @@
 import { useState, useEffect, useRef } from "react"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
+import Corner from "../assets/corner.png"
 
 export default function Books() {
   const [books, setBooks] = useState([])
@@ -169,7 +171,8 @@ export default function Books() {
     try {
       const response = await axios.delete(`http://localhost:5000/books/${id}`, {
         headers: {
-          Authorization: `Bearer ${token}`, // replace `token` with your actual token
+          // eslint-disable-next-line no-undef
+          Authorization: `Bearer ${auth_token}`, // replace `token` with your actual token
         },
       })
       console.info(response.data)
@@ -214,20 +217,22 @@ export default function Books() {
             <div className="modal">
               <div className="modal-content">
                 <h2>{selectedBook.title}</h2>
-                <p>{selectedBook.description}</p>
+                <p className="Lettrine">{selectedBook.description}</p>
                 <p>{selectedBook.pages} pages</p>
                 <p>
                   {selectedBook.genre}, {selectedBook.publication_date}{" "}
                 </p>
-                <button
-                  className="modal-close"
-                  type="button"
-                  onClick={() => {
-                    setSelectedBook(null)
-                  }}
-                >
-                  Fermer
-                </button>
+                <div className="mc-button">
+                  <button
+                    className="modal-close"
+                    type="button"
+                    onClick={() => {
+                      setSelectedBook(null)
+                    }}
+                  >
+                    Fermer
+                  </button>
+                </div>
               </div>
             </div>
           )}
@@ -236,7 +241,19 @@ export default function Books() {
             filteredBooks.map((book) => (
               <div key={book.id} className="book">
                 <div className="book-style">
-                  <img src={book.url_img} alt={book.title} />
+                  <img
+                    className="Book-Picture"
+                    src={book.url_img}
+                    alt={book.title}
+                  />
+                </div>
+                <div className="Corner">
+                  <div className="CornerTop">
+                    <img className="CornerT" src={Corner} alt="decoration" />
+                  </div>
+                  <div className="CornerBottom">
+                    <img className="CornerB" src={Corner} alt="decoration" />
+                  </div>
                 </div>
                 <h3>{book.title}</h3>
                 <div className="info">

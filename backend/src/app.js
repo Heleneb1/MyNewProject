@@ -9,6 +9,7 @@ const express = require("express");
 
 const app = express();
 // Middleware pour parser les cookies
+
 app.use(cookieParser());
 
 // eslint-disable-next-line func-names

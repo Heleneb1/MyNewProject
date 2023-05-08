@@ -26,11 +26,6 @@
     background-color: var(--navbar);
   }
   .Header-All {
-    position: relative;
-    display: flex;
-    background-color: var(--navbar);
-    // width: 400px;
-    justify-content: center;
     .Header {
       .Title h1 h3 {
         width: 100px;
@@ -43,7 +38,7 @@
       border-bottom: 1px solid;
       position: relative; /* Positionnement absolu */
       position: fixed;
-      z-index: 1;
+      z-index: 1000;
       top: 0; /* Position en haut */
       left: 0%; /* Position à droite */
       background-color: var(--navbar);
@@ -127,6 +122,7 @@
 }
 
 .MobileMenu {
+  z-index: 1000;
   display: flex;
   flex-direction: column;
   //   border: 1px solid;

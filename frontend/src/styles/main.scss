@@ -9,6 +9,7 @@
 @import "./Login.scss";
 @import "./Quotes.scss";
 @import "./NavBar.scss";
+@import "./Cart.scss";
 body {
   height: 100vh;
   width: 100%;
@@ -22,4 +23,5 @@ body {
   --font: #f6d171;
   --navbar: #141414;
   --red: #4d0408;
+  --blue: #045259;
 }

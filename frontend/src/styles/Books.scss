@@ -5,15 +5,17 @@
   color: #f6d171;
 }
 
-.book img {
+.Book-Picture {
   width: 180px;
   border: 2px solid #f6d171;
   height: 220px;
+  width: 150px;
   box-shadow: #4d0408 0px 0px 0px 2px inset,
     rgb(234, 232, 213) 1px -1px 0px -1px, rgb(46, 2, 2) 2px -2px;
   margin: 10px 10px;
   filter: brightness(121%);
   -webkit-filter: brightness(121%);
+
   // filter: drop-shadow(0 0 0.15rem #f6d171);
 }
 
@@ -38,15 +40,16 @@
   border-bottom-right-radius: 3px;
 }
 .book-style:hover {
-  box-shadow: rgba(31, 29, 29, 0.5) 0px 0px 0px 2px inset,
+  box-shadow: var(--blue) 0px 0px 0px 2px inset,
     rgb(209, 209, 206) 5px -10px 0px -5px, rgb(239, 243, 239) 5px -5px,
     rgb(209, 209, 206) 10px -16px 0px -5px, rgb(234, 233, 229) 10px -10px,
     rgb(209, 209, 206) 20px -22px 0px -5px, rgb(239, 235, 233) 20px -15px,
-    rgb(209, 209, 206) 30px -26px 0px -5px, var(--navbar) 30px -28px;
-  background-color: var(--navbar);
+    rgb(209, 209, 206) 30px -26px 0px -5px, var(--blue) 30px -28px;
+  background-color: var(--blue);
   cursor: pointer;
 }
 .book h3 {
+  flex-basis: calc(33.33% - 40px);
   color: var(--font);
   font-size: 25px;
   margin-bottom: 37px;
@@ -56,9 +59,15 @@
   width: 250px;
   margin: 20px;
   text-align: center;
-  flex-basis: calc(33.33% - 40px);
+  flex-basis: calc(20% - 40px);
 }
-
+.Lettrine::first-letter {
+  line-height: 0.2;
+  font-size: 3em; /* taille de la police de caractères de la lettrine */
+  font-weight: bold; /* graisse de la lettrine */
+  float: left; /* alignement de la lettrine avec le texte */
+  margin-right: 5px; /* espacement entre la lettrine et le texte */
+}
 .Changebook {
   margin: 20px;
   background: transparent;
@@ -99,6 +108,39 @@
   width: 186px;
   height: 30px;
   padding: 5px;
+}
+// .Corner {
+//   .CornerB {
+//     position: relative;
+//     bottom: 90px;
+//     left: 114px;
+//     height: 40px;
+//   }
+//   .CornerT {
+//     height: 40px;
+//     position: relative;
+//     bottom: 349px;
+//     left: 159px;
+//     transform: scaleY(-1);
+//   }
+// }
+.Corner {
+  position: absolute;
+  flex-basis: calc(33.33% - 40px);
+
+  .CornerB {
+    position: relative;
+    bottom: 8.5em;
+    left: 15em;
+    height: 40px;
+  }
+  .CornerT {
+    height: 40px;
+    position: relative;
+    bottom: 22em;
+    left: 15em;
+    transform: scaleY(-1);
+  }
 }
 // .button {
 //   background-color: white;
@@ -154,8 +196,17 @@
   font-size: 20px;
   line-height: 1.5;
   z-index: 1000;
+  h2 {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+  }
 }
-
+//pour centrer le bouton dans le modal
+.mc-button {
+  display: flex;
+  justify-content: center;
+}
 .modal-close {
   margin-top: 10px;
   padding: 5px 10px;
@@ -253,7 +304,7 @@
     height: 300px;
     margin: 0;
   }
-  .book img {
+  .Book-Picture {
     width: 150px;
     height: 230px;
   }
@@ -264,8 +315,24 @@
     display: flex;
     flex-direction: column;
   }
+  // .modal {
+  //   width: auto;
+  // }
   .modal-content {
     width: 300px;
     font-style: oblique;
+  }
+  .Corner .CornerB {
+    position: relative;
+    bottom: 4em;
+    left: 10.5em;
+    height: 30px;
+  }
+  .Corner .CornerT {
+    height: 30px;
+    position: relative;
+    bottom: 19em;
+    left: 10.5em;
+    transform: scaleY(-1);
   }
 }
