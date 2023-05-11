@@ -92,7 +92,7 @@ export default function Cart() {
             setCart(res.data) // Use array with the new cart
             console.info("New Book in the cart", bookData.id) // ajouter un info pour vérifier le panier après la mise à jour
             getData() // Mettre à jour la liste
-            alert("Livre ajouté à votre liste. Bonne lecture!!!")
+            alert("Livre ajouté à votre liste. Bonne lecture !!!")
           })
           .catch((err) => console.error(err))
       } else {
@@ -105,11 +105,12 @@ export default function Cart() {
           })
           .then((res) => {
             console.info("INFO", res.data)
+            // alert("Votre panier est créé")
             console.info("cart", cart) // ajouter un info pour vérifier le panier avant la mise à jour
             setCart([...cart, res.data]) // Use spread operator to append new book
             console.info("New book in cart", cart) // ajouter un info pour vérifier le panier après la mise à jour
             getData() // Mettre à jour la liste
-            alert("Livre ajouté à votre liste. Bonne lecture!!!")
+            alert("Livre ajouté à votre liste. Bonne lecture !!!")
           })
           .catch((err) => console.error(err))
       }
