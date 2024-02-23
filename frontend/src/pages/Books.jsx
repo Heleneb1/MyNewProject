@@ -171,8 +171,7 @@ export default function Books() {
     try {
       const response = await axios.delete(`http://localhost:5000/books/${id}`, {
         headers: {
-          // eslint-disable-next-line no-undef
-          Authorization: `Bearer ${auth_token}`, // replace `token` with your actual token
+          Authorization: `Bearer ${token}`, // replace `token` with your actual token
         },
       })
       console.info(response.data)

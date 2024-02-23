@@ -125,8 +125,10 @@ export default function Cart() {
 
   // Vider le panier
   const clearCart = () => {
+    console.info("userId and cartId", storedUserId, cartId)
+
     axios
-      .delete(`http://localhost:5000/cart/${cartId}`)
+      .delete(`http://localhost:5000/user/${storedUserId}/cart/${cartId}`)
       .then(() => {
         setCart([])
       })

@@ -32,26 +32,6 @@ const browse = (req, res) => {
     });
 };
 
-// Faire une combi des 2 codes pour un premier ajout au panier
-// const readByUser = (req, res) => {
-//   models.cart
-//     .findCartByUser(req.params.id)
-
-//     .then((cart) => {
-//       if (!cart) {
-//         res.sendStatus(404);
-//       } else {
-//         return cart.insertHasCart(req.params.bookId);
-//       }
-//     })
-//     .then(() => {
-//       res.sendStatus(200);
-//     })
-//     .catch((err) => {
-//       console.error(err);
-//       res.sendStatus(500);
-//     });
-// };
 const readByUser = (req, res) => {
   models.cart
     .findCartByUser(req.params.id)
@@ -67,21 +47,6 @@ const readByUser = (req, res) => {
       res.sendStatus(500);
     });
 };
-// const getAllBooksInCartByUser = (req, res) => {
-//   models.cart
-//     .findCartByUser(req.params.id, req.params.cartId)
-//     .then(([rows]) => {
-//       if (rows[0] == null) {
-//         res.sendStatus(404);
-//       } else {
-//         res.send(rows);
-//       }
-//     })
-//     .catch((err) => {
-//       console.error(err);
-//       res.sendStatus(500);
-//     });
-// };
 
 const cartByUser = (req, res) => {
   models.cart.findCartByUser(user_id);
@@ -147,9 +112,13 @@ const addHasCart = async (req, res) => {
 };
 
 const emptyCart = (req, res) => {
+  const userId = req.params.id;
+  const { cartId } = req.params;
+  console.info("userId and cartId", userId, cartId);
+
+  //TODO revoir la suppression
   models.cart
-    // .findOneHasCart(req.params.id)
-    .delete(req.params.id)
+    .deleteItemsByUser(userId)
     .then(([result]) => {
       if (result.affectedRows === 0) {
         res.sendStatus(404);
@@ -162,8 +131,28 @@ const emptyCart = (req, res) => {
       res.sendStatus(500);
     });
 };
+// const updateCart = (req, res) => {
+//   const userId = req.params.userId;
+//   const cartId = req.params.cartId;
+//   const updatedCartData = req.body; // Contient les données mises à jour du panier
 
-const destroyAllCart = (req, res) => {
+//   // Effectuer les opérations de mise à jour nécessaires dans votre modèle ou gestionnaire de panier
+//   models.cart
+//     .updateCart(userId, cartId, updatedCartData)
+//     .then(([result]) => {
+//       if (result.affectedRows === 0) {
+//         res.sendStatus(404); // Panier introuvable ou mise à jour sans effet
+//       } else {
+//         res.sendStatus(204); // Mise à jour réussie
+//       }
+//     })
+//     .catch((err) => {
+//       console.error(err);
+//       res.sendStatus(500); // Erreur lors de la mise à jour du panier
+//     });
+// };
+
+const destroyInCart = (req, res) => {
   const { cartId } = req.params;
   const { bookId } = req.params;
 
@@ -192,7 +181,8 @@ module.exports = {
   readByUser,
   // getAllBooksInCartByUser,
   cartByUser,
-  destroyAllCart,
+  destroyInCart,
+  // updateCart,
 };
 
 // const readByUser = (req, res) => {

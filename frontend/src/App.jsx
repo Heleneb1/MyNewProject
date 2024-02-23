@@ -7,7 +7,7 @@ import Books from "./pages/Books"
 import Quotes from "./pages/Quotes"
 import Characters from "./pages/Characters"
 import Login from "./components/Login"
-import SplashPageBook from "./pages/SplashPageBook"
+// import SplashPageBook from "./pages/SplashPageBook"
 import Cart from "./components/Cart"
 
 // import "./App.css"
@@ -19,8 +19,8 @@ function App() {
       <Header />
       <Navbar />
       <Routes>
-        <Route path="/" element={<SplashPageBook />} />
-        <Route path="/home" element={<Home />} />
+        {/* <Route path="/" element={<SplashPageBook />} /> */}
+        <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/books" element={<Books />} />
         <Route path="/quotes" element={<Quotes />} />

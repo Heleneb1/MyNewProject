@@ -39,9 +39,9 @@ function Login() {
       )
 
       .then((res) => {
+        const userId = res.data.id
+        axios.get(`http://localhost:5000/user/${userId}`)
         if (res.data.role === 0) {
-          const userId = res.data.id
-          // User is a regular user, redirect to the cart page
           axios.get(`http://localhost:5000/user/${userId}`)
           navigate("/cart")
           setIsLoggedIn(true)
@@ -52,12 +52,8 @@ function Login() {
           console.info("auth_token", res.headers["x-access-token"])
           alert(JSON.stringify(`Bienvenue ${res.data.user_name}`))
         } else if (res.data.role === 1) {
-          // User is an admin, redirect to the admin dashboard
           navigate("/books")
           setIsLoggedIn(true)
-
-          // Save user data and token to local storage
-
           localStorage.setItem("userId", res.data.id)
           localStorage.setItem("role", res.data.role)
           localStorage.setItem("cart_id", res.data.cart_id)
@@ -66,10 +62,10 @@ function Login() {
           alert(JSON.stringify(`Bienvenue ${res.data.user_name}`))
         }
       })
-    // .catch((err) => {
-    //   console.error(err.response.data)
-    //   alert("Identifiants incorrects.")
-    // })
+      .catch((err) => {
+        console.error(err.response.data)
+        alert("Identifiants incorrects.")
+      })
   }
 
   const handleSignupSubmit = (e) => {
@@ -108,7 +104,8 @@ function Login() {
   }
   const handleLogoutClick = (e) => {
     e.preventDefault()
-    localStorage.removeItem("auth_token")
+    localStorage.clear("auth_token")
+    cookie.clearCookie("cookie")
     alert("Vous êtes déconnecté!")
   }
 

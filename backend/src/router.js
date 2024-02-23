@@ -106,7 +106,7 @@ router.post("/avatar", upload.single("avatar"), (req, res) => {
 });
 
 // router.post("/books", BooksControllers.add);
-router.delete("/books/:id", authorization, BooksControllers.destroy);
+router.delete("/books/:id", BooksControllers.destroy);
 // router.get("/books/:id", authorization, (req, res) => {
 //   // This route handler is only executed if the user is authenticated
 //   res.send(`Hello, ${req.userName}!`);
@@ -155,6 +155,14 @@ router.delete("/hascart/:id", CartControllers.emptyCart); //  pour vider le pani
 router.get("/cart/:id", CartControllers.browse);
 router.get("/cart/id", CartControllers.read);
 router.get("/user/:id/cart_id/:id", CartControllers.readByUser); // Valide
+
+//TODO verifier les routes
+// router.delete(
+//   "/user/:id/cart_id/:id/book/:id",
+//   CartControllers.destroyInCart
+// );
+router.delete("/user/:userId/cart/:cartId", CartControllers.emptyCart);
+// router.put("/user/:userId/cart/:cartId", CartControllers.updateCart);
 // router.get(
 //   "/user/:id/cart_id/:cartId",
 //   CartControllers.getAllBooksInCartByUser
