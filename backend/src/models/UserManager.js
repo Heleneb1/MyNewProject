@@ -19,18 +19,55 @@ class UserManager extends AbstractManager {
     }
   }
 
+  findAll() {
+    return this.database.query(`select * from  ${this.table}`);
+  }
+
   // eslint-disable-next-line consistent-return
   async addOne(user) {
     try {
       const { user_name, email, password } = user;
-      console.info("Qqqqq", user);
+      console.info("User Created", user);
       const [result] = await this.database.query(
-        "insert into user (user_name, email, password) values (?,?,?)",
-        [user_name, email, password]
+        "insert into user (user_name, email, password, cart_id) values (?,?,?,?)",
+        [user_name, email, password, null]
       );
-      return { id: result.insertId, user_name, email };
+      const userId = result.insertId;
+      const cart = await this.createCartForUser(userId);
+      await this.updateUserCart(userId, cart.id); // mettre à jour la table user avec l'ID du panier
+      return { id: userId, user_name, email, cart_id: cart.id };
     } catch (error) {
       console.error("Erreur lors de la création", error);
+    }
+  }
+
+  // eslint-disable-next-line consistent-return
+  async createCartForUser(userId) {
+    try {
+      const [result] = await this.database.query(
+        "insert into cart (user_id) values (?)",
+        [userId]
+      );
+      const cartId = result.insertId;
+      console.info("Cart Created", { id: cartId, user_id: userId });
+      return { id: cartId, user_id: userId };
+    } catch (error) {
+      console.error("Erreur lors de la création du panier", error);
+    }
+  }
+
+  async updateUserCart(userId, cartId) {
+    try {
+      await this.database.query("update user set cart_id = ? where id = ?", [
+        cartId,
+        userId,
+      ]);
+      console.info("User cart updated", { id: userId, cart_id: cartId });
+    } catch (error) {
+      console.error(
+        "Erreur lors de la mise à jour du panier de l'utilisateur",
+        error
+      );
     }
   }
 

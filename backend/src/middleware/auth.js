@@ -1,13 +1,15 @@
-const cookieParser = require("cookie-parser");
+// const cookieParser = require("cookie-parser");
+
+// request >verify >route
+
 const { decodeJWT } = require("../helper/jwtHelper");
 
 // eslint-disable-next-line consistent-return
 const authorization = async (req, res, next) => {
   try {
     const token = req.cookies.auth_token;
-    console.info("TTTTTTTTT", token);
+    console.info("TTTTTTTTToken", token);
     if (!token) throw new Error("Token missing");
-
     const data = decodeJWT(token);
     req.userId = data.id;
     req.userName = data.user_name;
@@ -18,8 +20,11 @@ const authorization = async (req, res, next) => {
     return next();
   } catch (error) {
     console.error(error);
-    res.sendStatus(401);
+
+    // pas Admin
+
+    res.status(401).send("Merci de vous authentifier!");
   }
 };
 
-module.exports = { cookieParser, authorization };
+module.exports = { authorization };
