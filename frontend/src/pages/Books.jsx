@@ -7,6 +7,7 @@ import { useState, useEffect, useRef } from "react"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
 import Corner from "../assets/corner.png"
+import ScrollToTopButton from "../components/ScrollToTop"
 
 export default function Books() {
   const [books, setBooks] = useState([])
@@ -195,8 +196,8 @@ export default function Books() {
           Filtrer par genre:
         </label>
         <select
-          className="select"
-          id="genre"
+          className="select-style"
+          // id="genre"
           name="genre"
           value={selectedGenre}
           onChange={(e) => setSelectedGenre(e.target.value)}
@@ -237,47 +238,58 @@ export default function Books() {
           )}
 
           {filteredBooks.length > 0 ? (
-            filteredBooks.map((book) => (
-              <div key={book.id} className="book">
-                <div className="book-style">
-                  <img
-                    className="Book-Picture"
-                    src={book.url_img}
-                    alt={book.title}
-                  />
-                </div>
-                <div className="Corner">
-                  <div className="CornerTop">
-                    <img className="CornerT" src={Corner} alt="decoration" />
+            <div className="books-container">
+              {filteredBooks.map((book) => (
+                <div key={book.id} className="book">
+                  <div className="book-style">
+                    <img
+                      className="Book-Picture"
+                      src={book.url_img}
+                      alt={book.title}
+                    />
                   </div>
-                  <div className="CornerBottom">
-                    <img className="CornerB" src={Corner} alt="decoration" />
+                  <div className="Corner">
+                    <div className="CornerTop">
+                      <img className="CornerT" src={Corner} alt="decoration" />
+                    </div>
+                    <div className="CornerBottom">
+                      <img className="CornerB" src={Corner} alt="decoration" />
+                    </div>
                   </div>
-                </div>
-                <h3>{book.title}</h3>
-                <div className="info">
-                  <p>
-                    {book.genre}, {book.publication_date}
+                  <h3>{book.title}</h3>
+                  <div className="info">
+                    <p>{book.genre}</p>
+                    <p>{book.publication_date}</p>
                     {localStorage.getItem("role") === "1" ? (
+                      <div className="button-container">
+                        <button
+                          className="Changebook"
+                          type="button"
+                          onClick={() => handleDelete(book.id)}
+                        >
+                          Supprimer
+                        </button>
+                        <button
+                          className="Changebook"
+                          type="button"
+                          onClick={() => setSelectedBook(book)}
+                        >
+                          Description
+                        </button>
+                      </div>
+                    ) : (
                       <button
                         className="Changebook"
                         type="button"
-                        onClick={() => handleDelete(book.id)}
+                        onClick={() => setSelectedBook(book)}
                       >
-                        Supprimer
+                        Description
                       </button>
-                    ) : null}
-                  </p>
-                </div>{" "}
-                <button
-                  className="Changebook"
-                  type="button"
-                  onClick={() => setSelectedBook(book)}
-                >
-                  Description
-                </button>
-              </div>
-            ))
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
           ) : (
             <div className="NoBook">
               <p>Désolé, pas de livre trouvé</p>
@@ -355,6 +367,7 @@ export default function Books() {
           </form>
         ) : null}
       </div>
+      <ScrollToTopButton />
     </div>
   )
 }

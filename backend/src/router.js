@@ -156,13 +156,12 @@ router.get("/cart/:id", CartControllers.browse);
 router.get("/cart/id", CartControllers.read);
 router.get("/user/:id/cart_id/:id", CartControllers.readByUser); // Valide
 
-//TODO verifier les routes
-// router.delete(
-//   "/user/:id/cart_id/:id/book/:id",
-//   CartControllers.destroyInCart
-// );
+router.delete(
+  "/user/:userId/cart_id/:cartId/book/:bookId",
+  CartControllers.deleteInCart
+);
 router.delete("/user/:userId/cart/:cartId", CartControllers.emptyCart);
-// router.put("/user/:userId/cart/:cartId", CartControllers.updateCart);
+router.put("/user/:userId/cart/:cartId", CartControllers.updateCart);
 // router.get(
 //   "/user/:id/cart_id/:cartId",
 //   CartControllers.getAllBooksInCartByUser

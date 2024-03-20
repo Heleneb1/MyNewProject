@@ -10,56 +10,70 @@
   border: 2px solid #f6d171;
   height: 220px;
   width: 150px;
-  box-shadow: #4d0408 0px 0px 0px 2px inset,
-    rgb(234, 232, 213) 1px -1px 0px -1px, rgb(46, 2, 2) 2px -2px;
+  box-shadow:
+    #4d0408 0px 0px 0px 2px inset,
+    rgb(234, 232, 213) 1px -1px 0px -1px,
+    rgb(46, 2, 2) 2px -2px;
   margin: 10px 10px;
   filter: brightness(121%);
   -webkit-filter: brightness(121%);
-
-  // filter: drop-shadow(0 0 0.15rem #f6d171);
 }
 
 .book-style {
   margin: 50px;
-  width: 230px;
-  height: 300px;
+  width: 14rem;
+  height: 20rem;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: var(--red);
-  // background-image: url(../assets/bgbook.png);
   object-fit: contain;
-  box-shadow: var(--red) 0px 0px 0px 2px inset,
-    rgb(209, 209, 206) 5px -10px 0px -10px, rgb(239, 243, 239) 5px -5px,
-    rgb(209, 209, 206) 10px -15px 0px -10px, rgb(234, 233, 229) 10px -10px,
-    rgb(209, 209, 206) 20px -20px 0px -10px, rgb(239, 235, 233) 15px -15px,
-    rgb(209, 209, 206) 25px -20px 0px -10px, var(--red) 25px -20px;
+  box-shadow:
+    var(--red) 0px 0px 0px 2px inset,
+    rgb(209, 209, 206) 5px -10px 0px -10px,
+    rgb(239, 243, 239) 5px -5px,
+    rgb(209, 209, 206) 10px -15px 0px -10px,
+    rgb(234, 233, 229) 10px -10px,
+    rgb(209, 209, 206) 20px -20px 0px -10px,
+    rgb(239, 235, 233) 15px -15px,
+    rgb(209, 209, 206) 25px -20px 0px -10px,
+    var(--red) 25px -20px;
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
 }
 .book-style:hover {
-  box-shadow: var(--blue) 0px 0px 0px 2px inset,
-    rgb(209, 209, 206) 5px -10px 0px -5px, rgb(239, 243, 239) 5px -5px,
-    rgb(209, 209, 206) 10px -16px 0px -5px, rgb(234, 233, 229) 10px -10px,
-    rgb(209, 209, 206) 20px -22px 0px -5px, rgb(239, 235, 233) 20px -15px,
-    rgb(209, 209, 206) 30px -26px 0px -5px, var(--blue) 30px -28px;
+  box-shadow:
+    var(--blue) 0px 0px 0px 2px inset,
+    rgb(209, 209, 206) 5px -10px 0px -5px,
+    rgb(239, 243, 239) 5px -5px,
+    rgb(209, 209, 206) 10px -16px 0px -5px,
+    rgb(234, 233, 229) 10px -10px,
+    rgb(209, 209, 206) 20px -22px 0px -5px,
+    rgb(239, 235, 233) 20px -15px,
+    rgb(209, 209, 206) 30px -26px 0px -5px,
+    var(--blue) 30px -28px;
   background-color: var(--blue);
   cursor: pointer;
 }
 .book h3 {
-  flex-basis: calc(33.33% - 40px);
+  height: 3rem;
   color: var(--font);
   font-size: 25px;
-  margin-bottom: 37px;
   font-style: oblique;
 }
+
 .book {
-  width: 250px;
-  margin: 20px;
+  width: 16rem;
+  margin: 2rem;
   text-align: center;
-  flex-basis: calc(20% - 40px);
+  /* flex-basis: calc(20% - 40px); */
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 .Lettrine::first-letter {
   line-height: 0.2;
@@ -79,14 +93,16 @@
   cursor: pointer;
 }
 .Changebook:active {
-  box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6),
+  box-shadow:
+    inset -2px -2px 3px rgba(255, 255, 255, 0.6),
     inset 2px 2px 3px var(--background);
   background: var(--font);
   color: var(--background);
   scale: 1.1;
 }
 .Changebook:hover {
-  box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6),
+  box-shadow:
+    inset -2px -2px 3px rgba(255, 255, 255, 0.6),
     inset 2px 2px 3px rgba(0, 0, 0, 0.6);
   background: var(--font);
   color: var(--background);
@@ -99,64 +115,24 @@
   padding: 8px;
   margin-right: 16px;
 }
-.books-container select {
-  gap: 10px;
-  background-color: var(--background);
-  border: 1px solidvar(--font);
-  border-radius: 5px;
-  color: var(--font);
-  width: 186px;
-  height: 30px;
-  padding: 5px;
-}
-// .Corner {
-//   .CornerB {
-//     position: relative;
-//     bottom: 90px;
-//     left: 114px;
-//     height: 40px;
-//   }
-//   .CornerT {
-//     height: 40px;
-//     position: relative;
-//     bottom: 349px;
-//     left: 159px;
-//     transform: scaleY(-1);
-//   }
-// }
 .Corner {
   position: absolute;
   flex-basis: calc(33.33% - 40px);
 
   .CornerB {
     position: relative;
-    bottom: 8.5em;
-    left: 15em;
-    height: 40px;
+    bottom: 0.9rem;
+    left: 5.7rem;
+    height: 3rem;
   }
   .CornerT {
-    height: 40px;
+    height: 3rem;
     position: relative;
-    bottom: 22em;
-    left: 15em;
+    bottom: 14.8rem;
+    left: 5.7rem;
     transform: scaleY(-1);
   }
 }
-// .button {
-//   background-color: white;
-//   color: var(--background);
-//   padding: 8px 16px;
-//   border: none;
-//   border-radius: 4px;
-//   margin-top: 8px;
-//   cursor: pointer;
-// }
-// .button:hover {
-//   box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6),
-//     inset 2px 2px 3px rgba(0, 0, 0, 0.6);
-//   background:var(--font);
-//   color: var(--background);
-// }
 .form {
   display: flex;
   flex-direction: column;
@@ -170,14 +146,9 @@
   background-color: var(--background);
   color: white;
 }
-.info {
-  margin-bottom: 30px;
-  height: 60px;
-}
 .modal {
   position: fixed;
   top: 0;
-  // left: 0;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
@@ -221,7 +192,8 @@
 }
 
 .modal-close:hover {
-  box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6),
+  box-shadow:
+    inset -2px -2px 3px rgba(255, 255, 255, 0.6),
     inset 2px 2px 3px rgba(0, 0, 0, 0.6);
   background: #f6d171;
   color: var(--background);
@@ -253,7 +225,7 @@
   color: #f6d171;
   padding: 8px;
   margin: 10px;
-  width: 800px;
+  width: 22rem;
 }
 //pour changer le bouton par défaut
 *input[type="file"]::-webkit-file-upload-button {
@@ -266,7 +238,8 @@
   height: 30px;
 }
 *input[type="file"]::-webkit-file-upload-button:hover {
-  box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6),
+  box-shadow:
+    inset -2px -2px 3px rgba(255, 255, 255, 0.6),
     inset 2px 2px 3px rgba(0, 0, 0, 0.6);
   background: #f6d171;
   color: var(--background);
@@ -286,16 +259,62 @@
 }
 
 *input[type="reset"]:hover {
-  box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6),
+  box-shadow:
+    inset -2px -2px 3px rgba(255, 255, 255, 0.6),
     inset 2px 2px 3px rgba(0, 0, 0, 0.6);
   background: #f6d171;
   color: var(--background);
 }
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px); /* Décalage initial vers le bas */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* Pas de décalage une fois entièrement apparu */
+  }
+}
+
+.book {
+  opacity: 0; /* Commencez avec une opacité de 0 pour cacher les livres au début */
+  animation: fadeIn 0.8s ease forwards; /* Utilisez l'animation fadeIn */
+}
+
+/* Appliquez un délai progressif à chaque livre */
+.book:nth-child(1) {
+  animation-delay: 0.4s;
+}
+
+.book:nth-child(2) {
+  animation-delay: 0.6s;
+}
+
+.book:nth-child(3) {
+  animation-delay: 0.8s;
+}
+.book:nth-child(4) {
+  animation-delay: 1.2s;
+}
+
+.book:nth-child(5) {
+  animation-delay: 1.6s;
+}
+
+.book:nth-child(6) {
+  animation-delay: 2s;
+}
+
+/* Ajoutez plus de règles pour chaque livre selon le nombre de livres que vous avez */
+
 @media screen and (max-width: 768px) {
   .books-container {
     margin-top: 30px;
     display: flex;
     justify-content: center;
+  }
+  .book {
+    width: 17rem;
   }
   .book-style {
     display: flex;
@@ -308,31 +327,25 @@
     width: 150px;
     height: 230px;
   }
-  .book {
-    height: 80%;
-  }
   .Add-Book {
     display: flex;
     flex-direction: column;
   }
-  // .modal {
-  //   width: auto;
-  // }
   .modal-content {
     width: 300px;
     font-style: oblique;
   }
   .Corner .CornerB {
     position: relative;
-    bottom: 4em;
-    left: 10.5em;
+    bottom: 0.5rem;
+    left: 5.5rem;
     height: 30px;
   }
   .Corner .CornerT {
     height: 30px;
     position: relative;
-    bottom: 19em;
-    left: 10.5em;
+    bottom: 15.2rem;
+    left: 5.5rem;
     transform: scaleY(-1);
   }
 }

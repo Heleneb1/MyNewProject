@@ -1,17 +1,42 @@
 .About-All {
+  margin-left: 3rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
   color: var(--font);
   font-size: 20px;
-
+  line-height: 2.2rem;
+  align-items: center;
+  // width: 80%;
+  .portrait {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 1rem;
+    img {
+      border: 4px solid var(--font);
+      border-radius: 10rem;
+      height: 21rem;
+      width: 18rem;
+    }
+  }
+  .description {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 1rem;
+  }
+  .photo-portrait {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    img {
+      width: 100%;
+    }
+  }
   .Picture {
-    height: 355px;
-    width: 268px;
+    // height: 18rem;
     border-radius: 100%;
     border: 5px solid var(--font);
     border-style: inset;
-    // box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -22,26 +47,23 @@
     transition: all 2s ease-in-out;
     transform-style: preserve-3d;
     perspective-origin: 40% 50%;
-    // perspective: 1000px;
-    // transform-style: preserve-3d;
     background-color: var(--font);
   }
 
   .Mère {
-    height: 350px;
-    width: 272px;
+    height: 22rem;
+    width: 16rem;
     border-radius: 100%;
     border: 5px solid var(--font);
     border-style: inset;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-    // overflow: hidden;
     position: relative;
     overflow: hidden;
   }
   .Père {
     position: absolute;
-    height: 350px;
-    width: 272px;
+    height: 22rem;
+    width: 16rem;
     border-radius: 100%;
     border: 5px solid var(--font);
     border-style: inset;
@@ -59,6 +81,15 @@
     opacity: 0;
     animation: apparition 4s ease 2s forwards;
   }
+  // .animate-on-scroll {
+  //   opacity: 0;
+  //   transition: opacity 0.5s ease-in-out;
+  // }
+
+  // .animate-on-scroll.animate {
+  //   opacity: 1;
+  // }
+
   @keyframes apparition {
     0% {
       opacity: 0;
@@ -69,11 +100,10 @@
     }
   }
   .Test {
-    background-image: url(../assets/medaillon3.jpg);
     position: absolute;
     object-fit: contain;
-    height: 350px;
-    width: 272px;
+    height: 22rem;
+    width: 16rem;
     border-radius: 100%;
     border: 5px solid var(--font);
     border-style: inset;
@@ -86,23 +116,29 @@
     animation: rotations 7s linear forwards;
   }
   .FamilyP {
-    width: 100%;
-    height: 350px;
+    position: relative;
+    right: 8rem;
+    height: 25rem;
     cursor: pointer;
   }
-  .Mère {
+  .Mère.animate {
     overflow: hidden;
     left: 0;
     transform: rotateY(-5deg);
-    // transform-style: flat;
     animation: rotations 0 linear forwards;
   }
+
   .FamilyM {
     width: 100%;
     height: 350px;
     cursor: pointer;
   }
-
+  .familyPicture {
+    width: 34rem;
+    margin: 0 0 2rem 3rem;
+    display: flex;
+    justify-content: center;
+  }
   @keyframes rotation {
     from {
       transform: rotateY(5deg);
@@ -118,10 +154,9 @@
     justify-content: center;
   }
   .Biography p {
-    margin: 100px;
-    width: 800px;
+    margin-top: 3rem;
+    width: 50rem;
     text-align: justify;
-    justify-content: center;
   }
   .Biography p::first-letter {
     line-height: 0.2;
@@ -140,21 +175,36 @@
   font-size: 14px;
   padding: 5px;
   transform: translate(-50%, -10%);
+  opacity: 0;
+  padding: 0.5rem;
+  height: 5rem;
+  width: 12rem;
+  left: 1.5rem;
+  border-radius: 0.5rem;
+  text-align: center;
+  transition: opacity 0.5s;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--font);
+
+  h3 {
+    font-style: italic;
+    margin: 0;
+    padding: 0;
+  }
 }
 .Mère .Info {
   display: block;
   top: 50%;
   left: 50%;
+  height: 6rem;
 }
 .Père .Info {
   display: block;
   transform: rotateY(180deg);
-  top: 50%;
-  width: 200px;
-}
-.Info {
-  opacity: 0;
-  transition: opacity 0.5s;
+  top: 48%;
+  width: 12rem;
+  height: 6rem;
+  line-height: 1.2rem;
 }
 .Mère:hover .Info {
   opacity: 1;
@@ -162,12 +212,17 @@
 .Père:hover .Info {
   opacity: 1;
 }
+.Info:hover {
+  animation: apparition 4s ease 2s forwards;
+}
+
 @media screen and (max-width: 768px) {
   .About-All {
+    width: 80%;
     .Biography p {
-      margin: 30px;
-      width: 300px;
-      // text-align: justify;
+      margin: 4rem;
+      width: 31rem;
+      font-size: 1.9rem;
     }
   }
 }

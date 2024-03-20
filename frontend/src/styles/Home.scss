@@ -1,9 +1,5 @@
 body {
-  // background: #00162b;
-  // background: var(--red);
   background: var(--navbar);
-  // background-image: url(../assets/bg2.svg);
-  // background-repeat: no-repeat;
   background-size: cover;
   color: var(--font);
 }
@@ -14,21 +10,20 @@ body {
   justify-content: center;
 }
 .Signature {
-  height: 300px;
+  height: 20rem;
   display: flex;
   justify-content: center;
   overflow: hidden;
 }
 
 .signature {
-  filter: invert(90%) sepia(4%) saturate(5512%) hue-rotate(330deg)
-    brightness(100%) contrast(109%);
+  filter: invert(90%) sepia(4%) saturate(5512%) hue-rotate(330deg) brightness(100%) contrast(109%);
   top: 0%;
   left: -37%;
-  width: 700px;
+  width: 55rem;
   transform: translateX(-100%);
   opacity: 0;
-  animation: draw-signature 10s forwards;
+  animation: draw-signature 7s forwards;
   z-index: 100;
 }
 
@@ -43,7 +38,10 @@ body {
   }
 }
 .Texte {
-  margin: 30px;
+  margin: 2rem;
+  font-size: 1.4rem;
+  line-height: 1.4;
+  padding: 2rem;
   .Texte p {
     text-align: justify;
     font-size: 25px;
@@ -59,10 +57,11 @@ body {
     height: 700px;
   }
   .Presentation {
+    margin-top: 2rem;
     display: flex;
     justify-content: center;
     flex-direction: column;
-    width: 380px;
+    // width: 380px;
   }
   .Signature {
     height: 200px;
@@ -73,13 +72,11 @@ body {
   .signature {
     display: flex;
     justify-content: center;
-    width: 300px;
+    width: 30rem;
     // margin: 10px;
   }
   .Texte {
-    // width: 300px;
-    padding: 10px;
-    // margin: 30px;
+    padding: 1rem;
 
     .Texte p {
       text-align: justify;

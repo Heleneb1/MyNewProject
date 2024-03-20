@@ -2,38 +2,48 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
+  align-items: center;
+  // margin-top: 2rem;
 
-  .Characters label {
-    margin: 20px;
+  .Characters,
+  .Books {
+    margin: 2rem;
+    display: flex;
+    justify-content: center;
+    width: 100%;
   }
-  .All div label {
-    margin: 20px;
+  label {
+    width: 14rem;
+    font-size: 1.5rem;
+    margin: 1rem;
   }
-  select#character.select-style {
-    background-color: rgb(30, 29, 29);
-    border: 1px solid #f6d171;
-    border-radius: 5px;
-    color: #f6d171;
-    width: 186px;
-    height: 35px;
-    padding: 5px;
-    font-size: 15px;
-  }
-  .Books label {
-    margin: 20px;
-  }
-  select#book {
-    margin-top: 100px;
-    margin-left: 30px;
-    background-color: rgb(30, 29, 29);
-    border: 1px solid #f6d171;
-    border-radius: 5px;
-    color: #f6d171;
-    width: 186px;
-    height: 35px;
-    padding: 5px;
-    font-size: 15px;
-  }
+  // select#book,
+  // select#character.select-style {
+  //   background-color: rgb(30, 29, 29);
+  //   border: 1px solid #f6d171;
+  //   border-radius: 5px;
+  //   color: #f6d171;
+  //   width: 14rem;
+  //   height: 3rem;
+  //   padding: 0.5rem;
+  //   font-size: 1.1rem;
+  //   border-radius: 1.5rem;
+  // }
+  // .Books label {
+  //   margin: 20px;
+  // }
+  // select#book {
+  //   margin-top: 100px;
+  //   margin-left: 30px;
+  //   background-color: rgb(30, 29, 29);
+  //   border: 1px solid #f6d171;
+  //   border-radius: 5px;
+  //   color: #f6d171;
+  //   width: 186px;
+  //   height: 35px;
+  //   padding: 5px;
+  //   font-size: 15px;
+  // }
   .Charaters_Book {
     position: fixed;
     top: 0;
@@ -69,7 +79,8 @@
     }
 
     .Charaters_Book_close:hover {
-      box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6),
+      box-shadow:
+        inset -2px -2px 3px rgba(255, 255, 255, 0.6),
         inset 2px 2px 3px rgba(0, 0, 0, 0.6);
       background: #f6d171;
       color: rgb(30, 29, 29);

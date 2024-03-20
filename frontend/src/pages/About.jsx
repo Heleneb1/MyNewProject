@@ -2,39 +2,53 @@ import { useState, useEffect } from "react"
 import Pere from "../assets/AlexandreDumasPere.jpg"
 import Mère from "../assets/Marie_Louise_Élisabeth_Labouret.jpg"
 import Medaillon from "../assets/medaillon4b.jpg"
+import AlexandreD from "../assets/Alexandre_Dumas.jpg"
+import AlexandreDumas from "../assets/Alexandre_Dumas_Nadar.jpg"
+import ScrollToTopButton from "../components/ScrollToTop"
 
 export default function About() {
-  const [isOpen, setIsOpen] = useState(false)
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsOpen(true)
-    })
+  const [setIsOpen] = useState(false)
 
-    return () => clearTimeout(timer)
+  // useEffect(() => {
+  //   const animate = document.querySelector(".Medaillon");
+  //   if (animate) {
+  //     animate.classList.add("animate");
+  //   }
+  // }, []);
+
+  // useEffect(() => {
+  //   const animate = document.getElementsByClassName("Medaillon")[0]
+  //   if (animate) {
+  //     const timer = setTimeout(() => {
+  //       setIsOpen(true)
+  //       animate.classList.add("maClasse") // Ajoutez la classe pour déclencher l'animation
+  //     }, 1000) // Définissez une durée pour le délai, par exemple 1000 ms = 1 seconde
+
+  //     return () => clearTimeout(timer)
+  //   }
+  // }, [])
+  useEffect(() => {
+    const animate = document.getElementsByClassName("Medaillon")[0]
+    if (animate) {
+      const timer = setTimeout(() => {
+        setIsOpen(true)
+        animate.classList.add("maClasse") // Ajoutez la classe pour déclencher l'animation
+      }, 1000) // Définissez une durée pour le délai, par exemple 1000 ms = 1 seconde
+
+      return () => clearTimeout(timer)
+    }
+    // Si animate n'est pas défini, retourner null
+    return null
   }, [])
+
   return (
     <div className="About-All">
-      <div className={`Picture ${isOpen ? "open" : ""}`}>
-        <div className="Père">
-          <img className="FamilyP" src={Pere} alt="son père" />
-          <div className="Info">
-            <p>
-              Thomas Alexandre Davy de La Pailleterie, dit le général Dumas, son
-              père
-            </p>
-          </div>
-        </div>
-        <div className="Test">
-          <img className="FamilyM" src={Medaillon} alt="sa mère" />
-        </div>
-        <div className="Mère">
-          <img className="FamilyM" src={Mère} alt="sa mère" />
-          <div className="Info">
-            <p>Marie-Louise Élisabeth Labouret, sa mère </p>
-          </div>
-        </div>
+      <div className="portrait">
+        <img src={AlexandreD} alt="Alexandre Dumas jeune" />
       </div>
-
+      <div className="description">
+        <h4>Alexandre Dumas jeune</h4>
+      </div>
       <div className="Biography">
         <h3 className="Title">Biographie</h3>
         <p>
@@ -64,6 +78,12 @@ export default function About() {
           Égypte. Il a finalement été fait comte de l'Empire par Napoléon en
           1806.{" "}
         </p>
+        <div className="photo-portrait">
+          <img src={AlexandreDumas} alt="Alexandre Dumas portrait" />
+        </div>
+        <div className="description">
+          <h4>Alexandre Dumas portrait photo Nadar</h4>
+        </div>
         <p>
           C'est dans ce contexte que le fils d'Alexandre Dumas, également nommé
           Alexandre Dumas, est né en 1802. Son père était absent pendant une
@@ -84,17 +104,33 @@ export default function About() {
           travers le monde et a inspiré de nombreuses adaptations
           cinématographiques et théâtrales.
         </p>
-        {/* <h2>Citation célèbre d'Alexandre Dumas</h2> */}
-
-        {/* <p>
-          {" "}
-          Au fait, cher Maître, vous devez bien vous y connaître en nègres ?{" "}
-          <br />
-          Mais très certainement. Mon père était un mulâtre, mon grand-père
-          était un nègre et mon arrière-grand-père était un singe. Vous voyez,
-          Monsieur : ma famille commence où la vôtre finit.
-        </p> */}
       </div>
+      <div className="Medaillon">
+        <div className="familyPicture">
+          <div className="Picture">
+            <div className="Père">
+              <img className="FamilyP" src={Pere} alt="son père" />
+              <div className="Info">
+                <h3>Son père</h3>
+                <p>
+                  Thomas Alexandre Davy de La Pailleterie, dit le général Dumas
+                </p>
+              </div>
+            </div>
+            <div className="Test">
+              <img className="FamilyM" src={Medaillon} alt="sa mère" />
+            </div>
+            <div className="Mère">
+              <img className="FamilyM" src={Mère} alt="sa mère" />
+              <div className="Info">
+                <h3>Sa mère</h3>
+                <p>Marie-Louise Élisabeth Labouret</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ScrollToTopButton />
     </div>
   )
 }

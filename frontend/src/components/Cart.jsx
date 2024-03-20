@@ -1,25 +1,45 @@
 /* eslint-disable no-shadow */
 import axios from "axios"
 import React, { useState, useEffect, Suspense } from "react"
-import { useParams, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import Loader from "./Loader"
+import { useConfirmation } from "../context/ConfirmationContext"
 
 export default function Cart() {
   const [cart, setCart] = useState([])
+  const [cartId] = useState([])
   const [addedToCart, setAddedToCart] = useState(false)
   const [userId, setUserId] = useState([])
+  const [user] = useState([])
   const [book, setBook] = useState(null)
+  const [selectedBooks, setSelectedBooks] = useState([])
   const [books, setBooks] = useState([])
   const [, setUserData] = useState([])
-  const { id } = useParams()
+  const [isConnected, setIsConnected] = useState(false)
+  const [message, setMessage] = useState("")
+  const [removeMessage, setRemoveMessage] = useState("")
+  const [clearMessage, setClearMessage] = useState("")
+
   const storedUserId = localStorage.getItem("userId")
+  const storedCartId = localStorage.getItem("cart_id")
 
   console.info("userId", storedUserId)
+
+  console.info("user card", storedCartId)
+  console.info("user", user)
+  console.info("cartId", cartId)
   const navigate = useNavigate()
 
   const token = localStorage.getItem("token")
-  const cartId = localStorage.getItem("cart_id")
-  console.info("cartId voilà", cartId)
+  const { confirm } = useConfirmation()
+
+  // const handleChange = (event) => {
+  //   setMessage(event.target.value)
+  // }
+  useEffect(() => {
+    const token = localStorage.getItem("auth_token")
+    setIsConnected(!!token)
+  }, [])
 
   useEffect(() => {
     axios
@@ -50,7 +70,7 @@ export default function Cart() {
   const getData = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/user/${storedUserId}/cart_id/${cartId}`
+        `http://localhost:5000/user/${storedUserId}/cart_id/${storedCartId}`
       )
       setCart(res.data)
 
@@ -68,69 +88,133 @@ export default function Cart() {
   }
 
   const addToCart = (bookData) => {
-    console.info("bookId", bookData.id) // ajouter un info pour vérifier l'ID du livre
     const bookIdSelect = bookData.id
-    let found = false
-    // eslint-disable-next-line no-plusplus
-    for (let i = 0; i < cart.length; i++) {
-      if (cart[i].book_id === bookData.id) {
-        found = true
-        break
-      }
-    }
-    if (!found) {
+    // Utiliser 'some' pour vérifier si le livre est déjà dans le panier
+    const found = cart.some((item) => item.book_id === bookIdSelect)
+
+    if (found) {
+      // Si le livre est déjà dans le panier, afficher l'alerte
+      setMessage("Ce livre est déjà dans votre panier")
+      console.info("Ce livre est déjà dans votre panier")
+    } else {
       setAddedToCart(true)
-      if (cart.length === 0) {
-        axios
-          .post(`http://localhost:5000/cart/${id}/user/${storedUserId}`, {
-            book_id: bookIdSelect,
-            user_id: storedUserId, // Modifié pour inclure l'ID du livre
-          })
-          .then((res) => {
-            console.info("INFO", res.data)
-            console.info("cart", cart) // ajouter un info pour vérifier le panier avant la mise à jour
-            setCart(res.data) // Use array with the new cart
-            console.info("New Book in the cart", bookData.id) // ajouter un info pour vérifier le panier après la mise à jour
-            getData() // Mettre à jour la liste
-            alert("Livre ajouté à votre liste. Bonne lecture !!!")
-          })
-          .catch((err) => console.error(err))
-      } else {
-        // const cartId = cart[0].id
-        axios
-          .post(`http://localhost:5000/cart/${cartId}/user/${storedUserId}`, {
-            book_id: bookIdSelect,
-            user_id: storedUserId,
-            cart_id: cartId, // Modifié pour inclure l'ID du livre
-          })
-          .then((res) => {
-            console.info("INFO", res.data)
-            // alert("Votre panier est créé")
-            console.info("cart", cart) // ajouter un info pour vérifier le panier avant la mise à jour
-            setCart([...cart, res.data]) // Use spread operator to append new book
-            console.info("New book in cart", cart) // ajouter un info pour vérifier le panier après la mise à jour
-            getData() // Mettre à jour la liste
-            alert("Livre ajouté à votre liste. Bonne lecture !!!")
-          })
-          .catch((err) => console.error(err))
+      const url = `http://localhost:5000/cart/${storedCartId}/user/${storedUserId}`
+      const data = {
+        book_id: bookIdSelect,
+        user_id: storedUserId,
+        cart_id: storedCartId,
       }
+
+      axios
+        .post(url, data)
+        .then((res) => {
+          console.info("INFO", res.data)
+          setCart((prevCart) => [...prevCart, res.data])
+          console.info("New book in cart", cart)
+          setMessage(
+            `Livre ajouté à votre liste: '${book.title}'. Bonne lecture !!!`
+          )
+          setClearMessage("")
+          setRemoveMessage("")
+          getData()
+        })
+        .catch((err) => console.error(err))
     }
+    setBook(null)
   }
-  // Retirer un livre du panier
-  const removeFromCart = (bookCart) => {
-    setCart((prevCart) =>
-      prevCart.filter((item) => item.book_id !== bookCart.book_id)
-    )
+  // const bookId = cart.map((item) => item.book_id)
+  const removeFromSelectedBooks = (bookId) => {
+    setSelectedBooks(selectedBooks.filter((id) => id !== bookId))
   }
 
+  // const isSelected = (book_id) => selectedBooks.includes(book_id)
+  // console.info("isSelected", isSelected)
+
+  // Retirer un livre du panier
+  // const removeFromCart = (bookCart) => {
+  //   if (
+  //     confirm(
+  //       `Voulez-vous vraiment retirer ce livre: '${bookCart.titles}'  de votre liste de lecture ?`,
+  //       handleConfirm
+  //     )
+  //   ) {
+  //     // Retirer un livre du panier
+  //     const handleConfirm = () => {
+  //       // Logique à exécuter lorsque l'utilisateur confirme
+  //       axios
+
+  //         .delete(
+  //           `http://localhost:5000/user/${storedUserId}/cart_id/${storedCartId}/book/${bookCart.book_id}`
+  //         )
+  //         .then(() => {
+  //           // Une fois que la suppression a réussi sur le serveur, meise à jour l'état local
+  //           setCart((prevCart) =>
+  //             prevCart.filter((item) => item.book_id !== bookCart.book_id)
+  //           )
+  //           removeFromSelectedBooks(bookCart.book_id) // Retirer le livre sélectionné
+  //           console.info(bookCart)
+  //           setRemoveMessage(
+  //             `Ce livre : '${bookCart.titles}' a été retiré de votre liste de lecture`
+  //           )
+  //           setClearMessage("")
+  //           setMessage("")
+  //         })
+  //         .catch((err) => {
+  //           // Gérer les erreurs éventuelles
+  //           console.error(err)
+  //         })
+  //     }
+  //   }
+  // }
+  const handleConfirm = (bookCart) => {
+    axios
+      .delete(
+        `http://localhost:5000/user/${storedUserId}/cart_id/${storedCartId}/book/${bookCart.book_id}`
+      )
+      .then(() => {
+        // Une fois que la suppression a réussi sur le serveur, mettre à jour l'état local
+        setCart((prevCart) =>
+          prevCart.filter((item) => item.book_id !== bookCart.book_id)
+        )
+        removeFromSelectedBooks(bookCart.book_id) // Retirer le livre sélectionné
+        console.info(bookCart)
+        setRemoveMessage(
+          `Ce livre : '${bookCart.titles}' a été retiré de votre liste de lecture`
+        )
+        setClearMessage("")
+        setMessage("")
+      })
+      .catch((err) => {
+        // Gérer les erreurs éventuelles
+        console.error(err)
+      })
+  }
+  const removeFromCart = (bookCart) => {
+    if (
+      confirm(
+        `Voulez-vous vraiment retirer ce livre: '${bookCart.titles}'  de votre liste de lecture ?`,
+        () => handleConfirm(bookCart) // Utilisation de handleConfirm ici
+      )
+    ) {
+      // Aucun changement nécessaire ici
+    }
+  }
   // Vider le panier
   const clearCart = () => {
-    console.info("userId and cartId", storedUserId, cartId)
-
     axios
-      .delete(`http://localhost:5000/user/${storedUserId}/cart/${cartId}`)
+      .delete(
+        `http://localhost:5000/user/${storedUserId}/cart/${storedCartId}`,
+        {
+          userId: storedUserId,
+          cartId: storedCartId,
+        }
+      )
+
       .then(() => {
-        setCart([])
+        setCart([]) // Mise à jour de l'état du panier après la suppression réussie
+        setClearMessage("Votre panier est vide")
+        setRemoveMessage("")
+        setMessage("")
       })
       .catch((err) => console.error(err))
   }
@@ -149,95 +233,115 @@ export default function Cart() {
   }, [])
   return (
     <div className="All-Cart">
-      <h2>Mon panier - {cart.length} Livres</h2>
-      {userId ? (
-        <div>
-          {cart.length > 0 ? (
-            <Suspense fallback={<Loader />}>
-              <ul>
-                {cart.map((carts) => {
-                  const book = books.find((book) => book.id === carts.book_id)
-                  return (
-                    <li key={carts.id}>
-                      {carts.book.title}
-                      <img src={book.url_img} alt={book.title} />
-                      <button
-                        className="Bouton"
-                        type="button"
-                        onClick={() => removeFromCart(carts)}
-                      >
-                        Retirer
-                      </button>
-                    </li>
-                  )
-                })}
-              </ul>
-            </Suspense>
+      {isConnected ? (
+        <>
+          <h2>Mon panier - {cart.length} Livres</h2>
+          <div id="messageCart">
+            {message && <p className="message">{message}</p>}
+            {removeMessage && <p className="removeMessage">{removeMessage}</p>}
+            {clearMessage && <p className="clearMessage">{clearMessage}</p>}
+          </div>
+          {userId ? (
+            <div>
+              {cart.length > 0 ? (
+                <Suspense fallback={<Loader />}>
+                  <ul>
+                    {cart.map((carts) => {
+                      const book = books.find(
+                        (book) => book.id === carts.book_id
+                      )
+                      return (
+                        <li key={carts.id}>
+                          {carts.book.title}
+                          <img src={book.url_img} alt={book.title} />
+                        </li>
+                      )
+                    })}
+                  </ul>
+                </Suspense>
+              ) : (
+                <p>Votre panier est vide</p>
+              )}
+            </div>
           ) : (
-            <p>Votre panier est vide</p>
+            <p>A. Dumas à découvrir ou à redécouvrir...</p>
           )}
-        </div>
-      ) : (
-        <p>A. Dumas à découvrir ou à redécouvrir...</p>
-      )}
-      <h2>Liste des livres</h2>
-      <select
-        value={book ? book.id : ""}
-        onChange={(e) => {
-          const bookId = parseInt(e.target.value, 10)
-          setBook(books.find((book) => book.id === bookId))
-          setAddedToCart(false)
-        }}
-      >
-        <option value="">Sélectionner un livre</option>
-        {books.map((book) => (
-          <option key={book.id} value={book.id}>
-            {book.title}
-            - <img src={book.url_img} alt={book.title} />
-          </option>
-        ))}
-      </select>
-      <button
-        className="Bouton"
-        type="button"
-        disabled={!book || addedToCart}
-        onClick={() => addToCart(book)}
-      >
-        {addedToCart ? "Ajouté au panier" : "Ajouter au panier"}
-      </button>{" "}
-      {cart.length > 0 && (
-        <button className="Bouton" type="button" onClick={() => clearCart()}>
-          Vider le panier
-        </button>
-      )}
-      {cart.length > 0 && (
-        <div className="Contenu">
-          <h3>Ma liste de livres à lire :</h3>
-          <ul>
-            <Suspense fallback={<Loader />}>
-              {cart.map((item) => {
-                console.info("Contenu du panier db", item)
-                // eslint-disable-next-line no-unused-vars
-                const book = books.find((book) => book.id === item.book_id)
+          <h2>Liste des livres</h2>
+          <div className="toSelect">
+            <select
+              value={book ? book.id : ""}
+              onChange={(e) => {
+                const bookId = parseInt(e.target.value, 10)
+                setBook(books.find((book) => book.id === bookId))
+                setAddedToCart(false)
+              }}
+              className="select-style"
+            >
+              <option value="">Sélectionner un livre</option>
+              {books.map((book) => (
+                <option key={book.id} value={book.id}>
+                  {book.title}
+                  - <img src={book.url_img} alt={book.title} />
+                </option>
+              ))}
+            </select>
+            <button
+              className="Changebook"
+              type="button"
+              disabled={!book || addedToCart}
+              onClick={() => addToCart(book)}
+            >
+              {addedToCart ? "Ajouté au panier" : "Ajouter au panier"}
+            </button>{" "}
+          </div>
+          {cart.length > 0 && (
+            <div className="Contenu">
+              <h3>Ma liste de livres à lire :</h3>
+              <ul>
+                <Suspense fallback={<Loader />}>
+                  {cart.map((item) => {
+                    console.info("Contenu du panier db", item.book_id)
+                    // eslint-disable-next-line no-unused-vars
+                    const book = books.find((book) => book.id === item.book_id)
 
-                return (
-                  <div className="cartBook">
-                    <li key={item.book_id}>
-                      {item.titles}
-                      <div className="cartPicture">
-                        <img
-                          src={item.images}
-                          alt={item.titles}
-                          style={{ width: "50px" }}
-                        />
+                    return (
+                      <div className="cartBook">
+                        <li key={item.book_id}>
+                          <div className="bookTitle">{item.titles}</div>
+                          <div className="cartPicture">
+                            <img src={item.images} alt={item.titles} />
+                          </div>
+
+                          <button
+                            className="Changebook"
+                            type="button"
+                            onClick={() => removeFromCart(item)}
+                          >
+                            Retirer
+                          </button>
+                        </li>
                       </div>
-                    </li>
-                  </div>
-                )
-              })}
-            </Suspense>
-          </ul>
-        </div>
+                    )
+                  })}
+                </Suspense>
+              </ul>
+
+              <div className="toRemove">
+                {cart.length > 0 && (
+                  <button
+                    className="Changebook"
+                    type="button"
+                    onClick={() => clearCart()}
+                  >
+                    Vider le panier
+                  </button>
+                )}
+              </div>
+            </div>
+          )}
+        </>
+      ) : (
+        <p>Veuillez vous connecter pour accéder à cette page.</p>
       )}
     </div>
   )

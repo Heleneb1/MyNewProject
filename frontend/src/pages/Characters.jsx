@@ -102,6 +102,7 @@ export default function Characters() {
           name="book"
           value={selectedBook}
           onChange={handleBookSelection}
+          className="select-style"
         >
           <option value="">Tous les livres</option>
           {bookOptions.map((book) => (

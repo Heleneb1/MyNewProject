@@ -71,10 +71,13 @@ function Contact() {
             <textarea
               name="message"
               placeholder="Message"
+              spellCheck="true"
+              lang="fr"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
             />
           </div>
+          {/* <input type="file" capture='user' accept="image/*" id="cameraInput" /> */}
           <button className="Bouton" type="submit">
             Envoyer
           </button>

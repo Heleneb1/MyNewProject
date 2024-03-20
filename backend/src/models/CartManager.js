@@ -95,10 +95,27 @@ class CartManager extends AbstractManager {
     return this.database.query(`delete from ${this.table} where id = ?`, [id]);
   }
 
-  deleteItemsByUser(userId) {
-    return this.database.query(`DELETE FROM ${this.table} WHERE user_id = ? `, [
-      userId,
-    ]);
+  deleteItemsByUser(userId, cartId) {
+    return this.database.query(
+      `DELETE FROM ${this.table} WHERE user_id = ? AND id = ?`,
+      [userId, cartId]
+    );
+  }
+
+  deleteCartContentByUser(id) {
+    return this.database.query(
+      `DELETE FROM cart_has_books where cart_id =? 
+      `,
+      [id]
+    );
+  }
+
+  deleteOneBookFromCart(cartId, bookId) {
+    return this.database.query(
+      `DELETE FROM cart_has_books where cart_id=? and book_id =? 
+    `,
+      [cartId, bookId]
+    );
   }
 
   setDatabase(database) {

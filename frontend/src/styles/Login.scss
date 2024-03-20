@@ -25,6 +25,9 @@
       justify-content: center;
     }
     form.Connexion {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       // padding: 20px;
@@ -42,10 +45,11 @@
         }
       }
       input.check[type="checkbox"] {
-        flex-direction: row;
-        margin: 10px 0 0 20px;
-        height: 30px;
-        width: 30px;
+        left: 11.5rem;
+        bottom: 3.8rem;
+        position: relative;
+        height: 1.4rem;
+        width: 1.4rem;
       }
       .email {
         display: flex;
@@ -57,7 +61,7 @@
           border: 1px solid #f6d171;
           border-radius: 5px;
           color: #f6d171;
-          width: 400px;
+          width: 25rem;
           height: 30px;
           margin: 0 10px 0 10px;
           padding: 10px;
@@ -69,7 +73,7 @@
         border: 1px solid #f6d171;
         border-radius: 5px;
         color: #f6d171;
-        width: 400px;
+        width: 25rem;
         height: 30px;
         margin: 20px;
         font-size: 20px;
@@ -104,12 +108,19 @@
       background-color: #f6d171;
       border: none;
       color: rgb(30, 29, 29);
-      border-radius: 5px;
+      border-radius: 3rem;
       height: 50px;
-      width: 150px;
+      width: 14rem;
       font-size: 20px;
       cursor: pointer;
       margin: 0 10px 0 10px;
+    }
+    .Bouton:hover {
+      color: #f6d171;
+      background: black;
+      border: 1px solid #f6d171;
+      text-underline-offset: 0.5rem;
+      text-decoration: underline;
     }
   }
   .I_MDP {
@@ -118,10 +129,11 @@
     align-content: center;
 
     input.check[type="checkbox"] {
-      flex-direction: row;
-      margin: 10px 0 10px 20px;
-      height: 30px;
-      width: 30px;
+      position: relative;
+      bottom: 2.3rem;
+      left: 24.5rem;
+      height: 1.4rem;
+      width: 1.4rem;
     }
 
     input.MDP {
@@ -130,7 +142,7 @@
       border: 1px solid #f6d171;
       border-radius: 5px;
       color: #f6d171;
-      width: 400px;
+      width: 25rem;
       height: 30px;
       margin: 0 10px 0 10px;
       padding: 10px;
@@ -142,7 +154,7 @@
     border: 1px solid #f6d171;
     border-radius: 5px;
     color: #f6d171;
-    width: 400px;
+    width: 25rem;
     height: 30px;
     margin: 0 10px 0 10px;
     padding: 10px;
@@ -153,7 +165,7 @@
     border: 1px solid #f6d171;
     border-radius: 5px;
     color: #f6d171;
-    width: 400px;
+    width: 25rem;
     height: 30px;
     margin: 10px;
     padding: 10px;
@@ -162,6 +174,9 @@
 }
 .Calendar {
   // background-color: rgb(30, 29, 29);
+  input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+    filter: invert(1); /* Inverse les couleurs du calendrier */
+  }
   label {
     margin: 10px;
     padding: 10px;
@@ -171,8 +186,7 @@
     color: #f6d171;
     border-radius: 5px;
     border: 1px solid #f6d171;
-    width: 200px;
-    height: 30px;
+    width: 14.3rem;
     font-size: 15px;
     padding: 15px;
     margin: 10px;

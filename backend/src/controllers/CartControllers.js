@@ -112,13 +112,11 @@ const addHasCart = async (req, res) => {
 };
 
 const emptyCart = (req, res) => {
-  const userId = req.params.id;
   const { cartId } = req.params;
-  console.info("userId and cartId", userId, cartId);
+  console.info("cartId", cartId);
 
-  //TODO revoir la suppression
   models.cart
-    .deleteItemsByUser(userId)
+    .deleteCartContentByUser(cartId)
     .then(([result]) => {
       if (result.affectedRows === 0) {
         res.sendStatus(404);
@@ -131,33 +129,35 @@ const emptyCart = (req, res) => {
       res.sendStatus(500);
     });
 };
-// const updateCart = (req, res) => {
-//   const userId = req.params.userId;
-//   const cartId = req.params.cartId;
-//   const updatedCartData = req.body; // Contient les données mises à jour du panier
 
-//   // Effectuer les opérations de mise à jour nécessaires dans votre modèle ou gestionnaire de panier
-//   models.cart
-//     .updateCart(userId, cartId, updatedCartData)
-//     .then(([result]) => {
-//       if (result.affectedRows === 0) {
-//         res.sendStatus(404); // Panier introuvable ou mise à jour sans effet
-//       } else {
-//         res.sendStatus(204); // Mise à jour réussie
-//       }
-//     })
-//     .catch((err) => {
-//       console.error(err);
-//       res.sendStatus(500); // Erreur lors de la mise à jour du panier
-//     });
-// };
+const updateCart = (req, res) => {
+  const { userId, cartId } = req.params;
 
-const destroyInCart = (req, res) => {
+  const updatedCartData = req.body; // Contient les données mises à jour du panier
+
+  // Effectuer les opérations de mise à jour nécessaires dans votre modèle ou gestionnaire de panier
+  models.cart
+    .updateCart(userId, cartId, updatedCartData)
+    .then(([result]) => {
+      if (result.affectedRows === 0) {
+        res.sendStatus(404); // Panier introuvable ou mise à jour sans effet
+      } else {
+        res.sendStatus(204); // Mise à jour réussie
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500); // Erreur lors de la mise à jour du panier
+    });
+};
+
+const deleteInCart = (req, res) => {
   const { cartId } = req.params;
   const { bookId } = req.params;
+  const { userId } = req.params;
 
-  models
-    .delete(cartId, bookId)
+  models.cart
+    .deleteOneBookFromCart(cartId, bookId, userId)
     .then(([result]) => {
       if (result.affectedRows === 0) {
         res.sendStatus(404);
@@ -181,8 +181,8 @@ module.exports = {
   readByUser,
   // getAllBooksInCartByUser,
   cartByUser,
-  destroyInCart,
-  // updateCart,
+  deleteInCart,
+  updateCart,
 };
 
 // const readByUser = (req, res) => {

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import axios from "axios"
 import Line from "../assets/head_line.svg"
+import ScrollToTopButton from "../components/ScrollToTop"
 
 export default function Quotes() {
   const [quotes, setQuotes] = useState([])
@@ -64,6 +65,7 @@ export default function Quotes() {
               </div>
             ))}
       </div>
+      <ScrollToTopButton />
     </div>
   )
 }

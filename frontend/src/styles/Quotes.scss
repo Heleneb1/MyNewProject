@@ -33,9 +33,9 @@
     border: 1px #f6d171 solid;
     border-radius: 30px;
     color: #f6d171;
-    width: 200px;
-    height: 30px;
-    padding: 10px;
+    width: 14rem;
+    height: 3rem;
+    padding-left: 1rem;
   }
 }
 @media screen and (max-width: 768px) {
@@ -46,8 +46,12 @@
     text-align: center;
   }
   .Find {
+    width: 20rem;
     display: flex;
     justify-content: center;
     flex-direction: column;
+  }
+  .All_Quotes .Find input[type="search"] {
+    width: 18rem;
   }
 }
