@@ -39,6 +39,11 @@ const BooksManager = require("./BooksManager");
 models.book = new BooksManager();
 models.book.setDatabase(pool);
 
+const CartManager = require("./CartManager");
+
+models.cart = new CartManager();
+models.cart.setDatabase(pool);
+
 const CharactersManager = require("./CharactersManager");
 
 models.character = new CharactersManager();

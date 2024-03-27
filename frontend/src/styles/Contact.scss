@@ -4,11 +4,14 @@
   justify-content: center;
   align-items: center;
   width: 100vw;
+  margin-bottom: 3rem;
 
   h2 {
     font-size: 30px;
   }
-
+  .Encrier {
+    height: 100px;
+  }
   form {
     display: flex;
     flex-direction: column;
@@ -30,9 +33,16 @@
         font-size: 20px;
       }
     }
-    .message textarea {
+    .contact-message textarea {
       height: 250px;
       font-size: 20px;
+    }
+    .form-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 2rem;
+      flex-direction: column;
     }
 
     .Bouton {
@@ -42,16 +52,21 @@
       background-color: #f6d171;
       border: none;
       color: rgb(30, 29, 29);
-      border-radius: 5px;
+      border-radius: 3rem;
       height: 50px;
-      width: 150px;
+      width: 14rem;
       font-size: 20px;
       cursor: pointer;
-      margin-top: 20px;
+      margin: 0 10px 0 10px;
     }
 
     p {
       font-size: 20px;
+    }
+    .Bouton:hover {
+      color: #f6d171;
+      background: black;
+      border: 1px solid #f6d171;
     }
   }
   input[type="text"],

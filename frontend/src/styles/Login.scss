@@ -1,18 +1,14 @@
-// .Header {
-//   height: 650px;
-//   margin-bottom: 100px;
-// }
 .Login {
   font-size: 30px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  width: 100vw;
-
+  height: 100%;
+  font-family: "Birthstone", cursive;
+  // margin-left: 20px;
   h2 {
-    font-size: 30px;
+    font-size: 40px;
   }
   input[type="checkbox"] {
     accent-color: #f6d171;
@@ -22,19 +18,25 @@
     flex-direction: column;
     align-content: center;
     justify-content: center;
+
     .title {
       display: flex;
       align-content: center;
       justify-content: center;
     }
     form.Connexion {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      // width: 686px;
-      background-color: rgb(30, 29, 29);
+      // padding: 20px;
+      // background-color: rgb(30, 29, 29);
+      // margin-left: 30px;
       .Bouton_Connect {
         display: flex;
         justify-content: center;
+        margin: 0 10px 0 10px;
         .Changebook {
           display: flex;
           align-items: center;
@@ -43,23 +45,25 @@
         }
       }
       input.check[type="checkbox"] {
-        flex-direction: row;
-        margin: 10px 0 0 20px;
-        height: 30px;
-        width: 30px;
+        left: 11.5rem;
+        bottom: 3.8rem;
+        position: relative;
+        height: 1.4rem;
+        width: 1.4rem;
       }
       .email {
         display: flex;
         justify-content: center;
         flex-direction: column;
+        margin: 0 10px 0 10px;
         input.email {
           background-color: rgb(30, 29, 29);
           border: 1px solid #f6d171;
           border-radius: 5px;
           color: #f6d171;
-          width: 400px;
+          width: 25rem;
           height: 30px;
-          margin: 20px;
+          margin: 0 10px 0 10px;
           padding: 10px;
           font-size: 20px;
         }
@@ -69,7 +73,7 @@
         border: 1px solid #f6d171;
         border-radius: 5px;
         color: #f6d171;
-        width: 400px;
+        width: 25rem;
         height: 30px;
         margin: 20px;
         font-size: 20px;
@@ -83,6 +87,7 @@
   flex-direction: column;
   align-content: center;
   justify-content: center;
+  margin: 30px;
   form .Bouton_Connect {
     display: flex;
     justify-content: center;
@@ -103,37 +108,32 @@
       background-color: #f6d171;
       border: none;
       color: rgb(30, 29, 29);
-      border-radius: 5px;
+      border-radius: 3rem;
       height: 50px;
-      width: 150px;
+      width: 14rem;
       font-size: 20px;
       cursor: pointer;
-      margin-top: 20px;
+      margin: 0 10px 0 10px;
+    }
+    .Bouton:hover {
+      color: #f6d171;
+      background: black;
+      border: 1px solid #f6d171;
+      text-underline-offset: 0.5rem;
+      text-decoration: underline;
     }
   }
   .I_MDP {
     display: flex;
     flex-direction: column;
     align-content: center;
-    // .check:before {
-    //   content: "";
-    //   display: inline-block;
-    //   width: 30px;
-    //   height: 30px;
-    //   background-color: rgb(30, 29, 29);
-    //   border: 1px solid #f6d171;
-    //   border-radius: 5px;
-    //   margin-right: 10px;
-    // }
-    // .check:checked:before {
-    //   background-color: rgb(30, 29, 29);
-    // }
 
     input.check[type="checkbox"] {
-      flex-direction: row;
-      margin: 10px 0 0 20px;
-      height: 30px;
-      width: 30px;
+      position: relative;
+      bottom: 2.3rem;
+      left: 24.5rem;
+      height: 1.4rem;
+      width: 1.4rem;
     }
 
     input.MDP {
@@ -142,11 +142,11 @@
       border: 1px solid #f6d171;
       border-radius: 5px;
       color: #f6d171;
-      width: 400px;
+      width: 25rem;
       height: 30px;
-      margin: 20px;
-      font-size: 20px;
+      margin: 0 10px 0 10px;
       padding: 10px;
+      font-size: 20px;
     }
   }
   input.user_name {
@@ -154,9 +154,9 @@
     border: 1px solid #f6d171;
     border-radius: 5px;
     color: #f6d171;
-    width: 400px;
+    width: 25rem;
     height: 30px;
-    margin: 20px;
+    margin: 0 10px 0 10px;
     padding: 10px;
     font-size: 20px;
   }
@@ -165,15 +165,18 @@
     border: 1px solid #f6d171;
     border-radius: 5px;
     color: #f6d171;
-    width: 400px;
+    width: 25rem;
     height: 30px;
-    margin: 20px;
+    margin: 10px;
     padding: 10px;
     font-size: 20px;
   }
 }
 .Calendar {
-  background-color: rgb(30, 29, 29);
+  // background-color: rgb(30, 29, 29);
+  input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+    filter: invert(1); /* Inverse les couleurs du calendrier */
+  }
   label {
     margin: 10px;
     padding: 10px;
@@ -183,9 +186,11 @@
     color: #f6d171;
     border-radius: 5px;
     border: 1px solid #f6d171;
-    width: 200px;
-    height: 30px;
+    width: 14.3rem;
     font-size: 15px;
     padding: 15px;
+    margin: 10px;
   }
+}
+@media screen and (max-width: 768px) {
 }

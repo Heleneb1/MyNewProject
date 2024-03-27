@@ -95,13 +95,14 @@ export default function Characters() {
           ))}
         </select>
       </div>
-      <div>
+      <div className="Books">
         <label htmlFor="book">Filtrer par livre:</label>
         <select
           id="book"
           name="book"
           value={selectedBook}
           onChange={handleBookSelection}
+          className="select-style"
         >
           <option value="">Tous les livres</option>
           {bookOptions.map((book) => (

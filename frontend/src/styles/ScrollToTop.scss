@@ -1,0 +1,19 @@
+.scroll-to-top-button {
+    position: fixed;
+    bottom: 0.5rem;
+    right: 0.7rem;
+    margin: 1rem;
+    padding: 1rem;
+
+    svg {
+        transform: scale(1.5);
+        opacity: 0.5;
+        color: black;
+        background-color: var(--font);
+        border: none;
+        padding: 10px;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in-out;
+    }
+}

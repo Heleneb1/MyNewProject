@@ -1,14 +1,53 @@
+/* eslint-disable consistent-return */
 const models = require("../models");
 const validateUser = require("../validator/userValidator");
 const { hashPassword } = require("../helper/argonHelper");
 
 const getOne = async (req, res) => {
-  const userId = parseInt(req.params.id, 10);
+  const userId = (req.params.id, 10);
   try {
     // eslint-disable-next-line no-restricted-globals
     if (isNaN(userId)) throw new Error("erreur");
     const [user] = await models.user.findOne(userId);
     res.send(user);
+  } catch (error) {
+    console.error(error);
+    res.sendStatus(500);
+  }
+};
+const getToken = (req) => {
+  if (
+    req.headers.authorization &&
+    req.headers.authorization.split(" ")[0] === "Bearer"
+  ) {
+    return req.headers.authorization.split(" ")[1];
+  }
+  if (req.query && req.query.token) {
+    return req.query.token;
+  }
+  // return null;
+  console.info("getToken", req.headers.authorization);
+};
+const protection = (req, res) => {
+  const token = getToken(req);
+  console.info(token);
+  if (token === null) {
+    res.status(200).json({
+      mess: "n'a pas accès aux données",
+      verifyData: false,
+      role: false,
+    });
+  }
+};
+const getById = async (req, res) => {
+  const userId = req.params.id;
+  try {
+    const user = await models.user.findOne(userId);
+    if (!user) {
+      res.sendStatus(404);
+    } else {
+      res.send(user);
+    }
   } catch (error) {
     console.error(error);
     res.sendStatus(500);
@@ -28,6 +67,7 @@ const browse = (req, res) => {
 };
 
 // eslint-disable-next-line consistent-return
+// Added NN and UQ for email no duplicate entry
 const createOne = async (req, res) => {
   try {
     console.info("req.body", req.body);
@@ -35,6 +75,7 @@ const createOne = async (req, res) => {
     if (errors) {
       return res.status(401).send(errors);
     }
+
     const hashedPassword = await hashPassword(req.body.password);
     console.info(hashedPassword);
     const result = await models.user.addOne({
@@ -47,4 +88,4 @@ const createOne = async (req, res) => {
     res.sendStatus(500);
   }
 };
-module.exports = { getOne, createOne, browse };
+module.exports = { getOne, createOne, browse, getById, getToken, protection };
