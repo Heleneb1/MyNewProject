@@ -1,5 +1,5 @@
 // import { useState, useEffect } from "react"
-// // import { FaArrowAltCircleUp } from "react-icons/fa"
+// import { FaArrowAltCircleUp } from "react-icons/fa"
 
 // function ScrollToTopButton() {
 //   const [isVisible, setIsVisible] = useState(false)
@@ -30,10 +30,10 @@
 //   return (
 //     <div className="scroll-to-top-button">
 //       {isVisible && (
-//         // <FaArrowAltCircleUp
-//         //   className="fa fa-chevron-up"
-//         //   onClick={handleClick}
-//         // />
+//         <FaArrowAltCircleUp
+//           className="fa fa-chevron-up"
+//           onClick={handleClick}
+//         />
 //       )}
 //     </div>
 //   )

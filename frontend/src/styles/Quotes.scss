@@ -7,8 +7,14 @@
   .Quotes {
     font-size: 20px;
     margin: 10px;
+    padding: 2rem;
+    width: 80%;
     line-height: 1.5;
     text-align: center;
+    border-radius: 1rem;
+    border: 1px solid var(--font);
+    background: rgba(255, 255, 255, 0.1); /* Couleur blanche avec une opacité de 0.8 */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   }
   h3 p {
     text-transform: uppercase;
@@ -17,7 +23,13 @@
     line-height: 1.5;
     text-align: center;
   }
-
+  .quotes_title {
+    font-family: "Kaushan Script", cursive;
+  }
+  .quotes_intro {
+    font-size: 1.1rem;
+    font-style: oblique;
+  }
   .Line {
     display: flex;
     justify-content: center;
@@ -29,11 +41,11 @@
   }
   .Find input[type="search"] {
     margin: 20px;
-    background: transparent;
+    background: rgba(255, 255, 255, 0.1);
     border: 1px #f6d171 solid;
     border-radius: 30px;
     color: #f6d171;
-    width: 14rem;
+    width: 30rem;
     height: 3rem;
     padding-left: 1rem;
   }

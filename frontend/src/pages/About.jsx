@@ -1,44 +1,32 @@
-import { useState, useEffect } from "react"
+import React, { useState, useEffect } from "react"
 import Pere from "../assets/AlexandreDumasPere.jpg"
 import Mère from "../assets/Marie_Louise_Élisabeth_Labouret.jpg"
 import Medaillon from "../assets/medaillon4b.jpg"
 import AlexandreD from "../assets/Alexandre_Dumas.jpg"
 import AlexandreDumas from "../assets/Alexandre_Dumas_Nadar.jpg"
-import ScrollToTopButton from "../components/ScrollToTop"
+// import ScrollToTopButton from "../components/ScrollToTop"
 
 export default function About() {
-  const [setIsOpen] = useState(false)
+  const [isMedaillonVisible, setIsMedaillonVisible] = useState(false)
 
-  // useEffect(() => {
-  //   const animate = document.querySelector(".Medaillon");
-  //   if (animate) {
-  //     animate.classList.add("animate");
-  //   }
-  // }, []);
-
-  // useEffect(() => {
-  //   const animate = document.getElementsByClassName("Medaillon")[0]
-  //   if (animate) {
-  //     const timer = setTimeout(() => {
-  //       setIsOpen(true)
-  //       animate.classList.add("maClasse") // Ajoutez la classe pour déclencher l'animation
-  //     }, 1000) // Définissez une durée pour le délai, par exemple 1000 ms = 1 seconde
-
-  //     return () => clearTimeout(timer)
-  //   }
-  // }, [])
   useEffect(() => {
-    const animate = document.getElementsByClassName("Medaillon")[0]
-    if (animate) {
-      const timer = setTimeout(() => {
-        setIsOpen(true)
-        animate.classList.add("maClasse") // Ajoutez la classe pour déclencher l'animation
-      }, 1000) // Définissez une durée pour le délai, par exemple 1000 ms = 1 seconde
-
-      return () => clearTimeout(timer)
+    const handleScroll = () => {
+      const medaillon = document.querySelector(".Medaillon")
+      if (medaillon) {
+        const bounding = medaillon.getBoundingClientRect()
+        const isTopVisible =
+          bounding.top >= 0 && bounding.top <= window.innerHeight
+        if (isTopVisible) {
+          setIsMedaillonVisible(true)
+        }
+      }
     }
-    // Si animate n'est pas défini, retourner null
-    return null
+
+    window.addEventListener("scroll", handleScroll)
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll)
+    }
   }, [])
 
   return (
@@ -47,7 +35,7 @@ export default function About() {
         <img src={AlexandreD} alt="Alexandre Dumas jeune" />
       </div>
       <div className="description">
-        <h4>Alexandre Dumas jeune</h4>
+        <h3>Alexandre Dumas jeune</h3>
       </div>
       <div className="Biography">
         <h3 className="Title">Biographie</h3>
@@ -108,8 +96,12 @@ export default function About() {
       <div className="Medaillon">
         <div className="familyPicture">
           <div className="Picture">
-            <div className="Père">
+            <div className={`Père ${isMedaillonVisible ? "animated" : ""}`}>
               <img className="FamilyP" src={Pere} alt="son père" />
+              {/* </div> */}
+
+              {/* <div className="Père">
+              <img className="FamilyP" src={Pere} alt="son père" /> */}
               <div className="Info">
                 <h3>Son père</h3>
                 <p>
@@ -117,8 +109,8 @@ export default function About() {
                 </p>
               </div>
             </div>
-            <div className="Test">
-              <img className="FamilyM" src={Medaillon} alt="sa mère" />
+            <div className={`Test ${isMedaillonVisible ? "animated" : ""}`}>
+              <img className="medaillon" src={Medaillon} alt="médaillon" />
             </div>
             <div className="Mère">
               <img className="FamilyM" src={Mère} alt="sa mère" />
@@ -130,7 +122,7 @@ export default function About() {
           </div>
         </div>
       </div>
-      <ScrollToTopButton />
+      {/* <ScrollToTopButton /> */}
     </div>
   )
 }

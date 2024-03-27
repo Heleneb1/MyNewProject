@@ -41,6 +41,7 @@
 .logo {
   position: relative;
   // bottom: 1rem;
+  width: 7rem;
   height: 10rem;
   padding: 2rem;
 }
@@ -76,7 +77,7 @@
     right: 0; /* Déplacement de la div Test sur la droite de la div parente */
     z-index: 2; /* Ajout de z-index pour placer la div Box au-dessus du titre */
   }
-  .Title h3 {
+  .Title h2 {
     margin-bottom: 0;
     // font-family: "Birthstone";
     margin: 1rem;
@@ -89,7 +90,8 @@
     justify-content: center;
   }
   .Line {
-    height: 25px;
+    height: 2rem;
+    width: 16rem;
   }
 }
 

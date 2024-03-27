@@ -57,7 +57,7 @@ export default function Cart() {
         setUserData(response.data)
         console.info("userData c'est le token", response.data)
         setUserId(response.data.id)
-        localStorage.setItem("userData", response.data.token)
+        localStorage.setItem("userData cart", response.data.token)
       })
       .catch((error) => {
         console.error(error)
@@ -116,6 +116,7 @@ export default function Cart() {
           )
           setClearMessage("")
           setRemoveMessage("")
+          setCart((prevCart) => [...prevCart].reverse())
           getData()
         })
         .catch((err) => console.error(err))
@@ -127,45 +128,6 @@ export default function Cart() {
     setSelectedBooks(selectedBooks.filter((id) => id !== bookId))
   }
 
-  // const isSelected = (book_id) => selectedBooks.includes(book_id)
-  // console.info("isSelected", isSelected)
-
-  // Retirer un livre du panier
-  // const removeFromCart = (bookCart) => {
-  //   if (
-  //     confirm(
-  //       `Voulez-vous vraiment retirer ce livre: '${bookCart.titles}'  de votre liste de lecture ?`,
-  //       handleConfirm
-  //     )
-  //   ) {
-  //     // Retirer un livre du panier
-  //     const handleConfirm = () => {
-  //       // Logique à exécuter lorsque l'utilisateur confirme
-  //       axios
-
-  //         .delete(
-  //           `http://localhost:5000/user/${storedUserId}/cart_id/${storedCartId}/book/${bookCart.book_id}`
-  //         )
-  //         .then(() => {
-  //           // Une fois que la suppression a réussi sur le serveur, meise à jour l'état local
-  //           setCart((prevCart) =>
-  //             prevCart.filter((item) => item.book_id !== bookCart.book_id)
-  //           )
-  //           removeFromSelectedBooks(bookCart.book_id) // Retirer le livre sélectionné
-  //           console.info(bookCart)
-  //           setRemoveMessage(
-  //             `Ce livre : '${bookCart.titles}' a été retiré de votre liste de lecture`
-  //           )
-  //           setClearMessage("")
-  //           setMessage("")
-  //         })
-  //         .catch((err) => {
-  //           // Gérer les erreurs éventuelles
-  //           console.error(err)
-  //         })
-  //     }
-  //   }
-  // }
   const handleConfirm = (bookCart) => {
     axios
       .delete(

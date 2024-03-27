@@ -190,7 +190,7 @@ router.post("/auth", (req, res) => {
   res.json({ token });
 });
 
-router.get("auth/logout", AuthController.logout);
+router.get("/auth/logout", AuthController.logout);
 
 // router.get("/user/:id/cart_id", UserController.getOne);
 

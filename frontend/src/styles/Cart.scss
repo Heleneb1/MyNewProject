@@ -19,11 +19,13 @@
     font-style: oblique;
   }
   .bookTitle {
+    height: 6rem;
+    text-align: center;
     display: flex;
     justify-content: center;
-    margin: 1rem;
+    margin-top: 1rem;
     font-family: "Luxurious Script";
-    font-size: 2.5rem;
+    font-size: 2.3rem;
   }
 }
 .Contenu ul {

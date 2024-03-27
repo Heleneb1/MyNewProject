@@ -18,6 +18,13 @@ export function ConfirmationProvider({ children }) {
     setConfirmation(null)
   }
 
+  const handleConfirm = () => {
+    if (confirmation && typeof confirmation.onConfirm === "function") {
+      confirmation.onConfirm()
+    }
+    cancel()
+  }
+
   const value = useMemo(() => ({ confirm, cancel }), [confirm, cancel])
 
   return (
@@ -30,7 +37,7 @@ export function ConfirmationProvider({ children }) {
             <button
               type="button"
               className="Changebook"
-              onClick={() => confirmation.onConfirm()}
+              onClick={handleConfirm}
             >
               Confirmer
             </button>

@@ -20,8 +20,12 @@
 .Navbar .HeaderLinks .HeaderLink ::selection {
   background: linear-gradient(to bottom, transparent 75%, var(--font) 75%);
 }
+button,
 .Navbar .HeaderLinks .NavHeader {
+  background: none;
+  border: none;
   margin: 10px;
+  font-family: Kaushan Script;
 }
 @media screen and (max-width: 768px) {
   .Burger {
@@ -121,8 +125,11 @@
     align-items: center;
     margin-top: 4rem;
   }
+  button,
   a.MobileLink {
-    font-size: 2rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
     text-decoration: none;
     color: var(--font);
     padding: 5px;

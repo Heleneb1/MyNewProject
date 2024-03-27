@@ -6,165 +6,158 @@
   font-size: 20px;
   line-height: 2.2rem;
   align-items: center;
-  // width: 80%;
-  .portrait {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin: 1rem;
-    img {
-      border: 4px solid var(--font);
-      border-radius: 10rem;
-      height: 21rem;
-      width: 18rem;
-    }
-  }
-  .description {
-    display: flex;
-    justify-content: flex-end;
-    padding-right: 1rem;
-  }
-  .photo-portrait {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    img {
-      width: 100%;
-    }
-  }
-  .Picture {
-    // height: 18rem;
-    border-radius: 100%;
-    border: 5px solid var(--font);
-    border-style: inset;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 10px;
-    margin-left: 250px;
-    position: relative;
-    transition-delay: 1s, 250ms;
-    transition: all 2s ease-in-out;
-    transform-style: preserve-3d;
-    perspective-origin: 40% 50%;
-    background-color: var(--font);
-  }
-
-  .Mère {
-    height: 22rem;
-    width: 16rem;
-    border-radius: 100%;
-    border: 5px solid var(--font);
-    border-style: inset;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-    position: relative;
-    overflow: hidden;
-  }
-  .Père {
-    position: absolute;
-    height: 22rem;
-    width: 16rem;
-    border-radius: 100%;
-    border: 5px solid var(--font);
-    border-style: inset;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-    position: absolute;
-    overflow: hidden;
-    left: 0;
-    transform-origin: 0% 50%;
-    transform: rotateY(5deg);
-    transform-style: flat;
-    animation: rotations 7s linear forwards;
-    z-index: 1;
-  }
-  .Père img {
+}
+.About-All .portrait {
+  object-fit: cover;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 1rem;
+}
+.About-All .portrait img {
+  border: 4px solid var(--font);
+  border-radius: 10rem;
+  height: 21rem;
+  width: 18rem;
+}
+.About-All .description {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 1rem;
+}
+.About-All .photo-portrait {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.About-All .photo-portrait img {
+  width: 100%;
+}
+.About-All .Picture {
+  border-radius: 100%;
+  border: 5px solid var(--font);
+  border-style: inset;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  margin-left: 250px;
+  position: relative;
+  // transition-delay: 1s, 250ms;
+  // transition: all 2s ease-in-out;
+  transform-style: preserve-3d;
+  // perspective-origin: 40% 50%;
+  background-color: var(--font);
+}
+.About-All .Mère {
+  height: 22rem;
+  width: 16rem;
+  border-radius: 100%;
+  border: 5px solid var(--font);
+  border-style: inset;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  position: relative;
+  overflow: hidden;
+}
+.About-All .Père.animated {
+  position: absolute;
+  height: 22rem;
+  width: 16rem;
+  border-radius: 100%;
+  border: 5px solid var(--font);
+  border-style: inset;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  position: absolute;
+  overflow: hidden;
+  left: 0;
+  transform-origin: 0% 50%;
+  transform: rotateY(5deg);
+  transform-style: flat;
+  animation: rotations 7s linear forwards;
+  z-index: 1;
+}
+.About-All .Père img {
+  opacity: 0;
+  animation: apparition 4s ease 2s forwards;
+}
+@keyframes apparition {
+  0% {
     opacity: 0;
-    animation: apparition 4s ease 2s forwards;
   }
-  // .animate-on-scroll {
-  //   opacity: 0;
-  //   transition: opacity 0.5s ease-in-out;
-  // }
-
-  // .animate-on-scroll.animate {
-  //   opacity: 1;
-  // }
-
-  @keyframes apparition {
-    0% {
-      opacity: 0;
-    }
-
-    100% {
-      opacity: 1;
-    }
+  100% {
+    opacity: 1;
   }
-  .Test {
-    position: absolute;
-    object-fit: contain;
-    height: 22rem;
-    width: 16rem;
-    border-radius: 100%;
-    border: 5px solid var(--font);
-    border-style: inset;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-    overflow: hidden;
-    left: 0;
-    transform-origin: 0% 50%;
+}
+.About-All .Test {
+  position: absolute;
+  object-fit: contain;
+  height: 22rem;
+  width: 16rem;
+  border-radius: 100%;
+  border: 5px solid var(--font);
+  border-style: inset;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  left: 0;
+  transform-origin: 0% 50%;
+  transform: rotateY(5deg);
+  transform-style: flat;
+  animation: rotations 7s linear forwards;
+}
+.About-All .FamilyP {
+  position: relative;
+  right: 8rem;
+  height: 25rem;
+  cursor: pointer;
+}
+.About-All .Mère {
+  overflow: hidden;
+  left: 0;
+  transform: rotateY(-5deg);
+  animation: rotations 0 linear forwards;
+}
+.About-All .FamilyM {
+  width: 100%;
+  height: 350px;
+  cursor: pointer;
+}
+.medaillon {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.About-All .familyPicture {
+  width: 34rem;
+  margin: 0 0 2rem 3rem;
+  display: flex;
+  justify-content: center;
+}
+@keyframes rotations {
+  from {
     transform: rotateY(5deg);
-    transform-style: flat;
-    animation: rotations 7s linear forwards;
   }
-  .FamilyP {
-    position: relative;
-    right: 8rem;
-    height: 25rem;
-    cursor: pointer;
+  to {
+    transform: rotateY(200deg);
   }
-  .Mère.animate {
-    overflow: hidden;
-    left: 0;
-    transform: rotateY(-5deg);
-    animation: rotations 0 linear forwards;
-  }
-
-  .FamilyM {
-    width: 100%;
-    height: 350px;
-    cursor: pointer;
-  }
-  .familyPicture {
-    width: 34rem;
-    margin: 0 0 2rem 3rem;
-    display: flex;
-    justify-content: center;
-  }
-  @keyframes rotation {
-    from {
-      transform: rotateY(5deg);
-    }
-    to {
-      transform: rotateY(200deg);
-    }
-  }
-  .Title {
-    font-style: oblique;
-    font-size: 50px;
-    display: flex;
-    justify-content: center;
-  }
-  .Biography p {
-    margin-top: 3rem;
-    width: 50rem;
-    text-align: justify;
-  }
-  .Biography p::first-letter {
-    line-height: 0.2;
-    font-size: 3em; /* taille de la police de caractères de la lettrine */
-    font-weight: bold; /* graisse de la lettrine */
-    float: left; /* alignement de la lettrine avec le texte */
-    margin-right: 5px; /* espacement entre la lettrine et le texte */
-  }
+}
+.About-All .Title {
+  font-style: oblique;
+  font-size: 50px;
+  display: flex;
+  justify-content: center;
+}
+.About-All .Biography p {
+  margin-top: 3rem;
+  width: 50rem;
+  text-align: justify;
+}
+.About-All .Biography p::first-letter {
+  line-height: 0.2;
+  font-size: 3em;
+  font-weight: bold;
+  float: left;
+  margin-right: 5px;
 }
 .Info {
   display: none;
@@ -185,12 +178,11 @@
   transition: opacity 0.5s;
   background-color: rgba(0, 0, 0, 0.5);
   border: 1px solid var(--font);
-
-  h3 {
-    font-style: italic;
-    margin: 0;
-    padding: 0;
-  }
+}
+.Info h3 {
+  font-style: italic;
+  margin: 0;
+  padding: 0;
 }
 .Mère .Info {
   display: block;
@@ -215,14 +207,13 @@
 .Info:hover {
   animation: apparition 4s ease 2s forwards;
 }
-
 @media screen and (max-width: 768px) {
   .About-All {
     width: 80%;
-    .Biography p {
-      margin: 4rem;
-      width: 31rem;
-      font-size: 1.9rem;
-    }
+  }
+  .About-All .Biography p {
+    margin: 4rem;
+    width: 31rem;
+    font-size: 1.9rem;
   }
 }

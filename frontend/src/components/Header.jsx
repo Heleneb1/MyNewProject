@@ -8,15 +8,19 @@ export default function Header() {
     <div className="Header-All">
       <div className="logoContainer">
         <Link to="/">
-          <img className="logo" src={encrier} alt="logo" />
+          <img
+            className="logo"
+            aria-label="Retour à l'accueil"
+            src={encrier}
+            alt="logo"
+          />
         </Link>
       </div>
       <div className="Header">
         <div className="Title">
           <h1>Alexandre Dumas</h1>
-
           <img className="Line" src={Line} alt="ligne" />
-          <h3>Métissage et littérature</h3>
+          <h2>Métissage et littérature</h2>
         </div>
       </div>
       <div className="Test">{/* <Box /> */}</div>

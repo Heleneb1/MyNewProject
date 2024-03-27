@@ -6,10 +6,10 @@
 }
 
 .Book-Picture {
-  width: 180px;
+  width: 10rem;
+  height: 14rem;
+
   border: 2px solid #f6d171;
-  height: 220px;
-  width: 150px;
   box-shadow:
     #4d0408 0px 0px 0px 2px inset,
     rgb(234, 232, 213) 1px -1px 0px -1px,
@@ -124,9 +124,11 @@
     bottom: 0.9rem;
     left: 5.7rem;
     height: 3rem;
+    width: 3rem;
   }
   .CornerT {
     height: 3rem;
+    width: 3rem;
     position: relative;
     bottom: 14.8rem;
     left: 5.7rem;

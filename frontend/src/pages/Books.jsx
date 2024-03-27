@@ -7,15 +7,15 @@ import { useState, useEffect, useRef } from "react"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
 import Corner from "../assets/corner.png"
-import ScrollToTopButton from "../components/ScrollToTop"
+// import ScrollToTopButton from "../components/ScrollToTop"
 
 export default function Books() {
   const [books, setBooks] = useState([])
   const [bookId, setBookId] = useState(null)
   const [picture, setPicture] = useState(null)
-  const [selectedGenre, setSelectedGenre] = useState(null)
+  const [selectedGenre, setSelectedGenre] = useState("")
   const [filteredBooks, setFilteredBooks] = useState([])
-  const [selectedBook, setSelectedBook] = useState(null)
+  const [selectedBook, setSelectedBook] = useState("")
   const [newPicture, setNewPicture] = useState(null)
   const inputRef = useRef(null)
   const token = localStorage.getItem("token")
@@ -367,7 +367,7 @@ export default function Books() {
           </form>
         ) : null}
       </div>
-      <ScrollToTopButton />
+      {/* <ScrollToTopButton /> */}
     </div>
   )
 }
