@@ -4,7 +4,7 @@ import Mère from "../assets/Marie_Louise_Élisabeth_Labouret.jpg"
 import Medaillon from "../assets/medaillon4b.jpg"
 import AlexandreD from "../assets/Alexandre_Dumas.jpg"
 import AlexandreDumas from "../assets/Alexandre_Dumas_Nadar.jpg"
-// import ScrollToTopButton from "../components/ScrollToTop"
+import ScrollToTopButton from "../components/ScrollToTop"
 
 export default function About() {
   const [isMedaillonVisible, setIsMedaillonVisible] = useState(false)
@@ -122,7 +122,7 @@ export default function About() {
           </div>
         </div>
       </div>
-      {/* <ScrollToTopButton /> */}
+      <ScrollToTopButton />
     </div>
   )
 }
