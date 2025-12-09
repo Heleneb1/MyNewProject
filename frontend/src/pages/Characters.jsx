@@ -77,7 +77,7 @@ export default function Characters() {
   ]
 
   return (
-    <div className="All">
+    <div className="Filter_container">
       <div className="Characters">
         <label htmlFor="character">Filtrer par personnage:</label>
         <select
@@ -95,13 +95,14 @@ export default function Characters() {
           ))}
         </select>
       </div>
-      <div>
+      <div className="Books">
         <label htmlFor="book">Filtrer par livre:</label>
         <select
           id="book"
           name="book"
           value={selectedBook}
           onChange={handleBookSelection}
+          className="select-style"
         >
           <option value="">Tous les livres</option>
           {bookOptions.map((book) => (

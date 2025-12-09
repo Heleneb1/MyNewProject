@@ -2,7 +2,6 @@
 import React, { useState } from "react"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
-import Contact from "./Contact"
 
 function Login() {
   const [email, setEmail] = useState("")
@@ -13,10 +12,8 @@ function Login() {
   const [signupName, setSignupName] = useState("")
   const [signupEmail, setSignupEmail] = useState("")
   const [signupPassword, setSignupPassword] = useState("")
-  const token = localStorage.getItem("auth_token")
-  console.info("eeeeeeeeeee", token)
-  const cookie = localStorage.getItem("cookie")
-  console.info("fffffffffffff", cookie)
+  // const token = localStorage.getItem("auth_token")
+  // const cookie = localStorage.getItem("cookie")
   // const [signupConfirmPassword, setSignupConfirmPassword] = useState("")
   const navigate = useNavigate()
 
@@ -42,11 +39,15 @@ function Login() {
           // User is an admin, redirect to the admin dashboard
           navigate("/books")
         }
+
         // Save user data and token to local storage
         localStorage.setItem("userId", res.data.id)
         localStorage.setItem("role", res.data.role)
-        localStorage.setItem("auth_token", res.headers["x-access-token"])
-        alert("Bienvenue !")
+        localStorage.setItem("cart_id", res.data.cart_id)
+        localStorage.setItem("auth_token", res.data.token)
+        // localStorage.setItem("auth_token", res.headers["x-access-token"])
+        alert(`Bienvenue ${res.data.user_name} !`)
+        window.location.reload()
       })
       .catch((err) => {
         console.error(err.response.data)
@@ -66,7 +67,7 @@ function Login() {
         user_name: signupName,
         email: signupEmail,
         password: signupPassword,
-        confirmPassword: signupConfirmPassword,
+        // confirmPassword: signupConfirmPassword,
       })
       .then((res) => {
         console.info(res.data)
@@ -78,11 +79,13 @@ function Login() {
         alert("Erreur lors de la création du compte.")
       })
   }
-  const handleLogoutClick = (e) => {
-    e.preventDefault()
-    localStorage.removeItem("token")
-    alert("Vous êtes déconnecté!")
-  }
+  // const handleLogoutClick = (e) => {
+  //   e.preventDefault()
+  //   localStorage.removeItem("token")
+  //   localStorage.removeItem("auth_token")
+  //   localStorage.clear()
+  //   alert("Vous êtes déconnecté!")
+  // }
 
   function myFunction() {
     const inputs = document.getElementsByClassName("MDP")
@@ -193,13 +196,13 @@ function Login() {
           </div>
         </form>
         <br />
-        <div className="Bouton_déco">
+        {/* <div className="Bouton_déco">
           <button className="Bouton" type="button" onClick={handleLogoutClick}>
             Déconnexion
           </button>
-        </div>
+        </div> */}
       </div>
-      <Contact />
+      {/* <Contact /> */}
     </div>
   )
 }

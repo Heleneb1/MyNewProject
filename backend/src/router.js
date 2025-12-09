@@ -5,7 +5,7 @@ const cookieParser = require("cookie-parser");
 const multer = require("multer");
 
 // const dotenv = require("dotenv");
-
+const jwt = require("jsonwebtoken");
 const mysql = require("mysql2");
 
 const upload = multer({ dest: "public/uploads" });
@@ -32,10 +32,12 @@ const itemControllers = require("./controllers/itemControllers");
 const BooksControllers = require("./controllers/BooksControllers");
 const CharactersControllers = require("./controllers/CharactersControllers");
 const ImagesControllers = require("./controllers/ImagesControllers");
+const CartControllers = require("./controllers/CartControllers");
 const QuotesControllers = require("./controllers/QuotesControllers");
 
 const AuthController = require("./controllers/AuthController");
 const UserController = require("./controllers/UserControllers");
+// const { verifyToken } = require("./helper/jwtHelper");
 
 router.get("/items", itemControllers.browse);
 router.get("/items/:id", itemControllers.read);
@@ -43,11 +45,22 @@ router.put("/items/:id", itemControllers.edit);
 router.post("/items", itemControllers.add);
 router.delete("/items/:id", itemControllers.destroy);
 
-router.get("/user", authorization, (req, res) => {
-  // This route handler is only executed if the user is authenticated
-  res.send(`Hello, ${req.userName}!`);
-});
+router.get("/user", authorization, UserController.browse);
+// router.get("/user", authorization, (req, res) => {
+// UserController.browse()
+//   .then((user) => {
+//     res.send(user);
+//   })
+//   .catch((err) => {
+//     console.error(err);
+//     res.sendStatus(500);
+//   });
+
+//   res.send(`Hello, ${req.userName}!`);
+// });
 router.get("/books", BooksControllers.browse);
+// router.get("/books", verifyToken, BooksControllers.browse);
+
 router.get("/books/:id", BooksControllers.read);
 
 router.put("/books/:id", BooksControllers.edit);
@@ -94,10 +107,10 @@ router.post("/avatar", upload.single("avatar"), (req, res) => {
 
 // router.post("/books", BooksControllers.add);
 router.delete("/books/:id", BooksControllers.destroy);
-router.get("/books/:id", authorization, (req, res) => {
-  // This route handler is only executed if the user is authenticated
-  res.send(`Hello, ${req.userName}!`);
-});
+// router.get("/books/:id", authorization, (req, res) => {
+//   // This route handler is only executed if the user is authenticated
+//   res.send(`Hello, ${req.userName}!`);
+// });
 router.get("/bookshascharacters", BooksControllers.readHasBooks);
 router.get("/characters", CharactersControllers.browse);
 router.get("/characters/:id", CharactersControllers.read);
@@ -134,6 +147,26 @@ router.put("/images/:id", upload.single("avatar"), ImagesControllers.edit);
 router.post("/images/", upload.single("avatar"), ImagesControllers.add); // ok
 router.delete("/images/:id", ImagesControllers.destroy);
 
+router.get("/hascart/:id", CartControllers.readHasCart);
+router.put("/hascart/:id", CartControllers.editHasCart);
+// router.post("/hascart", CartControllers.addHasCart);
+router.post("/cart/:id/user/:id", CartControllers.addHasCart); //  permet d'ajouter des livres au panier
+router.delete("/hascart/:id", CartControllers.emptyCart); //  pour vider le panier
+router.get("/cart/:id", CartControllers.browse);
+router.get("/cart/id", CartControllers.read);
+router.get("/user/:id/cart_id/:id", CartControllers.readByUser); // Valide
+
+router.delete(
+  "/user/:userId/cart_id/:cartId/book/:bookId",
+  CartControllers.deleteInCart
+);
+router.delete("/user/:userId/cart/:cartId", CartControllers.emptyCart);
+router.put("/user/:userId/cart/:cartId", CartControllers.updateCart);
+// router.get(
+//   "/user/:id/cart_id/:cartId",
+//   CartControllers.getAllBooksInCartByUser
+// ); // route a modifier
+
 router.get("/quotes", QuotesControllers.browse);
 router.get("/quotes/:id", QuotesControllers.read);
 router.put("/quotes/:id", QuotesControllers.edit);
@@ -141,10 +174,29 @@ router.post("/quotes", QuotesControllers.add);
 router.delete("/quotes/:id", QuotesControllers.destroy);
 
 router.post("/auth/login", AuthController.login);
-router.get("auth/logout", AuthController.logout);
+// router.post("/auth/login", (req, res) => {
+//   res.header("Authorization", `Bearer ${token}`).json({ token });
+// });
+// Route de login
+router.post("/auth", (req, res) => {
+  const { email } = req.body;
 
-router.get("/user/:id", UserController.getOne);
+  // Vérifier les informations d'identification de l'utilisateur
+
+  // Si l'utilisateur est authentifié avec succès, générer un token
+  const token = jwt.sign({ email }, process.env.TOKEN_SECRET);
+
+  // Envoyer le token dans la réponse
+  res.json({ token });
+});
+
+router.get("/auth/logout", AuthController.logout);
+
+// router.get("/user/:id/cart_id", UserController.getOne);
+
+router.get("/user/:id", UserController.getById);
 router.post("/user", UserController.createOne);
 router.get("/user", UserController.browse);
 
+// router.post("/auth", UserController.protection);
 module.exports = router;

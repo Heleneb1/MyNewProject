@@ -4,7 +4,7 @@
   .title-burger {
     align-items: center;
     color: #f6d171;
-    // width: 100svw;
+    z-index: 25;
 
     h1 {
       margin: 0;
@@ -98,35 +98,22 @@
 // ========================================
 @media screen and (max-width: 1024px) {
   .Header {
-    //     .Title {
-    //       h1 {
-    //         font-size: 1.5rem;
-    //       }
-
-    //       h3 {
-    //         font-size: 1rem;
-    //       }
-    //     }
-
-    // Afficher le bouton burger
     .navbar-burger {
       display: block;
     }
 
-    // Menu navigation en mode mobile
     .HeaderLinks {
       position: fixed;
       top: 0;
-      right: -100%; // Caché par défaut
+      right: -100%;
       width: 300px;
       max-width: 80vw;
       height: 100vh;
       flex-direction: column;
       justify-content: flex-start;
       align-items: stretch;
-      background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
-      border: none;
-      border-left: 2px solid #f5dc9e;
+      background: linear-gradient(135deg, rgba(30, 29, 29) 0%, #1a1a1a 100%);
+      // border-left: 2px solid #f5dc9e;
       margin: 0;
       padding: 80px 0 20px 0;
       z-index: 10000;
@@ -134,34 +121,15 @@
       transition: right 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
       box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
 
-      // Menu ouvert
       &.active {
         right: 0;
       }
 
       .HeaderLink {
-        margin: 0;
         padding: 20px 30px;
-        border-bottom: 1px solid rgba(245, 220, 158, 0.2);
-        transition: all 0.3s ease;
-
-        &:hover {
-          background: rgba(246, 209, 113, 0.1);
-          padding-left: 40px;
-        }
-
-        &:last-child {
-          border-bottom: none;
-        }
-
-        .NavHeader {
-          margin: 0;
-          font-size: 1.1rem;
-        }
       }
     }
 
-    // Overlay sombre
     .menu-overlay {
       display: block;
       position: fixed;
@@ -169,60 +137,58 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: rgba(0, 0, 0, 0.6);
+      background: rgba(30, 29, 29);
       z-index: 9999;
       animation: fadeIn 0.3s ease;
     }
   }
+}
 
-  // }
-
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-
-    to {
-      opacity: 1;
-    }
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
 
-  // TRÈS PETIT ÉCRANS
-  @media screen and (max-width: 480px) {
-    .Header {
-      .Title {
-        padding: 15px 60px 15px 10px; // Espace pour le burger
-        display: none;
+  to {
+    opacity: 1;
+  }
+}
 
-        h1 {
-          font-size: 1.3rem;
-        }
+// TRÈS PETIT ÉCRANS
+@media screen and (max-width: 480px) {
+  .Header {
+    .Title {
+      padding: 15px 60px 15px 10px; // Espace pour le burger
+      display: none;
 
-        h3 {
-          font-size: 0.9rem;
-        }
+      h1 {
+        font-size: 1.3rem;
       }
 
-      .navbar-burger {
-        top: 15px;
-        right: 15px;
-        width: 45px;
-        height: 45px;
-
-        span {
-          width: 25px;
-        }
+      h3 {
+        font-size: 0.9rem;
       }
+    }
 
-      .HeaderLinks {
-        width: 280px;
+    .navbar-burger {
+      top: 15px;
+      right: 15px;
+      width: 45px;
+      height: 45px;
 
-        .HeaderLink {
-          padding: 18px 25px;
+      span {
+        width: 25px;
+      }
+    }
 
-          .NavHeader {
-            font-size: 1rem;
-          }
+    .HeaderLinks {
+      width: 280px;
+
+      .HeaderLink {
+        padding: 18px 25px;
+
+        .NavHeader {
+          font-size: 1rem;
         }
       }
     }

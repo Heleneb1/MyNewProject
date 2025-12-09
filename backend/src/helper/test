@@ -234,13 +234,13 @@
 //     const bookWithTemplate = { ...template, ...req.body };
 //     const [bookResult] = await models.book.insert(bookWithTemplate);
 //     const newBookId = bookResult.insertId;
-//     console.log("Alors", newBookId);
+//     console.info("Alors", newBookId);
 //     await models.image.update(
 //       { books_id: newBookId },
 //       { where: { id: bookResult.images_id } }
 //     );
 //     const newBook = { id: bookResult.insertId, ...bookWithTemplate };
-//     console.log(newBook);
+//     console.info(newBook);
 //     await models.image.update(
 //       { books_id: newBookId },
 //       { where: { id: bookResult.images_id } }

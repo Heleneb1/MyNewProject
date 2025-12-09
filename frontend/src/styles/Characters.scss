@@ -1,49 +1,54 @@
-// #character select {
-//   padding: 0;
-//   margin: 0;
-//   border: 1px solid #ccc;
-//   width: 120px;
-//   border-radius: 3px;
-//   overflow: hidden;
-//   background-color: #fff;
-//   background: #fff;
-//   position: relative;
-// }
-.All {
+.Filter_container {
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  // margin-top: 2rem;
 
-  .Characters label {
-    margin: 20px;
+  .Characters,
+  .Books {
+    margin: 2rem;
+    display: flex;
+    justify-content: center;
+    width: 100%;
   }
-  .All div label {
-    margin: 20px;
+
+  label {
+    width: 14rem;
+    font-size: 1.5rem;
+    margin: 1rem;
   }
-  select#character.select-style {
-    background-color: rgb(30, 29, 29);
-    border: 1px solid #f6d171;
-    border-radius: 5px;
-    color: #f6d171;
-    width: 186px;
-    height: 35px;
-    padding: 5px;
-    font-size: 15px;
-  }
-  select#book {
-    margin-top: 50px;
-    background-color: rgb(30, 29, 29);
-    border: 1px solid #f6d171;
-    border-radius: 5px;
-    color: #f6d171;
-    width: 186px;
-    height: 35px;
-    padding: 5px;
-    font-size: 15px;
-  }
+
+  // select#book,
+  // select#character.select-style {
+  //   background-color: rgb(30, 29, 29);
+  //   border: 1px solid #f6d171;
+  //   border-radius: 5px;
+  //   color: #f6d171;
+  //   width: 14rem;
+  //   height: 3rem;
+  //   padding: 0.5rem;
+  //   font-size: 1.1rem;
+  //   border-radius: 1.5rem;
+  // }
+  // .Books label {
+  //   margin: 20px;
+  // }
+  // select#book {
+  //   margin-top: 100px;
+  //   margin-left: 30px;
+  //   background-color: rgb(30, 29, 29);
+  //   border: 1px solid #f6d171;
+  //   border-radius: 5px;
+  //   color: #f6d171;
+  //   width: 186px;
+  //   height: 35px;
+  //   padding: 5px;
+  //   font-size: 15px;
+  // }
   .Charaters_Book {
     position: fixed;
     top: 0;
-    // left: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
@@ -59,6 +64,7 @@
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
       font-size: 20px;
       line-height: 1.5;
+      font-style: oblique;
     }
 
     .Charaters_Book_close {
@@ -82,23 +88,22 @@
       scale: 1.1;
     }
   }
-  // .select-style:after {
-  //   top: 50%;
-  //   left: 85%;
-  //   border: solid transparent;
-  //   content: " ";
-  //   height: 0;
-  //   width: 0;
-  //   position: absolute;
-  //   pointer-events: none;
-  //   border-color: rgba(0, 0, 0, 0);
-  //   border-top-color: #000000;
-  //   border-width: 5px;
-  //   margin-top: -2px;
-  //   z-index: 100;
-  // }
+}
 
-  // .select-style select:focus {
-  //   outline: none;
-  // }
+@media screen and (max-width: 768px) {
+  .Filter_container {
+    padding-top: 7rem;
+
+    .Characters,
+    .Books {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    label {
+      width: auto;
+      font-size: 1.2rem;
+      margin: 0.5rem;
+    }
+  }
 }
