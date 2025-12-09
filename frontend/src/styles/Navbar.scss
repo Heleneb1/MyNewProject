@@ -1,0 +1,230 @@
+.Header {
+  position: relative;
+
+  .title-burger {
+    align-items: center;
+    color: #f6d171;
+    // width: 100svw;
+
+    h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    h3 {
+      margin: 5px 0 0 0;
+      font-size: 1.2rem;
+      font-weight: normal;
+    }
+  }
+
+  // BOUTON BURGER
+  .navbar-burger {
+    display: none; // Caché par défaut (desktop)
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 10001;
+    background: rgba(30, 29, 29);
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    width: 50px;
+    height: 50px;
+
+    span {
+      display: block;
+      width: 30px;
+      height: 3px;
+      background-color: #f6d171;
+      margin: 6px 0;
+      transition: all 0.3s ease;
+      border-radius: 2px;
+    }
+
+    // Animation du burger en X quand ouvert
+    &.active {
+      span:nth-child(1) {
+        transform: rotate(45deg) translate(8px, 8px);
+      }
+
+      span:nth-child(2) {
+        opacity: 0;
+      }
+
+      span:nth-child(3) {
+        transform: rotate(-45deg) translate(8px, -8px);
+      }
+    }
+  }
+
+  // MENU NAVIGATION - Desktop par défaut
+  .HeaderLinks {
+    display: flex;
+    flex-direction: row;
+    background-color: transparent;
+    border: 1px solid #f5dc9e;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    margin-bottom: 130px;
+    padding: 0 20px;
+
+    .HeaderLink {
+      margin: 0 10px;
+      text-decoration: none;
+      color: #f6d171;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: #fff;
+      }
+
+      .NavHeader {
+        margin: 10px;
+        white-space: nowrap;
+      }
+    }
+  }
+
+  // OVERLAY
+  .menu-overlay {
+    display: none;
+  }
+}
+
+// ========================================
+// RESPONSIVE - MOBILE & TABLETTE
+// ========================================
+@media screen and (max-width: 1024px) {
+  .Header {
+    //     .Title {
+    //       h1 {
+    //         font-size: 1.5rem;
+    //       }
+
+    //       h3 {
+    //         font-size: 1rem;
+    //       }
+    //     }
+
+    // Afficher le bouton burger
+    .navbar-burger {
+      display: block;
+    }
+
+    // Menu navigation en mode mobile
+    .HeaderLinks {
+      position: fixed;
+      top: 0;
+      right: -100%; // Caché par défaut
+      width: 300px;
+      max-width: 80vw;
+      height: 100vh;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: stretch;
+      background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+      border: none;
+      border-left: 2px solid #f5dc9e;
+      margin: 0;
+      padding: 80px 0 20px 0;
+      z-index: 10000;
+      overflow-y: auto;
+      transition: right 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+
+      // Menu ouvert
+      &.active {
+        right: 0;
+      }
+
+      .HeaderLink {
+        margin: 0;
+        padding: 20px 30px;
+        border-bottom: 1px solid rgba(245, 220, 158, 0.2);
+        transition: all 0.3s ease;
+
+        &:hover {
+          background: rgba(246, 209, 113, 0.1);
+          padding-left: 40px;
+        }
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        .NavHeader {
+          margin: 0;
+          font-size: 1.1rem;
+        }
+      }
+    }
+
+    // Overlay sombre
+    .menu-overlay {
+      display: block;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 9999;
+      animation: fadeIn 0.3s ease;
+    }
+  }
+
+  // }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  // TRÈS PETIT ÉCRANS
+  @media screen and (max-width: 480px) {
+    .Header {
+      .Title {
+        padding: 15px 60px 15px 10px; // Espace pour le burger
+        display: none;
+
+        h1 {
+          font-size: 1.3rem;
+        }
+
+        h3 {
+          font-size: 0.9rem;
+        }
+      }
+
+      .navbar-burger {
+        top: 15px;
+        right: 15px;
+        width: 45px;
+        height: 45px;
+
+        span {
+          width: 25px;
+        }
+      }
+
+      .HeaderLinks {
+        width: 280px;
+
+        .HeaderLink {
+          padding: 18px 25px;
+
+          .NavHeader {
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+  }
+}

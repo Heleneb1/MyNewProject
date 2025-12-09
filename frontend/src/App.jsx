@@ -1,7 +1,8 @@
-import { Route, Routes } from "react-router-dom"
+import { Route, Routes, useLocation } from "react-router-dom"
 import About from "./pages/About"
 import Home from "./pages/Home"
-import Header from "./components/Header"
+
+import NavBar from "./components/NavBar"
 import Books from "./pages/Books"
 import Quotes from "./pages/Quotes"
 import Characters from "./pages/Characters"
@@ -11,9 +12,14 @@ import SplashPageBook from "./pages/SplashPageBook"
 import Test from "./pages/Test"
 
 function App() {
+  const location = useLocation()
+  const isOnSplash = location.pathname === "/"
+
   return (
     <div className="App">
-      <Header />
+      {/* Header visible partout sauf sur "/" */}
+      {!isOnSplash && <NavBar />}
+
       <Routes>
         <Route path="/" element={<SplashPageBook />} />
         <Route path="/home" element={<Home />} />

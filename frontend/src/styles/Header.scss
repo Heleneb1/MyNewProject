@@ -6,6 +6,19 @@
     color: #f6d171;
     font-size: 30px;
   }
+
+  .title-burger {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #f6d171;
+    font-size: 30px;
+    width: 100%;
+    padding: 1rem 0;
+    background-color: rgb(30, 29, 29);
+    border-bottom: 1px solid #f6d171;
+  }
+
   .HeaderLinks {
     display: flex;
     flex-direction: row;
@@ -25,5 +38,15 @@
     .NavHeader {
       margin: 10px;
     }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .title-burger {
+    position: fixed;
+    width: 100%;
+    padding: 1rem;
+    background-color: rgb(30, 29, 29);
+    border-bottom: 1px solid #f6d171;
   }
 }

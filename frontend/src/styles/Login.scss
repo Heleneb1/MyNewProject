@@ -1,40 +1,42 @@
-// .Header {
-//   height: 650px;
-//   margin-bottom: 100px;
-// }
 .Login {
   font-size: 30px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  width: 100vw;
+  padding-top: 100px;
+  width: 100%;
 
   h2 {
     font-size: 30px;
   }
+
   input[type="checkbox"] {
     accent-color: #f6d171;
   }
+
   .Connect {
     display: flex;
     flex-direction: column;
     align-content: center;
     justify-content: center;
+
     .title {
       display: flex;
       align-content: center;
       justify-content: center;
     }
+
     form.Connexion {
       align-items: center;
       justify-content: center;
       // width: 686px;
       background-color: rgb(30, 29, 29);
+
       .Bouton_Connect {
         display: flex;
         justify-content: center;
+
         .Changebook {
           display: flex;
           align-items: center;
@@ -42,34 +44,38 @@
           margin-top: 30px;
         }
       }
+
       input.check[type="checkbox"] {
         flex-direction: row;
         margin: 10px 0 0 20px;
         height: 30px;
         width: 30px;
       }
+
       .email {
         display: flex;
         justify-content: center;
         flex-direction: column;
+
         input.email {
           background-color: rgb(30, 29, 29);
           border: 1px solid #f6d171;
           border-radius: 5px;
           color: #f6d171;
-          width: 400px;
+          width: 15rem;
           height: 30px;
           margin: 20px;
           padding: 10px;
           font-size: 20px;
         }
       }
+
       input.MDP {
         background-color: rgb(30, 29, 29);
         border: 1px solid #f6d171;
         border-radius: 5px;
         color: #f6d171;
-        width: 400px;
+        width: 15rem;
         height: 30px;
         margin: 20px;
         font-size: 20px;
@@ -78,14 +84,17 @@
     }
   }
 }
+
 .Inscrip {
   display: flex;
   flex-direction: column;
   align-content: center;
   justify-content: center;
+
   form .Bouton_Connect {
     display: flex;
     justify-content: center;
+
     .Changebook {
       display: flex;
       align-items: center;
@@ -93,9 +102,11 @@
       margin-top: 30px;
     }
   }
+
   .Bouton_déco {
     display: flex;
     justify-content: center;
+
     .Bouton {
       display: flex;
       align-items: center;
@@ -111,23 +122,12 @@
       margin-top: 20px;
     }
   }
+
   .I_MDP {
     display: flex;
     flex-direction: column;
     align-content: center;
-    // .check:before {
-    //   content: "";
-    //   display: inline-block;
-    //   width: 30px;
-    //   height: 30px;
-    //   background-color: rgb(30, 29, 29);
-    //   border: 1px solid #f6d171;
-    //   border-radius: 5px;
-    //   margin-right: 10px;
-    // }
-    // .check:checked:before {
-    //   background-color: rgb(30, 29, 29);
-    // }
+    justify-content: center;
 
     input.check[type="checkbox"] {
       flex-direction: row;
@@ -142,24 +142,26 @@
       border: 1px solid #f6d171;
       border-radius: 5px;
       color: #f6d171;
-      width: 400px;
+      width: 15rem;
       height: 30px;
       margin: 20px;
       font-size: 20px;
       padding: 10px;
     }
   }
+
   input.user_name {
     background-color: rgb(30, 29, 29);
     border: 1px solid #f6d171;
     border-radius: 5px;
     color: #f6d171;
-    width: 400px;
+    width: 15rem;
     height: 30px;
     margin: 20px;
     padding: 10px;
     font-size: 20px;
   }
+
   input.email {
     background-color: rgb(30, 29, 29);
     border: 1px solid #f6d171;
@@ -172,12 +174,15 @@
     font-size: 20px;
   }
 }
+
 .Calendar {
   background-color: rgb(30, 29, 29);
+
   label {
     margin: 10px;
     padding: 10px;
   }
+
   input#datetime {
     background: rgb(30, 29, 29);
     color: #f6d171;
@@ -187,5 +192,24 @@
     height: 30px;
     font-size: 15px;
     padding: 15px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .Login input.email,
+  .Login input.MDP {
+    width: 90%;
+    /* ou 30rem si tu veux fixe */
+    max-width: 15rem;
+    /* pour desktop */
+  }
+
+  .Inscrip input.email,
+  .Inscrip input.user_name,
+  .I_MDP input.MDP {
+    width: 90%;
+    /* ou 30rem si tu veux fixe */
+    max-width: 400px;
+    /* pour desktop */
   }
 }

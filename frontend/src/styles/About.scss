@@ -8,6 +8,7 @@
   .SonPere {
     margin-top: 50px;
     height: 300px;
+    width: 100%;
   }
 
   .Biography {
@@ -16,9 +17,19 @@
     text-align: justify;
   }
 }
+
 .test {
   height: 500px;
   width: 500px;
   border: 1px solid white;
   border-top-right-radius: 50px;
+}
+
+@media screen and (max-width: 768px) {
+  .About-All {
+    .Biography {
+      width: 20rem;
+      padding: 1rem;
+    }
+  }
 }

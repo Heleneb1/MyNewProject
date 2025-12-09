@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100vw;
+  padding-bottom: 3rem;
 
   h2 {
     font-size: 30px;
@@ -17,6 +17,7 @@
 
     div {
       margin: 20px;
+
       input[type="text"],
       input[type="email"],
       textarea {
@@ -24,12 +25,13 @@
         border: 1px solid #f6d171;
         border-radius: 5px;
         color: #f6d171;
-        width: 400px;
+        width: 15rem;
         height: 30px;
         padding: 10px;
         font-size: 20px;
       }
     }
+
     .message textarea {
       height: 250px;
       font-size: 20px;
@@ -54,6 +56,7 @@
       font-size: 20px;
     }
   }
+
   input[type="text"],
   input[type="email"]:focus {
     background-color: rgb(30, 29, 29);

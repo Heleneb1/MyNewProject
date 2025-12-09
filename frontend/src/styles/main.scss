@@ -1,10 +1,22 @@
-@import "./Home.scss";
-@import "./Header.scss";
-@import "./About.scss";
-@import "./Books.scss";
-@import "./Glitter.scss";
-@import "./Contact.scss";
-@import "./SplashPageBook.scss";
-@import "./Characters.scss";
-@import "./Login.scss";
-@import "./Quotes.scss";
+@use "./Home.scss";
+@use "./Header.scss";
+@use "./About.scss";
+@use "./Books.scss";
+@use "./Glitter.scss";
+@use "./Contact.scss";
+@use "./SplashPageBook.scss";
+@use "./Characters.scss";
+@use "./Login.scss";
+@use "./Quotes.scss";
+@use "./Navbar.scss";
+
+body {
+  margin: 0;
+  padding: 0;
+  background: rgb(30, 29, 29);
+  color: #f6d171;
+}
+
+* {
+  box-sizing: border-box;
+}
