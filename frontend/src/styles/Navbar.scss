@@ -4,7 +4,15 @@
   .title-burger {
     align-items: center;
     color: #f6d171;
-    z-index: 25;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    z-index: 1;
+
+    a {
+      color: var(--font);
+      text-decoration: none;
+    }
 
     h1 {
       margin: 0;
@@ -25,7 +33,7 @@
   }
 
   .encrier {
-    width: 32px;
+    width: 60px;
     /* ajuste */
     height: auto;
   }
@@ -79,7 +87,7 @@
     justify-content: space-between;
     align-items: center;
     height: 50px;
-    margin-bottom: 130px;
+    margin-bottom: 2rem;
     padding: 0 20px;
 
     .HeaderLink {
@@ -112,6 +120,15 @@
   .Header {
     .navbar-burger {
       display: block;
+    }
+
+    .encrier {
+      width: 32px;
+    }
+
+    .title-burger {
+      display: inherit;
+
     }
 
     .HeaderLinks {

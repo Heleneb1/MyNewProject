@@ -24,38 +24,39 @@ export default function FamilyMedaillon() {
   }, [])
 
   return (
-    <div className="Medaillon">
-      <div className="familyPicture">
-        <div className="Picture">
-          <div className={`Père ${isMedaillonVisible ? "animated" : ""}`}>
-            <img className="FamilyP" src={Pere} alt="son père" />
-            <div className="picture-description">
-              <h3 className="father-desc">Son père</h3>
-              <div className="Info">
-                <h3>Son père</h3>
-                <p>
-                  Thomas Alexandre Davy de La Pailleterie, dit le général Dumas
-                </p>
+    <>
+      <em>Ses parents</em>
+      <div className="Medaillon">
+        <div className="familyPicture">
+          <div className="Picture">
+            <div className={`Père ${isMedaillonVisible ? "animated" : ""}`}>
+              <img className="FamilyP" src={Pere} alt="Thomas Alexandre Davy de La Pailleterie son père" />
+              <div className="picture-description">
+                <div className="Info">
+                  <h3>Son père</h3>
+                  <p>
+                    Thomas Alexandre Davy de La Pailleterie, dit le général Dumas
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div className={`Test ${isMedaillonVisible ? "animated" : ""}`}>
-            <img className="medaillon" src={Medaillon} alt="médaillon" />
-          </div>
+            <div className={`Test ${isMedaillonVisible ? "animated" : ""}`}>
+              <img className="medaillon" src={Medaillon} alt="médaillon" />
+            </div>
 
-          <div className="Mère">
-            <img className="FamilyM" src={Mère} alt="sa mère" />
-            <div className="picture-description">
-              <h3 className="mother-desc">Sa mère</h3>
-              <div className="Info">
-                <h3>Sa mère</h3>
-                <p>Marie-Louise Élisabeth Labouret</p>
+            <div className="Mère">
+              <img className="FamilyM" src={Mère} alt="Marie-Louise Élisabeth Labouret, sa mère" />
+              <div className="picture-description">
+                <div className="Info">
+                  <h3>Sa mère</h3>
+                  <p>Marie-Louise Élisabeth Labouret</p>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }

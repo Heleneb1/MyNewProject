@@ -92,7 +92,7 @@ export default function About() {
         </p>
       </div>
       <Medaillon />
-      <ScrollToTopButton />
+
     </div>
   )
 }

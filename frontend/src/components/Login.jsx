@@ -12,9 +12,7 @@ function Login() {
   const [signupName, setSignupName] = useState("")
   const [signupEmail, setSignupEmail] = useState("")
   const [signupPassword, setSignupPassword] = useState("")
-  // const token = localStorage.getItem("auth_token")
-  // const cookie = localStorage.getItem("cookie")
-  // const [signupConfirmPassword, setSignupConfirmPassword] = useState("")
+  const [toggleVisibility, setToggleVisibility] = useState(false)
   const navigate = useNavigate()
 
   const handleLoginSubmit = (e) => {
@@ -79,14 +77,9 @@ function Login() {
         alert("Erreur lors de la création du compte.")
       })
   }
-  // const handleLogoutClick = (e) => {
-  //   e.preventDefault()
-  //   localStorage.removeItem("token")
-  //   localStorage.removeItem("auth_token")
-  //   localStorage.clear()
-  //   alert("Vous êtes déconnecté!")
-  // }
-
+  const toggle = () => {
+    setToggleVisibility(!toggleVisibility)
+  }
   function myFunction() {
     const inputs = document.getElementsByClassName("MDP")
     // eslint-disable-next-line no-plusplus
@@ -102,107 +95,121 @@ function Login() {
   return (
     <div className="Login">
       <div className="Connect">
-        <h2 className="title">Connexion</h2>
-        <form className="Connexion" onSubmit={handleLoginSubmit}>
-          <div className="email">
-            <input
-              className="email"
-              type="email"
-              name="email"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
 
-          <input
-            className="MDP"
-            type="password"
-            name="password"
-            placeholder="Mot de Passe"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+        {toggleVisibility ? (
+          <>
+            <h2 className="title">Connexion</h2>
 
-          <input
-            className="check"
-            type="checkbox"
-            onClick={() => myFunction()}
-          />
-          {!isLoggedIn && (
-            <div className="Bouton_Connect">
-              <button className="Changebook" type="submit">
-                Se connecter
-              </button>
-            </div>
-          )}
-        </form>
+            <form className="Connexion form-container" onSubmit={handleLoginSubmit}>
+              <div className="form-field">
+                <input
+                  className="email"
+                  type="email"
+                  placeholder="Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </div>
+
+              <div className="password-field">
+                <input
+                  className="MDP"
+                  type="password"
+                  placeholder="Mot de passe"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+                <input
+                  className="check"
+                  type="checkbox"
+                  onClick={myFunction}
+                />
+              </div>
+
+              <div className="Bouton_Connect">
+                <button className="Changebook" type="submit">
+                  Se connecter
+                </button>
+              </div>
+            </form>
+          </>
+        ) : (
+          <>
+            <h2>Inscription</h2>
+
+            <form className="form-container" onSubmit={handleSignupSubmit}>
+              <div className="form-field">
+                <input
+                  className="user_name"
+                  type="text"
+                  placeholder="Nom"
+                  value={signupName}
+                  onChange={(e) => setSignupName(e.target.value)}
+                />
+              </div>
+
+              <div className="form-field">
+                <input
+                  className="email"
+                  type="email"
+                  placeholder="Email"
+                  value={signupEmail}
+                  onChange={(e) => setSignupEmail(e.target.value)}
+                />
+              </div>
+
+              <div className="form-field Calendar">
+                <label htmlFor="datetime">Date et heure</label>
+                <input type="datetime-local" id="datetime" />
+              </div>
+
+              <div className="password-field">
+                <input
+                  className="MDP"
+                  type="password"
+                  placeholder="Mot de passe"
+                  value={signupPassword}
+                  onChange={(e) => setSignupPassword(e.target.value)}
+                />
+                <input
+                  className="check"
+                  type="checkbox"
+                  onClick={myFunction}
+                />
+              </div>
+
+              <div className="password-field">
+                <input
+                  className="MDP"
+                  type="password"
+                  placeholder="Confirmer le mot de passe"
+                  value={signupConfirmPassword}
+                  onChange={(e) =>
+                    setSignupConfirmPassword(e.target.value)
+                  }
+                />
+              </div>
+
+              <div className="Bouton_Connect">
+                <button className="Changebook" type="submit">
+                  Créer un compte
+                </button>
+              </div>
+            </form>
+          </>
+        )}
+
+        <button
+          type="button"
+          className="toggleButton"
+          onClick={toggle}
+        >
+          {toggleVisibility
+            ? "Pas encore de compte ? Inscris-toi !"
+            : "Déjà un compte ? Connecte-toi !"}
+        </button>
+
       </div>
-      <h2>Inscription</h2>
-      <div className="Inscrip">
-        <form onSubmit={handleSignupSubmit}>
-          <div className="user_name">
-            <input
-              className="user_name"
-              type="user_name"
-              name="user_name"
-              placeholder="Nom"
-              value={signupName}
-              onChange={(e) => setSignupName(e.target.value)}
-            />
-          </div>
-          <div className="email">
-            <input
-              className="email"
-              type="email"
-              name="email"
-              placeholder="Email"
-              value={signupEmail}
-              onChange={(e) => setSignupEmail(e.target.value)}
-            />
-          </div>
-          <div className="Calendar">
-            <label htmlFor="datetime">Date et heure:</label>
-            <input type="datetime-local" id="datetime" name="datetime" />
-          </div>
-          <div className="I_MDP">
-            <input
-              className="MDP"
-              type="password"
-              name="password"
-              placeholder="Mot de passe"
-              value={signupPassword}
-              onChange={(e) => setSignupPassword(e.target.value)}
-            />
-            <input
-              className="check"
-              type="checkbox"
-              onClick={() => myFunction()}
-            />
-
-            <input
-              className="MDP"
-              type="password"
-              name="confirmPassword"
-              placeholder="Confirmer le mot de passe"
-              value={signupConfirmPassword}
-              onChange={(e) => setSignupConfirmPassword(e.target.value)}
-            />
-          </div>
-          <div className="Bouton_Connect">
-            <button className="Changebook" type="submit">
-              Créer un compte
-            </button>
-          </div>
-        </form>
-        <br />
-        {/* <div className="Bouton_déco">
-          <button className="Bouton" type="button" onClick={handleLogoutClick}>
-            Déconnexion
-          </button>
-        </div> */}
-      </div>
-      {/* <Contact /> */}
     </div>
   )
 }

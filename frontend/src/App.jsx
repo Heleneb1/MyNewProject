@@ -12,6 +12,8 @@ import SplashPageBook from "./pages/SplashPageBook"
 import Test from "./pages/Test"
 import Cart from "./components/Cart"
 import Contact from "./components/Contact"
+import Glitter from "./components/Glitter"
+import ScrollToTop from "./components/ScrollToTop"
 
 function App() {
   const location = useLocation()
@@ -20,7 +22,12 @@ function App() {
   return (
     <div className="App">
       {/* Header visible partout sauf sur "/" */}
-      {!isOnSplash && <NavBar />}
+      {!isOnSplash && (
+        <>
+          <NavBar />
+          <Glitter />
+        </>
+      )}
 
       <Routes>
         <Route path="/" element={<SplashPageBook />} />
@@ -30,10 +37,13 @@ function App() {
         <Route path="/quotes" element={<Quotes />} />
         <Route path="/login" element={<Login />} />
         <Route path="/characters" element={<Characters />} />
-        <Route path="/test" element={<Test />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/test" element={<Test />} />
       </Routes>
+      <>
+        <ScrollToTop />
+      </>
     </div>
   )
 }

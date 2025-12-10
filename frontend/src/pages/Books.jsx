@@ -7,7 +7,7 @@ import { useState, useEffect, useRef } from "react"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
 import Corner from "../assets/corner.png"
-import ScrollToTopButton from "../components/ScrollToTop"
+
 
 export default function Books() {
   const [books, setBooks] = useState([])
@@ -367,7 +367,7 @@ export default function Books() {
           </form>
         ) : null}
       </div>
-      <ScrollToTopButton />
+
     </div>
   )
 }

@@ -1,19 +1,30 @@
-.scroll-to-top-button {
-  position: fixed;
-  bottom: 0.5rem;
-  right: 0.7rem;
-  margin: 1rem;
-  padding: 1rem;
+.scroll-container {
 
-  svg {
-    transform: scale(1.5);
-    opacity: 0.5;
-    color: black;
-    background-color: var(--font);
-    border: none;
-    padding: 10px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
+  display: flex;
+  justify-content: flex-end;
+  width: 95%;
+  height: 7rem;
+
+
+  .scroll-to-top-button {
+    position: relative;
+    width: auto;
+    margin: 0;
+    padding: 0.5rem;
+
+
+    svg {
+      transform: scale(1.5);
+      opacity: 0.5;
+      color: var(--font);
+      background-color: var(--background);
+      border: none;
+      padding: 10px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background-color 0.3s ease-in-out;
+      font-size: 2rem;
+    }
+
   }
 }

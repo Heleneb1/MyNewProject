@@ -15,17 +15,14 @@
 }
 
 .signature {
-  filter: invert(90%) sepia(4%) saturate(5512%) hue-rotate(330deg)
-    brightness(100%) contrast(109%);
+  filter: invert(90%) sepia(4%) saturate(5512%) hue-rotate(330deg) brightness(100%) contrast(109%);
   height: 20rem;
   top: 0%;
   left: -37%;
-  // width: 100%;
-  // height: 100%;
   transform: translateX(-100%);
   opacity: 0;
   animation: draw-signature 7s forwards;
-  z-index: 100;
+
 }
 
 @keyframes draw-signature {
@@ -57,7 +54,7 @@
     width: 90%;
     height: auto;
     object-fit: contain;
-    padding-top: 3rem;
+    padding-top: 7rem;
   }
 
   .title-burger {

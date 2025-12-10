@@ -28,13 +28,15 @@ function ScrollToTopButton() {
   }
 
   return (
-    <div className="scroll-to-top-button">
-      {isVisible && (
-        <FaArrowAltCircleUp
-          className="fa fa-chevron-up"
-          onClick={handleClick}
-        />
-      )}
+    <div className="scroll-container">
+      <div className="scroll-to-top-button">
+        {isVisible && (
+          <FaArrowAltCircleUp
+            className="fa fa-chevron-up"
+            onClick={handleClick}
+          />
+        )}
+      </div>
     </div>
   )
 }

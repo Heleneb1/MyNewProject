@@ -29,7 +29,7 @@
         border: 1px solid #f6d171;
         border-radius: 5px;
         color: #f6d171;
-        width: 15rem;
+        width: 32rem;
         height: 30px;
         padding: 10px;
         font-size: 20px;
@@ -79,5 +79,22 @@
   input[type="email"]:focus {
     background-color: rgb(30, 29, 29);
     color: #f6d171;
+  }
+}
+
+@media screen and (max-width:768px) {
+  .Contact {
+    padding-top: 7rem;
+
+    form {
+      div {
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+          width: 17rem;
+        }
+      }
+    }
   }
 }

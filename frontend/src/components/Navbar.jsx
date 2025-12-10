@@ -19,11 +19,13 @@ function NavBar() {
       <div className="nav-container">
         {/* Titre */}
         <div className="title-burger">
-          <div className="title-with-logo">
-            <h1>Alexandre Dumas</h1>
-            <img className="encrier" src={Encrier} alt="encrier" />
-          </div>
-          <h3>Métissage et littérature</h3>
+          <Link to={"/"}>
+            <div className="title-with-logo">
+              <h1>Alexandre Dumas</h1>
+              <img className="encrier" src={Encrier} alt="encrier" />
+            </div>
+            <h3>Métissage et littérature</h3>
+          </Link>
         </div>
 
         <button
@@ -46,9 +48,9 @@ function NavBar() {
         <Link className="HeaderLink" to="/books" onClick={closeMenu}>
           <p className="NavHeader">Oeuvres</p>
         </Link>
-        <Link className="HeaderLink" to="/" onClick={closeMenu}>
+        {/* <Link className="HeaderLink" to="/" onClick={closeMenu}>
           <p className="NavHeader">Accueil</p>
-        </Link>
+        </Link> */}
         <Link className="HeaderLink" to="/characters" onClick={closeMenu}>
           <p className="NavHeader">Personnages</p>
         </Link>
@@ -57,6 +59,9 @@ function NavBar() {
         </Link>
         <Link className="HeaderLink" to="/login" onClick={closeMenu}>
           <p className="NavHeader">Connexion</p>
+        </Link>
+        <Link className="HeaderLink" to="/contact" onClick={closeMenu}>
+          <p className="NavHeader">Contact</p>
         </Link>
       </nav>
 

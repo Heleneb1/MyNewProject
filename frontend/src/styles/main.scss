@@ -1,5 +1,4 @@
 @use "./Home.scss";
-@use "./Header.scss";
 @use "./About.scss";
 @use "./Books.scss";
 @use "./Glitter.scss";
@@ -10,6 +9,7 @@
 @use "./Quotes.scss";
 @use "./Navbar.scss";
 @use "./Medaillon.scss";
+@use "./ScrollToTop.scss";
 
 body {
   margin: 0;
@@ -18,6 +18,25 @@ body {
   color: #f6d171;
   height: 100vh;
   width: 100%;
+}
+
+body::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  background: rgba(255, 220, 150, 0.6);
+  border-radius: 50%;
+  animation: float-particles 3s ease-in-out infinite;
+  pointer-events: none;
+  box-shadow:
+    -100px 20px 0 rgba(255, 220, 150, 0.4),
+    100px 40px 0 rgba(255, 220, 150, 0.4),
+    -50px 60px 0 rgba(255, 220, 150, 0.3),
+    50px 80px 0 rgba(255, 220, 150, 0.3);
+
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Luxurious+Script&family=Pinyon+Script&display=swap");
@@ -93,4 +112,26 @@ body {
 .buttonContainer {
   display: flex;
   justify-content: space-around;
+}
+
+@keyframes float-particles {
+
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-100vh) translateX(50px);
+    opacity: 0;
+  }
 }
