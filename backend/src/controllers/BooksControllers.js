@@ -115,7 +115,7 @@ const addWithImage = async (req, res) => {
     console.info("new", newBook);
     await models.image.update(
       { books_id: newBookId },
-      { where: { id: newBook.images_id } },
+      { where: { id: newBook.images_id } }
     );
     console.info("TTTTTTTTT", newBook.images_id);
     res.status(201).json(newBook);

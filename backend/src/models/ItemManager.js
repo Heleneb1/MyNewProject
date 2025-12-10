@@ -14,7 +14,7 @@ class ItemManager extends AbstractManager {
   update(item) {
     return this.database.query(
       `update ${this.table} set title = ? where id = ?`,
-      [item.title, item.id],
+      [item.title, item.id]
     );
   }
 }

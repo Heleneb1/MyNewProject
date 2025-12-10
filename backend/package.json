@@ -30,5 +30,11 @@
     "eslint-plugin-prettier": "^4.2.1",
     "nodemon": "^3.1.11",
     "prettier": "2.8.3"
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
   }
 }

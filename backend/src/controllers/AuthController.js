@@ -25,7 +25,7 @@ const login = async (req, res) => {
 
     const passwordVerification = await verifyPassword(
       req.body.password,
-      user.password,
+      user.password
     );
     if (!passwordVerification) {
       return res

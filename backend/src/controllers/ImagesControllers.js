@@ -83,7 +83,7 @@ const editOne = (req, res) => {
             res.sendStatus(500);
           });
       }
-    },
+    }
   );
   image.url_img = `/public/uploads/${originalname}`;
   image.name_img = `${originalname}`;
@@ -119,7 +119,7 @@ const update = (req, res) => {
             res.sendStatus(500);
           });
       }
-    },
+    }
   );
   image.url_img = `/public/uploads/${originalname}`;
   image.name_img = `${originalname}`;
@@ -165,7 +165,7 @@ const add = (req, res) => {
             res.sendStatus(500);
           });
       }
-    },
+    }
   );
 };
 

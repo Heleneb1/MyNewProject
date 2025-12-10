@@ -9,7 +9,7 @@ class BooksManager extends AbstractManager {
   findAllBooks() {
     return this.database.query(
       `SELECT b.id, i.url_img, b.title, b.publication_date, b.genre, b.pages, b.description FROM books AS B LEFT JOIN images AS i ON i.books_id = b.id ORDER BY b.title ASC
-      `,
+      `
     );
   }
 
@@ -18,7 +18,7 @@ class BooksManager extends AbstractManager {
       `SELECT c.name_characters, c.associated_book, c.description, b.genre,b.images_id from characters as c
       join books as b on b.id = c.id
       join books_has_characters as bhc on books_id=characters_id ORDER BY b.title ASC
-      `,
+      `
     );
   }
 
@@ -26,7 +26,7 @@ class BooksManager extends AbstractManager {
     return this.database.query(
       `SELECT i.url_img,b.title, b.publication_date, b.genre, b.pages FROM books AS B JOIN images AS i ON i.books_id =b.id WHERE b.id = ?
       `,
-      [id],
+      [id]
     );
   }
 
@@ -40,7 +40,7 @@ class BooksManager extends AbstractManager {
         book.pages,
         book.images_id, // Add the image ID to the array of values
         book.description,
-      ],
+      ]
     );
   }
 
@@ -66,7 +66,7 @@ class BooksManager extends AbstractManager {
       .query(
         `INSERT INTO book ${this.table} (title, publication_date, genre, pages, description, images_id) 
         VALUES (?, ?, ?, ?, ?, ?)`,
-        [title, publication_date, genre, pages, description, images_id],
+        [title, publication_date, genre, pages, description, images_id]
       )
       .then(([result]) => {
         return { id: result.insertId, title };
@@ -87,7 +87,7 @@ class BooksManager extends AbstractManager {
         book.images_id,
         book.description,
         book.id,
-      ],
+      ]
     );
   }
 

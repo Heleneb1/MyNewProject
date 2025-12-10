@@ -21,7 +21,7 @@ pool.getConnection().catch(() => {
     "Warning:",
     "Failed to get a DB connection.",
     "Did you create a .env file with valid credentials?",
-    "Routes using models won't work as intended",
+    "Routes using models won't work as intended"
   );
 });
 
@@ -79,8 +79,8 @@ const handler = {
 
     throw new ReferenceError(
       `models.${prop} is not defined. Did you create ${pascalize(
-        prop,
-      )}Manager.js, and did you register it in backend/src/models/index.js?`,
+        prop
+      )}Manager.js, and did you register it in backend/src/models/index.js?`
     );
   },
 };

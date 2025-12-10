@@ -158,7 +158,7 @@ router.get("/user/:id/cart_id/:id", CartControllers.readByUser); // Valide
 
 router.delete(
   "/user/:userId/cart_id/:cartId/book/:bookId",
-  CartControllers.deleteInCart,
+  CartControllers.deleteInCart
 );
 router.delete("/user/:userId/cart/:cartId", CartControllers.emptyCart);
 router.put("/user/:userId/cart/:cartId", CartControllers.updateCart);
