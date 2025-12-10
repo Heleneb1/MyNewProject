@@ -1,0 +1,75 @@
+// PAGE PRINCIPALE (Home, Présentation, etc.)
+
+.Presentation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.Signature {
+  height: 20rem;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.signature {
+  filter: invert(90%) sepia(4%) saturate(5512%) hue-rotate(330deg)
+    brightness(100%) contrast(109%);
+  height: 20rem;
+  top: 0%;
+  left: -37%;
+  // width: 100%;
+  // height: 100%;
+  transform: translateX(-100%);
+  opacity: 0;
+  animation: draw-signature 7s forwards;
+  z-index: 100;
+}
+
+@keyframes draw-signature {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.Texte {
+  text-align: justify;
+  font-size: 25px;
+  width: 60%;
+  margin-bottom: 30px;
+}
+
+.signature.active {
+  opacity: 1;
+}
+
+// Responsive
+@media screen and (max-width: 768px) {
+  .signature {
+    width: 90%;
+    height: auto;
+    object-fit: contain;
+    padding-top: 3rem;
+  }
+
+  .title-burger {
+    position: fixed;
+    width: 100%;
+    padding: 1rem;
+    background-color: rgb(30, 29, 29);
+    border-bottom: 1px solid #f6d171;
+  }
+
+  .Texte {
+    width: 20rem;
+    padding: 1rem;
+  }
+}

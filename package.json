@@ -19,7 +19,7 @@
     "dev": "cross-env-shell 'concurrently -c green,yellow -t \"HH:mm:ss\" -p \"{name} {time}\" \"$npm_package_config_cli:dev-*\"'",
     "dev-front": "cross-env-shell \"cd ./frontend && $npm_package_config_cli run dev\"",
     "dev-back": "cross-env-shell \"cd ./backend && $npm_package_config_cli run dev\"",
-    "lint": "cross-env-shell \"cd ./frontend && $npm_package_config_cli run lint && cd ../backend && $npm_package_config_cli run lint\"",
+    "lint": "echo '----- Checking Frontend...' && npx prettier --write . && eslint --ext .jsx . --fix && echo '----- Done!'",
     "fix": "cross-env-shell \"cd ./frontend && $npm_package_config_cli run fix && cd ../backend && $npm_package_config_cli run fix\""
   },
   "keywords": [],
@@ -29,5 +29,19 @@
     "concurrently": "^7.6.0",
     "cross-env": "^7.0.3",
     "husky": "^8.0.3"
+  },
+  "dependencies": {
+    "@react-three/drei": "^9.66.1",
+    "@react-three/fiber": "^8.13.0",
+    "argon2": "^0.30.3",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "joi": "^17.9.1",
+    "js-cookie": "^3.0.5",
+    "jsonwebtoken": "^9.0.0",
+    "multer": "^1.4.5-lts.1",
+    "react-icons": "^5.0.1",
+    "react-three-fiber": "^6.0.13",
+    "three": "^0.152.0"
   }
 }
