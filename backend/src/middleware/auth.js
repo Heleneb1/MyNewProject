@@ -8,7 +8,7 @@ const { decodeJWT } = require("../helper/jwtHelper");
 const authorization = async (req, res, next) => {
   try {
     const token = req.cookies.auth_token;
-    console.info("TTTTTTTTToken", token);
+
     if (!token) throw new Error("Token missing");
     const data = decodeJWT(token);
     req.userId = data.id;

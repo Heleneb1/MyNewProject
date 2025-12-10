@@ -18,6 +18,18 @@
     }
   }
 
+  .title-with-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .encrier {
+    width: 32px;
+    /* ajuste */
+    height: auto;
+  }
+
   // BOUTON BURGER
   .navbar-burger {
     display: none; // Caché par défaut (desktop)

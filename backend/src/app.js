@@ -18,11 +18,11 @@ app.use(function (req, res, next) {
   res.setHeader("Access-Control-Allow-Credentials", "true");
   res.setHeader(
     "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
+    "Origin, X-Requested-With, Content-Type, Accept",
   );
   res.setHeader(
     "Access-Control-Allow-Methods",
-    "GET, POST, PUT, DELETE, OPTIONS"
+    "GET, POST, PUT, DELETE, OPTIONS",
   );
   next();
 });
@@ -37,7 +37,7 @@ app.use(
   cors({
     origin: process.env.FRONTEND_URL ?? "http://localhost:5173/",
     optionsSuccessStatus: 200,
-  }) // on donne les droit a au front de ce connecter
+  }), // on donne les droit a au front de ce connecter
 );
 // import and mount the API routes
 // app.use(function (req, res, next) {
@@ -71,7 +71,7 @@ const reactIndexFile = path.join(
   "..",
   "frontend",
   "dist",
-  "index.html"
+  "index.html",
 );
 
 if (fs.existsSync(reactIndexFile)) {

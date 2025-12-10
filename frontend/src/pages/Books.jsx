@@ -36,7 +36,7 @@ export default function Books() {
     try {
       const response = await axios.get("http://localhost:5000/books")
       setBooks(response.data)
-      console.info("ttttttt", response.data)
+      console.info("liste livres", response.data)
     } catch (error) {
       console.error("Erreur lors de la récupération:", error)
     }

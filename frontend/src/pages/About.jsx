@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react"
-import Pere from "../assets/AlexandreDumasPere.jpg"
-import Mère from "../assets/Marie_Louise_Élisabeth_Labouret.jpg"
-import Medaillon from "../assets/medaillon4b.jpg"
 import AlexandreD from "../assets/Alexandre_Dumas.jpg"
 import AlexandreDumas from "../assets/Alexandre_Dumas_Nadar.jpg"
 import ScrollToTopButton from "../components/ScrollToTop"
+import Medaillon from "../components/Medaillon"
 
 export default function About() {
-  const [isMedaillonVisible, setIsMedaillonVisible] = useState(false)
+  const [setIsMedaillonVisible] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -93,35 +91,7 @@ export default function About() {
           cinématographiques et théâtrales.
         </p>
       </div>
-      <div className="Medaillon">
-        <div className="familyPicture">
-          <div className="Picture">
-            <div className={`Père ${isMedaillonVisible ? "animated" : ""}`}>
-              <img className="FamilyP" src={Pere} alt="son père" />
-              {/* </div> */}
-
-              {/* <div className="Père">
-              <img className="FamilyP" src={Pere} alt="son père" /> */}
-              <div className="Info">
-                <h3>Son père</h3>
-                <p>
-                  Thomas Alexandre Davy de La Pailleterie, dit le général Dumas
-                </p>
-              </div>
-            </div>
-            <div className={`Test ${isMedaillonVisible ? "animated" : ""}`}>
-              <img className="medaillon" src={Medaillon} alt="médaillon" />
-            </div>
-            <div className="Mère">
-              <img className="FamilyM" src={Mère} alt="sa mère" />
-              <div className="Info">
-                <h3>Sa mère</h3>
-                <p>Marie-Louise Élisabeth Labouret</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <Medaillon />
       <ScrollToTopButton />
     </div>
   )

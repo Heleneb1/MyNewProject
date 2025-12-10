@@ -44,7 +44,7 @@ class CartManager extends AbstractManager {
   insertHasCart(cart) {
     return this.database.query(
       `INSERT INTO cart_has_books (cart_id, book_id) VALUES (?, ?);`,
-      [cart.cart_id, cart.book_id]
+      [cart.cart_id, cart.book_id],
     );
   }
 
@@ -56,7 +56,7 @@ class CartManager extends AbstractManager {
       JOIN user AS u ON u.id = c.user_id
       WHERE hb.id_cart_has_books = ?
        `,
-      [id]
+      [id],
     );
   }
 
@@ -83,7 +83,7 @@ class CartManager extends AbstractManager {
       WHERE hb.cart_id = ?
       GROUP BY hb.book_id
       `,
-      [user_id, id]
+      [user_id, id],
     );
   }
 
@@ -98,7 +98,7 @@ class CartManager extends AbstractManager {
   deleteItemsByUser(userId, cartId) {
     return this.database.query(
       `DELETE FROM ${this.table} WHERE user_id = ? AND id = ?`,
-      [userId, cartId]
+      [userId, cartId],
     );
   }
 
@@ -106,7 +106,7 @@ class CartManager extends AbstractManager {
     return this.database.query(
       `DELETE FROM cart_has_books where cart_id =? 
       `,
-      [id]
+      [id],
     );
   }
 
@@ -114,7 +114,7 @@ class CartManager extends AbstractManager {
     return this.database.query(
       `DELETE FROM cart_has_books where cart_id=? and book_id =? 
     `,
-      [cartId, bookId]
+      [cartId, bookId],
     );
   }
 
@@ -125,7 +125,7 @@ class CartManager extends AbstractManager {
   update(cart) {
     return this.database.query(
       `update ${this.table} set user_id = ? where id = ?`,
-      [cart.user_id, cart.id]
+      [cart.user_id, cart.id],
     );
   }
 }

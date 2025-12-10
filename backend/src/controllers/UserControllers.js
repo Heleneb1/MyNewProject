@@ -26,11 +26,10 @@ const getToken = (req) => {
     return req.query.token;
   }
   // return null;
-  console.info("getToken", req.headers.authorization);
 };
 const protection = (req, res) => {
   const token = getToken(req);
-  console.info(token);
+
   if (token === null) {
     res.status(200).json({
       mess: "n'a pas accès aux données",
@@ -70,14 +69,13 @@ const browse = (req, res) => {
 // Added NN and UQ for email no duplicate entry
 const createOne = async (req, res) => {
   try {
-    console.info("req.body", req.body);
     const errors = validateUser(req.body);
     if (errors) {
       return res.status(401).send(errors);
     }
 
     const hashedPassword = await hashPassword(req.body.password);
-    console.info(hashedPassword);
+
     const result = await models.user.addOne({
       ...req.body,
       password: hashedPassword,

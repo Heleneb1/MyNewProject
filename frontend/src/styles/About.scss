@@ -38,127 +38,6 @@
     width: 100%;
   }
 
-  .Picture {
-    border-radius: 100%;
-    border: 5px solid var(--font);
-    border-style: inset;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 10px;
-    margin-left: 250px;
-    position: relative;
-    // transition-delay: 1s, 250ms;
-    // transition: all 2s ease-in-out;
-    transform-style: preserve-3d;
-    // perspective-origin: 40% 50%;
-  }
-
-  .Mère {
-    height: 22rem;
-    width: 16rem;
-    border-radius: 100%;
-    border: 5px solid var(--font);
-    border-style: inset;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .Père.animated {
-    position: absolute;
-    height: 22rem;
-    width: 16rem;
-    border-radius: 100%;
-    border: 5px solid var(--font);
-    border-style: inset;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-    position: absolute;
-    overflow: hidden;
-    left: 0;
-    transform-origin: 0% 50%;
-    transform: rotateY(5deg);
-    transform-style: flat;
-    animation: rotations 7s linear forwards;
-    z-index: 1;
-  }
-
-  .Père img {
-    opacity: 0;
-    animation: apparition 4s ease 2s forwards;
-  }
-
-  @keyframes apparition {
-    0% {
-      opacity: 0;
-    }
-
-    100% {
-      opacity: 1;
-    }
-  }
-
-  .Test {
-    position: absolute;
-    object-fit: contain;
-    opacity: 1;
-    height: 22rem;
-    width: 16rem;
-    border-radius: 100%;
-    border: 5px solid var(--font);
-    border-style: inset;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-    overflow: hidden;
-    left: 0;
-    transform-origin: 0% 50%;
-    transform: rotateY(5deg);
-    transform-style: flat;
-    animation: rotations 7s linear forwards;
-  }
-
-  .FamilyP {
-    position: relative;
-    right: 8rem;
-    height: 25rem;
-    cursor: pointer;
-  }
-
-  .Mère {
-    overflow: hidden;
-    left: 0;
-    transform: rotateY(5deg);
-    animation: rotations 0 linear forwards;
-  }
-
-  .FamilyM {
-    width: 100%;
-    height: 350px;
-    cursor: pointer;
-  }
-
-  .medaillon {
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
-  }
-
-  .familyPicture {
-    width: 34rem;
-    margin: 0 0 2rem 3rem;
-    display: flex;
-    justify-content: center;
-  }
-
-  @keyframes rotations {
-    from {
-      transform: rotateY(5deg);
-    }
-
-    to {
-      transform: rotateY(200deg);
-    }
-  }
-
   .Title {
     font-style: oblique;
     font-size: 50px;
@@ -181,61 +60,6 @@
   }
 }
 
-.Info {
-  display: none;
-  position: absolute;
-  z-index: 2;
-  color: var(--font);
-  text-shadow: black 1px 0 10px;
-  font-size: 14px;
-  padding: 5px;
-  transform: translate(-50%, -10%);
-  opacity: 0;
-  padding: 0.5rem;
-  height: 5rem;
-  width: 12rem;
-  left: 1.5rem;
-  border-radius: 0.5rem;
-  text-align: center;
-  transition: opacity 0.5s;
-  background-color: rgba(0, 0, 0, 0.5);
-  border: 1px solid var(--font);
-}
-
-.Info h3 {
-  font-style: italic;
-  margin: 0;
-  padding: 0;
-}
-
-.Mère .Info {
-  display: block;
-  top: 50%;
-  left: 50%;
-  height: 6rem;
-}
-
-.Père .Info {
-  display: block;
-  transform: rotateY(180deg);
-  top: 48%;
-  width: 12rem;
-  height: 6rem;
-  line-height: 1.2rem;
-}
-
-.Mère:hover .Info {
-  opacity: 1;
-}
-
-.Père:hover .Info {
-  opacity: 1;
-}
-
-.Info:hover {
-  animation: apparition 4s ease 2s forwards;
-}
-
 @media screen and (max-width: 768px) {
   .About-All {
     margin-left: 0;
@@ -243,16 +67,6 @@
     width: 100%;
     align-items: center;
   }
-
-  //TODO revoir animation des portraits au format mobile
-  // .About-All .portrait img,
-  // .About-All .Mère,
-  // .About-All .Père,
-  // .About-All .Test {
-  //   width: 90%;
-  //   height: auto;
-  //   border-radius: 50%;
-  // }
 
   .About-All .photo-portrait img {
     width: 90%;
@@ -266,25 +80,9 @@
     margin: 1rem;
   }
 
-  .About-All .familyPicture {
-    width: 100%;
-    margin: 1rem 0;
-  }
-
-  .About-All .Picture {
-    margin-left: 0;
-  }
-
   .About-All .Biography p {
     width: 90%;
     margin: 2rem 1rem;
     font-size: 1.2rem;
-  }
-
-  .FamilyP,
-  .FamilyM {
-    right: 0;
-    width: 80%;
-    height: auto;
   }
 }

@@ -16,7 +16,7 @@ const encodeJWT = (payload) => {
 const verifyToken = (req, res, next) => {
   const token = req.cookies.auth_token || "";
   const authHeader = `Bearer ${token}`;
-  console.info("il est où le token", token);
+
   req.headers.authorization = authHeader;
 
   // eslint-disable-next-line consistent-return

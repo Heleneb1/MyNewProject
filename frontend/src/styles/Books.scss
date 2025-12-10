@@ -10,8 +10,10 @@
   height: 14rem;
 
   border: 2px solid #f6d171;
-  box-shadow: #4d0408 0px 0px 0px 2px inset,
-    rgb(234, 232, 213) 1px -1px 0px -1px, rgb(46, 2, 2) 2px -2px;
+  box-shadow:
+    #4d0408 0px 0px 0px 2px inset,
+    rgb(234, 232, 213) 1px -1px 0px -1px,
+    rgb(46, 2, 2) 2px -2px;
   margin: 10px 10px;
   filter: brightness(121%);
   -webkit-filter: brightness(121%);
@@ -26,11 +28,16 @@
   justify-content: center;
   background-color: var(--red);
   object-fit: contain;
-  box-shadow: var(--red) 0px 0px 0px 2px inset,
-    rgb(209, 209, 206) 5px -10px 0px -10px, rgb(239, 243, 239) 5px -5px,
-    rgb(209, 209, 206) 10px -15px 0px -10px, rgb(234, 233, 229) 10px -10px,
-    rgb(209, 209, 206) 20px -20px 0px -10px, rgb(239, 235, 233) 15px -15px,
-    rgb(209, 209, 206) 25px -20px 0px -10px, var(--red) 25px -20px;
+  box-shadow:
+    var(--red) 0px 0px 0px 2px inset,
+    rgb(209, 209, 206) 5px -10px 0px -10px,
+    rgb(239, 243, 239) 5px -5px,
+    rgb(209, 209, 206) 10px -15px 0px -10px,
+    rgb(234, 233, 229) 10px -10px,
+    rgb(209, 209, 206) 20px -20px 0px -10px,
+    rgb(239, 235, 233) 15px -15px,
+    rgb(209, 209, 206) 25px -20px 0px -10px,
+    var(--red) 25px -20px;
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
   border-top-right-radius: 3px;
@@ -38,11 +45,16 @@
 }
 
 .book-style:hover {
-  box-shadow: var(--blue) 0px 0px 0px 2px inset,
-    rgb(209, 209, 206) 5px -10px 0px -5px, rgb(239, 243, 239) 5px -5px,
-    rgb(209, 209, 206) 10px -16px 0px -5px, rgb(234, 233, 229) 10px -10px,
-    rgb(209, 209, 206) 20px -22px 0px -5px, rgb(239, 235, 233) 20px -15px,
-    rgb(209, 209, 206) 30px -26px 0px -5px, var(--blue) 30px -28px;
+  box-shadow:
+    var(--blue) 0px 0px 0px 2px inset,
+    rgb(209, 209, 206) 5px -10px 0px -5px,
+    rgb(239, 243, 239) 5px -5px,
+    rgb(209, 209, 206) 10px -16px 0px -5px,
+    rgb(234, 233, 229) 10px -10px,
+    rgb(209, 209, 206) 20px -22px 0px -5px,
+    rgb(239, 235, 233) 20px -15px,
+    rgb(209, 209, 206) 30px -26px 0px -5px,
+    var(--blue) 30px -28px;
   background-color: var(--blue);
   cursor: pointer;
 }
@@ -90,7 +102,8 @@
 }
 
 .Changebook:active {
-  box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6),
+  box-shadow:
+    inset -2px -2px 3px rgba(255, 255, 255, 0.6),
     inset 2px 2px 3px var(--background);
   background: var(--font);
   color: var(--background);
@@ -98,7 +111,8 @@
 }
 
 .Changebook:hover {
-  box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6),
+  box-shadow:
+    inset -2px -2px 3px rgba(255, 255, 255, 0.6),
     inset 2px 2px 3px rgba(0, 0, 0, 0.6);
   background: var(--font);
   color: var(--background);
@@ -199,7 +213,8 @@
 }
 
 .modal-close:hover {
-  box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6),
+  box-shadow:
+    inset -2px -2px 3px rgba(255, 255, 255, 0.6),
     inset 2px 2px 3px rgba(0, 0, 0, 0.6);
   background: #f6d171;
   color: var(--background);
@@ -249,7 +264,8 @@
 }
 
 *input[type="file"]::-webkit-file-upload-button:hover {
-  box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6),
+  box-shadow:
+    inset -2px -2px 3px rgba(255, 255, 255, 0.6),
     inset 2px 2px 3px rgba(0, 0, 0, 0.6);
   background: #f6d171;
   color: var(--background);
@@ -271,7 +287,8 @@
 }
 
 *input[type="reset"]:hover {
-  box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6),
+  box-shadow:
+    inset -2px -2px 3px rgba(255, 255, 255, 0.6),
     inset 2px 2px 3px rgba(0, 0, 0, 0.6);
   background: #f6d171;
   color: var(--background);

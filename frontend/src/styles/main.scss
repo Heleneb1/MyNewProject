@@ -9,6 +9,7 @@
 @use "./Login.scss";
 @use "./Quotes.scss";
 @use "./Navbar.scss";
+@use "./Medaillon.scss";
 
 body {
   margin: 0;
@@ -46,7 +47,8 @@ body {
 }
 
 .Changebook:active {
-  box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6),
+  box-shadow:
+    inset -2px -2px 3px rgba(255, 255, 255, 0.6),
     inset 2px 2px 3px var(--background);
   background: var(--font);
   color: var(--background);
@@ -54,7 +56,8 @@ body {
 }
 
 .Changebook:hover {
-  box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6),
+  box-shadow:
+    inset -2px -2px 3px rgba(255, 255, 255, 0.6),
     inset 2px 2px 3px rgba(0, 0, 0, 0.6);
   background: var(--font);
   color: var(--background);

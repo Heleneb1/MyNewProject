@@ -14,7 +14,7 @@ export default function Cart() {
   const [book, setBook] = useState(null)
   const [selectedBooks, setSelectedBooks] = useState([])
   const [books, setBooks] = useState([])
-  const [, setUserData] = useState([])
+  const [setUserData] = useState([])
   const [isConnected, setIsConnected] = useState(false)
   const [message, setMessage] = useState("")
   const [removeMessage, setRemoveMessage] = useState("")
@@ -23,16 +23,11 @@ export default function Cart() {
   const storedUserId = localStorage.getItem("userId")
   const storedCartId = localStorage.getItem("cart_id")
 
-  console.info("userId", storedUserId)
-
-  console.info("user card", storedCartId)
-  console.info("user", user)
-  console.info("cartId", cartId)
   const navigate = useNavigate()
 
   const token = localStorage.getItem("token")
   const { confirm } = useConfirmation()
-
+  console.info("CartId", cartId, "User", user)
   // const handleChange = (event) => {
   //   setMessage(event.target.value)
   // }
@@ -55,9 +50,7 @@ export default function Cart() {
 
       .then((response) => {
         setUserData(response.data)
-        console.info("userData c'est le token", response.data)
         setUserId(response.data.id)
-        localStorage.setItem("userData cart", response.data.token)
       })
       .catch((error) => {
         console.error(error)

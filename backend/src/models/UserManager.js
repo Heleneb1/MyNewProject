@@ -11,7 +11,7 @@ class UserManager extends AbstractManager {
     try {
       const [user] = await this.database.query(
         "select * from user where id = ? ",
-        [id]
+        [id],
       );
       return user;
     } catch (error) {
@@ -27,10 +27,10 @@ class UserManager extends AbstractManager {
   async addOne(user) {
     try {
       const { user_name, email, password } = user;
-      console.info("User Created", user);
+
       const [result] = await this.database.query(
         "insert into user (user_name, email, password, cart_id) values (?,?,?,?)",
-        [user_name, email, password, null]
+        [user_name, email, password, null],
       );
       const userId = result.insertId;
       const cart = await this.createCartForUser(userId);
@@ -46,10 +46,10 @@ class UserManager extends AbstractManager {
     try {
       const [result] = await this.database.query(
         "insert into cart (user_id) values (?)",
-        [userId]
+        [userId],
       );
       const cartId = result.insertId;
-      console.info("Cart Created", { id: cartId, user_id: userId });
+      console.info("Cart Created");
       return { id: cartId, user_id: userId };
     } catch (error) {
       console.error("Erreur lors de la création du panier", error);
@@ -66,7 +66,7 @@ class UserManager extends AbstractManager {
     } catch (error) {
       console.error(
         "Erreur lors de la mise à jour du panier de l'utilisateur",
-        error
+        error,
       );
     }
   }
@@ -76,7 +76,7 @@ class UserManager extends AbstractManager {
     try {
       const [user] = await this.database.query(
         "select * from user where email = ? ",
-        [email]
+        [email],
       );
       return user;
     } catch (error) {
