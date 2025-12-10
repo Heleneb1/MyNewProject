@@ -1,0 +1,110 @@
+.Filter_container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  // margin-top: 2rem;
+
+  .Characters,
+  .Books {
+    margin: 2rem;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  label {
+    width: 14rem;
+    font-size: 1.5rem;
+    margin: 1rem;
+  }
+
+  // select#book,
+  // select#character.select-style {
+  //   background-color: rgb(30, 29, 29);
+  //   border: 1px solid #f6d171;
+  //   border-radius: 5px;
+  //   color: #f6d171;
+  //   width: 14rem;
+  //   height: 3rem;
+  //   padding: 0.5rem;
+  //   font-size: 1.1rem;
+  //   border-radius: 1.5rem;
+  // }
+  // .Books label {
+  //   margin: 20px;
+  // }
+  // select#book {
+  //   margin-top: 100px;
+  //   margin-left: 30px;
+  //   background-color: rgb(30, 29, 29);
+  //   border: 1px solid #f6d171;
+  //   border-radius: 5px;
+  //   color: #f6d171;
+  //   width: 186px;
+  //   height: 35px;
+  //   padding: 5px;
+  //   font-size: 15px;
+  // }
+  .Charaters_Book {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .Charaters_Book_content {
+      background-color: rgb(30, 29, 29);
+      padding: 20px;
+      border-radius: 5px;
+      width: 70%;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      font-size: 20px;
+      line-height: 1.5;
+      font-style: oblique;
+    }
+
+    .Charaters_Book_close {
+      margin-top: 10px;
+      padding: 5px 10px;
+      margin: 20px;
+      background: transparent;
+      border: 1px #f6d171 solid;
+      border-radius: 30px;
+      color: #f6d171;
+      width: 200px;
+      height: 30px;
+      cursor: pointer;
+    }
+
+    .Charaters_Book_close:hover {
+      box-shadow:
+        inset -2px -2px 3px rgba(255, 255, 255, 0.6),
+        inset 2px 2px 3px rgba(0, 0, 0, 0.6);
+      background: #f6d171;
+      color: rgb(30, 29, 29);
+      scale: 1.1;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .Filter_container {
+    padding-top: 7rem;
+
+    .Characters,
+    .Books {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    label {
+      width: auto;
+      font-size: 1.2rem;
+      margin: 0.5rem;
+    }
+  }
+}
