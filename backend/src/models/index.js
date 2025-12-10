@@ -60,7 +60,7 @@ models.quote = new QuotesManager();
 models.quote.setDatabase(pool);
 
 // eslint-disable-next-line import/no-unresolved
-const UserManager = require("./userManager");
+const UserManager = require("./UserManager");
 
 models.user = new UserManager();
 models.user.setDatabase(pool);
