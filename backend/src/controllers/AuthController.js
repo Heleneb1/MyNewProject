@@ -20,7 +20,7 @@ const login = async (req, res) => {
     if (!user) {
       return res
         .status(HTTP_UNAUTHORIZED)
-        .json({ message: "Invalid Credentials" });
+        .json({ message: "Invalid Credentials 🥺" });
     }
 
     const passwordVerification = await verifyPassword(
@@ -30,7 +30,7 @@ const login = async (req, res) => {
     if (!passwordVerification) {
       return res
         .status(HTTP_UNAUTHORIZED)
-        .json({ message: "Invalid Credentials" });
+        .json({ message: "Invalid Credentials 😼" });
     }
 
     const token = encodeJWT({

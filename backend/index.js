@@ -9,6 +9,6 @@ app.listen(port, (err) => {
     console.error("Something bad happened");
   } else {
     // eslint-disable-next-line no-restricted-syntax
-    console.info(`Server is listening on ${port}`);
+    console.info(`Server is listening on ${port}, Welcome 😊`);
   }
 });

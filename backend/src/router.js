@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const express = require("express");
 const fs = require("fs");
 const cookieParser = require("cookie-parser");
@@ -178,18 +180,25 @@ router.post("/auth/login", AuthController.login);
 //   res.header("Authorization", `Bearer ${token}`).json({ token });
 // });
 // Route de login
+// Route de login
 router.post("/auth", (req, res) => {
   const { email } = req.body;
 
   // Vérifier les informations d'identification de l'utilisateur
+  // TODO: Ajouter la vérification réelle de l'utilisateur en base de données
+
+  // Définir le payload avec les informations de l'utilisateur
+  const payload = {
+    email: email,
+    // Ajoutez d'autres informations si nécessaire (userId, etc.)
+  };
 
   // Si l'utilisateur est authentifié avec succès, générer un token
-  const token = jwt.sign({ email }, process.env.TOKEN_SECRET);
+  const token = jwt.sign(payload, process.env.TOKEN_SECRET, { expiresIn: '24h' });
 
   // Envoyer le token dans la réponse
   res.json({ token });
 });
-
 router.get("/auth/logout", AuthController.logout);
 
 // router.get("/user/:id/cart_id", UserController.getOne);

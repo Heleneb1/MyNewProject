@@ -1,4 +1,5 @@
 // import some node modules for later
+require('dotenv').config();
 
 const fs = require("node:fs");
 const path = require("node:path");
