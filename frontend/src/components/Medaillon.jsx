@@ -18,6 +18,8 @@ export default function FamilyMedaillon() {
         }
       }
     }
+    // Vérifier immédiatement au montage
+    handleScroll()
 
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)

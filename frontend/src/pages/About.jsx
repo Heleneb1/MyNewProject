@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react"
-import AlexandreD from "../assets/Alexandre_Dumas.jpg"
+import AlexandreD from "../assets/Alexandre_Dumas_père.gif"
 import AlexandreDumas from "../assets/Alexandre_Dumas_Nadar.jpg"
-import ScrollToTopButton from "../components/ScrollToTop"
 import Medaillon from "../components/Medaillon"
 
 export default function About() {

@@ -1,4 +1,4 @@
-import { Route, Routes, useLocation } from "react-router-dom"
+import { Route, Routes, useLocation, Navigate } from "react-router-dom"
 import About from "./pages/About"
 import Home from "./pages/Home"
 
@@ -8,12 +8,14 @@ import Quotes from "./pages/Quotes"
 import Characters from "./pages/Characters"
 import Login from "./components/Login"
 import SplashPageBook from "./pages/SplashPageBook"
-// import "./App.css"
 import Test from "./pages/Test"
 import Cart from "./components/Cart"
 import Contact from "./components/Contact"
 import Glitter from "./components/Glitter"
 import ScrollToTop from "./components/ScrollToTop"
+import NotFound from "./components/NotFound"
+import Footer from "@components/Footer"
+
 
 function App() {
   const location = useLocation()
@@ -39,11 +41,18 @@ function App() {
         <Route path="/characters" element={<Characters />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/404" element={<NotFound />} />
+        <Route path="*" element={<Navigate to="/404" replace />} />
         <Route path="/test" element={<Test />} />
       </Routes>
-      <>
-        <ScrollToTop />
-      </>
+
+      {!isOnSplash && (
+        <>
+          <ScrollToTop />
+          <Footer />
+        </>
+      )}
+
     </div>
   )
 }

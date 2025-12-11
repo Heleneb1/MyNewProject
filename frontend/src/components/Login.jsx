@@ -15,6 +15,7 @@ function Login() {
   const [toggleVisibility, setToggleVisibility] = useState(false)
   const navigate = useNavigate()
 
+
   const handleLoginSubmit = (e) => {
     e.preventDefault()
 
@@ -27,14 +28,13 @@ function Login() {
         },
         {
           withCredentials: true, // permet la transmission du cookie
+          // ✅ Supprimez complètement le header Authorization ici
         }
       )
       .then((res) => {
         if (res.data.role === 0) {
-          // User is a regular user, redirect to the books page
           navigate("/books")
         } else if (res.data.role === 1) {
-          // User is an admin, redirect to the admin dashboard
           navigate("/books")
         }
 
@@ -42,8 +42,8 @@ function Login() {
         localStorage.setItem("userId", res.data.id)
         localStorage.setItem("role", res.data.role)
         localStorage.setItem("cart_id", res.data.cart_id)
-        localStorage.setItem("auth_token", res.data.token)
-        // localStorage.setItem("auth_token", res.headers["x-access-token"])
+        localStorage.setItem("auth_token", res.data.token) // ✅ Ici vous recevez le token
+
         alert(`Bienvenue ${res.data.user_name} !`)
         window.location.reload()
       })
@@ -52,7 +52,6 @@ function Login() {
         alert("Identifiants incorrects.")
       })
   }
-
   const handleSignupSubmit = (e) => {
     e.preventDefault()
     if (signupPassword !== signupConfirmPassword) {
