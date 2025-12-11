@@ -114,32 +114,39 @@ body::after {
 
 .modal {
   position: fixed;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  overflow-y: auto;
+  display: block;
+  padding: 20px;
+  /* pour respirer */
   z-index: 1000;
 }
 
 .modal-content {
   background-color: var(--background);
   padding: 20px;
-  border-radius: 5px;
-  width: 70%;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 600px;
+  max-height: 90vh;
+  /* ✅ limite la hauteur pour scroll */
+  margin-top: 40px;
+  /* espace au-dessus */
+  overflow-y: auto;
+  /* scroll interne si contenu trop grand */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  font-size: 20px;
-  line-height: 1.5;
-  z-index: 1000;
-
-  h2 {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 50px;
-  }
 }
+
+h2 {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
 
 //pour centrer le bouton dans le modal
 .mc-button {
