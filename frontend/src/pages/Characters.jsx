@@ -1,80 +1,80 @@
-import { useState, useEffect } from "react"
-import axios from "axios"
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 export default function Characters() {
-  const [selectedCharacter, setSelectedCharacter] = useState("")
-  const [selectedBook, setSelectedBook] = useState("")
-  const [books, setBooks] = useState([])
-  const [associations, setAssociations] = useState([])
-  const [, setFilteredBook] = useState([])
-  const [openModal, setOpenModal] = useState(false)
+  const [selectedCharacter, setSelectedCharacter] = useState('');
+  const [selectedBook, setSelectedBook] = useState('');
+  const [books, setBooks] = useState([]);
+  const [associations, setAssociations] = useState([]);
+  const [, setFilteredBook] = useState([]);
+  const [openModal, setOpenModal] = useState(false);
 
   useEffect(() => {
     const fetchBooks = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/bookshascharacters"
-        )
-        setBooks(response.data)
+          'http://localhost:5000/bookshascharacters'
+        );
+        setBooks(response.data);
       } catch (error) {
-        console.error("Erreur lors de la récupération:", error)
+        console.error('Erreur lors de la récupération:', error);
       }
-    }
-    fetchBooks()
-  }, [])
+    };
+    fetchBooks();
+  }, []);
 
   useEffect(() => {
-    const newAssociations = []
+    const newAssociations = [];
     books.forEach((book) => {
-      const character = book.name_characters
-      newAssociations.push({ character, book })
-    })
-    setAssociations(newAssociations)
-  }, [books])
+      const character = book.name_characters;
+      newAssociations.push({ character, book });
+    });
+    setAssociations(newAssociations);
+  }, [books]);
 
   useEffect(() => {
-    setFilteredBook([])
-  }, [selectedCharacter])
+    setFilteredBook([]);
+  }, [selectedCharacter]);
 
   const handleCharacterSelection = (e) => {
-    setSelectedCharacter(e.target.value)
-    setSelectedBook("")
-  }
+    setSelectedCharacter(e.target.value);
+    setSelectedBook('');
+  };
 
   const handleBookSelection = (e) => {
-    setSelectedBook(e.target.value)
-    if (e.target.value !== "") {
-      setOpenModal(true)
+    setSelectedBook(e.target.value);
+    if (e.target.value !== '') {
+      setOpenModal(true);
     }
-    setFilteredBook([])
-  }
+    setFilteredBook([]);
+  };
 
   const filteredBooks = associations.filter(
     (association) =>
       association.character === selectedCharacter &&
-      (selectedBook === "" || association.book.associated_book === selectedBook)
-  )
+      (selectedBook === '' || association.book.associated_book === selectedBook)
+  );
 
   const filteredCharacters = books
     .map((book) => book.name_characters)
-    .filter((character, index, self) => self.indexOf(character) === index)
+    .filter((character, index, self) => self.indexOf(character) === index);
 
   const resetFilters = () => {
-    setSelectedCharacter("")
-    setSelectedBook("")
-    setFilteredBook([])
-  }
+    setSelectedCharacter('');
+    setSelectedBook('');
+    setFilteredBook([]);
+  };
 
   const handleModalClose = () => {
-    setOpenModal(false)
-    setSelectedBook("")
-    resetFilters()
-  }
+    setOpenModal(false);
+    setSelectedBook('');
+    resetFilters();
+  };
 
   // code pour supprimer les doublons
   const bookOptions = [
     ...new Set(filteredBooks.map((b) => b.book.associated_book)),
-  ]
+  ];
 
   return (
     <div className="Filter_container">
@@ -120,12 +120,12 @@ export default function Characters() {
               index === self.findIndex((b) => b.book.id === book.book.id)
           )
           .map((association) => (
-            <div className="Charaters_Book" key={association.book.title}>
-              <div className="Charaters_Book_content">
-                <h2>{association.book.title}</h2>
+            <div className="modal" key={association.book.title}>
+              <div className="modal-content">
+                <h2>{association.book.associated_book}</h2>
                 <p>{association.book.description}</p>
                 <button
-                  className="Charaters_Book_close"
+                  className="modal-close"
                   type="button"
                   onClick={handleModalClose}
                 >
@@ -135,5 +135,5 @@ export default function Characters() {
             </div>
           ))}
     </div>
-  )
+  );
 }

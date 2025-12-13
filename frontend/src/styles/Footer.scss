@@ -1,0 +1,20 @@
+.footer {
+  background: rgba(20, 20, 20, 0.95);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(246, 209, 113, 0.2);
+  color: var(--font);
+  text-align: center;
+  padding: 1rem 0;
+  font-size: 0.9rem;
+  margin-top: 1.5rem;
+}
+
+.footer a {
+  color: var(--font);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}

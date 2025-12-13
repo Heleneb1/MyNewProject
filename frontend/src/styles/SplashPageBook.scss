@@ -1,6 +1,5 @@
-// SPLASH PAGE BOOK - Version améliorée
 .Book-container {
-  position: relative; // CHANGÉ: fixed au lieu de relative pour couvrir toute la page
+  position: relative;
   top: 0;
   left: 0;
   width: 100vw;
@@ -10,12 +9,11 @@
   overflow: hidden;
   z-index: 9999; // AJOUTÉ: pour passer au-dessus du header
 
-  // Fond avec dégradé amélioré
   background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
 
   // Effet d'éclairage ambiant
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     top: 50%;
     left: 50%;
@@ -33,17 +31,11 @@
 
   // Masquer le splash après ouverture complète
   &.open {
-    // On peut soit le masquer complètement après un délai
-    // soit le laisser visible avec z-index réduit
-    transition:
-      opacity 0.5s ease 3s,
-      z-index 0s 3.5s;
+    transition: opacity 0.5s ease 3s, z-index 0s 3.5s;
 
     .Book-left {
       transform: rotateY(-180deg);
-      box-shadow:
-        2px 0 10px rgba(0, 0, 0, 0.3),
-        10px 0 30px rgba(0, 0, 0, 0.2),
+      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3), 10px 0 30px rgba(0, 0, 0, 0.2),
         20px 0 50px rgba(0, 0, 0, 0.1);
 
       &::before {
@@ -54,9 +46,7 @@
 
     .Book-leftsecond {
       transform: rotateY(-180deg);
-      box-shadow:
-        2px 0 8px rgba(0, 0, 0, 0.2),
-        8px 0 20px rgba(0, 0, 0, 0.15);
+      box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2), 8px 0 20px rgba(0, 0, 0, 0.15);
     }
 
     .splash-home {
@@ -93,15 +83,13 @@
   transition: transform 2.5s cubic-bezier(0.645, 0.045, 0.355, 1);
   z-index: 3;
 
-  // Ombre portée dynamique améliorée
-  box-shadow:
-    -2px 0 10px rgba(0, 0, 0, 0.3),
-    -10px 0 30px rgba(0, 0, 0, 0.2),
+  // Ombre portée
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3), -10px 0 30px rgba(0, 0, 0, 0.2),
     -20px 0 50px rgba(0, 0, 0, 0.1);
 
   // Reliure avec dégradé d'ombre
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     left: 0;
     top: 0;
@@ -119,7 +107,7 @@
 
   // Effet de lumière qui glisse
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     inset: 0;
     background: radial-gradient(
@@ -142,7 +130,6 @@
   left: 0;
   width: 100vw;
   height: 100%;
-  // Dégradé subtil pour donner du relief
   background: linear-gradient(to right, #f5e6c8 0%, #f2e6ae 50%, #f5e6c8 100%);
   transform-origin: left center;
   transform: rotateY(3deg);
@@ -151,9 +138,9 @@
   transition: transform 2.5s cubic-bezier(0.645, 0.045, 0.355, 1) 0.3s;
   z-index: 2;
 
-  // Texture papier légère (optionnel)
+  // Texture papier
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     inset: 0;
     background-image: repeating-linear-gradient(
@@ -167,9 +154,7 @@
   }
 
   // Ombre portée
-  box-shadow:
-    -2px 0 8px rgba(0, 0, 0, 0.2),
-    -8px 0 20px rgba(0, 0, 0, 0.15);
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2), -8px 0 20px rgba(0, 0, 0, 0.15);
 }
 
 // CONTENU HOME
@@ -178,39 +163,14 @@
   inset: 0;
   opacity: 0;
   transform: scale(0.95);
-  transition:
-    opacity 1.5s ease 0.5s,
-    transform 1.5s ease 0.5s;
+  transition: opacity 1.5s ease 0.5s, transform 1.5s ease 0.5s;
   z-index: -1;
   pointer-events: none;
 }
 
-// HEADER ET FOOTER - Masqués pendant le splash
-.Book-container:not(.open) ~ .Header,
-.Book-container:not(.open) ~ .Footer {
-  opacity: 0;
-  pointer-events: none;
-}
-
-// Alternative: masquer via le conteneur parent
-body:has(.Book-container:not(.open)) {
-  .Header,
-  .Footer {
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-  }
-}
-
-// Réapparition du header/footer
-.Header,
-.Footer {
-  transition: opacity 1s ease 0.5s;
-}
-
 // EFFET DE PARTICULES DORÉES (optionnel)
 .Book-container::after {
-  content: "";
+  content: '';
   position: absolute;
   bottom: 0;
   left: 50%;
@@ -220,10 +180,8 @@ body:has(.Book-container:not(.open)) {
   border-radius: 50%;
   animation: float-particles 3s ease-in-out infinite;
   pointer-events: none;
-  box-shadow:
-    -100px 20px 0 rgba(255, 220, 150, 0.4),
-    100px 40px 0 rgba(255, 220, 150, 0.4),
-    -50px 60px 0 rgba(255, 220, 150, 0.3),
+  box-shadow: -100px 20px 0 rgba(255, 220, 150, 0.4),
+    100px 40px 0 rgba(255, 220, 150, 0.4), -50px 60px 0 rgba(255, 220, 150, 0.3),
     50px 80px 0 rgba(255, 220, 150, 0.3);
 }
 
@@ -296,41 +254,3 @@ body:has(.Book-container:not(.open)) {
     background-size: 100% 100%;
   }
 }
-
-// // ============================================
-// // MODE DÉVELOPPEMENT - DÉSACTIVER LES ANIMATIONS
-// // Commentez cette section pour réactiver
-// // ============================================
-// .Book-container {
-
-//   // Désactiver toutes les animations
-//   *,
-//   *::before,
-//   *::after {
-//     animation: none !important;
-//     transition: none !important;
-//   }
-
-//   // Afficher les pages côte à côte pour voir la mise en page
-//   .Book-left {
-//     transform: rotateY(0deg) !important;
-//     // OU pour voir l'état ouvert :
-//     // transform: rotateY(-90deg) !important;
-//   }
-
-//   .Book-leftsecond {
-//     transform: rotateY(0deg) !important;
-//     // OU pour voir l'état ouvert :
-//     // transform: rotateY(-90deg) !important;
-//     opacity: 0.5; // Pour voir les deux pages superposées
-//   }
-
-//   .splash-home {
-//     opacity: 1 !important;
-//     z-index: 1 !important;
-//   }
-// }
-
-// // ============================================
-// // FIN MODE DÉVELOPPEMENT
-// // ============================================

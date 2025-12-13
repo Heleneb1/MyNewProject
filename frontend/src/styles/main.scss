@@ -1,15 +1,21 @@
-@use "./Home.scss";
-@use "./Header.scss";
-@use "./About.scss";
-@use "./Books.scss";
-@use "./Glitter.scss";
-@use "./Contact.scss";
-@use "./SplashPageBook.scss";
-@use "./Characters.scss";
-@use "./Login.scss";
-@use "./Quotes.scss";
-@use "./Navbar.scss";
-@use "./Medaillon.scss";
+@use './Home.scss';
+@use './About.scss';
+@use './Books.scss';
+@use './Glitter.scss';
+@use './Contact.scss';
+@use './SplashPageBook.scss';
+@use './Characters.scss';
+@use './Cart.scss';
+@use './Login.scss';
+@use './Quotes.scss';
+@use './Navbar.scss';
+@use './Medaillon.scss';
+@use './ScrollToTop.scss';
+@use './NotFound.scss';
+@use './Footer.scss';
+
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Luxurious+Script&family=Pinyon+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Birthstone&display=swap');
 
 body {
   margin: 0;
@@ -20,16 +26,37 @@ body {
   width: 100%;
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Luxurious+Script&family=Pinyon+Script&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Birthstone&display=swap");
+body::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  background: rgba(255, 220, 150, 0.6);
+  border-radius: 50%;
+  animation: float-particles 3s ease-in-out infinite;
+  pointer-events: none;
+  box-shadow: -100px 20px 0 rgba(255, 220, 150, 0.4),
+    100px 40px 0 rgba(255, 220, 150, 0.4), -50px 60px 0 rgba(255, 220, 150, 0.3),
+    50px 80px 0 rgba(255, 220, 150, 0.3);
+}
 
-// @import url("https://fonts.googleapis.com/css2? family= Carattere & display=swap");
 :root {
   --background: #1e1d1d;
   --font: #f6d171;
   --navbar: #141414;
   --red: #4d0408;
   --blue: #045259;
+}
+
+h1 {
+  margin: 0;
+  font-size: 3rem;
+  font-family: 'Corinthia', cursive, Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size-adjust: 0.45;
 }
 
 .Changebook {
@@ -47,8 +74,7 @@ body {
 }
 
 .Changebook:active {
-  box-shadow:
-    inset -2px -2px 3px rgba(255, 255, 255, 0.6),
+  box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6),
     inset 2px 2px 3px var(--background);
   background: var(--font);
   color: var(--background);
@@ -56,11 +82,16 @@ body {
 }
 
 .Changebook:hover {
-  box-shadow:
-    inset -2px -2px 3px rgba(255, 255, 255, 0.6),
+  box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6),
     inset 2px 2px 3px rgba(0, 0, 0, 0.6);
   background: var(--font);
   color: var(--background);
+}
+
+a.Changebook {
+  text-decoration: none;
+
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .select-style {
@@ -90,7 +121,96 @@ body {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow-y: auto;
+  display: block;
+  padding: 20px;
+  /* pour respirer */
+  z-index: 1000;
+}
+
+.modal-content {
+  font-size: 1.3rem;
+  line-height: 1.4;
+  background-color: var(--background);
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 600px;
+  margin: 5rem auto;
+  /* espace au-dessus */
+  overflow-y: auto;
+  /* scroll interne si contenu trop grand */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+h2 {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+//pour centrer le bouton dans le modal
+.mc-button {
+  display: flex;
+  justify-content: center;
+}
+
+.modal-close {
+  margin-top: 10px;
+  padding: 5px 10px;
+  margin: 20px;
+  background: transparent;
+  border: 1px #f6d171 solid;
+  border-radius: 30px;
+  color: #f6d171;
+  width: 200px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.modal-close:hover {
+  box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6),
+    inset 2px 2px 3px rgba(0, 0, 0, 0.6);
+  background: #f6d171;
+  color: var(--background);
+  scale: 1.1;
+}
+
 .buttonContainer {
   display: flex;
   justify-content: space-around;
+}
+
+@keyframes float-particles {
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-100vh) translateX(50px);
+    opacity: 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  h1 {
+    font-size: 1.5rem;
+    font-weight: normal;
+  }
 }

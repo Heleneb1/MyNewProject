@@ -1,8 +1,8 @@
-const AbstractManager = require("./AbstractManager");
+const AbstractManager = require('./AbstractManager');
 
 class CharactersManager extends AbstractManager {
   constructor() {
-    super({ table: "quotes" });
+    super({ table: 'quotes' });
   }
 
   insert(quote) {

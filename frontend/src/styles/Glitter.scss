@@ -19,34 +19,19 @@
     transform: translateY(-90%) rotate(0deg);
     opacity: 0;
   }
+
   50% {
     transform: translateY(0%) rotate(180deg);
     opacity: 0.5;
   }
+
   75% {
     transform: translateY(0%) rotate(180deg);
     opacity: 0.7;
   }
+
   100% {
     transform: translateY(90%) rotate(360deg);
     opacity: 1;
   }
-}
-@media screen and (max-width: 768px) {
-  // .glitter-container {
-  //   top: 0;
-  //   left: 0;
-  //   z-index: -1000;
-  //   height: 100%;
-  //   width: 300px;
-  // }
-  // .glitter {
-  //   position: absolute;
-  //   width: 3px;
-  //   height: 3px;
-  //   background: linear-gradient(45deg, #f8d61e, transparent);
-  //   border-radius: 50%;
-  //   animation: glitter 10s ease-in-out;
-  //   filter: brightness(100%);
-  // }
 }

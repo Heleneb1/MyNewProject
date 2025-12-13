@@ -1,12 +1,12 @@
-const argon2 = require("argon2");
+const argon2 = require('argon2');
 // eslint-disable-next-line no-unused-vars
-const { optional } = require("joi");
+const { optional } = require('joi');
 
 const hashingOptions = {
   type: argon2.argon2id,
   memoryCost: 2 ** 16,
   timeCost: 5,
-  parallelism: 1,
+  parallelism: 1
 };
 
 const hashPassword = (plainPassword) => {

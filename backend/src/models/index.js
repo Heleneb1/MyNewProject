@@ -1,6 +1,6 @@
-require("dotenv").config();
+require('dotenv').config();
 
-const mysql = require("mysql2/promise");
+const mysql = require('mysql2/promise');
 
 // create a connection pool to the database
 
@@ -11,16 +11,16 @@ const pool = mysql.createPool({
   port: DB_PORT,
   user: DB_USER,
   password: DB_PASSWORD,
-  database: DB_NAME,
+  database: DB_NAME
 });
 
 // try a connection
 
 pool.getConnection().catch(() => {
   console.warn(
-    "Warning:",
-    "Failed to get a DB connection.",
-    "Did you create a .env file with valid credentials?",
+    'Warning:',
+    'Failed to get a DB connection.',
+    'Did you create a .env file with valid credentials?',
     "Routes using models won't work as intended"
   );
 });
@@ -29,38 +29,38 @@ pool.getConnection().catch(() => {
 
 const models = {};
 
-const ItemManager = require("./ItemManager");
+const ItemManager = require('./ItemManager');
 
 models.item = new ItemManager();
 models.item.setDatabase(pool);
 
-const BooksManager = require("./BooksManager");
+const BooksManager = require('./BooksManager');
 
 models.book = new BooksManager();
 models.book.setDatabase(pool);
 
-const CartManager = require("./CartManager");
+const CartManager = require('./CartManager');
 
 models.cart = new CartManager();
 models.cart.setDatabase(pool);
 
-const CharactersManager = require("./CharactersManager");
+const CharactersManager = require('./CharactersManager');
 
 models.character = new CharactersManager();
 models.character.setDatabase(pool);
 
-const ImagesManager = require("./ImagesManager");
+const ImagesManager = require('./ImagesManager');
 
 models.image = new ImagesManager();
 models.image.setDatabase(pool);
 
-const QuotesManager = require("./QuotesManager");
+const QuotesManager = require('./QuotesManager');
 
 models.quote = new QuotesManager();
 models.quote.setDatabase(pool);
 
 // eslint-disable-next-line import/no-unresolved
-const UserManager = require("./UserManager");
+const UserManager = require('./UserManager');
 
 models.user = new UserManager();
 models.user.setDatabase(pool);
@@ -74,15 +74,14 @@ const handler = {
       return obj[prop];
     }
 
-    const pascalize = (string) =>
-      string.slice(0, 1).toUpperCase() + string.slice(1);
+    const pascalize = (string) => string.slice(0, 1).toUpperCase() + string.slice(1);
 
     throw new ReferenceError(
       `models.${prop} is not defined. Did you create ${pascalize(
         prop
       )}Manager.js, and did you register it in backend/src/models/index.js?`
     );
-  },
+  }
 };
 
 module.exports = new Proxy(models, handler);

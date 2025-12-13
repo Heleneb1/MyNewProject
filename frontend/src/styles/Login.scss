@@ -1,236 +1,106 @@
 .Login {
-  font-size: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Birthstone', cursive;
+
+  h2 {
+    font-size: 3rem;
+    text-align: center;
+    margin: 0 1rem 0 0;
+  }
+}
+
+.Connect {
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100%;
-  font-family: "Birthstone", cursive;
+}
 
-  // margin-left: 20px;
-  h2 {
-    font-size: 40px;
+.form-container {
+  width: 99%;
+  max-width: 400px;
+  padding: 1rem;
+}
+
+.form-field {
+  width: 99%;
+  margin-bottom: 1rem;
+}
+
+input {
+  width: 99%;
+  background-color: rgb(30, 29, 29);
+  border: 1px solid #f6d171;
+  border-radius: 5px;
+  color: #f6d171;
+  padding: 10px;
+  font-size: 18px;
+}
+
+.password-field {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 99%;
+  margin-bottom: 1rem;
+}
+
+input.check {
+  width: 1.3rem;
+  height: 1.3rem;
+  accent-color: #f6d171;
+  cursor: pointer;
+}
+
+.Bouton_Connect {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.Calendar label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.Calendar input {
+  width: 100%;
+}
+
+.toggleButton {
+  background: var(--font);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0 1rem;
+  margin-bottom: 1rem;
+  border-radius: 3rem;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .Login {
+    padding-top: 1rem;
   }
 
-  input[type="checkbox"] {
-    accent-color: #f6d171;
+  .form-container {
+    padding: 0.5rem;
+  }
+
+  input {
+    font-size: 16px;
+    width: 94%;
+  }
+
+  .Calendar input {
+    width: 94%;
   }
 
   .Connect {
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    justify-content: center;
-
-    .title {
-      display: flex;
-      align-content: center;
-      justify-content: center;
-    }
-
-    form.Connexion {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-
-      // padding: 20px;
-      // background-color: rgb(30, 29, 29);
-      // margin-left: 30px;
-      .Bouton_Connect {
-        display: flex;
-        justify-content: center;
-        margin: 0 10px 0 10px;
-
-        .Changebook {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          margin-top: 30px;
-        }
-      }
-
-      input.check[type="checkbox"] {
-        left: 11.5rem;
-        bottom: 3.8rem;
-        position: relative;
-        height: 1.4rem;
-        width: 1.4rem;
-      }
-
-      .email {
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        margin: 0 10px 0 10px;
-
-        input.email {
-          background-color: rgb(30, 29, 29);
-          border: 1px solid #f6d171;
-          border-radius: 5px;
-          color: #f6d171;
-          width: 25rem;
-          height: 30px;
-          margin: 0 10px 0 10px;
-          padding: 10px;
-          font-size: 20px;
-        }
-      }
-
-      input.MDP {
-        background-color: rgb(30, 29, 29);
-        border: 1px solid #f6d171;
-        border-radius: 5px;
-        color: #f6d171;
-        width: 25rem;
-        height: 30px;
-        margin: 20px;
-        font-size: 20px;
-        padding: 10px;
-      }
-    }
-  }
-}
-
-.Inscrip {
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  justify-content: center;
-  margin: 30px;
-
-  form .Bouton_Connect {
-    display: flex;
-    justify-content: center;
-
-    .Changebook {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 30px;
-    }
-  }
-
-  .Bouton_déco {
-    display: flex;
-    justify-content: center;
-
-    .Bouton {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: #f6d171;
-      border: none;
-      color: rgb(30, 29, 29);
-      border-radius: 3rem;
-      height: 50px;
-      width: 14rem;
-      font-size: 20px;
-      cursor: pointer;
-      margin: 0 10px 0 10px;
-    }
-
-    .Bouton:hover {
-      color: #f6d171;
-      background: black;
-      border: 1px solid #f6d171;
-      text-underline-offset: 0.5rem;
-      text-decoration: underline;
-    }
-  }
-
-  .I_MDP {
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-
-    input.check[type="checkbox"] {
-      position: relative;
-      bottom: 2.3rem;
-      left: 24.5rem;
-      height: 1.4rem;
-      width: 1.4rem;
-    }
-
-    input.MDP {
-      flex-direction: column;
-      background-color: rgb(30, 29, 29);
-      border: 1px solid #f6d171;
-      border-radius: 5px;
-      color: #f6d171;
-      width: 25rem;
-      height: 30px;
-      margin: 0 10px 0 10px;
-      padding: 10px;
-      font-size: 20px;
-    }
-  }
-
-  input.user_name {
-    background-color: rgb(30, 29, 29);
-    border: 1px solid #f6d171;
-    border-radius: 5px;
-    color: #f6d171;
-    width: 25rem;
-    height: 30px;
-    margin: 0 10px 0 10px;
-    padding: 10px;
-    font-size: 20px;
-  }
-
-  input.email {
-    background-color: rgb(30, 29, 29);
-    border: 1px solid #f6d171;
-    border-radius: 5px;
-    color: #f6d171;
-    width: 25rem;
-    height: 30px;
-    margin: 10px;
-    padding: 10px;
-    font-size: 20px;
-  }
-}
-
-.Calendar {
-  // background-color: rgb(30, 29, 29);
-  input[type="datetime-local"]::-webkit-calendar-picker-indicator {
-    filter: invert(1);
-    /* Inverse les couleurs du calendrier */
-  }
-
-  label {
-    margin: 10px;
-    padding: 10px;
-  }
-
-  input#datetime {
-    background: rgb(30, 29, 29);
-    color: #f6d171;
-    border-radius: 5px;
-    border: 1px solid #f6d171;
-    width: 14.3rem;
-    font-size: 15px;
-    padding: 15px;
-    margin: 10px;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .Login input.email,
-  .Login input.MDP {
-    width: 90%;
-    /* ou 30rem si tu veux fixe */
-    max-width: 15rem;
-    /* pour desktop */
-  }
-
-  .Inscrip input.email,
-  .Inscrip input.user_name,
-  .I_MDP input.MDP {
-    width: 90%;
-    /* ou 30rem si tu veux fixe */
-    max-width: 400px;
-    /* pour desktop */
+    padding-bottom: 2rem;
+    width: 94%;
   }
 }

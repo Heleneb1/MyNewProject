@@ -1,9 +1,9 @@
 /* eslint-disable camelcase */
-const AbstractManager = require("./AbstractManager");
+const AbstractManager = require('./AbstractManager');
 
 class BooksManager extends AbstractManager {
   constructor() {
-    super({ table: "books" });
+    super({ table: 'books' });
   }
 
   findAllBooks() {
@@ -39,7 +39,7 @@ class BooksManager extends AbstractManager {
         book.genre,
         book.pages,
         book.images_id, // Add the image ID to the array of values
-        book.description,
+        book.description
       ]
     );
   }
@@ -86,7 +86,7 @@ class BooksManager extends AbstractManager {
         book.pages,
         book.images_id,
         book.description,
-        book.id,
+        book.id
       ]
     );
   }

@@ -2,21 +2,44 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  color: #f6d171;
+  align-items: flex-start; // ou center
+
+  input[type='text'] {
+    background-color: transparent;
+    border: 1px solid var(--font);
+    border-radius: 5px;
+    color: var(--font);
+    padding: 8px;
+    margin-right: 16px;
+  }
+
+  // input file dans le container
+  [type='file'] {
+    display: flex;
+    justify-content: center;
+    background-color: transparent;
+    border: 1px solid #f6d171;
+    border-radius: 5px;
+    color: #f6d171;
+    padding: 8px;
+  }
+}
+
+// intro des livres (bloc de base)
+.books-intro {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
 }
 
 .Book-Picture {
   width: 10rem;
   height: 14rem;
-
   border: 2px solid #f6d171;
-  box-shadow:
-    #4d0408 0px 0px 0px 2px inset,
-    rgb(234, 232, 213) 1px -1px 0px -1px,
+  box-shadow: #4d0408 0 0 0 2px inset, rgb(234, 232, 213) 1px -1px 0 -1px,
     rgb(46, 2, 2) 2px -2px;
-  margin: 10px 10px;
+  margin: 10px;
   filter: brightness(121%);
-  -webkit-filter: brightness(121%);
 }
 
 .book-style {
@@ -28,125 +51,133 @@
   justify-content: center;
   background-color: var(--red);
   object-fit: contain;
-  box-shadow:
-    var(--red) 0px 0px 0px 2px inset,
-    rgb(209, 209, 206) 5px -10px 0px -10px,
-    rgb(239, 243, 239) 5px -5px,
-    rgb(209, 209, 206) 10px -15px 0px -10px,
-    rgb(234, 233, 229) 10px -10px,
-    rgb(209, 209, 206) 20px -20px 0px -10px,
-    rgb(239, 235, 233) 15px -15px,
-    rgb(209, 209, 206) 25px -20px 0px -10px,
+  box-shadow: var(--red) 0 0 0 2px inset, rgb(209, 209, 206) 5px -10px 0 -10px,
+    rgb(239, 243, 239) 5px -5px, rgb(209, 209, 206) 10px -15px 0 -10px,
+    rgb(234, 233, 229) 10px -10px, rgb(209, 209, 206) 20px -20px 0 -10px,
+    rgb(239, 235, 233) 15px -15px, rgb(209, 209, 206) 25px -20px 0 -10px,
     var(--red) 25px -20px;
-  border-top-left-radius: 8px;
-  border-bottom-left-radius: 8px;
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
-}
+  border-radius: 8px 3px 3px 8px;
 
-.book-style:hover {
-  box-shadow:
-    var(--blue) 0px 0px 0px 2px inset,
-    rgb(209, 209, 206) 5px -10px 0px -5px,
-    rgb(239, 243, 239) 5px -5px,
-    rgb(209, 209, 206) 10px -16px 0px -5px,
-    rgb(234, 233, 229) 10px -10px,
-    rgb(209, 209, 206) 20px -22px 0px -5px,
-    rgb(239, 235, 233) 20px -15px,
-    rgb(209, 209, 206) 30px -26px 0px -5px,
-    var(--blue) 30px -28px;
-  background-color: var(--blue);
-  cursor: pointer;
-}
-
-.book h3 {
-  height: 3rem;
-  color: var(--font);
-  font-size: 25px;
-  font-style: oblique;
+  &:hover {
+    box-shadow: var(--blue) 0 0 0 2px inset, rgb(209, 209, 206) 5px -10px 0 -5px,
+      rgb(239, 243, 239) 5px -5px, rgb(209, 209, 206) 10px -16px 0 -5px,
+      rgb(234, 233, 229) 10px -10px, rgb(209, 209, 206) 20px -22px 0 -5px,
+      rgb(239, 235, 233) 20px -15px, rgb(209, 209, 206) 30px -26px 0 -5px,
+      var(--blue) 30px -28px;
+    background-color: var(--blue);
+    cursor: pointer;
+  }
 }
 
 .book {
   width: 16rem;
   margin: 2rem;
   text-align: center;
-  /* flex-basis: calc(20% - 40px); */
   display: flex;
-  align-content: center;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
+  position: relative;
+
+  // animation
+  // opacity: 0;
+  // animation: fadeIn 0.8s ease forwards;
+
+  h3 {
+    height: 3rem;
+    color: var(--font);
+    font-size: 25px;
+    font-style: oblique;
+  }
+
+  &:nth-child(1) {
+    animation-delay: 0.4s;
+  }
+
+  &:nth-child(2) {
+    animation-delay: 0.6s;
+  }
+
+  &:nth-child(3) {
+    animation-delay: 0.8s;
+  }
+
+  &:nth-child(4) {
+    animation-delay: 1.2s;
+  }
+
+  &:nth-child(5) {
+    animation-delay: 1.6s;
+  }
+
+  &:nth-child(6) {
+    animation-delay: 2s;
+  }
 }
 
 .Lettrine::first-letter {
   line-height: 0.2;
   font-size: 3em;
-  /* taille de la police de caractères de la lettrine */
   font-weight: bold;
-  /* graisse de la lettrine */
   float: left;
-  /* alignement de la lettrine avec le texte */
   margin-right: 5px;
-  /* espacement entre la lettrine et le texte */
 }
 
 .Changebook {
   margin: 20px;
   background: transparent;
-  border: 1px var(--font) solid;
+  border: 1px solid var(--font);
   border-radius: 30px;
   color: var(--font);
   width: 200px;
   height: 30px;
   cursor: pointer;
+
+  &:hover {
+    box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6),
+      inset 2px 2px 3px rgba(0, 0, 0, 0.6);
+    background: var(--font);
+    color: var(--background);
+  }
+
+  &:active {
+    box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6),
+      inset 2px 2px 3px var(--background);
+    background: var(--font);
+    color: var(--background);
+    scale: 1.1;
+  }
 }
 
-.Changebook:active {
-  box-shadow:
-    inset -2px -2px 3px rgba(255, 255, 255, 0.6),
-    inset 2px 2px 3px var(--background);
-  background: var(--font);
-  color: var(--background);
-  scale: 1.1;
-}
-
-.Changebook:hover {
-  box-shadow:
-    inset -2px -2px 3px rgba(255, 255, 255, 0.6),
-    inset 2px 2px 3px rgba(0, 0, 0, 0.6);
-  background: var(--font);
-  color: var(--background);
-}
-
-.books-container input[type="text"] {
-  background-color: transparent;
-  border: 1px solidvar(--font);
-  border-radius: 5px;
-  color: var(--font);
-  padding: 8px;
-  margin-right: 16px;
+.book-style {
+  position: relative;
 }
 
 .Corner {
   position: absolute;
-  flex-basis: calc(33.33% - 40px);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; // bonus
+}
 
-  .CornerB {
-    position: relative;
-    bottom: 0.9rem;
-    left: 5.7rem;
-    height: 3rem;
-    width: 3rem;
-  }
+.CornerT,
+.CornerB {
+  position: absolute;
+  width: 3rem;
+  height: 3rem;
+}
 
-  .CornerT {
-    height: 3rem;
-    width: 3rem;
-    position: relative;
-    bottom: 14.8rem;
-    left: 5.7rem;
-    transform: scaleY(-1);
-  }
+.CornerT {
+  top: 0.1rem;
+  right: -0.1rem;
+  transform: scaleY(-1);
+}
+
+.CornerB {
+  bottom: -0.1rem;
+  right: -0.1rem;
 }
 
 .form {
@@ -164,73 +195,15 @@
   color: white;
 }
 
-.modal {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-
-.modal-content {
-  background-color: var(--background);
-  padding: 20px;
-  border-radius: 5px;
-  width: 70%;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  font-size: 20px;
-  line-height: 1.5;
-  z-index: 1000;
-
-  h2 {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 50px;
-  }
-}
-
-//pour centrer le bouton dans le modal
-.mc-button {
-  display: flex;
-  justify-content: center;
-}
-
-.modal-close {
-  margin-top: 10px;
-  padding: 5px 10px;
-  margin: 20px;
-  background: transparent;
-  border: 1px #f6d171 solid;
-  border-radius: 30px;
-  color: #f6d171;
-  width: 200px;
-  height: 30px;
-  cursor: pointer;
-}
-
-.modal-close:hover {
-  box-shadow:
-    inset -2px -2px 3px rgba(255, 255, 255, 0.6),
-    inset 2px 2px 3px rgba(0, 0, 0, 0.6);
-  background: #f6d171;
-  color: var(--background);
-  scale: 1.1;
-}
-
 .NoBook {
   font-size: 30px;
   display: flex;
   padding: 30px;
   justify-content: center;
   align-items: center;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
+  margin: 2rem auto;
+  text-align: center;
 }
 
 .picture {
@@ -239,121 +212,69 @@
   object-fit: cover;
 }
 
-//pour modifier le input des photos
-.books-container [type="file"] {
-  display: flex;
-  justify-content: center;
-  background-color: transparent;
+.Add-Book {
+  width: 30rem;
+}
+
+// Customisation des boutons du champ file (global)
+input[type='file']::-webkit-file-upload-button {
+  margin: 20px;
+  background: transparent;
   border: 1px solid #f6d171;
-  border-radius: 5px;
-  color: #f6d171;
-  padding: 8px;
-  margin: 10px;
-  width: 22rem;
-}
-
-//pour changer le bouton par défaut
-*input[type="file"]::-webkit-file-upload-button {
-  margin: 20px;
-  background: transparent;
-  border: 1px #f6d171 solid;
   border-radius: 30px;
   color: #f6d171;
   width: 200px;
   height: 30px;
+
+  &:hover {
+    box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6),
+      inset 2px 2px 3px rgba(0, 0, 0, 0.6);
+    background: #f6d171;
+    color: var(--background);
+  }
 }
 
-*input[type="file"]::-webkit-file-upload-button:hover {
-  box-shadow:
-    inset -2px -2px 3px rgba(255, 255, 255, 0.6),
-    inset 2px 2px 3px rgba(0, 0, 0, 0.6);
-  background: #f6d171;
-  color: var(--background);
-}
-
-.books-container [type="file"] {
-  display: flex;
-  justify-content: center;
-}
-
-*input[type="reset"] {
+// Bouton reset
+input[type='reset'] {
   margin: 20px;
   background: transparent;
-  border: 1px #f6d171 solid;
+  border: 1px solid #f6d171;
   border-radius: 30px;
   color: #f6d171;
   width: 200px;
   height: 30px;
-}
 
-*input[type="reset"]:hover {
-  box-shadow:
-    inset -2px -2px 3px rgba(255, 255, 255, 0.6),
-    inset 2px 2px 3px rgba(0, 0, 0, 0.6);
-  background: #f6d171;
-  color: var(--background);
+  &:hover {
+    box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6),
+      inset 2px 2px 3px rgba(0, 0, 0, 0.6);
+    background: #f6d171;
+    color: var(--background);
+  }
 }
 
 @keyframes fadeIn {
   0% {
     opacity: 0;
     transform: translateY(20px);
-    /* Décalage initial vers le bas */
   }
 
   100% {
     opacity: 1;
     transform: translateY(0);
-    /* Pas de décalage une fois entièrement apparu */
   }
 }
-
-.book {
-  opacity: 0;
-  /* Commencez avec une opacité de 0 pour cacher les livres au début */
-  animation: fadeIn 0.8s ease forwards;
-  /* Utilisez l'animation fadeIn */
-}
-
-/* Appliquez un délai progressif à chaque livre */
-.book:nth-child(1) {
-  animation-delay: 0.4s;
-}
-
-.book:nth-child(2) {
-  animation-delay: 0.6s;
-}
-
-.book:nth-child(3) {
-  animation-delay: 0.8s;
-}
-
-.book:nth-child(4) {
-  animation-delay: 1.2s;
-}
-
-.book:nth-child(5) {
-  animation-delay: 1.6s;
-}
-
-.book:nth-child(6) {
-  animation-delay: 2s;
-}
-
-/* Ajoutez plus de règles pour chaque livre selon le nombre de livres que vous avez */
 
 @media screen and (max-width: 768px) {
   .books-container {
     padding-top: 1rem;
-    display: flex;
     justify-content: center;
   }
 
   .books-intro {
     display: flex;
-    justify-content: center;
     flex-direction: column;
-    padding-top: 7rem;
+    padding-top: 1rem;
+    justify-content: center;
   }
 
   .book {
@@ -361,7 +282,6 @@
   }
 
   .book-style {
-    display: flex;
     justify-content: center;
     width: 200px;
     height: 300px;
@@ -376,25 +296,22 @@
   .Add-Book {
     display: flex;
     flex-direction: column;
+    width: 20rem;
   }
 
-  .modal-content {
-    width: 300px;
-    font-style: oblique;
+  .Corner {
+    .CornerT {
+      width: 30px;
+      height: 30px;
+    }
+
+    .CornerB {
+      width: 30px;
+      height: 30px;
+    }
   }
 
-  .Corner .CornerB {
-    position: relative;
-    bottom: 0.5rem;
-    left: 5.5rem;
-    height: 30px;
-  }
-
-  .Corner .CornerT {
-    height: 30px;
-    position: relative;
-    bottom: 15.2rem;
-    left: 5.5rem;
-    transform: scaleY(-1);
+  p {
+    font-size: 1.3rem;
   }
 }

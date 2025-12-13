@@ -1,42 +1,41 @@
-import React, { useState, useEffect } from "react"
-import axios from "axios"
-import Line from "../assets/head_line.svg"
-import ScrollToTopButton from "../components/ScrollToTop"
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import Line from '../assets/head_line.svg';
 
 export default function Quotes() {
-  const [quotes, setQuotes] = useState([])
-  const [filteredQuotes, setFilteredQuotes] = useState([])
-  const [searchTerm, setSearchTerm] = useState("")
+  const [quotes, setQuotes] = useState([]);
+  const [filteredQuotes, setFilteredQuotes] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
 
   const fetchQuotes = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/quotes")
-      setQuotes(response.data)
-      setFilteredQuotes(response.data)
+      const response = await axios.get('http://localhost:5000/quotes');
+      setQuotes(response.data);
+      setFilteredQuotes(response.data);
     } catch (error) {
-      console.error("Erreur lors de la récupération:", error)
+      console.error('Erreur lors de la récupération:', error);
     }
-  }
+  };
 
   useEffect(() => {
-    fetchQuotes()
-  }, [])
+    fetchQuotes();
+  }, []);
 
   const removeAccents = (str) => {
-    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
-  }
+    return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  };
   const filterQuotes = (searchTerms) => {
     const filtered = quotes.filter((quote) =>
       removeAccents(quote.text.toLowerCase()).includes(
         removeAccents(searchTerms.toLowerCase())
       )
-    )
-    setFilteredQuotes(filtered)
-  }
+    );
+    setFilteredQuotes(filtered);
+  };
   const handleInputChange = (event) => {
-    setSearchTerm(event.target.value)
-    filterQuotes(event.target.value)
-  }
+    setSearchTerm(event.target.value);
+    filterQuotes(event.target.value);
+  };
 
   return (
     <div>
@@ -70,7 +69,6 @@ export default function Quotes() {
           <div>Aucun résultat trouvé pour cette recherche.</div>
         )}
       </div>
-      <ScrollToTopButton />
     </div>
-  )
+  );
 }

@@ -1,8 +1,8 @@
 // const jwt = require("jsonwebtoken");
-const validateLogin = require("../validator/loginValidator");
-const models = require("../models");
-const { verifyPassword } = require("../helper/argonHelper");
-const { encodeJWT } = require("../helper/jwtHelper");
+const validateLogin = require('../validator/loginValidator');
+const models = require('../models');
+const { verifyPassword } = require('../helper/argonHelper');
+const { encodeJWT } = require('../helper/jwtHelper');
 
 // Utilisation de constantes pour les codes de statut HTTP
 const HTTP_OK = 200;
@@ -18,37 +18,30 @@ const login = async (req, res) => {
 
     const [user] = await models.user.findByEmail(req.body.email);
     if (!user) {
-      return res
-        .status(HTTP_UNAUTHORIZED)
-        .json({ message: "Invalid Credentials" });
+      return res.status(HTTP_UNAUTHORIZED).json({ message: 'Invalid Credentials 🥺' });
     }
 
-    const passwordVerification = await verifyPassword(
-      req.body.password,
-      user.password
-    );
+    const passwordVerification = await verifyPassword(req.body.password, user.password);
     if (!passwordVerification) {
-      return res
-        .status(HTTP_UNAUTHORIZED)
-        .json({ message: "Invalid Credentials" });
+      return res.status(HTTP_UNAUTHORIZED).json({ message: 'Invalid Credentials 😼' });
     }
 
     const token = encodeJWT({
       id: user.id,
       user_name: user.user_name,
-      role: user.role,
+      role: user.role
     });
     // res.cookie("auth_token", token, {
     //   httpOnly: true,
     //   secure: process.env.NODE_ENV === "production",
     //   sameSite: "Strict", // ou 'Lax' selon votre cas d'utilisation
     // });
-    console.info("token", token);
+    console.info('token', token);
     return res.status(HTTP_OK).json({
       user_name: user.user_name,
       id: user.id,
       role: user.role,
-      cart_id: user.cart_id,
+      cart_id: user.cart_id
     });
   } catch (error) {
     console.error(error);
@@ -85,10 +78,10 @@ const logout = (req, res) => {
       // })
       .sendStatus(HTTP_OK);
   } catch (error) {
-    console.error("Erreur lors de la déconnexion :", error);
+    console.error('Erreur lors de la déconnexion :', error);
     res
       .status(HTTP_SERVER_ERROR)
-      .json({ message: "Une erreur est survenue lors de la déconnexion." });
+      .json({ message: 'Une erreur est survenue lors de la déconnexion.' });
   }
 };
 

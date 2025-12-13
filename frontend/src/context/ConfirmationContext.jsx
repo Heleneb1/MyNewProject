@@ -1,31 +1,31 @@
-import React, { createContext, useContext, useState, useMemo } from "react"
-import PropTypes from "prop-types"
+import React, { createContext, useContext, useState, useMemo } from 'react';
+import PropTypes from 'prop-types';
 
-const ConfirmationContext = createContext()
+const ConfirmationContext = createContext();
 
 export const useConfirmation = () => {
-  return useContext(ConfirmationContext)
-}
+  return useContext(ConfirmationContext);
+};
 
 export function ConfirmationProvider({ children }) {
-  const [confirmation, setConfirmation] = useState(null)
+  const [confirmation, setConfirmation] = useState(null);
 
   const confirm = (message, onConfirm) => {
-    setConfirmation({ message, onConfirm })
-  }
+    setConfirmation({ message, onConfirm });
+  };
 
   const cancel = () => {
-    setConfirmation(null)
-  }
+    setConfirmation(null);
+  };
 
   const handleConfirm = () => {
-    if (confirmation && typeof confirmation.onConfirm === "function") {
-      confirmation.onConfirm()
+    if (confirmation && typeof confirmation.onConfirm === 'function') {
+      confirmation.onConfirm();
     }
-    cancel()
-  }
+    cancel();
+  };
 
-  const value = useMemo(() => ({ confirm, cancel }), [confirm, cancel])
+  const value = useMemo(() => ({ confirm, cancel }), [confirm, cancel]);
 
   return (
     <ConfirmationContext.Provider value={value}>
@@ -48,9 +48,9 @@ export function ConfirmationProvider({ children }) {
         </div>
       )}
     </ConfirmationContext.Provider>
-  )
+  );
 }
 
 ConfirmationProvider.propTypes = {
   children: PropTypes.node.isRequired,
-}
+};

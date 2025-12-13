@@ -1,5 +1,5 @@
-const fs = require("fs");
-const models = require("../models");
+const fs = require('fs');
+const models = require('../models');
 
 const browse = (req, res) => {
   models.image
@@ -32,7 +32,7 @@ const read = (req, res) => {
 const edit = (req, res) => {
   const image = {
     id: parseInt(req.params.id, 10),
-    books_id: req.body.books_id, // récupérer la valeur de books_id depuis le corps de la requête
+    books_id: req.body.books_id // récupérer la valeur de books_id depuis le corps de la requête
   };
 
   // TODO validations (length, format...)
@@ -60,31 +60,27 @@ const editOne = (req, res) => {
   // TODO validations (length, format...)
 
   image.id = parseInt(req.params.id, 10);
-  fs.rename(
-    `./public/uploads/${filename}`,
-    `./public/uploads/${originalname}`,
-    (err) => {
-      if (err) {
-        console.error(err);
-        res.sendStatus(500);
-      } else {
-        models.image
-          .update(image)
-          .then(([result]) => {
-            if (result.affectedRows === 0) {
-              res.sendStatus(404);
-            } else {
-              res.sendStatus(204);
-            }
-          })
-          // eslint-disable-next-line no-shadow
-          .catch((err) => {
-            console.error(err);
-            res.sendStatus(500);
-          });
-      }
+  fs.rename(`./public/uploads/${filename}`, `./public/uploads/${originalname}`, (err) => {
+    if (err) {
+      console.error(err);
+      res.sendStatus(500);
+    } else {
+      models.image
+        .update(image)
+        .then(([result]) => {
+          if (result.affectedRows === 0) {
+            res.sendStatus(404);
+          } else {
+            res.sendStatus(204);
+          }
+        })
+        // eslint-disable-next-line no-shadow
+        .catch((err) => {
+          console.error(err);
+          res.sendStatus(500);
+        });
     }
-  );
+  });
   image.url_img = `/public/uploads/${originalname}`;
   image.name_img = `${originalname}`;
 };
@@ -97,30 +93,26 @@ const update = (req, res) => {
   // TODO validations (length, format...)
 
   image.id = parseInt(req.params.id, 10);
-  fs.rename(
-    `./public/uploads/${filename}`,
-    `./public/uploads/${originalname}`,
-    (err) => {
-      if (err) {
-        console.error(err);
-        res.sendStatus(500);
-      } else {
-        models.image
-          .update(image)
-          .then(([result]) => {
-            if (result.affectedRows === 0) {
-              res.sendStatus(404);
-            } else {
-              res.sendStatus(204);
-            }
-          })
-          .catch((errors) => {
-            console.error(errors);
-            res.sendStatus(500);
-          });
-      }
+  fs.rename(`./public/uploads/${filename}`, `./public/uploads/${originalname}`, (err) => {
+    if (err) {
+      console.error(err);
+      res.sendStatus(500);
+    } else {
+      models.image
+        .update(image)
+        .then(([result]) => {
+          if (result.affectedRows === 0) {
+            res.sendStatus(404);
+          } else {
+            res.sendStatus(204);
+          }
+        })
+        .catch((errors) => {
+          console.error(errors);
+          res.sendStatus(500);
+        });
     }
-  );
+  });
   image.url_img = `/public/uploads/${originalname}`;
   image.name_img = `${originalname}`;
 };
@@ -129,7 +121,7 @@ const add = (req, res) => {
   const image = {
     name_img: req.body.name_img,
     url_img: `/public/uploads/${req.file.originalname}`,
-    books_id: req.body.books_id,
+    books_id: req.body.books_id
   };
   console.info(image);
   // TODO validations (length, format...)
@@ -153,7 +145,7 @@ const add = (req, res) => {
                 id: insertedId,
                 name_img: image.name_img,
                 url_img: image.url_img,
-                books_id: image.books_id,
+                books_id: image.books_id
               };
               res.status(201).json(newImage);
             }
@@ -192,5 +184,5 @@ module.exports = {
   editOne,
   add,
   destroy,
-  update,
+  update
 };

@@ -22,23 +22,28 @@
     div {
       margin: 20px;
 
-      input[type="text"],
-      input[type="email"],
-      textarea {
+      input[type='text'],
+      input[type='email'] {
         background-color: rgb(30, 29, 29);
         border: 1px solid #f6d171;
         border-radius: 5px;
         color: #f6d171;
-        width: 15rem;
+        width: 32rem;
         height: 30px;
         padding: 10px;
         font-size: 20px;
       }
     }
 
-    .message textarea {
+    .contact-message textarea {
       height: 250px;
+      width: 32rem;
+      background-color: rgb(30, 29, 29);
+      border: 1px solid #f6d171;
+      border-radius: 5px;
+      color: #f6d171;
       font-size: 20px;
+      padding: 10px;
     }
 
     .form-container {
@@ -48,36 +53,30 @@
       margin: 2rem;
       flex-direction: column;
     }
-
-    .Bouton {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: #f6d171;
-      border: none;
-      color: rgb(30, 29, 29);
-      border-radius: 3rem;
-      height: 50px;
-      width: 14rem;
-      font-size: 20px;
-      cursor: pointer;
-      margin: 0 10px 0 10px;
-    }
-
-    p {
-      font-size: 20px;
-    }
-
-    .Bouton:hover {
-      color: #f6d171;
-      background: black;
-      border: 1px solid #f6d171;
-    }
   }
 
-  input[type="text"],
-  input[type="email"]:focus {
+  input[type='text'],
+  input[type='email']:focus {
     background-color: rgb(30, 29, 29);
     color: #f6d171;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .Contact {
+    padding-top: 1rem;
+
+    form {
+      div {
+        input[type='text'],
+        input[type='email'] {
+          width: 17rem;
+        }
+
+        .contact-message textarea {
+          width: 17rem;
+        }
+      }
+    }
   }
 }

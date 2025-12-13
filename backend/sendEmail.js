@@ -1,5 +1,5 @@
-require("dotenv").config();
-const mailer = require("./src/mailer");
+require('dotenv').config();
+const mailer = require('./src/mailer');
 
 function sendEmail(to, message) {
   mailer
@@ -8,7 +8,7 @@ function sendEmail(to, message) {
       to: process.env.MAIL_TO,
       subject: message.subject,
       text: message.text,
-      html: message.html,
+      html: message.html
     })
     .then((info) => {
       console.info(`Email sent: ${info.response}`);
