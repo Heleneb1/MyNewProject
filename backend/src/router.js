@@ -189,7 +189,7 @@ router.post("/auth", (req, res) => {
 
   // Définir le payload avec les informations de l'utilisateur
   const payload = {
-    email: email,
+    email,
     // Ajoutez d'autres informations si nécessaire (userId, etc.)
   };
 

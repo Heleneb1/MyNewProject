@@ -13,7 +13,7 @@ const transporter = nodemailer.createTransport({
 
 transporter
   .verify()
-  .then(() => console.log("Connexion SMTP Mailjet OK"))
+  .then(() => console.info("Connexion SMTP Mailjet OK"))
   .catch((err) => console.error("Erreur SMTP Mailjet:", err));
 
 module.exports = transporter;
