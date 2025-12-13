@@ -22,8 +22,8 @@
     div {
       margin: 20px;
 
-      input[type="text"],
-      input[type="email"] {
+      input[type='text'],
+      input[type='email'] {
         background-color: rgb(30, 29, 29);
         border: 1px solid #f6d171;
         border-radius: 5px;
@@ -55,8 +55,8 @@
     }
   }
 
-  input[type="text"],
-  input[type="email"]:focus {
+  input[type='text'],
+  input[type='email']:focus {
     background-color: rgb(30, 29, 29);
     color: #f6d171;
   }
@@ -68,8 +68,8 @@
 
     form {
       div {
-        input[type="text"],
-        input[type="email"] {
+        input[type='text'],
+        input[type='email'] {
           width: 17rem;
         }
 

@@ -1,30 +1,30 @@
-import React, { useState, useEffect } from "react"
-import AlexandreD from "../assets/Alexandre_Dumas_père.gif"
-import AlexandreDumas from "../assets/Alexandre_Dumas_Nadar.jpg"
-import Medaillon from "../components/Medaillon"
+import React, { useState, useEffect } from 'react';
+import AlexandreD from '../assets/Alexandre_Dumas_père.gif';
+import AlexandreDumas from '../assets/Alexandre_Dumas_Nadar.jpg';
+import Medaillon from '../components/Medaillon';
 
 export default function About() {
-  const [setIsMedaillonVisible] = useState(false)
+  const [setIsMedaillonVisible] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      const medaillon = document.querySelector(".Medaillon")
+      const medaillon = document.querySelector('.Medaillon');
       if (medaillon) {
-        const bounding = medaillon.getBoundingClientRect()
+        const bounding = medaillon.getBoundingClientRect();
         const isTopVisible =
-          bounding.top >= 0 && bounding.top <= window.innerHeight
+          bounding.top >= 0 && bounding.top <= window.innerHeight;
         if (isTopVisible) {
-          setIsMedaillonVisible(true)
+          setIsMedaillonVisible(true);
         }
       }
-    }
+    };
 
-    window.addEventListener("scroll", handleScroll)
+    window.addEventListener('scroll', handleScroll);
 
     return () => {
-      window.removeEventListener("scroll", handleScroll)
-    }
-  }, [])
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   return (
     <div className="About-All">
@@ -53,7 +53,7 @@ export default function About() {
           rapidement devenu général sous la Révolution française.
         </p>
         <p>
-          {" "}
+          {' '}
           Il a combattu dans plusieurs batailles importantes, notamment à Valmy
           et à Jemappes, avant d'être capturé par les Autrichiens en 1792. Il a
           ensuite été emprisonné à Naples pendant deux ans avant d'être libéré
@@ -61,7 +61,7 @@ export default function About() {
           d'Alexandre Dumas est devenu un partisan de Napoléon Bonaparte et a
           continué à combattre dans les guerres napoléoniennes en Italie et en
           Égypte. Il a finalement été fait comte de l'Empire par Napoléon en
-          1806.{" "}
+          1806.{' '}
         </p>
         <div className="photo-portrait">
           <img src={AlexandreDumas} alt="Alexandre Dumas portrait" />
@@ -80,7 +80,7 @@ export default function About() {
           théâtre.
         </p>
         <p>
-          {" "}
+          {' '}
           Il est rapidement devenu un écrivain populaire et a publié plusieurs
           romans à succès, notamment "Les Trois Mousquetaires" en 1844 et "Le
           Comte de Monte-Cristo" en 1845. Alexandre Dumas est décédé le 5
@@ -92,5 +92,5 @@ export default function About() {
       </div>
       <Medaillon />
     </div>
-  )
+  );
 }

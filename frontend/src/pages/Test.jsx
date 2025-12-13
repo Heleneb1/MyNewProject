@@ -1,34 +1,34 @@
-import axios from "axios"
-import React, { useRef, useState } from "react"
+import axios from 'axios';
+import React, { useRef, useState } from 'react';
 
 export default function Test() {
-  const inputRef = useRef(null)
-  const [picture, setPicture] = useState(null)
+  const inputRef = useRef(null);
+  const [picture, setPicture] = useState(null);
 
   const handleSubmit = async (evt) => {
-    evt.preventDefault()
+    evt.preventDefault();
 
-    const formData = new FormData()
-    formData.append("avatar", inputRef.current.files[0])
+    const formData = new FormData();
+    formData.append('avatar', inputRef.current.files[0]);
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/avatar",
+        'http://localhost:5000/avatar',
         formData
-      )
-      console.info(response)
+      );
+      console.info(response);
 
-      const newPicture = response.data.picture
-      setPicture(newPicture)
+      const newPicture = response.data.picture;
+      setPicture(newPicture);
     } catch (error) {
-      console.error(error)
+      console.error(error);
     }
-  }
+  };
 
   const handleFileChange = (evt) => {
-    const file = evt.target.files[0]
-    setPicture(URL.createObjectURL(file))
-  }
+    const file = evt.target.files[0];
+    setPicture(URL.createObjectURL(file));
+  };
 
   return (
     <div>
@@ -43,5 +43,5 @@ export default function Test() {
       </form>
       {picture && <img className="picture" src={picture} alt="Aperçu" />}
     </div>
-  )
+  );
 }

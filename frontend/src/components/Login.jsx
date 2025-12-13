@@ -1,26 +1,26 @@
 /* eslint-disable no-alert */
-import React, { useState } from "react"
-import axios from "axios"
-import { useNavigate } from "react-router-dom"
+import React, { useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [signupConfirmPassword, setSignupConfirmPassword] = useState("")
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [signupConfirmPassword, setSignupConfirmPassword] = useState('');
   // eslint-disable-next-line no-unused-vars
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
-  const [signupName, setSignupName] = useState("")
-  const [signupEmail, setSignupEmail] = useState("")
-  const [signupPassword, setSignupPassword] = useState("")
-  const [toggleVisibility, setToggleVisibility] = useState(false)
-  const navigate = useNavigate()
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [signupName, setSignupName] = useState('');
+  const [signupEmail, setSignupEmail] = useState('');
+  const [signupPassword, setSignupPassword] = useState('');
+  const [toggleVisibility, setToggleVisibility] = useState(false);
+  const navigate = useNavigate();
 
   const handleLoginSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     axios
       .post(
-        "http://localhost:5000/auth/login",
+        'http://localhost:5000/auth/login',
         {
           email,
           password,
@@ -32,60 +32,60 @@ function Login() {
       )
       .then((res) => {
         if (res.data.role === 0) {
-          navigate("/books")
+          navigate('/books');
         } else if (res.data.role === 1) {
-          navigate("/books")
+          navigate('/books');
         }
 
         // Save user data and token to local storage
-        localStorage.setItem("userId", res.data.id)
-        localStorage.setItem("role", res.data.role)
-        localStorage.setItem("cart_id", res.data.cart_id)
-        localStorage.setItem("auth_token", res.data.token) // ✅ Ici vous recevez le token
+        localStorage.setItem('userId', res.data.id);
+        localStorage.setItem('role', res.data.role);
+        localStorage.setItem('cart_id', res.data.cart_id);
+        localStorage.setItem('auth_token', res.data.token); // ✅ Ici vous recevez le token
 
-        alert(`Bienvenue ${res.data.user_name} !`)
-        window.location.reload()
+        alert(`Bienvenue ${res.data.user_name} !`);
+        window.location.reload();
       })
       .catch((err) => {
-        console.error(err.response.data)
-        alert("Identifiants incorrects.")
-      })
-  }
+        console.error(err.response.data);
+        alert('Identifiants incorrects.');
+      });
+  };
   const handleSignupSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     if (signupPassword !== signupConfirmPassword) {
-      alert("Les mots de passe ne correspondent pas.")
-      return
+      alert('Les mots de passe ne correspondent pas.');
+      return;
     }
-    console.info(signupEmail)
+    console.info(signupEmail);
     axios
-      .post("http://localhost:5000/user", {
+      .post('http://localhost:5000/user', {
         user_name: signupName,
         email: signupEmail,
         password: signupPassword,
         // confirmPassword: signupConfirmPassword,
       })
       .then((res) => {
-        console.info(res.data)
-        alert("Votre compte a été créé avec succes")
-        navigate("/books")
+        console.info(res.data);
+        alert('Votre compte a été créé avec succes');
+        navigate('/books');
       })
       .catch((err) => {
-        console.error(err.response.data)
-        alert("Erreur lors de la création du compte.")
-      })
-  }
+        console.error(err.response.data);
+        alert('Erreur lors de la création du compte.');
+      });
+  };
   const toggle = () => {
-    setToggleVisibility(!toggleVisibility)
-  }
+    setToggleVisibility(!toggleVisibility);
+  };
   function myFunction() {
-    const inputs = document.getElementsByClassName("MDP")
+    const inputs = document.getElementsByClassName('MDP');
     // eslint-disable-next-line no-plusplus
     for (let i = 0; i < inputs.length; i++) {
-      if (inputs[i].type === "password") {
-        inputs[i].type = "text"
+      if (inputs[i].type === 'password') {
+        inputs[i].type = 'text';
       } else {
-        inputs[i].type = "password"
+        inputs[i].type = 'password';
       }
     }
   }
@@ -191,12 +191,12 @@ function Login() {
 
         <button type="button" className="toggleButton" onClick={toggle}>
           {toggleVisibility
-            ? "Pas encore de compte ? Inscris-toi !"
-            : "Déjà un compte ? Connecte-toi !"}
+            ? 'Pas encore de compte ? Inscris-toi !'
+            : 'Déjà un compte ? Connecte-toi !'}
         </button>
       </div>
     </div>
-  )
+  );
 }
 
-export default Login
+export default Login;

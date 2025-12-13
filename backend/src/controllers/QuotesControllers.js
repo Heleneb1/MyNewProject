@@ -1,4 +1,4 @@
-const models = require("../models");
+const models = require('../models');
 
 const browse = (req, res) => {
   models.quote
@@ -87,5 +87,5 @@ module.exports = {
   read,
   edit,
   add,
-  destroy,
+  destroy
 };

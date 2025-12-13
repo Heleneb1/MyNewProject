@@ -1,4 +1,4 @@
-import signature from "../assets/Alexandre_Dumas_Signature.svg.png"
+import signature from '../assets/Alexandre_Dumas_Signature.svg.png';
 
 function NotFound() {
   return (
@@ -13,7 +13,7 @@ function NotFound() {
 
       <p>Oups ! Cette page n'existe pas ou a été déplacée.</p>
     </div>
-  )
+  );
 }
 
-export default NotFound
+export default NotFound;

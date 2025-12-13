@@ -1,5 +1,5 @@
 /* eslint-disable consistent-return */
-const models = require("../models");
+const models = require('../models');
 
 const browse = (req, res) => {
   models.book
@@ -9,7 +9,7 @@ const browse = (req, res) => {
         return {
           ...book,
 
-          images: book.images ? book.images.split(",") : [],
+          images: book.images ? book.images.split(',') : []
         };
       });
       res.send(result);
@@ -92,36 +92,33 @@ const createImage = async (originalname) => {
 };
 const addWithImage = async (req, res) => {
   const { name_img: originalname } = req.body;
-  console.info("RAAAAA", req.body);
+  console.info('RAAAAA', req.body);
   try {
     // eslint-disable-next-line no-unused-vars
     const existingImageId = await createImage(originalname);
-    console.info("JJJJJJJJJ", existingImageId);
+    console.info('JJJJJJJJJ', existingImageId);
     const template = {
-      title: "",
-      publication_date: "",
-      genre: "",
-      pages: "",
-      images_id: "",
-      description: "",
+      title: '',
+      publication_date: '',
+      genre: '',
+      pages: '',
+      images_id: '',
+      description: ''
     };
-    console.info("NOOOOOO", template);
+    console.info('NOOOOOO', template);
     const bookWithTemplate = { ...template, ...req.body };
     const [bookResult] = await models.book.insert(bookWithTemplate);
     const newBookId = bookResult.insertId;
-    console.info("Alors", newBookId);
+    console.info('Alors', newBookId);
 
     const newBook = { id: bookResult.insertId, ...bookWithTemplate };
-    console.info("new", newBook);
-    await models.image.update(
-      { books_id: newBookId },
-      { where: { id: newBook.images_id } },
-    );
-    console.info("TTTTTTTTT", newBook.images_id);
+    console.info('new', newBook);
+    await models.image.update({ books_id: newBookId }, { where: { id: newBook.images_id } });
+    console.info('TTTTTTTTT', newBook.images_id);
     res.status(201).json(newBook);
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ message: "Internal server error" });
+    return res.status(500).json({ message: 'Internal server error' });
   }
 };
 module.exports = {
@@ -131,5 +128,5 @@ module.exports = {
   addWithImage,
   createImage,
   destroy,
-  readHasBooks,
+  readHasBooks
 };

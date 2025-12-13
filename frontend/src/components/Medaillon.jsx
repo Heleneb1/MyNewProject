@@ -1,29 +1,29 @@
-import { useEffect, useState } from "react"
-import Pere from "../assets/AlexandreDumasPere.jpg"
-import Mère from "../assets/Marie_Louise_Élisabeth_Labouret.jpg"
-import Medaillon from "../assets/medaillon4b.jpg"
+import { useEffect, useState } from 'react';
+import Pere from '../assets/AlexandreDumasPere.jpg';
+import Mère from '../assets/Marie_Louise_Élisabeth_Labouret.jpg';
+import Medaillon from '../assets/medaillon4b.jpg';
 
 export default function FamilyMedaillon() {
-  const [isMedaillonVisible, setIsMedaillonVisible] = useState(false)
+  const [isMedaillonVisible, setIsMedaillonVisible] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      const medaillon = document.querySelector(".Medaillon")
+      const medaillon = document.querySelector('.Medaillon');
       if (medaillon) {
-        const bounding = medaillon.getBoundingClientRect()
+        const bounding = medaillon.getBoundingClientRect();
         const isTopVisible =
-          bounding.top >= 0 && bounding.top <= window.innerHeight
+          bounding.top >= 0 && bounding.top <= window.innerHeight;
         if (isTopVisible) {
-          setIsMedaillonVisible(true)
+          setIsMedaillonVisible(true);
         }
       }
-    }
+    };
     // Vérifier immédiatement au montage
-    handleScroll()
+    handleScroll();
 
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <>
@@ -31,7 +31,7 @@ export default function FamilyMedaillon() {
       <div className="Medaillon">
         <div className="familyPicture">
           <div className="Picture">
-            <div className={`Père ${isMedaillonVisible ? "animated" : ""}`}>
+            <div className={`Père ${isMedaillonVisible ? 'animated' : ''}`}>
               <img
                 className="FamilyP"
                 src={Pere}
@@ -48,7 +48,7 @@ export default function FamilyMedaillon() {
               </div>
             </div>
 
-            <div className={`Test ${isMedaillonVisible ? "animated" : ""}`}>
+            <div className={`Test ${isMedaillonVisible ? 'animated' : ''}`}>
               <img className="medaillon" src={Medaillon} alt="médaillon" />
             </div>
 
@@ -69,5 +69,5 @@ export default function FamilyMedaillon() {
         </div>
       </div>
     </>
-  )
+  );
 }

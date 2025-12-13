@@ -27,7 +27,7 @@
   }
 
   .quotes_title {
-    font-family: "Kaushan Script", cursive;
+    font-family: 'Kaushan Script', cursive;
   }
 
   .quotes_intro {
@@ -46,7 +46,7 @@
     justify-content: center;
   }
 
-  .Find input[type="search"] {
+  .Find input[type='search'] {
     margin: 20px;
     background: rgba(255, 255, 255, 0.1);
     border: 1px #f6d171 solid;
@@ -84,7 +84,7 @@
     flex-direction: column;
   }
 
-  .All_Quotes .Find input[type="search"] {
+  .All_Quotes .Find input[type='search'] {
     width: 18rem;
   }
 }

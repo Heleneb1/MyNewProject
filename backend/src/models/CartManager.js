@@ -1,16 +1,14 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable camelcase */
-const AbstractManager = require("./AbstractManager");
+const AbstractManager = require('./AbstractManager');
 
 class CartManager extends AbstractManager {
   constructor() {
-    super({ table: "cart" });
+    super({ table: 'cart' });
   }
 
   find(id) {
-    return this.database.query(`select * from  ${this.table} where id = ?`, [
-      id,
-    ]);
+    return this.database.query(`select * from  ${this.table} where id = ?`, [id]);
   }
 
   // createCartUser(cart) {
@@ -32,7 +30,7 @@ class CartManager extends AbstractManager {
     return this.database
       .query(`insert into ${this.table} (user_id, book_id) values (?, ?)`, [
         cart.user_id,
-        cart.book_id,
+        cart.book_id
       ])
       .then((result) => {
         // eslint-disable-next-line no-use-before-define
@@ -42,10 +40,10 @@ class CartManager extends AbstractManager {
   }
 
   insertHasCart(cart) {
-    return this.database.query(
-      `INSERT INTO cart_has_books (cart_id, book_id) VALUES (?, ?);`,
-      [cart.cart_id, cart.book_id],
-    );
+    return this.database.query(`INSERT INTO cart_has_books (cart_id, book_id) VALUES (?, ?);`, [
+      cart.cart_id,
+      cart.book_id
+    ]);
   }
 
   findOneHasCart(id) {
@@ -56,7 +54,7 @@ class CartManager extends AbstractManager {
       JOIN user AS u ON u.id = c.user_id
       WHERE hb.id_cart_has_books = ?
        `,
-      [id],
+      [id]
     );
   }
 
@@ -83,7 +81,7 @@ class CartManager extends AbstractManager {
       WHERE hb.cart_id = ?
       GROUP BY hb.book_id
       `,
-      [user_id, id],
+      [user_id, id]
     );
   }
 
@@ -96,17 +94,17 @@ class CartManager extends AbstractManager {
   }
 
   deleteItemsByUser(userId, cartId) {
-    return this.database.query(
-      `DELETE FROM ${this.table} WHERE user_id = ? AND id = ?`,
-      [userId, cartId],
-    );
+    return this.database.query(`DELETE FROM ${this.table} WHERE user_id = ? AND id = ?`, [
+      userId,
+      cartId
+    ]);
   }
 
   deleteCartContentByUser(id) {
     return this.database.query(
       `DELETE FROM cart_has_books where cart_id =? 
       `,
-      [id],
+      [id]
     );
   }
 
@@ -114,7 +112,7 @@ class CartManager extends AbstractManager {
     return this.database.query(
       `DELETE FROM cart_has_books where cart_id=? and book_id =? 
     `,
-      [cartId, bookId],
+      [cartId, bookId]
     );
   }
 
@@ -123,10 +121,10 @@ class CartManager extends AbstractManager {
   }
 
   update(cart) {
-    return this.database.query(
-      `update ${this.table} set user_id = ? where id = ?`,
-      [cart.user_id, cart.id],
-    );
+    return this.database.query(`update ${this.table} set user_id = ? where id = ?`, [
+      cart.user_id,
+      cart.id
+    ]);
   }
 }
 

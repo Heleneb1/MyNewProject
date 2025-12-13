@@ -13,7 +13,7 @@
 
   // Effet d'éclairage ambiant
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     top: 50%;
     left: 50%;
@@ -97,7 +97,7 @@
 
   // Reliure avec dégradé d'ombre
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     left: 0;
     top: 0;
@@ -115,7 +115,7 @@
 
   // Effet de lumière qui glisse
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     inset: 0;
     background: radial-gradient(
@@ -148,7 +148,7 @@
 
   // Texture papier
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     inset: 0;
     background-image: repeating-linear-gradient(
@@ -182,7 +182,7 @@
 
 // EFFET DE PARTICULES DORÉES (optionnel)
 .Book-container::after {
-  content: "";
+  content: '';
   position: absolute;
   bottom: 0;
   left: 50%;

@@ -1,20 +1,20 @@
 /* eslint-disable no-shadow */
-import React, { useState, useEffect } from "react"
-import { useNavigate } from "react-router-dom"
-import Loader from "./Loader"
-import { useConfirmation } from "../context/ConfirmationContext"
-import useCart from "../../hooks/useCart"
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Loader from './Loader';
+import { useConfirmation } from '../context/ConfirmationContext';
+import useCart from '../../hooks/useCart';
 
 export default function Cart() {
-  const navigate = useNavigate()
-  const token = localStorage.getItem("auth_token")
-  const storedUserId = localStorage.getItem("userId")
-  const storedCartId = localStorage.getItem("cart_id")
-  const { confirm } = useConfirmation()
+  const navigate = useNavigate();
+  const token = localStorage.getItem('auth_token');
+  const storedUserId = localStorage.getItem('userId');
+  const storedCartId = localStorage.getItem('cart_id');
+  const { confirm } = useConfirmation();
 
-  const [isConnected, setIsConnected] = useState(false)
-  const [selectedBook, setSelectedBook] = useState(null)
-  const [selectedToAdd, setSelectedToAdd] = useState(null)
+  const [isConnected, setIsConnected] = useState(false);
+  const [selectedBook, setSelectedBook] = useState(null);
+  const [selectedToAdd, setSelectedToAdd] = useState(null);
 
   // hook useCart
   const {
@@ -26,18 +26,18 @@ export default function Cart() {
     addToCart,
     removeFromCart,
     clearCart,
-  } = useCart(storedUserId, storedCartId)
+  } = useCart(storedUserId, storedCartId);
 
   useEffect(() => {
-    setIsConnected(!!token)
-    if (!token) navigate("/login")
-  }, [token, navigate])
+    setIsConnected(!!token);
+    if (!token) navigate('/login');
+  }, [token, navigate]);
 
   const handleRemove = (item) => {
     confirm(`Retirer '${item.book.title}' du panier ?`, () =>
       removeFromCart(item)
-    )
-  }
+    );
+  };
 
   return (
     <div className="All-Cart">
@@ -50,10 +50,10 @@ export default function Cart() {
         ) : (
           <select
             className="select-style"
-            value={selectedToAdd?.id || ""}
+            value={selectedToAdd?.id || ''}
             onChange={(e) => {
-              const id = parseInt(e.target.value, 10)
-              setSelectedToAdd(books.find((b) => b.id === id))
+              const id = parseInt(e.target.value, 10);
+              setSelectedToAdd(books.find((b) => b.id === id));
             }}
           >
             <option value="">Sélectionner un livre</option>
@@ -70,8 +70,8 @@ export default function Cart() {
           className="Changebook"
           disabled={!selectedToAdd}
           onClick={() => {
-            addToCart(selectedToAdd)
-            setSelectedToAdd(null)
+            addToCart(selectedToAdd);
+            setSelectedToAdd(null);
           }}
         >
           Ajouter au panier
@@ -156,5 +156,5 @@ export default function Cart() {
         <p>Veuillez vous connecter pour accéder à cette page.</p>
       )}
     </div>
-  )
+  );
 }

@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 /* eslint-disable camelcase */
-const models = require("../models");
+const models = require('../models');
 // const { verifyToken } = require("../helper/jwtHelper");
 
 const read = (req, res) => {
@@ -53,7 +53,7 @@ const cartByUser = (req, res) => {
   const books = cart.map((item) => ({
     id: item.book_id,
     title: item.title,
-    image: item.url_img,
+    image: item.url_img
   }));
 
   res.status(200).send(books);
@@ -113,7 +113,7 @@ const addHasCart = async (req, res) => {
 
 const emptyCart = (req, res) => {
   const { cartId } = req.params;
-  console.info("cartId", cartId);
+  console.info('cartId', cartId);
 
   models.cart
     .deleteCartContentByUser(cartId)
@@ -182,7 +182,7 @@ module.exports = {
   // getAllBooksInCartByUser,
   cartByUser,
   deleteInCart,
-  updateCart,
+  updateCart
 };
 
 // const readByUser = (req, res) => {

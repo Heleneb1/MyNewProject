@@ -4,7 +4,7 @@
   justify-content: center;
   align-items: flex-start; // ou center
 
-  input[type="text"] {
+  input[type='text'] {
     background-color: transparent;
     border: 1px solid var(--font);
     border-radius: 5px;
@@ -14,7 +14,7 @@
   }
 
   // input file dans le container
-  [type="file"] {
+  [type='file'] {
     display: flex;
     justify-content: center;
     background-color: transparent;
@@ -231,7 +231,7 @@
 }
 
 // Customisation des boutons du champ file (global)
-input[type="file"]::-webkit-file-upload-button {
+input[type='file']::-webkit-file-upload-button {
   margin: 20px;
   background: transparent;
   border: 1px solid #f6d171;
@@ -250,7 +250,7 @@ input[type="file"]::-webkit-file-upload-button {
 }
 
 // Bouton reset
-input[type="reset"] {
+input[type='reset'] {
   margin: 20px;
   background: transparent;
   border: 1px solid #f6d171;

@@ -1,21 +1,21 @@
-@use "./Home.scss";
-@use "./About.scss";
-@use "./Books.scss";
-@use "./Glitter.scss";
-@use "./Contact.scss";
-@use "./SplashPageBook.scss";
-@use "./Characters.scss";
-@use "./Cart.scss";
-@use "./Login.scss";
-@use "./Quotes.scss";
-@use "./Navbar.scss";
-@use "./Medaillon.scss";
-@use "./ScrollToTop.scss";
-@use "./NotFound.scss";
-@use "./Footer.scss";
+@use './Home.scss';
+@use './About.scss';
+@use './Books.scss';
+@use './Glitter.scss';
+@use './Contact.scss';
+@use './SplashPageBook.scss';
+@use './Characters.scss';
+@use './Cart.scss';
+@use './Login.scss';
+@use './Quotes.scss';
+@use './Navbar.scss';
+@use './Medaillon.scss';
+@use './ScrollToTop.scss';
+@use './NotFound.scss';
+@use './Footer.scss';
 
-@import url("https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Luxurious+Script&family=Pinyon+Script&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Birthstone&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Luxurious+Script&family=Pinyon+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Birthstone&display=swap');
 
 body {
   margin: 0;
@@ -27,7 +27,7 @@ body {
 }
 
 body::after {
-  content: "";
+  content: '';
   position: absolute;
   bottom: 0;
   left: 50%;
@@ -55,7 +55,7 @@ body::after {
 h1 {
   margin: 0;
   font-size: 3rem;
-  font-family: "Corinthia", cursive, Arial, Helvetica, sans-serif;
+  font-family: 'Corinthia', cursive, Arial, Helvetica, sans-serif;
   font-weight: 700;
   font-style: normal;
   font-size-adjust: 0.45;

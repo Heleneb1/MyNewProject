@@ -1,27 +1,27 @@
-import { useState, useEffect } from "react"
-import { Link, useLocation } from "react-router-dom"
-import Encrier from "../assets/encrier.svg"
+import { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import Encrier from '../assets/encrier.svg';
 
 function NavBar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isConnected, setIsConnected] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isConnected, setIsConnected] = useState(false);
   // const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen)
-  }
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   const closeMenu = () => {
-    setIsMenuOpen(false)
-  }
-  const location = useLocation()
+    setIsMenuOpen(false);
+  };
+  const location = useLocation();
 
   useEffect(() => {
-    const userId = localStorage.getItem("userId")
+    const userId = localStorage.getItem('userId');
     if (userId) {
-      setIsConnected(true)
+      setIsConnected(true);
     }
-  }, [location])
+  }, [location]);
 
   // const userConnected = () => {
   //   setIsConnected(!isConnected)
@@ -62,8 +62,8 @@ function NavBar() {
       </div>
 
       {/* Menu de navigation */}
-      <nav className={`nav-wrapper ${isMenuOpen ? "open" : ""}`}>
-        <div className={`links ${isMenuOpen ? "open" : ""}`}>
+      <nav className={`nav-wrapper ${isMenuOpen ? 'open' : ''}`}>
+        <div className={`links ${isMenuOpen ? 'open' : ''}`}>
           <Link className="link" to="/about" onClick={closeMenu}>
             Biographie
           </Link>
@@ -99,7 +99,7 @@ function NavBar() {
         </div>
       </nav>
     </div>
-  )
+  );
 }
 
-export default NavBar
+export default NavBar;

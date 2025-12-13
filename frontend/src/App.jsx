@@ -1,25 +1,25 @@
-import { AnimatePresence } from "framer-motion"
-import { Route, Routes, useLocation, Navigate } from "react-router-dom"
-import About from "./pages/About"
-import Home from "./pages/Home"
-import NavBar from "./components/Navbar"
-import Books from "./pages/Books"
-import Quotes from "./pages/Quotes"
-import Characters from "./pages/Characters"
-import Login from "./components/Login"
-import Logout from "./components/Logout"
-import SplashPageBook from "./pages/SplashPageBook"
-import Test from "./pages/Test"
-import Cart from "./components/Cart"
-import Contact from "./components/Contact"
-import Glitter from "./components/Glitter"
-import ScrollToTop from "./components/ScrollToTop"
-import NotFound from "./components/NotFound"
-import Footer from "./components/Footer"
+import { AnimatePresence } from 'framer-motion';
+import { Route, Routes, useLocation, Navigate } from 'react-router-dom';
+import About from './pages/About';
+import Home from './pages/Home';
+import NavBar from './components/Navbar';
+import Books from './pages/Books';
+import Quotes from './pages/Quotes';
+import Characters from './pages/Characters';
+import Login from './components/Login';
+import Logout from './components/Logout';
+import SplashPageBook from './pages/SplashPageBook';
+import Test from './pages/Test';
+import Cart from './components/Cart';
+import Contact from './components/Contact';
+import Glitter from './components/Glitter';
+import ScrollToTop from './components/ScrollToTop';
+import NotFound from './components/NotFound';
+import Footer from './components/Footer';
 
 function App() {
-  const location = useLocation()
-  const isOnSplash = location.pathname === "/"
+  const location = useLocation();
+  const isOnSplash = location.pathname === '/';
 
   return (
     <AnimatePresence mode="wait">
@@ -56,7 +56,7 @@ function App() {
         )}
       </div>
     </AnimatePresence>
-  )
+  );
 }
 
-export default App
+export default App;

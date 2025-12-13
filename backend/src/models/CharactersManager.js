@@ -1,18 +1,14 @@
-const AbstractManager = require("./AbstractManager");
+const AbstractManager = require('./AbstractManager');
 
 class CharactersManager extends AbstractManager {
   constructor() {
-    super({ table: "characters" });
+    super({ table: 'characters' });
   }
 
   insert(character) {
     return this.database.query(
       `insert into ${this.table} (name_characters, associated_book, description) values (?,?,?)`,
-      [
-        character.name_characters,
-        character.associated_book,
-        character.description,
-      ],
+      [character.name_characters, character.associated_book, character.description]
     );
   }
 
@@ -23,19 +19,14 @@ class CharactersManager extends AbstractManager {
       JOIN books_has_characters AS bhc ON c.id = bhc.characters_id 
       join books as b on b.id =c.id
       WHERE bhc.books_id = ?`,
-      [id],
+      [id]
     );
   }
 
   update(character) {
     return this.database.query(
       `update ${this.table} set title = ? id, name_characters=?, associated_book=?, description =? where id = ?`,
-      [
-        character.name_characters,
-        character.associated_book,
-        character.description,
-        character.id,
-      ],
+      [character.name_characters, character.associated_book, character.description, character.id]
     );
   }
 }

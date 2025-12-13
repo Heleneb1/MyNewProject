@@ -1,13 +1,13 @@
 /* eslint-disable consistent-return */
-const models = require("../models");
-const validateUser = require("../validator/userValidator");
-const { hashPassword } = require("../helper/argonHelper");
+const models = require('../models');
+const validateUser = require('../validator/userValidator');
+const { hashPassword } = require('../helper/argonHelper');
 
 const getOne = async (req, res) => {
   const userId = (req.params.id, 10);
   try {
     // eslint-disable-next-line no-restricted-globals
-    if (isNaN(userId)) throw new Error("erreur");
+    if (isNaN(userId)) throw new Error('erreur');
     const [user] = await models.user.findOne(userId);
     res.send(user);
   } catch (error) {
@@ -16,11 +16,8 @@ const getOne = async (req, res) => {
   }
 };
 const getToken = (req) => {
-  if (
-    req.headers.authorization &&
-    req.headers.authorization.split(" ")[0] === "Bearer"
-  ) {
-    return req.headers.authorization.split(" ")[1];
+  if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') {
+    return req.headers.authorization.split(' ')[1];
   }
   if (req.query && req.query.token) {
     return req.query.token;
@@ -34,7 +31,7 @@ const protection = (req, res) => {
     res.status(200).json({
       mess: "n'a pas accès aux données",
       verifyData: false,
-      role: false,
+      role: false
     });
   }
 };
@@ -78,7 +75,7 @@ const createOne = async (req, res) => {
 
     const result = await models.user.addOne({
       ...req.body,
-      password: hashedPassword,
+      password: hashedPassword
     });
     res.status(201).send(result);
   } catch (error) {

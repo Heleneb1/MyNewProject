@@ -1,11 +1,11 @@
 /* eslint-disable react/function-component-definition */
-import React from "react"
+import React from 'react';
 
 const Glitter = () => {
   const glitterStyles = [...Array(100)].map(() => ({
     left: `${Math.random() * 99}%`,
     top: `${Math.random() * 100}%`,
-  }))
+  }));
 
   return (
     <div className="glitter-container">
@@ -14,7 +14,7 @@ const Glitter = () => {
         <div key={index} className="glitter" style={style}></div>
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default Glitter
+export default Glitter;

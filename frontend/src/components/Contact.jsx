@@ -1,37 +1,37 @@
 /* eslint-disable no-alert */
-import React, { useState } from "react"
-import { Link } from "react-router-dom"
-import axios from "axios"
-import Encrier from "../assets/encrier.svg"
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+import Encrier from '../assets/encrier.svg';
 
 function Contact() {
-  const [name, setName] = useState("")
-  const [email, setEmail] = useState("")
-  const [subject, setSubject] = useState("")
-  const [message, setMessage] = useState("")
-  const [isSent, setIsSent] = useState(false)
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [subject, setSubject] = useState('');
+  const [message, setMessage] = useState('');
+  const [isSent, setIsSent] = useState(false);
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     axios
-      .post("http://localhost:5000/contact", {
+      .post('http://localhost:5000/contact', {
         name,
         email,
         subject,
         message,
       })
       .then(() => {
-        setIsSent(true)
-        setName("")
-        setEmail("")
-        setSubject("")
-        setMessage("")
+        setIsSent(true);
+        setName('');
+        setEmail('');
+        setSubject('');
+        setMessage('');
       })
       .catch((err) => {
-        console.error(err.response.data)
-        alert("Une erreur s'est produite lors de l'envoi du message.")
-      })
-  }
+        console.error(err.response.data);
+        alert("Une erreur s'est produite lors de l'envoi du message.");
+      });
+  };
 
   return (
     <div className="Contact">
@@ -88,10 +88,10 @@ function Contact() {
                 required
                 onInvalid={(e) =>
                   e.target.setCustomValidity(
-                    "Votre message doit comporter un minimum de 50 caractères"
+                    'Votre message doit comporter un minimum de 50 caractères'
                   )
                 }
-                onInput={(e) => e.target.setCustomValidity("")}
+                onInput={(e) => e.target.setCustomValidity('')}
                 onChange={(e) => setMessage(e.target.value)}
               />
             </div>
@@ -104,7 +104,7 @@ function Contact() {
         </form>
       )}
     </div>
-  )
+  );
 }
 
-export default Contact
+export default Contact;

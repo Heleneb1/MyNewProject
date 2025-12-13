@@ -1,5 +1,5 @@
-import useBooks from "../../hooks/useBook"
-import Corner from "../assets/corner.png"
+import useBooks from '../../hooks/useBook';
+import Corner from '../assets/corner.png';
 
 export default function Books() {
   const {
@@ -17,7 +17,7 @@ export default function Books() {
     picture,
     resetPicture,
     inputRef,
-  } = useBooks()
+  } = useBooks();
 
   return (
     <div className="books-container">
@@ -50,14 +50,14 @@ export default function Books() {
                 <p className="Lettrine">{selectedBook.description}</p>
                 <p>{selectedBook.pages} pages</p>
                 <p>
-                  {selectedBook.genre}, {selectedBook.publication_date}{" "}
+                  {selectedBook.genre}, {selectedBook.publication_date}{' '}
                 </p>
                 <div className="mc-button">
                   <button
                     className="modal-close"
                     type="button"
                     onClick={() => {
-                      setSelectedBook(null)
+                      setSelectedBook(null);
                     }}
                   >
                     Fermer
@@ -87,7 +87,7 @@ export default function Books() {
                   <div className="info">
                     <p>{book.genre}</p>
                     <p>{book.publication_date}</p>
-                    {localStorage.getItem("role") === "1" ? (
+                    {localStorage.getItem('role') === '1' ? (
                       <div className="button-container">
                         <button
                           className="Changebook"
@@ -125,7 +125,7 @@ export default function Books() {
         </div>
       </div>
       <div className="Add-Book">
-        {localStorage.getItem("role") === "1" ? (
+        {localStorage.getItem('role') === '1' ? (
           <form onSubmit={handleSubmit}>
             <input
               type="text"
@@ -188,5 +188,5 @@ export default function Books() {
         ) : null}
       </div>
     </div>
-  )
+  );
 }
