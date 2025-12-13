@@ -1,6 +1,5 @@
 /* eslint-disable no-shadow */
 import React, { useState, useEffect, Suspense } from "react"
-import axios from "axios"
 import { useNavigate } from "react-router-dom"
 import Loader from "./Loader"
 import { useConfirmation } from "../context/ConfirmationContext"
@@ -17,7 +16,7 @@ export default function Cart() {
   const [selectedBook, setSelectedBook] = useState(null)
   const [selectedToAdd, setSelectedToAdd] = useState(null)
 
-  // hook custom
+  // hook useCart
   const {
     cart,
     books,

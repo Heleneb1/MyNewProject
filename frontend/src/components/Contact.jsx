@@ -1,5 +1,6 @@
 /* eslint-disable no-alert */
 import React, { useState } from "react"
+import { Link } from "react-router-dom"
 import axios from "axios"
 import Encrier from "../assets/encrier.svg"
 
@@ -36,14 +37,16 @@ function Contact() {
     <div className="Contact">
       <h2>Contactez-nous</h2>
       <img className="Encrier" src={Encrier} alt="son père" />
-      {isSent ? (
+      {isSent ? (<>
         <p>Votre message a été envoyé avec succès.</p>
+        <Link to="/home" className="Changebook">Accueil</Link>
+      </>
       ) : (
         <form onSubmit={handleSubmit}>
           <div className="form-container">
             <div className="name">
               <input
-                type="text"
+                type="text" required
                 name="name"
                 placeholder="Nom et Prénom"
                 value={name}
@@ -52,7 +55,7 @@ function Contact() {
             </div>
             <div className="email">
               <input
-                type="email"
+                type="email" required
                 name="email"
                 placeholder="Email"
                 value={email}
@@ -61,7 +64,7 @@ function Contact() {
             </div>
             <div className="subject">
               <input
-                type="text"
+                type="text" required
                 name="subject"
                 placeholder="Sujet"
                 value={subject}
@@ -75,12 +78,18 @@ function Contact() {
                 spellCheck="true"
                 lang="fr"
                 value={message}
+                minLength={50}
+                required
+                onInvalid={(e) =>
+                  e.target.setCustomValidity("Votre message doit comporter un minimum de 50 caractères")
+                }
+                onInput={(e) => e.target.setCustomValidity("")}
                 onChange={(e) => setMessage(e.target.value)}
               />
             </div>
 
             {/* <input type="file" capture='user' accept="image/*" id="cameraInput" /> */}
-            <button className="Bouton" type="submit">
+            <button className="Changebook" type="submit">
               Envoyer
             </button>
           </div>

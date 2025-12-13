@@ -8,6 +8,7 @@
   h2 {
     font-size: 3rem;
     text-align: center;
+    margin: 0 1rem 0 0;
   }
 }
 
@@ -75,12 +76,16 @@ input.check {
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
+  padding: 0 1rem;
+  margin-bottom: 1rem;
+  border-radius: 3rem;
 }
+
 
 /* MOBILE */
 @media (max-width: 768px) {
   .Login {
-    padding-top: 7rem;
+    padding-top: 1rem;
   }
 
   .form-container {

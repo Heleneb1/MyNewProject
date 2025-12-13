@@ -126,7 +126,7 @@ router.post("/contact", (req, res) => {
   const replyMessage = {
     subject: "Nous vous remercions d'avoir pris contact avec nous!",
     text: `Bonjour ${name},\n\nNous vous remercions d'avoir pris contact avec nous. Nous avons bien reçu votre message, et nous vous répondrons dans les meilleurs délais.\n\nCordialement,\nVotre équipe`,
-    html: `<p>Bonjour ${name},</p><p>Nous vous remercions d'avoir pris contact avec nous. Nous avons bien reçu votre message, et nous vous répondrons dans les meilleurs délais.</p><p>Cordialement,<br>Votre équipe</p>`,
+    html: `<p>Bonjour ${name},</p><p>Nous vous remercions d'avoir pris contact avec nous.<br> Nous avons bien reçu votre message, et nous vous répondrons dans les meilleurs délais.</p><p>Cordialement,<br>Notre équipe</p><p>Alexandre Dumas,<br> Métissage et Littérature🪶`,
   };
 
   // configurer le contenu de l'email de notification pour vous-même

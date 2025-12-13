@@ -242,24 +242,19 @@
   0% {
     opacity: 0;
     transform: translateY(20px);
-    /* Décalage initial vers le bas */
   }
 
   100% {
     opacity: 1;
     transform: translateY(0);
-    /* Pas de décalage une fois entièrement apparu */
   }
 }
 
 .book {
   opacity: 0;
-  /* Commencez avec une opacité de 0 pour cacher les livres au début */
   animation: fadeIn 0.8s ease forwards;
-  /* Utilisez l'animation fadeIn */
 }
 
-/* Appliquez un délai progressif à chaque livre */
 .book:nth-child(1) {
   animation-delay: 0.4s;
 }
@@ -284,7 +279,6 @@
   animation-delay: 2s;
 }
 
-/* Ajoutez plus de règles pour chaque livre selon le nombre de livres que vous avez */
 
 @media screen and (max-width: 768px) {
   .books-container {
@@ -297,7 +291,7 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-    padding-top: 7rem;
+    padding-top: 1rem;
   }
 
   .book {
@@ -336,5 +330,9 @@
     bottom: 15.2rem;
     left: 5.5rem;
     transform: scaleY(-1);
+  }
+
+  p {
+    font-size: 1.3rem;
   }
 }

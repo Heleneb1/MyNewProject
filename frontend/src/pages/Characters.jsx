@@ -120,12 +120,12 @@ export default function Characters() {
               index === self.findIndex((b) => b.book.id === book.book.id)
           )
           .map((association) => (
-            <div className="Charaters_Book" key={association.book.title}>
-              <div className="Charaters_Book_content">
-                <h2>{association.book.title}</h2>
+            <div className="modal" key={association.book.title}>
+              <div className="modal-content">
+                <h2>{association.book.associated_book}</h2>
                 <p>{association.book.description}</p>
                 <button
-                  className="Charaters_Book_close"
+                  className="modal-close"
                   type="button"
                   onClick={handleModalClose}
                 >
