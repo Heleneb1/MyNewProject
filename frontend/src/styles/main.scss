@@ -37,10 +37,8 @@ body::after {
   border-radius: 50%;
   animation: float-particles 3s ease-in-out infinite;
   pointer-events: none;
-  box-shadow:
-    -100px 20px 0 rgba(255, 220, 150, 0.4),
-    100px 40px 0 rgba(255, 220, 150, 0.4),
-    -50px 60px 0 rgba(255, 220, 150, 0.3),
+  box-shadow: -100px 20px 0 rgba(255, 220, 150, 0.4),
+    100px 40px 0 rgba(255, 220, 150, 0.4), -50px 60px 0 rgba(255, 220, 150, 0.3),
     50px 80px 0 rgba(255, 220, 150, 0.3);
 }
 
@@ -76,8 +74,7 @@ h1 {
 }
 
 .Changebook:active {
-  box-shadow:
-    inset -2px -2px 3px rgba(255, 255, 255, 0.6),
+  box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6),
     inset 2px 2px 3px var(--background);
   background: var(--font);
   color: var(--background);
@@ -85,8 +82,7 @@ h1 {
 }
 
 .Changebook:hover {
-  box-shadow:
-    inset -2px -2px 3px rgba(255, 255, 255, 0.6),
+  box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6),
     inset 2px 2px 3px rgba(0, 0, 0, 0.6);
   background: var(--font);
   color: var(--background);
@@ -179,8 +175,7 @@ h2 {
 }
 
 .modal-close:hover {
-  box-shadow:
-    inset -2px -2px 3px rgba(255, 255, 255, 0.6),
+  box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6),
     inset 2px 2px 3px rgba(0, 0, 0, 0.6);
   background: #f6d171;
   color: var(--background);
