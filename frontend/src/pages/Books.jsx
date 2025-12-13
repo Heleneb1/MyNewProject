@@ -15,6 +15,7 @@ export default function Books() {
     handleDelete,
     formData,
     picture,
+    resetPicture,
     inputRef,
   } = useBooks()
 
@@ -76,15 +77,12 @@ export default function Books() {
                       src={book.url_img}
                       alt={book.title}
                     />
-                  </div>
-                  <div className="Corner">
-                    <div className="CornerTop">
+                    <div className="Corner">
                       <img className="CornerT" src={Corner} alt="decoration" />
-                    </div>
-                    <div className="CornerBottom">
                       <img className="CornerB" src={Corner} alt="decoration" />
                     </div>
                   </div>
+
                   <h3>{book.title}</h3>
                   <div className="info">
                     <p>{book.genre}</p>
@@ -164,7 +162,7 @@ export default function Books() {
               value={formData.pages}
               onChange={handleInputChange}
             />
-            <form encType="multipart/form-data" onSubmit={handleSubmit}>
+            <div encType="multipart/form-data" onSubmit={handleSubmit}>
               <input
                 id="select-picture"
                 type="file"
@@ -172,13 +170,6 @@ export default function Books() {
                 ref={inputRef}
                 onChange={handleFileChange}
               />
-              <button
-                className="Changebook"
-                type="button"
-                onClick={handleImageSubmit}
-              >
-                Envoyer l'image
-              </button>
               {picture && (
                 <img className="picture" src={picture} alt="Aperçu" />
               )}
@@ -188,7 +179,7 @@ export default function Books() {
                 name="reset"
                 onClick={() => resetPicture}
               />
-            </form>
+            </div>
 
             <button className="Changebook" type="submit">
               Nouvelle entrée
@@ -196,7 +187,6 @@ export default function Books() {
           </form>
         ) : null}
       </div>
-
     </div>
   )
 }

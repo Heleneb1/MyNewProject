@@ -15,14 +15,14 @@
 }
 
 .signature {
-  filter: invert(90%) sepia(4%) saturate(5512%) hue-rotate(330deg) brightness(100%) contrast(109%);
+  filter: invert(90%) sepia(4%) saturate(5512%) hue-rotate(330deg)
+    brightness(100%) contrast(109%);
   height: 20rem;
   top: 0%;
   left: -37%;
   transform: translateX(-100%);
   opacity: 0;
   animation: draw-signature 7s forwards;
-
 }
 
 @keyframes draw-signature {

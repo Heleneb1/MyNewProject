@@ -37,16 +37,20 @@ function Contact() {
     <div className="Contact">
       <h2>Contactez-nous</h2>
       <img className="Encrier" src={Encrier} alt="son père" />
-      {isSent ? (<>
-        <p>Votre message a été envoyé avec succès.</p>
-        <Link to="/home" className="Changebook">Accueil</Link>
-      </>
+      {isSent ? (
+        <>
+          <p>Votre message a été envoyé avec succès.</p>
+          <Link to="/home" className="Changebook">
+            Accueil
+          </Link>
+        </>
       ) : (
         <form onSubmit={handleSubmit}>
           <div className="form-container">
             <div className="name">
               <input
-                type="text" required
+                type="text"
+                required
                 name="name"
                 placeholder="Nom et Prénom"
                 value={name}
@@ -55,7 +59,8 @@ function Contact() {
             </div>
             <div className="email">
               <input
-                type="email" required
+                type="email"
+                required
                 name="email"
                 placeholder="Email"
                 value={email}
@@ -64,7 +69,8 @@ function Contact() {
             </div>
             <div className="subject">
               <input
-                type="text" required
+                type="text"
+                required
                 name="subject"
                 placeholder="Sujet"
                 value={subject}
@@ -81,7 +87,9 @@ function Contact() {
                 minLength={50}
                 required
                 onInvalid={(e) =>
-                  e.target.setCustomValidity("Votre message doit comporter un minimum de 50 caractères")
+                  e.target.setCustomValidity(
+                    "Votre message doit comporter un minimum de 50 caractères"
+                  )
                 }
                 onInput={(e) => e.target.setCustomValidity("")}
                 onChange={(e) => setMessage(e.target.value)}

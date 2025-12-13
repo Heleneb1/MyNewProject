@@ -32,12 +32,17 @@ export default function FamilyMedaillon() {
         <div className="familyPicture">
           <div className="Picture">
             <div className={`Père ${isMedaillonVisible ? "animated" : ""}`}>
-              <img className="FamilyP" src={Pere} alt="Thomas Alexandre Davy de La Pailleterie son père" />
+              <img
+                className="FamilyP"
+                src={Pere}
+                alt="Thomas Alexandre Davy de La Pailleterie son père"
+              />
               <div className="picture-description">
                 <div className="Info">
                   <h3>Son père</h3>
                   <p>
-                    Thomas Alexandre Davy de La Pailleterie, dit le général Dumas
+                    Thomas Alexandre Davy de La Pailleterie, dit le général
+                    Dumas
                   </p>
                 </div>
               </div>
@@ -48,7 +53,11 @@ export default function FamilyMedaillon() {
             </div>
 
             <div className="Mère">
-              <img className="FamilyM" src={Mère} alt="Marie-Louise Élisabeth Labouret, sa mère" />
+              <img
+                className="FamilyM"
+                src={Mère}
+                alt="Marie-Louise Élisabeth Labouret, sa mère"
+              />
               <div className="picture-description">
                 <div className="Info">
                   <h3>Sa mère</h3>

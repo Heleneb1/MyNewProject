@@ -15,7 +15,7 @@ import Contact from "./components/Contact"
 import Glitter from "./components/Glitter"
 import ScrollToTop from "./components/ScrollToTop"
 import NotFound from "./components/NotFound"
-import Footer from "@components/Footer"
+import Footer from "./components/Footer"
 
 function App() {
   const location = useLocation()

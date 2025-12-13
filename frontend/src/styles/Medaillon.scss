@@ -104,7 +104,6 @@
   cursor: pointer;
   animation: opacity-img 2s ease 7s forwards;
   animation-iteration-count: 1;
-
 }
 
 /* INFO */
@@ -148,7 +147,6 @@
 .Père:hover .Info {
   opacity: 1;
 }
-
 
 /* ANIMATIONS */
 @keyframes apparition {
@@ -201,8 +199,6 @@
   100% {
     opacity: 0;
   }
-
-
 }
 
 /* MOBILE */
@@ -254,7 +250,6 @@
   .picture-description {
     display: none;
   }
-
 
   .Info {
     display: none;

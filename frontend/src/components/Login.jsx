@@ -15,7 +15,6 @@ function Login() {
   const [toggleVisibility, setToggleVisibility] = useState(false)
   const navigate = useNavigate()
 
-
   const handleLoginSubmit = (e) => {
     e.preventDefault()
 
@@ -94,12 +93,14 @@ function Login() {
   return (
     <div className="Login">
       <div className="Connect">
-
         {toggleVisibility ? (
           <>
             <h2 className="title">Connexion</h2>
 
-            <form className="Connexion form-container" onSubmit={handleLoginSubmit}>
+            <form
+              className="Connexion form-container"
+              onSubmit={handleLoginSubmit}
+            >
               <div className="form-field">
                 <input
                   className="email"
@@ -118,11 +119,7 @@ function Login() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
-                <input
-                  className="check"
-                  type="checkbox"
-                  onClick={myFunction}
-                />
+                <input className="check" type="checkbox" onClick={myFunction} />
               </div>
 
               <div className="Bouton_Connect">
@@ -170,11 +167,7 @@ function Login() {
                   value={signupPassword}
                   onChange={(e) => setSignupPassword(e.target.value)}
                 />
-                <input
-                  className="check"
-                  type="checkbox"
-                  onClick={myFunction}
-                />
+                <input className="check" type="checkbox" onClick={myFunction} />
               </div>
 
               <div className="password-field">
@@ -183,9 +176,7 @@ function Login() {
                   type="password"
                   placeholder="Confirmer le mot de passe"
                   value={signupConfirmPassword}
-                  onChange={(e) =>
-                    setSignupConfirmPassword(e.target.value)
-                  }
+                  onChange={(e) => setSignupConfirmPassword(e.target.value)}
                 />
               </div>
 
@@ -198,16 +189,11 @@ function Login() {
           </>
         )}
 
-        <button
-          type="button"
-          className="toggleButton"
-          onClick={toggle}
-        >
+        <button type="button" className="toggleButton" onClick={toggle}>
           {toggleVisibility
             ? "Pas encore de compte ? Inscris-toi !"
             : "Déjà un compte ? Connecte-toi !"}
         </button>
-
       </div>
     </div>
   )

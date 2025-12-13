@@ -91,7 +91,6 @@ export default function About() {
         </p>
       </div>
       <Medaillon />
-
     </div>
   )
 }

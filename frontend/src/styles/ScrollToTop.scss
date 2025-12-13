@@ -1,17 +1,14 @@
 .scroll-container {
-
   display: flex;
   justify-content: flex-end;
   width: 95%;
   height: 7rem;
-
 
   .scroll-to-top-button {
     position: relative;
     width: auto;
     margin: 0;
     padding: 0.5rem;
-
 
     svg {
       transform: scale(1.5);
@@ -25,6 +22,5 @@
       transition: background-color 0.3s ease-in-out;
       font-size: 2rem;
     }
-
   }
 }

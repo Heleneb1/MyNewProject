@@ -69,7 +69,6 @@ export default function Quotes() {
           <div>Aucun résultat trouvé pour cette recherche.</div>
         )}
       </div>
-
     </div>
   )
 }

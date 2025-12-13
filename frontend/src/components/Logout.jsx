@@ -1,23 +1,22 @@
 import { useNavigate } from "react-router-dom"
 import { useEffect } from "react"
 
-function Logout() {
-    const navigate = useNavigate()
+export default function Logout() {
+  const navigate = useNavigate()
 
-    useEffect(() => {
-        // On supprime uniquement ce qu’il faut
-        localStorage.removeItem("token")
-        localStorage.removeItem("auth_token")
-        localStorage.removeItem("userId")
+  useEffect(() => {
+    // eslint-disable-next-line no-alert
+    const confirmed = window.confirm(
+      "Souhaitez-vous vraiment vous déconnecter ?"
+    )
 
-        console.log("Vous êtes déconnecté!")
-        if (window.confirm("Souhaitez-vous vraiment vous déconnecter ?")) {
-        }
-        // Redirection immédiate
-        navigate("/")
-    }, [navigate])
+    if (confirmed) {
+      localStorage.clear() // plus simple
+      navigate("/", { replace: true })
+    } else {
+      navigate(-1)
+    }
+  }, [navigate])
 
-    return null
+  return null
 }
-
-export default Logout

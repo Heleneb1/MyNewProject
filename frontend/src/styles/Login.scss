@@ -4,7 +4,6 @@
   align-items: center;
   font-family: "Birthstone", cursive;
 
-
   h2 {
     font-size: 3rem;
     text-align: center;
@@ -81,7 +80,6 @@ input.check {
   border-radius: 3rem;
 }
 
-
 /* MOBILE */
 @media (max-width: 768px) {
   .Login {
@@ -105,5 +103,4 @@ input.check {
     padding-bottom: 2rem;
     width: 94%;
   }
-
 }

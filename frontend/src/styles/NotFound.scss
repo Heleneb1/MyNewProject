@@ -1,13 +1,12 @@
 .notfound {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: var(--font);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--font);
 
-    p {
-        font-size: 2rem;
-    }
-
+  p {
+    font-size: 2rem;
+  }
 }

@@ -19,9 +19,11 @@
     left: 50%;
     width: 150%;
     height: 150%;
-    background: radial-gradient(ellipse at center,
-        rgba(255, 220, 150, 0.15) 0%,
-        transparent 70%);
+    background: radial-gradient(
+      ellipse at center,
+      rgba(255, 220, 150, 0.15) 0%,
+      transparent 70%
+    );
     transform: translate(-50%, -50%);
     pointer-events: none;
     z-index: 0;
@@ -29,15 +31,11 @@
 
   // Masquer le splash après ouverture complète
   &.open {
-    transition:
-      opacity 0.5s ease 3s,
-      z-index 0s 3.5s;
+    transition: opacity 0.5s ease 3s, z-index 0s 3.5s;
 
     .Book-left {
       transform: rotateY(-180deg);
-      box-shadow:
-        2px 0 10px rgba(0, 0, 0, 0.3),
-        10px 0 30px rgba(0, 0, 0, 0.2),
+      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3), 10px 0 30px rgba(0, 0, 0, 0.2),
         20px 0 50px rgba(0, 0, 0, 0.1);
 
       &::before {
@@ -48,9 +46,7 @@
 
     .Book-leftsecond {
       transform: rotateY(-180deg);
-      box-shadow:
-        2px 0 8px rgba(0, 0, 0, 0.2),
-        8px 0 20px rgba(0, 0, 0, 0.15);
+      box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2), 8px 0 20px rgba(0, 0, 0, 0.15);
     }
 
     .splash-home {
@@ -87,10 +83,8 @@
   transition: transform 2.5s cubic-bezier(0.645, 0.045, 0.355, 1);
   z-index: 3;
 
-  // Ombre portée 
-  box-shadow:
-    -2px 0 10px rgba(0, 0, 0, 0.3),
-    -10px 0 30px rgba(0, 0, 0, 0.2),
+  // Ombre portée
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3), -10px 0 30px rgba(0, 0, 0, 0.2),
     -20px 0 50px rgba(0, 0, 0, 0.1);
 
   // Reliure avec dégradé d'ombre
@@ -101,11 +95,13 @@
     top: 0;
     bottom: 0;
     width: 50px;
-    background: linear-gradient(to right,
-        rgba(0, 0, 0, 0.5) 0%,
-        rgba(0, 0, 0, 0.3) 30%,
-        rgba(0, 0, 0, 0.1) 70%,
-        transparent 100%);
+    background: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.5) 0%,
+      rgba(0, 0, 0, 0.3) 30%,
+      rgba(0, 0, 0, 0.1) 70%,
+      transparent 100%
+    );
     z-index: 1;
   }
 
@@ -114,10 +110,12 @@
     content: "";
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse 800px 600px at 70% 40%,
-        rgba(255, 255, 255, 0.3) 0%,
-        rgba(255, 255, 255, 0.1) 30%,
-        transparent 60%);
+    background: radial-gradient(
+      ellipse 800px 600px at 70% 40%,
+      rgba(255, 255, 255, 0.3) 0%,
+      rgba(255, 255, 255, 0.1) 30%,
+      transparent 60%
+    );
     opacity: 1;
     transition: all 1.5s ease;
     pointer-events: none;
@@ -140,22 +138,23 @@
   transition: transform 2.5s cubic-bezier(0.645, 0.045, 0.355, 1) 0.3s;
   z-index: 2;
 
-  // Texture papier 
+  // Texture papier
   &::after {
     content: "";
     position: absolute;
     inset: 0;
-    background-image: repeating-linear-gradient(0deg,
-        transparent,
-        transparent 2px,
-        rgba(0, 0, 0, 0.015) 2px,
-        rgba(0, 0, 0, 0.015) 4px);
+    background-image: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.015) 2px,
+      rgba(0, 0, 0, 0.015) 4px
+    );
     pointer-events: none;
   }
 
   // Ombre portée
-  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2),
-  -8px 0 20px rgba(0, 0, 0, 0.15);
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2), -8px 0 20px rgba(0, 0, 0, 0.15);
 }
 
 // CONTENU HOME
@@ -164,13 +163,10 @@
   inset: 0;
   opacity: 0;
   transform: scale(0.95);
-  transition:
-    opacity 1.5s ease 0.5s,
-    transform 1.5s ease 0.5s;
+  transition: opacity 1.5s ease 0.5s, transform 1.5s ease 0.5s;
   z-index: -1;
   pointer-events: none;
 }
-
 
 // EFFET DE PARTICULES DORÉES (optionnel)
 .Book-container::after {
@@ -184,15 +180,12 @@
   border-radius: 50%;
   animation: float-particles 3s ease-in-out infinite;
   pointer-events: none;
-  box-shadow:
-    -100px 20px 0 rgba(255, 220, 150, 0.4),
-    100px 40px 0 rgba(255, 220, 150, 0.4),
-    -50px 60px 0 rgba(255, 220, 150, 0.3),
+  box-shadow: -100px 20px 0 rgba(255, 220, 150, 0.4),
+    100px 40px 0 rgba(255, 220, 150, 0.4), -50px 60px 0 rgba(255, 220, 150, 0.3),
     50px 80px 0 rgba(255, 220, 150, 0.3);
 }
 
 @keyframes float-particles {
-
   0%,
   100% {
     transform: translateY(0) translateX(0);

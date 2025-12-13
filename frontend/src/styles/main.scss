@@ -17,8 +17,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Luxurious+Script&family=Pinyon+Script&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Birthstone&display=swap");
 
-
-
 body {
   margin: 0;
   padding: 0;
@@ -27,7 +25,6 @@ body {
   height: 100vh;
   width: 100%;
 }
-
 
 body::after {
   content: "";
@@ -40,12 +37,9 @@ body::after {
   border-radius: 50%;
   animation: float-particles 3s ease-in-out infinite;
   pointer-events: none;
-  box-shadow:
-    -100px 20px 0 rgba(255, 220, 150, 0.4),
-    100px 40px 0 rgba(255, 220, 150, 0.4),
-    -50px 60px 0 rgba(255, 220, 150, 0.3),
+  box-shadow: -100px 20px 0 rgba(255, 220, 150, 0.4),
+    100px 40px 0 rgba(255, 220, 150, 0.4), -50px 60px 0 rgba(255, 220, 150, 0.3),
     50px 80px 0 rgba(255, 220, 150, 0.3);
-
 }
 
 :root {
@@ -65,7 +59,6 @@ h1 {
   font-size-adjust: 0.45;
 }
 
-
 .Changebook {
   margin: 20px;
   background: transparent;
@@ -81,8 +74,7 @@ h1 {
 }
 
 .Changebook:active {
-  box-shadow:
-    inset -2px -2px 3px rgba(255, 255, 255, 0.6),
+  box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6),
     inset 2px 2px 3px var(--background);
   background: var(--font);
   color: var(--background);
@@ -90,8 +82,7 @@ h1 {
 }
 
 .Changebook:hover {
-  box-shadow:
-    inset -2px -2px 3px rgba(255, 255, 255, 0.6),
+  box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6),
     inset 2px 2px 3px rgba(0, 0, 0, 0.6);
   background: var(--font);
   color: var(--background);
@@ -164,7 +155,6 @@ h2 {
   margin-bottom: 50px;
 }
 
-
 //pour centrer le bouton dans le modal
 .mc-button {
   display: flex;
@@ -185,15 +175,12 @@ h2 {
 }
 
 .modal-close:hover {
-  box-shadow:
-    inset -2px -2px 3px rgba(255, 255, 255, 0.6),
+  box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6),
     inset 2px 2px 3px rgba(0, 0, 0, 0.6);
   background: #f6d171;
   color: var(--background);
   scale: 1.1;
 }
-
-
 
 .buttonContainer {
   display: flex;
@@ -201,7 +188,6 @@ h2 {
 }
 
 @keyframes float-particles {
-
   0%,
   100% {
     transform: translateY(0) translateX(0);
@@ -222,7 +208,7 @@ h2 {
   }
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
   h1 {
     font-size: 1.5rem;
     font-weight: normal;
