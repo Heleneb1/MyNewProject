@@ -1,0 +1,317 @@
+.books-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start; // ou center
+
+  input[type='text'] {
+    background-color: transparent;
+    border: 1px solid var(--font);
+    border-radius: 5px;
+    color: var(--font);
+    padding: 8px;
+    margin-right: 16px;
+  }
+
+  // input file dans le container
+  [type='file'] {
+    display: flex;
+    justify-content: center;
+    background-color: transparent;
+    border: 1px solid #f6d171;
+    border-radius: 5px;
+    color: #f6d171;
+    padding: 8px;
+  }
+}
+
+// intro des livres (bloc de base)
+.books-intro {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.Book-Picture {
+  width: 10rem;
+  height: 14rem;
+  border: 2px solid #f6d171;
+  box-shadow: #4d0408 0 0 0 2px inset, rgb(234, 232, 213) 1px -1px 0 -1px,
+    rgb(46, 2, 2) 2px -2px;
+  margin: 10px;
+  filter: brightness(121%);
+}
+
+.book-style {
+  margin: 50px;
+  width: 14rem;
+  height: 20rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--red);
+  object-fit: contain;
+  box-shadow: var(--red) 0 0 0 2px inset, rgb(209, 209, 206) 5px -10px 0 -10px,
+    rgb(239, 243, 239) 5px -5px, rgb(209, 209, 206) 10px -15px 0 -10px,
+    rgb(234, 233, 229) 10px -10px, rgb(209, 209, 206) 20px -20px 0 -10px,
+    rgb(239, 235, 233) 15px -15px, rgb(209, 209, 206) 25px -20px 0 -10px,
+    var(--red) 25px -20px;
+  border-radius: 8px 3px 3px 8px;
+
+  &:hover {
+    box-shadow: var(--blue) 0 0 0 2px inset, rgb(209, 209, 206) 5px -10px 0 -5px,
+      rgb(239, 243, 239) 5px -5px, rgb(209, 209, 206) 10px -16px 0 -5px,
+      rgb(234, 233, 229) 10px -10px, rgb(209, 209, 206) 20px -22px 0 -5px,
+      rgb(239, 235, 233) 20px -15px, rgb(209, 209, 206) 30px -26px 0 -5px,
+      var(--blue) 30px -28px;
+    background-color: var(--blue);
+    cursor: pointer;
+  }
+}
+
+.book {
+  width: 16rem;
+  margin: 2rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+
+  // animation
+  // opacity: 0;
+  // animation: fadeIn 0.8s ease forwards;
+
+  h3 {
+    height: 3rem;
+    color: var(--font);
+    font-size: 25px;
+    font-style: oblique;
+  }
+
+  &:nth-child(1) {
+    animation-delay: 0.4s;
+  }
+
+  &:nth-child(2) {
+    animation-delay: 0.6s;
+  }
+
+  &:nth-child(3) {
+    animation-delay: 0.8s;
+  }
+
+  &:nth-child(4) {
+    animation-delay: 1.2s;
+  }
+
+  &:nth-child(5) {
+    animation-delay: 1.6s;
+  }
+
+  &:nth-child(6) {
+    animation-delay: 2s;
+  }
+}
+
+.Lettrine::first-letter {
+  line-height: 0.2;
+  font-size: 3em;
+  font-weight: bold;
+  float: left;
+  margin-right: 5px;
+}
+
+.Changebook {
+  margin: 20px;
+  background: transparent;
+  border: 1px solid var(--font);
+  border-radius: 30px;
+  color: var(--font);
+  width: 200px;
+  height: 30px;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6),
+      inset 2px 2px 3px rgba(0, 0, 0, 0.6);
+    background: var(--font);
+    color: var(--background);
+  }
+
+  &:active {
+    box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6),
+      inset 2px 2px 3px var(--background);
+    background: var(--font);
+    color: var(--background);
+    scale: 1.1;
+  }
+}
+
+.book-style {
+  position: relative;
+}
+
+.Corner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; // bonus
+}
+
+.CornerT,
+.CornerB {
+  position: absolute;
+  width: 3rem;
+  height: 3rem;
+}
+
+.CornerT {
+  top: 0.1rem;
+  right: -0.1rem;
+  transform: scaleY(-1);
+}
+
+.CornerB {
+  bottom: -0.1rem;
+  right: -0.1rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 16px;
+}
+
+.label {
+  margin: 16px;
+}
+
+.select {
+  background-color: var(--background);
+  color: white;
+}
+
+.NoBook {
+  font-size: 30px;
+  display: flex;
+  padding: 30px;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin: 2rem auto;
+  text-align: center;
+}
+
+.picture {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.Add-Book {
+  width: 30rem;
+}
+
+// Customisation des boutons du champ file (global)
+input[type='file']::-webkit-file-upload-button {
+  margin: 20px;
+  background: transparent;
+  border: 1px solid #f6d171;
+  border-radius: 30px;
+  color: #f6d171;
+  width: 200px;
+  height: 30px;
+
+  &:hover {
+    box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6),
+      inset 2px 2px 3px rgba(0, 0, 0, 0.6);
+    background: #f6d171;
+    color: var(--background);
+  }
+}
+
+// Bouton reset
+input[type='reset'] {
+  margin: 20px;
+  background: transparent;
+  border: 1px solid #f6d171;
+  border-radius: 30px;
+  color: #f6d171;
+  width: 200px;
+  height: 30px;
+
+  &:hover {
+    box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6),
+      inset 2px 2px 3px rgba(0, 0, 0, 0.6);
+    background: #f6d171;
+    color: var(--background);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .books-container {
+    padding-top: 1rem;
+    justify-content: center;
+  }
+
+  .books-intro {
+    display: flex;
+    flex-direction: column;
+    padding-top: 1rem;
+    justify-content: center;
+  }
+
+  .book {
+    width: 17rem;
+  }
+
+  .book-style {
+    justify-content: center;
+    width: 200px;
+    height: 300px;
+    margin: 0;
+  }
+
+  .Book-Picture {
+    width: 150px;
+    height: 230px;
+  }
+
+  .Add-Book {
+    display: flex;
+    flex-direction: column;
+    width: 20rem;
+  }
+
+  .Corner {
+    .CornerT {
+      width: 30px;
+      height: 30px;
+    }
+
+    .CornerB {
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  p {
+    font-size: 1.3rem;
+  }
+}

@@ -1,0 +1,171 @@
+.navbar {
+  position: relative;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(20, 20, 20, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(246, 209, 113, 0.2);
+  padding-top: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+
+  .brandt {
+    width: 95%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    z-index: 1001;
+  }
+
+  .title {
+    color: #f6d171;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Kaushan Script', cursive;
+    margin-bottom: 1rem;
+    z-index: 1;
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--secondary-color);
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 2px #fff;
+  }
+
+  a {
+    color: var(--font);
+    text-decoration: none;
+  }
+
+  h3 {
+    margin: 5px 0 0 0;
+    font-size: 1.2rem;
+    font-weight: normal;
+    text-align: center;
+  }
+
+  .title-with-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .encrier {
+    width: 32px; // taille adaptée mobile
+    height: auto;
+  }
+
+  .nav-wrapper {
+    width: 100%;
+  }
+
+  .links {
+    display: flex;
+    flex-direction: column; // mobile: menu vertical
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 1.4rem;
+    width: 100%;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    padding: 0;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 1rem auto;
+    z-index: 999;
+  }
+
+  .links.open {
+    max-height: 500px;
+    opacity: 1;
+    padding: 1rem 0;
+  }
+
+  .link {
+    width: 100%;
+    padding: 1rem 0;
+    text-align: center;
+    text-decoration: none;
+    color: #f6d171;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: #fff;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0%;
+      height: 3px;
+      background: var(--font);
+      transition: width 0.3s ease;
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
+  }
+
+  .burger-icon {
+    display: flex; // visible par défaut en mobile
+    flex-direction: column;
+    justify-content: space-between;
+    background: rgba(255, 255, 255, 0.05);
+
+    width: 28px;
+    height: 22px;
+    cursor: pointer;
+    z-index: 2000;
+
+    span {
+      display: block;
+      height: 3px;
+      background-color: #f6d171;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+  }
+}
+
+/* TABLETTE & DESKTOP */
+@media (min-width: 769px) {
+  .navbar {
+    .encrier {
+      width: 60px; // logo plus grand
+    }
+
+    .nav-wrapper {
+      width: 55%;
+    }
+
+    .links {
+      flex-direction: row; // horizontal
+      justify-content: space-between;
+      align-items: center;
+      height: 45px;
+      max-height: none;
+      opacity: 1;
+      padding: 0 2.5rem;
+      border-radius: 30px;
+    }
+
+    .link {
+      width: auto;
+      padding: 0;
+      text-align: left;
+      font-size: 1.2rem;
+    }
+
+    .burger-icon {
+      display: none; // caché en desktop
+    }
+  }
+}

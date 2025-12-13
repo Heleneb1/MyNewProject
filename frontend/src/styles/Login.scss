@@ -1,0 +1,106 @@
+.Login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Birthstone', cursive;
+
+  h2 {
+    font-size: 3rem;
+    text-align: center;
+    margin: 0 1rem 0 0;
+  }
+}
+
+.Connect {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-container {
+  width: 99%;
+  max-width: 400px;
+  padding: 1rem;
+}
+
+.form-field {
+  width: 99%;
+  margin-bottom: 1rem;
+}
+
+input {
+  width: 99%;
+  background-color: rgb(30, 29, 29);
+  border: 1px solid #f6d171;
+  border-radius: 5px;
+  color: #f6d171;
+  padding: 10px;
+  font-size: 18px;
+}
+
+.password-field {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 99%;
+  margin-bottom: 1rem;
+}
+
+input.check {
+  width: 1.3rem;
+  height: 1.3rem;
+  accent-color: #f6d171;
+  cursor: pointer;
+}
+
+.Bouton_Connect {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.Calendar label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.Calendar input {
+  width: 100%;
+}
+
+.toggleButton {
+  background: var(--font);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0 1rem;
+  margin-bottom: 1rem;
+  border-radius: 3rem;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .Login {
+    padding-top: 1rem;
+  }
+
+  .form-container {
+    padding: 0.5rem;
+  }
+
+  input {
+    font-size: 16px;
+    width: 94%;
+  }
+
+  .Calendar input {
+    width: 94%;
+  }
+
+  .Connect {
+    padding-bottom: 2rem;
+    width: 94%;
+  }
+}

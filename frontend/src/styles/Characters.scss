@@ -1,0 +1,39 @@
+.Filter_container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+
+  .Characters,
+  .Books {
+    margin: 2rem;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  label {
+    width: 14rem;
+    font-size: 1.5rem;
+    margin: 1rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .Filter_container {
+    padding-top: 1rem;
+
+    .Characters,
+    .Books {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    label {
+      width: auto;
+      font-size: 1.2rem;
+      margin: 0.5rem;
+    }
+  }
+}
