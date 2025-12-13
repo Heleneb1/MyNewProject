@@ -1,32 +1,23 @@
 {
-  "name": "template-fullstack",
-  "version": "2.0.1",
-  "description": "project template for the React-Express-MySQL cursus in Wild Code School",
-  "homepage": "https://github.com/wildcodeschool/js-template-fullstack#readme",
-  "bugs": {
-    "url": "https://github.com/wildcodeschool/js-template-fullstack/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/wildcodeschool/js-template-fullstack.git"
-  },
+  "name": "alexandre-dumas",
+  "version": "1.0.0",
+  "description": "alexandre dumas's project, the famous author",
   "config": {
     "cli": "npm"
   },
   "scripts": {
     "postinstall": "cross-env-shell \"husky install && cd ./frontend && $npm_package_config_cli install && cd ../backend && $npm_package_config_cli install\"",
     "migrate": "cd ./backend && node migrate.js",
-    "dev": "cross-env-shell 'concurrently -c green,yellow -t \"HH:mm:ss\" -p \"{name} {time}\" \"$npm_package_config_cli:dev-*\"'",
-    "dev-front": "cross-env-shell \"cd ./frontend && $npm_package_config_cli run dev\"",
-    "dev-back": "cross-env-shell \"cd ./backend && $npm_package_config_cli run dev\"",
+    "dev": "npm run dev-front & npm run dev-back",
+    "dev-front": "cd frontend && npm run dev",
+    "dev-back": "cd backend && npm run dev",
     "lint": "echo '----- Checking Frontend...' && npx prettier --write . && eslint --ext .jsx . --fix && echo '----- Done!'",
     "fix": "cross-env-shell \"cd ./frontend && $npm_package_config_cli run fix && cd ../backend && $npm_package_config_cli run fix\""
   },
   "keywords": [],
-  "author": "Wild Code School",
+  "author": "Helene",
   "license": "MIT",
   "devDependencies": {
-    "concurrently": "^7.6.0",
     "cross-env": "^7.0.3",
     "husky": "^8.0.3",
     "lint-staged": "^16.2.7"

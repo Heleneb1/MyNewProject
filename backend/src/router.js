@@ -160,7 +160,7 @@ router.get("/user/:id/cart_id/:id", CartControllers.readByUser); // Valide
 
 router.delete(
   "/user/:userId/cart_id/:cartId/book/:bookId",
-  CartControllers.deleteInCart
+  CartControllers.deleteInCart,
 );
 router.delete("/user/:userId/cart/:cartId", CartControllers.emptyCart);
 router.put("/user/:userId/cart/:cartId", CartControllers.updateCart);
@@ -194,7 +194,9 @@ router.post("/auth", (req, res) => {
   };
 
   // Si l'utilisateur est authentifié avec succès, générer un token
-  const token = jwt.sign(payload, process.env.TOKEN_SECRET, { expiresIn: '24h' });
+  const token = jwt.sign(payload, process.env.TOKEN_SECRET, {
+    expiresIn: "24h",
+  });
 
   // Envoyer le token dans la réponse
   res.json({ token });

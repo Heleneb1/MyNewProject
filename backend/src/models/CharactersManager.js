@@ -12,7 +12,7 @@ class CharactersManager extends AbstractManager {
         character.name_characters,
         character.associated_book,
         character.description,
-      ]
+      ],
     );
   }
 
@@ -23,7 +23,7 @@ class CharactersManager extends AbstractManager {
       JOIN books_has_characters AS bhc ON c.id = bhc.characters_id 
       join books as b on b.id =c.id
       WHERE bhc.books_id = ?`,
-      [id]
+      [id],
     );
   }
 
@@ -35,7 +35,7 @@ class CharactersManager extends AbstractManager {
         character.associated_book,
         character.description,
         character.id,
-      ]
+      ],
     );
   }
 }

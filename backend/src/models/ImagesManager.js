@@ -8,14 +8,14 @@ class ImagesManager extends AbstractManager {
   insert(image) {
     return this.database.query(
       `insert into ${this.table} ( characters_id, books_id, name_img, url_img) values (?,?,?,?)`,
-      [image.characters_id, image.books_id, image.name_img, image.url_img]
+      [image.characters_id, image.books_id, image.name_img, image.url_img],
     );
   }
 
   updateOne(image) {
     return this.database.query(
       `UPDATE ${this.table} SET books_id = ? WHERE id = ?`,
-      [image.books_id, image.id]
+      [image.books_id, image.id],
     );
   }
 
@@ -28,7 +28,7 @@ class ImagesManager extends AbstractManager {
         image.name_img,
         image.url_img,
         image.id,
-      ]
+      ],
     );
   }
 }
