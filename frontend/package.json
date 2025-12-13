@@ -2,6 +2,7 @@
   "name": "alexandre-dumas",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "homepage": "https://Heleneb1.github.io/MyNewProject/",
   "scripts": {
     "dev": "vite",
