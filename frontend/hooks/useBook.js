@@ -120,6 +120,12 @@ export default function useBooks() {
       alert("Erreur lors de l'ajout de l'image")
     }
   }
+  const resetPicture = () => {
+    setPicture(null)
+    if (inputRef.current) {
+      inputRef.current.value = null
+    }
+  }
 
   // -------- Ajouter un livre ----------
   const handleSubmit = async (e) => {
@@ -149,12 +155,6 @@ export default function useBooks() {
     } catch (err) {
       console.error(err)
       alert("Erreur création livre")
-    }
-    const resetPicture = () => {
-      setPicture(null)
-      if (inputRef.current) {
-        inputRef.current.value = null
-      }
     }
   }
 

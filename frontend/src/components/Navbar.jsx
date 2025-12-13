@@ -47,7 +47,7 @@ function NavBar() {
           </Link>
         </div>
 
-        <button type="button" className="burger-icon" onClick={toggleMenu}>
+        <button type="button" className="burger-icon" onClick={toggleMenu} aria-label="Ouvrir le menu">
           <span />
           <span />
           <span />
