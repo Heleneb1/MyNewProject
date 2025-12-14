@@ -37,14 +37,13 @@ jobs:
       - name: Install CapRover CLI
         run: npm install -g caprover
 
-      - name: Disable TLS check (CapRover self-signed cert)
-        run: echo "NODE_TLS_REJECT_UNAUTHORIZED=0" >> $GITHUB_ENV
-
       - name: Deploy backend to CapRover
+        env:
+          NODE_TLS_REJECT_UNAUTHORIZED: 0
         run: |
+          cd backend
           caprover deploy \
             -h "${{ secrets.CAPROVER_SERVER }}" \
             -p "${{ secrets.CAPROVER_PASSWORD }}" \
             -b main \
-            -a "${{ secrets.CAPROVER_BACK_APPNAME }}" \
-            --directory backend
+            -a "${{ secrets.CAPROVER_BACK_APPNAME }}"
