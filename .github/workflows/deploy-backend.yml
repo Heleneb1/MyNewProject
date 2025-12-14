@@ -1,0 +1,45 @@
+name: Deploy Backend
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  check-secrets:
+    runs-on: ubuntu-latest
+    outputs:
+      caprover-server: ${{ steps.caprover-server.outputs.defined }}
+    steps:
+      - name: Check CAPROVER_SERVER secret
+        id: caprover-server
+        run: |
+          if [ "${{ secrets.CAPROVER_SERVER }}" != '' ]; then
+            echo "defined=true" >> $GITHUB_OUTPUT
+          else
+            echo "defined=false" >> $GITHUB_OUTPUT
+          fi
+
+  deploy:
+    if: needs.check-secrets.outputs.caprover-server == 'true'
+    runs-on: ubuntu-latest
+    needs: check-secrets
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install CapRover CLI
+        run: npm install -g caprover
+
+      - name: Deploy backend to CapRover
+        run: |
+          cd backend
+          caprover deploy -h "${{ secrets.CAPROVER_SERVER }}" \
+                           -p "${{ secrets.CAPROVER_PASSWORD }}" \
+                           -b main \
+                           -a "${{ secrets.CAPROVER_BACK_APPNAME }}"

@@ -1,19 +1,22 @@
-# Dockerfile backend
-FROM node:16.14
+# Utiliser une image légère Node.js
+FROM node:20-alpine
 
-WORKDIR /usr/src/app
+# Définir le répertoire de travail
+WORKDIR /app
 
-ARG DB_HOST=${DB_HOST}
-ENV DB_HOST=${DB_HOST}
-ARG DB_USER=${DB_USER}
-ENV DB_USER=${DB_USER}
-ARG DB_PASSWORD=${DB_PASSWORD}
-ENV DB_PASSWORD=${DB_PASSWORD}
-ARG DB_NAME=${DB_NAME}
-ENV DB_NAME=${DB_NAME}
+# Copier package.json et package-lock.json pour installer les dépendances
+COPY package*.json ./
 
-COPY ./backend .
+# Installer les dépendances
+RUN npm install --production
 
-RUN npm install
+# Copier le reste du code
+COPY . .
 
-CMD [ "npm", "start" ]
+# Exposer le port utilisé par l'application
+EXPOSE 5000
+
+# CapRover injecte automatiquement les variables d'environnement configurées dans le dashboard
+
+# Lancer l'application
+CMD ["npm", "start"]
