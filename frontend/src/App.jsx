@@ -54,7 +54,6 @@ function App() {
             <Footer />
           </>
         )}
-
       </div>
     </AnimatePresence>
   );

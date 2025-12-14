@@ -23,8 +23,6 @@
   padding: 0;
 }
 
-
-
 html,
 body {
   margin: 0;
@@ -33,7 +31,6 @@ body {
   color: #f6d171;
   height: 100%;
   width: 100%;
-
 }
 
 .App {
@@ -64,7 +61,6 @@ body::after {
   --navbar: #141414;
   --red: #4d0408;
   --blue: #045259;
-
 }
 
 #root {
@@ -76,7 +72,6 @@ body::after {
 main {
   flex: 1;
 }
-
 
 h1 {
   margin: 0;
@@ -216,7 +211,6 @@ h2 {
 }
 
 @keyframes float-particles {
-
   0%,
   100% {
     transform: translateY(0) translateX(0);

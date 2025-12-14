@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
-import { ToastContainer, toast, Bounce } from "react-toastify";
+import { ToastContainer, toast, Bounce } from 'react-toastify';
 import signature from '../assets/Alexandre_Dumas_Signature.svg.png';
 
 export default function Logout() {
@@ -12,7 +12,6 @@ export default function Logout() {
       localStorage.removeItem('role');
       localStorage.removeItem('cart_id');
       localStorage.removeItem('userId');
-      console.log(localStorage);
       navigate('/', { replace: true });
     };
 
@@ -26,8 +25,11 @@ export default function Logout() {
           <p style={{ marginBottom: '15px' }}>
             Souhaitez-vous vraiment vous déconnecter ?
           </p>
-          <div style={{ display: 'flex', gap: '10px', justifyContent: 'flex-end' }}>
+          <div
+            style={{ display: 'flex', gap: '10px', justifyContent: 'flex-end' }}
+          >
             <button
+              type="button"
               onClick={() => {
                 closeToast();
                 handleLogout();
@@ -40,12 +42,13 @@ export default function Logout() {
                 borderRadius: '4px',
                 cursor: 'pointer',
                 fontSize: '1.2rem',
-                fontWeight: 'bold'
+                fontWeight: 'bold',
               }}
             >
               Oui
             </button>
             <button
+              type="button"
               onClick={() => {
                 closeToast();
                 handleCancel();
@@ -56,7 +59,7 @@ export default function Logout() {
                 color: '#f6d171',
                 border: 'none',
                 borderRadius: '4px',
-                cursor: 'pointer'
+                cursor: 'pointer',
               }}
             >
               Non
@@ -65,15 +68,15 @@ export default function Logout() {
         </div>
       ),
       {
-        position: "top-right",
+        position: 'top-right',
         autoClose: false,
         closeOnClick: false,
         closeButton: false,
         draggable: false,
-        theme: "dark",
+        theme: 'dark',
         style: {
           color: '#f6d171',
-          border: "1px solid #f6d171",
+          border: '1px solid #f6d171',
         },
         transition: Bounce,
       }
