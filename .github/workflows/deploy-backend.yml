@@ -24,6 +24,7 @@ jobs:
     if: needs.check-secrets.outputs.caprover-server == 'true'
     runs-on: ubuntu-latest
     needs: check-secrets
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -36,10 +37,14 @@ jobs:
       - name: Install CapRover CLI
         run: npm install -g caprover
 
+      - name: Disable TLS check (CapRover self-signed cert)
+        run: echo "NODE_TLS_REJECT_UNAUTHORIZED=0" >> $GITHUB_ENV
+
       - name: Deploy backend to CapRover
         run: |
-          cd backend
-          caprover deploy -h "${{ secrets.CAPROVER_SERVER }}" \
-                           -p "${{ secrets.CAPROVER_PASSWORD }}" \
-                           -b main \
-                           -a "${{ secrets.CAPROVER_BACK_APPNAME }}"
+          caprover deploy \
+            -h "${{ secrets.CAPROVER_SERVER }}" \
+            -p "${{ secrets.CAPROVER_PASSWORD }}" \
+            -b main \
+            -a "${{ secrets.CAPROVER_BACK_APPNAME }}" \
+            --directory backend
