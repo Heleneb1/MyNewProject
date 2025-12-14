@@ -191,8 +191,8 @@ function Login() {
 
         <button type="button" className="toggleButton" onClick={toggle}>
           {toggleVisibility
-            ? 'Pas encore de compte ? Inscris-toi !'
-            : 'Déjà un compte ? Connecte-toi !'}
+            ? 'Pas encore de compte ? Inscrivez-vous !'
+            : 'Déjà un compte ? Connectez-vous !'}
         </button>
       </div>
     </div>

@@ -17,13 +17,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Luxurious+Script&family=Pinyon+Script&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Birthstone&display=swap');
 
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+
+html,
 body {
   margin: 0;
   padding: 0;
   background: rgb(30, 29, 29);
   color: #f6d171;
-  height: 100vh;
+  height: 100%;
   width: 100%;
+
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 body::after {
@@ -48,7 +64,19 @@ body::after {
   --navbar: #141414;
   --red: #4d0408;
   --blue: #045259;
+
 }
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
 
 h1 {
   margin: 0;
@@ -188,6 +216,7 @@ h2 {
 }
 
 @keyframes float-particles {
+
   0%,
   100% {
     transform: translateY(0) translateX(0);

@@ -2,6 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  transform: translateX(0);
   animation: translation 8s linear forwards;
   z-index: 25;
 }

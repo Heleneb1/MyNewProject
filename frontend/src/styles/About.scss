@@ -5,6 +5,7 @@
   font-size: 20px;
   line-height: 2.2rem;
   align-items: center;
+  overflow-x: hidden;
 
   .portrait {
     object-fit: cover;
@@ -39,9 +40,17 @@
 
   .Title {
     font-style: oblique;
-    font-size: 50px;
+    font-size: 40px;
     display: flex;
     justify-content: center;
+  }
+
+  .Biography {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 3rem;
   }
 
   .Biography p {

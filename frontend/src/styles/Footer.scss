@@ -6,7 +6,7 @@
   text-align: center;
   padding: 1rem 0;
   font-size: 0.9rem;
-  margin-top: 1.5rem;
+  // margin-top: 1.5rem;
 }
 
 .footer a {
@@ -17,4 +17,8 @@
 
 .footer a:hover {
   text-decoration: underline;
+}
+
+.footer p {
+  font-size: 1.3rem;
 }

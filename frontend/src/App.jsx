@@ -31,29 +31,30 @@ function App() {
             <Glitter />
           </>
         )}
-
-        <Routes location={location} key={location.pathname}>
-          <Route path="/" element={<SplashPageBook />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/books" element={<Books />} />
-          <Route path="/quotes" element={<Quotes />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/logout" element={<Logout />} />
-          <Route path="/characters" element={<Characters />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/404" element={<NotFound />} />
-          <Route path="*" element={<Navigate to="/404" replace />} />
-          <Route path="/test" element={<Test />} />
-        </Routes>
-
+        <main>
+          <Routes location={location} key={location.pathname}>
+            <Route path="/" element={<SplashPageBook />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/books" element={<Books />} />
+            <Route path="/quotes" element={<Quotes />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/logout" element={<Logout />} />
+            <Route path="/characters" element={<Characters />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/404" element={<NotFound />} />
+            <Route path="*" element={<Navigate to="/404" replace />} />
+            <Route path="/test" element={<Test />} />
+          </Routes>
+        </main>
         {!isOnSplash && (
           <>
             <ScrollToTop />
             <Footer />
           </>
         )}
+
       </div>
     </AnimatePresence>
   );

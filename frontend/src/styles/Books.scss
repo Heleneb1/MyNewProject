@@ -78,10 +78,11 @@
   justify-content: center;
   flex-direction: column;
   position: relative;
+  gap: 1rem;
 
   // animation
-  // opacity: 0;
-  // animation: fadeIn 0.8s ease forwards;
+  opacity: 0;
+  animation: fadeIn 0.8s ease forwards;
 
   h3 {
     height: 3rem;
@@ -311,7 +312,4 @@ input[type='reset'] {
     }
   }
 
-  p {
-    font-size: 1.3rem;
-  }
 }

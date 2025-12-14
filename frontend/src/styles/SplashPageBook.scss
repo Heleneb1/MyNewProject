@@ -2,7 +2,7 @@
   position: relative;
   top: 0;
   left: 0;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   perspective: 2500px; // Augmenté pour plus de profondeur
   perspective-origin: 50% 50%;
@@ -19,11 +19,9 @@
     left: 50%;
     width: 150%;
     height: 150%;
-    background: radial-gradient(
-      ellipse at center,
-      rgba(255, 220, 150, 0.15) 0%,
-      transparent 70%
-    );
+    background: radial-gradient(ellipse at center,
+        rgba(255, 220, 150, 0.15) 0%,
+        transparent 70%);
     transform: translate(-50%, -50%);
     pointer-events: none;
     z-index: 0;
@@ -70,7 +68,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 100vw;
+  width: 100%;
   height: 100%;
   background: url(../assets/slpash_book_red_dt.png);
   background-size: 100% 100%;
@@ -95,13 +93,11 @@
     top: 0;
     bottom: 0;
     width: 50px;
-    background: linear-gradient(
-      to right,
-      rgba(0, 0, 0, 0.5) 0%,
-      rgba(0, 0, 0, 0.3) 30%,
-      rgba(0, 0, 0, 0.1) 70%,
-      transparent 100%
-    );
+    background: linear-gradient(to right,
+        rgba(0, 0, 0, 0.5) 0%,
+        rgba(0, 0, 0, 0.3) 30%,
+        rgba(0, 0, 0, 0.1) 70%,
+        transparent 100%);
     z-index: 1;
   }
 
@@ -110,12 +106,10 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(
-      ellipse 800px 600px at 70% 40%,
-      rgba(255, 255, 255, 0.3) 0%,
-      rgba(255, 255, 255, 0.1) 30%,
-      transparent 60%
-    );
+    background: radial-gradient(ellipse 800px 600px at 70% 40%,
+        rgba(255, 255, 255, 0.3) 0%,
+        rgba(255, 255, 255, 0.1) 30%,
+        transparent 60%);
     opacity: 1;
     transition: all 1.5s ease;
     pointer-events: none;
@@ -128,7 +122,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 100vw;
+  width: 100%;
   height: 100%;
   background: linear-gradient(to right, #f5e6c8 0%, #f2e6ae 50%, #f5e6c8 100%);
   transform-origin: left center;
@@ -143,18 +137,17 @@
     content: '';
     position: absolute;
     inset: 0;
-    background-image: repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 2px,
-      rgba(0, 0, 0, 0.015) 2px,
-      rgba(0, 0, 0, 0.015) 4px
-    );
+    background-image: repeating-linear-gradient(0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 0, 0, 0.015) 2px,
+        rgba(0, 0, 0, 0.015) 4px);
     pointer-events: none;
   }
 
   // Ombre portée
-  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2), -8px 0 20px rgba(0, 0, 0, 0.15);
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2),
+  -8px 0 20px rgba(0, 0, 0, 0.15);
 }
 
 // CONTENU HOME
@@ -186,6 +179,7 @@
 }
 
 @keyframes float-particles {
+
   0%,
   100% {
     transform: translateY(0) translateX(0);

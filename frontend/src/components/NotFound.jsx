@@ -8,7 +8,7 @@ function NotFound() {
         className="signature d'Alexandre Dumas"
         src={signature}
         loading="lazy"
-        alt="siganture d'alexandre dumas"
+        alt="signature d'alexandre dumas"
       />
 
       <p>Oups ! Cette page n'existe pas ou a été déplacée.</p>
