@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.31, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
 --
 -- Host: localhost    Database: alexandre_dumas_db
 -- ------------------------------------------------------
--- Server version	8.0.31
+-- Server version	8.0.36
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -32,7 +32,7 @@ CREATE TABLE `books` (
   `description` mediumtext,
   PRIMARY KEY (`id`),
   KEY `fk_books_images1_idx` (`images_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=746 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=747 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -109,7 +109,7 @@ CREATE TABLE `cart` (
   `id` int NOT NULL AUTO_INCREMENT,
   `user_id` int DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=119 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=121 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -118,7 +118,7 @@ CREATE TABLE `cart` (
 
 LOCK TABLES `cart` WRITE;
 /*!40000 ALTER TABLE `cart` DISABLE KEYS */;
-INSERT INTO `cart` VALUES (2,11),(19,NULL),(87,15),(88,15),(89,15),(90,15),(91,15),(92,15),(93,15),(94,15),(95,15),(96,15),(97,15),(98,15),(99,15),(100,15),(109,18),(110,20),(111,21),(112,22),(113,23),(114,24),(115,25),(116,26),(117,27),(118,28);
+INSERT INTO `cart` VALUES (2,11),(19,NULL),(87,15),(88,15),(89,15),(90,15),(91,15),(92,15),(93,15),(94,15),(95,15),(96,15),(97,15),(98,15),(99,15),(100,15),(109,18),(110,20),(111,21),(112,22),(113,23),(114,24),(115,25),(116,26),(117,27),(118,28),(119,29),(120,30);
 /*!40000 ALTER TABLE `cart` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -134,7 +134,7 @@ CREATE TABLE `cart_has_books` (
   `book_id` int DEFAULT NULL,
   `id_cart_has_books` int NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id_cart_has_books`)
-) ENGINE=InnoDB AUTO_INCREMENT=343 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=345 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -143,7 +143,7 @@ CREATE TABLE `cart_has_books` (
 
 LOCK TABLES `cart_has_books` WRITE;
 /*!40000 ALTER TABLE `cart_has_books` DISABLE KEYS */;
-INSERT INTO `cart_has_books` VALUES (NULL,11,266),(1,736,267),(1,12,268),(1,7,269),(1,10,270),(1,1,271),(1,741,272),(NULL,16,273),(1,8,274),(1,6,275),(1,5,276),(1,4,277),(NULL,1,278),(NULL,11,279),(NULL,734,280),(NULL,1,281),(NULL,1,282),(NULL,2,283),(NULL,734,284),(NULL,738,285),(NULL,1,286),(NULL,11,287),(NULL,9,288),(111,6,289),(111,1,290),(NULL,738,291),(NULL,734,292),(NULL,734,293),(113,1,294),(NULL,9,295),(113,11,296),(113,16,297),(NULL,NULL,298),(NULL,NULL,299),(NULL,NULL,300),(113,16,301),(NULL,11,302),(NULL,2,303),(NULL,9,304),(110,4,305),(110,738,306),(NULL,1,307),(110,6,308),(110,7,309),(110,736,310),(110,11,311),(110,7,312),(110,2,313),(NULL,16,314),(NULL,736,315),(113,4,316),(113,11,317),(113,738,318),(NULL,738,319),(NULL,738,320),(NULL,NULL,321),(NULL,NULL,322),(100,1,323),(100,1,324),(NULL,738,325),(113,8,326),(NULL,16,327),(NULL,8,328),(NULL,4,329),(114,7,330),(1,735,331),(NULL,11,332),(1,11,333),(NULL,2,334),(116,9,335),(116,4,336),(NULL,2,337),(117,9,338),(NULL,2,339),(118,10,340),(118,7,341),(118,16,342);
+INSERT INTO `cart_has_books` VALUES (NULL,11,266),(1,736,267),(1,12,268),(1,10,270),(1,1,271),(1,741,272),(NULL,16,273),(1,8,274),(1,6,275),(1,4,277),(NULL,1,278),(NULL,11,279),(NULL,734,280),(NULL,1,281),(NULL,1,282),(NULL,2,283),(NULL,734,284),(NULL,738,285),(NULL,1,286),(NULL,11,287),(NULL,9,288),(111,6,289),(111,1,290),(NULL,738,291),(NULL,734,292),(NULL,734,293),(113,1,294),(NULL,9,295),(113,11,296),(113,16,297),(NULL,NULL,298),(NULL,NULL,299),(NULL,NULL,300),(113,16,301),(NULL,11,302),(NULL,2,303),(NULL,9,304),(110,4,305),(110,738,306),(NULL,1,307),(110,6,308),(110,7,309),(110,736,310),(110,11,311),(110,7,312),(110,2,313),(NULL,16,314),(NULL,736,315),(113,4,316),(113,11,317),(113,738,318),(NULL,738,319),(NULL,738,320),(NULL,NULL,321),(NULL,NULL,322),(100,1,323),(100,1,324),(NULL,738,325),(113,8,326),(NULL,16,327),(NULL,8,328),(NULL,4,329),(114,7,330),(1,735,331),(NULL,11,332),(1,11,333),(NULL,2,334),(116,9,335),(116,4,336),(NULL,2,337),(117,9,338),(NULL,2,339),(118,10,340),(118,7,341),(118,16,342),(1,7,343),(1,2,344);
 /*!40000 ALTER TABLE `cart_has_books` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -187,7 +187,7 @@ CREATE TABLE `images` (
   `name_img` text,
   `url_img` mediumtext,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=786 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=798 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -196,7 +196,7 @@ CREATE TABLE `images` (
 
 LOCK TABLES `images` WRITE;
 /*!40000 ALTER TABLE `images` DISABLE KEYS */;
-INSERT INTO `images` VALUES (1,1,1,'les Trois Mousquetaires','https://kbimages1-a.akamaihd.net/9c0489fe-6628-4ed9-a42a-627c3c9c9b38/353/569/90/False/les-trois-mousquetaires-26.jpg'),(2,12,2,'Le Comte de Montécristo','https://pictures.abebooks.com/isbn/9782737357039-fr.jpg'),(3,17,4,'La Reine Margot','https://www.livredepoche.com/sites/default/files/images/livres/couv/9782253099994-001-T.jpeg'),(4,7,5,'Vingt ans après','https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1477934281l/596829.jpg'),(5,NULL,6,'Le Vicomte de Bragelone','https://m.media-amazon.com/images/I/51ZUdTg+8sL.jpg'),(6,NULL,7,'La tulipe noire','https://static.fnac-static.com/multimedia/Images/FR/NR/bc/99/e9/15309244/1540-1/tsp20230324220140/La-Tulipe-Noire-Alexandre-Dumas.jpg'),(7,NULL,8,'Le chevalier de maison rouge','https://kbimages1-a.akamaihd.net/3198a04b-ccc7-41ec-b284-feff30bda065/353/569/90/False/le-chevalier-de-maison-rouge-59.jpg'),(8,NULL,9,'Les quarante-cinq','https://www.babelio.com/couv/CVT_Les-Quarante-cinq_8785.jpg'),(9,NULL,10,'Joseph Balsamo','https://fr.shopping.rakuten.com/photo/joseph-balsamo-tome-1-dumas-alexandre-335124203_ML.jpg'),(10,NULL,11,'Le collier de la reine','https://fr.shopping.rakuten.com/photo/le-collier-de-la-reine-alexandre-dumas-1087235624_ML.jpg'),(11,NULL,12,'Ange Pitou, les mémoires d\'un mèdecin','https://products-images.di-static.com/image/sodis-ange-pitou-tome-i-les-memoires-d-un-medecin/9791041929160-475x500-1.jpg'),(12,15,16,'Les Mohicans de Paris','https://media.senscritique.com/media/000000024771/300/Les_Mohicans_de_Paris.jpg'),(656,NULL,599,'LesTroisMousquetaires.jpg','http://localhost:5000/uploads/LesTroisMousquetaires.jpg'),(771,NULL,NULL,'LesTroisMousquetaires.jpg','http://localhost:5000/uploads/LesTroisMousquetaires.jpg'),(772,NULL,734,'LesTroisMousquetaires.jpg','http://localhost:5000/uploads/LesTroisMousquetaires.jpg'),(773,NULL,735,'Robin-des-bois-le-proscrit.jpg','http://localhost:5000/uploads/Robin-des-bois-le-proscrit.jpg'),(774,NULL,736,'Les-compagnons-de-Jehu.jpg','http://localhost:5000/uploads/Les-compagnons-de-Jehu.jpg'),(775,NULL,737,'La Dame de Monsoreau.jpg','http://localhost:5000/uploads/La Dame de Monsoreau.jpg'),(776,NULL,738,'le Vicomte de Bragelonne 1.jpg','http://localhost:5000/uploads/le Vicomte de Bragelonne 1.jpg'),(777,NULL,739,'le Vicomte de Bragelonne 1.jpg','http://localhost:5000/uploads/le Vicomte de Bragelonne 1.jpg'),(778,NULL,740,'le Vicomte de Bragelonne 1.jpg','http://localhost:5000/uploads/le Vicomte de Bragelonne 1.jpg'),(779,NULL,741,'helene-blanche-logo.png','http://localhost:5000/uploads/helene-blanche-logo.png'),(784,NULL,744,'ocean.jpg','http://localhost:5000/uploads/ocean.jpg'),(785,NULL,745,'.filter.map.png','http://localhost:5000/uploads/.filter.map.png');
+INSERT INTO `images` VALUES (1,1,1,'les Trois Mousquetaires','https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Dartagnan-musketeers_-_Maurice_Leloir.jpg/500px-Dartagnan-musketeers_-_Maurice_Leloir.jpg'),(2,12,2,'Le Comte de Montécristo','https://pictures.abebooks.com/isbn/9782737357039-fr.jpg'),(3,17,4,'La Reine Margot','https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/SchlafzimmerBartholomaeusnacht.jpg/500px-SchlafzimmerBartholomaeusnacht.jpg'),(4,7,5,'Vingt ans après','https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1477934281l/596829.jpg'),(5,NULL,6,'Le Vicomte de Bragelone','https://m.media-amazon.com/images/I/51ZUdTg+8sL.jpg'),(6,NULL,7,'La tulipe noire','https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/La_Tulipe_noire_d%27apres_Alexandre_Dumas.png/960px-La_Tulipe_noire_d%27apres_Alexandre_Dumas.png'),(7,NULL,8,'Le chevalier de maison rouge','https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Le_Chevalier_de_Maison-Rouge.png/500px-Le_Chevalier_de_Maison-Rouge.png'),(8,NULL,9,'Les quarante-cinq','https://www.babelio.com/couv/CVT_Les-Quarante-cinq_8785.jpg'),(9,NULL,10,'Joseph Balsamo','https://fr.shopping.rakuten.com/photo/joseph-balsamo-tome-1-dumas-alexandre-335124203_ML.jpg'),(10,NULL,11,'Le collier de la reine','https://fr.shopping.rakuten.com/photo/le-collier-de-la-reine-alexandre-dumas-1087235624_ML.jpg'),(11,NULL,12,'Ange Pitou, les mémoires d\'un mèdecin','https://products-images.di-static.com/image/sodis-ange-pitou-tome-i-les-memoires-d-un-medecin/9791041929160-475x500-1.jpg'),(12,15,16,'Les Mohicans de Paris','https://media.senscritique.com/media/000000024771/300/Les_Mohicans_de_Paris.jpg'),(656,NULL,599,'LesTroisMousquetaires.jpg','http://localhost:5000/uploads/LesTroisMousquetaires.jpg'),(771,NULL,NULL,'LesTroisMousquetaires.jpg','http://localhost:5000/uploads/LesTroisMousquetaires.jpg'),(772,NULL,734,'LesTroisMousquetaires.jpg','http://localhost:5000/uploads/LesTroisMousquetaires.jpg'),(773,NULL,735,'Robin-des-bois-le-proscrit.jpg','http://localhost:5000/uploads/Robin-des-bois-le-proscrit.jpg'),(774,NULL,736,'Les-compagnons-de-Jehu.jpg','http://localhost:5000/uploads/Les-compagnons-de-Jehu.jpg'),(775,NULL,737,'La Dame de Monsoreau.jpg','http://localhost:5000/uploads/La Dame de Monsoreau.jpg'),(776,NULL,738,'le Vicomte de Bragelonne 1.jpg','http://localhost:5000/uploads/le Vicomte de Bragelonne 1.jpg'),(777,NULL,739,'le Vicomte de Bragelonne 1.jpg','http://localhost:5000/uploads/le Vicomte de Bragelonne 1.jpg'),(778,NULL,740,'le Vicomte de Bragelonne 1.jpg','http://localhost:5000/uploads/le Vicomte de Bragelonne 1.jpg'),(779,NULL,741,'helene-blanche-logo.png','http://localhost:5000/uploads/helene-blanche-logo.png'),(784,NULL,744,'ocean.jpg','http://localhost:5000/uploads/ocean.jpg'),(785,NULL,745,'.filter.map.png','http://localhost:5000/uploads/.filter.map.png'),(786,NULL,NULL,'tÃ©lÃ©charger.png','http://localhost:5000/uploads/tÃ©lÃ©charger.png'),(787,NULL,NULL,'tÃ©lÃ©charger.png','http://localhost:5000/uploads/tÃ©lÃ©charger.png'),(788,NULL,NULL,'tÃ©lÃ©charger.png','http://localhost:5000/uploads/tÃ©lÃ©charger.png'),(789,NULL,NULL,'tÃ©lÃ©charger.png','http://localhost:5000/uploads/tÃ©lÃ©charger.png'),(790,NULL,NULL,'tÃ©lÃ©charger.png','http://localhost:5000/uploads/tÃ©lÃ©charger.png'),(791,NULL,NULL,'tÃ©lÃ©charger.png','http://localhost:5000/uploads/tÃ©lÃ©charger.png'),(792,NULL,NULL,'tÃ©lÃ©charger.png','http://localhost:5000/uploads/tÃ©lÃ©charger.png'),(793,NULL,NULL,'tÃ©lÃ©charger.png','http://localhost:5000/uploads/tÃ©lÃ©charger.png'),(794,NULL,NULL,'tÃ©lÃ©charger.png','http://localhost:5000/uploads/tÃ©lÃ©charger.png'),(795,NULL,NULL,'tÃ©lÃ©charger.png','http://localhost:5000/uploads/tÃ©lÃ©charger.png'),(796,NULL,NULL,'tÃ©lÃ©charger.png','http://localhost:5000/uploads/tÃ©lÃ©charger.png'),(797,NULL,746,'Capture d\'Ã©cran 2025-11-28 221948.png','http://localhost:5000/uploads/Capture d\'Ã©cran 2025-11-28 221948.png');
 /*!40000 ALTER TABLE `images` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -241,7 +241,7 @@ CREATE TABLE `user` (
   `role` tinyint DEFAULT '0',
   `cart_id` int DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -250,7 +250,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (2,'Admin','helene.blanche@outlook.fr','$argon2id$v=19$m=65536,t=5,p=1$h7FFrE7kf7FlEQIfxwNMuw$5V9WRO6CfBN5RlnlbZasTOr593B69qvYi4jY2Y5XvNU',1,NULL),(8,'Hélène','helene.blanche@hotmail.fr','$argon2id$v=19$m=65536,t=5,p=1$NQBfpi0Zacknl9m4bI6fDg$DHiDHMEXH9TiZeeIX039HNF+8JAl4xeb9gCTw1GaqtI',0,1),(14,'Hélène','helene@gmail.com','$argon2id$v=19$m=65536,t=5,p=1$sWemFM2F2sJvwHab6oXN5w$ddWB7giAiEDBvZK3UGSNHqNw8JVeZ24AQsTuvqfkVvI',0,NULL),(15,'Yannick','yannick@gmail.fr','$argon2id$v=19$m=65536,t=5,p=1$e9laf+t5hGGBnRnCZU4cZA$1bikLv/TBQQKJhTNqK876qkHgfjgR7ZLYDwhyptnv7s',0,NULL),(18,'Mitaine','mitaine@monmail.com','$argon2id$v=19$m=65536,t=5,p=1$JYADEu3j3MyeV80B0vd5kg$Yh+xiWQHlEaCB/lGRIOzwRgtZ/NJOrKX655P8V3l90Q',0,NULL),(19,'Abibi','abibi@mail.com','$argon2id$v=19$m=65536,t=5,p=1$P+7ui6GVv6185eMuEm5Gpw$KrL9FNY39/I8xZbv0JOUT5JlnrpokH1OGdK4hhY6p4A',0,NULL),(20,'New','new@mail.fr','$argon2id$v=19$m=65536,t=5,p=1$ky0FGj0ZWZjmlN9mOCvI6w$6Wy3mscthzOCisQNBvqoXlXhRou0iDYuPT5PPqZBlBg',0,110),(21,'Next','next@mail.fr','$argon2id$v=19$m=65536,t=5,p=1$BvkdpQYesLkpwugJ8/B8Tw$VGbIVJDXg2U9itLY4FHIJZvSQKHmaEaF59GelIHrgQY',0,111),(23,'test','test@gmail.fr','$argon2id$v=19$m=65536,t=5,p=1$BdL2Hyk4GhRjiCu2MnGLCg$pN/fsJeQLX2Lm9txMAb4S6gZerP4CWrmVz2BTvz6RL8',0,113),(24,'coco','coco@mail.fr','$argon2id$v=19$m=65536,t=5,p=1$xI8zZfPGYQk1hq7Ybg4opA$Qj6rs/ZyQGJDjYH1ehpqLKT4+PxlPGivPmUD+7MNV/8',0,114),(25,'gogo','go@mail.fr','$argon2id$v=19$m=65536,t=5,p=1$EGfiC5t3FRxqDAOzpQV0fQ$HcQT9UAkO+HqQ6ukvktM5Dtf10RrDdjxci+6HFF+HGg',0,115),(26,'Binènène','binenene@mail.fr','$argon2id$v=19$m=65536,t=5,p=1$pGW0Q6RcdiqAH993j0kpbA$7gxPcWp1Rwq1w3rxQjhG+7Ub28CkB4u2JzFktj+Cjj4',0,116),(27,'Lapinou','lapinou@mail.fr','$argon2id$v=19$m=65536,t=5,p=1$wI2EjjyhDAj6CRxRkxx0Rw$qewdQOfMP9aAM/TbwTEgXJ7Gnv76TXinlQ/I4+aXlQY',0,117),(28,'Test2','Test2@gmail.fr','$argon2id$v=19$m=65536,t=5,p=1$okcU64HuFf4po+H4CqDRLg$rBgmCbMEuyoL8gFmNWObIgOJ/N/wrsYYR9Ak+P23+2E',0,118);
+INSERT INTO `user` VALUES (2,'Admin','helene.blanche@outlook.fr','$argon2id$v=19$m=65536,t=5,p=1$h7FFrE7kf7FlEQIfxwNMuw$5V9WRO6CfBN5RlnlbZasTOr593B69qvYi4jY2Y5XvNU',1,NULL),(8,'Hélène','helene.blanche@hotmail.fr','$argon2id$v=19$m=65536,t=5,p=1$NQBfpi0Zacknl9m4bI6fDg$DHiDHMEXH9TiZeeIX039HNF+8JAl4xeb9gCTw1GaqtI',0,1);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -263,4 +263,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-05-11 14:34:54
+-- Dump completed on 2025-12-14 21:43:26

@@ -30,10 +30,11 @@ const cors = require('cors');
 
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL ?? 'http://localhost:5173/',
-    optionsSuccessStatus: 200
-  }) // on donne les droit a au front de ce connecter
+    origin: process.env.FRONTEND_URL ?? 'http://localhost:5173',
+    credentials: true,
+  })
 );
+
 // import and mount the API routes
 // app.use(function (req, res, next) {
 //   res.setHeader("Access-Control-Allow-Origin", "*");
