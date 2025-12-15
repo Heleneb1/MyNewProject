@@ -8,7 +8,7 @@ class BooksManager extends AbstractManager {
 
   findAllBooks() {
     return this.database.query(
-      `SELECT b.id, i.url_img, b.title, b.publication_date, b.genre, b.pages, b.description FROM books AS B LEFT JOIN images AS i ON i.books_id = b.id ORDER BY b.title ASC
+      `SELECT b.id, i.url_img, b.title, b.publication_date, b.genre, b.pages, b.description FROM books AS b LEFT JOIN images AS i ON i.books_id = b.id ORDER BY b.title ASC
       `
     );
   }
