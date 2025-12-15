@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../services/api';
 import Line from '../assets/head_line.svg';
 
 export default function Quotes() {
@@ -9,9 +9,7 @@ export default function Quotes() {
 
   const fetchQuotes = async () => {
     try {
-      const response = await axios.get(
-        `${import.meta.env.VITE_BACKEND_URL}/quotes`
-      );
+      const response = await api.get(`/quotes`);
       setQuotes(response.data);
       setFilteredQuotes(response.data);
     } catch (error) {

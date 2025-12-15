@@ -1,6 +1,6 @@
 /* eslint-disable no-alert */
 import React, { useState } from 'react';
-import axios from 'axios';
+import api from '../services/api';
 import { useNavigate } from 'react-router-dom';
 
 function Login() {
@@ -18,9 +18,9 @@ function Login() {
   const handleLoginSubmit = (e) => {
     e.preventDefault();
 
-    axios
+    api
       .post(
-        `${import.meta.env.VITE_BACKEND_URL}/auth/login`,
+        `/auth/login`,
         {
           email,
           password,
@@ -58,8 +58,8 @@ function Login() {
       return;
     }
     console.info(signupEmail);
-    axios
-      .post(`${import.meta.env.VITE_BACKEND_URL}/user`, {
+    api
+      .post(`/user`, {
         user_name: signupName,
         email: signupEmail,
         password: signupPassword,

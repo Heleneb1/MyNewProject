@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import axios from 'axios';
+import api from '../src/services/api';
 
 export default function useCart(userId, cartId) {
   const [cart, setCart] = useState([]);
@@ -10,8 +10,8 @@ export default function useCart(userId, cartId) {
 
   const getCartData = async () => {
     try {
-      const res = await axios.get(
-        `${import.meta.env.VITE_BACKEND_URL}/user/${userId}/cart_id/${cartId}`
+      const res = await api.get(
+        `/user/${userId}/cart_id/${cartId}`
       );
 
       const items = res.data;
@@ -22,8 +22,8 @@ export default function useCart(userId, cartId) {
         return;
       }
 
-      const details = await axios.get(
-        `${import.meta.env.VITE_BACKEND_URL}/books?id=${ids.join(',')}`
+      const details = await api.get(
+        `/books?id=${ids.join(',')}`
       );
 
       // enrichissement
@@ -44,8 +44,8 @@ export default function useCart(userId, cartId) {
     }
 
     try {
-      const res = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/cart/${cartId}/user/${userId}`,
+      const res = await api.post(
+        `/cart/${cartId}/user/${userId}`,
         {
           book_id: book.id,
           user_id: userId,
@@ -64,10 +64,8 @@ export default function useCart(userId, cartId) {
 
   const removeFromCart = async (item) => {
     try {
-      await axios.delete(
-        `${
-          import.meta.env.VITE_BACKEND_URL
-        }/user/${userId}/cart_id/${cartId}/book/${item.book_id}`
+      await api.delete(
+        `/user/${userId}/cart_id/${cartId}/book/${item.book_id}`
       );
 
       setCart((prev) => prev.filter((c) => c.book_id !== item.book_id));
@@ -81,9 +79,7 @@ export default function useCart(userId, cartId) {
 
   const clearCart = async () => {
     try {
-      await axios.delete(
-        `${import.meta.env.VITE_BACKEND_URL}/user/${userId}/cart/${cartId}`
-      );
+      await api.delete(`/user/${userId}/cart/${cartId}`);
 
       setCart([]);
       setClearMessage('Votre panier est vide');
@@ -99,8 +95,8 @@ export default function useCart(userId, cartId) {
   }, [userId, cartId]);
 
   useEffect(() => {
-    axios
-      .get(`${import.meta.env.VITE_BACKEND_URL}/books`)
+    api
+      .get(`/books`)
       .then((res) => setBooks(res.data))
       .catch(console.error);
   }, []);

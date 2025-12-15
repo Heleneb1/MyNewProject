@@ -1,5 +1,5 @@
-import axios from 'axios';
 import React, { useRef, useState } from 'react';
+import api from "../services/api"
 
 export default function Test() {
   const inputRef = useRef(null);
@@ -12,8 +12,8 @@ export default function Test() {
     formData.append('avatar', inputRef.current.files[0]);
 
     try {
-      const response = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/avatar`,
+      const response = await api.post(
+        `/avatar`,
         formData
       );
       console.info(response);

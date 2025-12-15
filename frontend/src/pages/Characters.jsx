@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../services/api';
 
 export default function Characters() {
   const [selectedCharacter, setSelectedCharacter] = useState('');
@@ -12,8 +12,8 @@ export default function Characters() {
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const response = await axios.get(
-          `${import.meta.env.VITE_BACKEND_URL}/bookshascharacters`
+        const response = await api.get(
+          `/bookshascharacters`
         );
         setBooks(response.data);
       } catch (error) {

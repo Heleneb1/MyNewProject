@@ -1,7 +1,7 @@
 /* eslint-disable no-alert */
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import api from "../services/api"
 import Encrier from '../assets/encrier.svg';
 
 function Contact() {
@@ -13,8 +13,8 @@ function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios
-      .post(`${import.meta.env.VITE_BACKEND_URL}/contac`, {
+    api
+      .post(`/contact`, {
         name,
         email,
         subject,
