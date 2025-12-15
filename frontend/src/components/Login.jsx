@@ -1,7 +1,7 @@
 /* eslint-disable no-alert */
 import React, { useState } from 'react';
-import api from '../services/api';
 import { useNavigate } from 'react-router-dom';
+import api from '../services/api';
 
 function Login() {
   const [email, setEmail] = useState('');

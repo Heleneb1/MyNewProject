@@ -10,9 +10,7 @@ export default function useCart(userId, cartId) {
 
   const getCartData = async () => {
     try {
-      const res = await api.get(
-        `/user/${userId}/cart_id/${cartId}`
-      );
+      const res = await api.get(`/user/${userId}/cart_id/${cartId}`);
 
       const items = res.data;
       const ids = items.map((i) => i.book_id);
@@ -22,9 +20,7 @@ export default function useCart(userId, cartId) {
         return;
       }
 
-      const details = await api.get(
-        `/books?id=${ids.join(',')}`
-      );
+      const details = await api.get(`/books?id=${ids.join(',')}`);
 
       // enrichissement
       const fullCart = items.map((item) => ({
@@ -44,14 +40,11 @@ export default function useCart(userId, cartId) {
     }
 
     try {
-      const res = await api.post(
-        `/cart/${cartId}/user/${userId}`,
-        {
-          book_id: book.id,
-          user_id: userId,
-          cart_id: cartId,
-        }
-      );
+      const res = await api.post(`/cart/${cartId}/user/${userId}`, {
+        book_id: book.id,
+        user_id: userId,
+        cart_id: cartId,
+      });
 
       setCart((prev) => [...prev, { ...res.data, book }]);
       setMessage(`Livre ajouté : '${book.title}'`);

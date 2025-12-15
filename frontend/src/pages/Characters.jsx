@@ -12,9 +12,7 @@ export default function Characters() {
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const response = await api.get(
-          `/bookshascharacters`
-        );
+        const response = await api.get(`/bookshascharacters`);
         setBooks(response.data);
       } catch (error) {
         console.error('Erreur lors de la récupération:', error);

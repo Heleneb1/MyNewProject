@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import api from "../services/api"
+import api from '../services/api';
 
 export default function Test() {
   const inputRef = useRef(null);
@@ -12,10 +12,7 @@ export default function Test() {
     formData.append('avatar', inputRef.current.files[0]);
 
     try {
-      const response = await api.post(
-        `/avatar`,
-        formData
-      );
+      const response = await api.post(`/avatar`, formData);
       console.info(response);
 
       const newPicture = response.data.picture;
