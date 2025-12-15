@@ -20,7 +20,12 @@ app.get('/health', (req, res) => {
 // Configuration CORS
 const allowedOrigins = [
   'http://localhost:5173',
-  'https://heleneb1.github.io',
+  'https://heleneb1.github.io',//front
+  'https://lesmysteresdelegypteantique.fr',//api sous ce nom de domaine
+  'https://www.lesmysteresdelegypteantique.fr',
+  'http://localhost:4173',  // Pour npm run preview
+  'http://localhost:5173',  // Pour npm run dev
+  'http://localhost:3000',  // Au cas où
   process.env.FRONTEND_URL
 ].filter(Boolean);
 
