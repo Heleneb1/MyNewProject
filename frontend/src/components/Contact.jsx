@@ -14,7 +14,7 @@ function Contact() {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post('http://localhost:5000/contact', {
+      .post(`${import.meta.env.VITE_BACKEND_URL}/contac`, {
         name,
         email,
         subject,

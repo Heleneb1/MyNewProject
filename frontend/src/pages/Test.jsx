@@ -13,7 +13,7 @@ export default function Test() {
 
     try {
       const response = await axios.post(
-        'http://localhost:5000/avatar',
+        `${import.meta.env.VITE_BACKEND_URL}/avatar`,
         formData
       );
       console.info(response);

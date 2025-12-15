@@ -13,7 +13,7 @@ export default function Characters() {
     const fetchBooks = async () => {
       try {
         const response = await axios.get(
-          'http://localhost:5000/bookshascharacters'
+          `${import.meta.env.VITE_BACKEND_URL}/bookshascharacters`
         );
         setBooks(response.data);
       } catch (error) {

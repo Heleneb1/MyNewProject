@@ -11,7 +11,7 @@ export default function useCart(userId, cartId) {
   const getCartData = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/user/${userId}/cart_id/${cartId}`
+        `${import.meta.env.VITE_BACKEND_URL}/user/${userId}/cart_id/${cartId}`
       );
 
       const items = res.data;
@@ -23,7 +23,7 @@ export default function useCart(userId, cartId) {
       }
 
       const details = await axios.get(
-        `http://localhost:5000/books?id=${ids.join(',')}`
+        `${import.meta.env.VITE_BACKEND_URL}/books?id=${ids.join(',')}`
       );
 
       // enrichissement
@@ -45,7 +45,7 @@ export default function useCart(userId, cartId) {
 
     try {
       const res = await axios.post(
-        `http://localhost:5000/cart/${cartId}/user/${userId}`,
+        `${import.meta.env.VITE_BACKEND_URL}/cart/${cartId}/user/${userId}`,
         {
           book_id: book.id,
           user_id: userId,
@@ -65,7 +65,7 @@ export default function useCart(userId, cartId) {
   const removeFromCart = async (item) => {
     try {
       await axios.delete(
-        `http://localhost:5000/user/${userId}/cart_id/${cartId}/book/${item.book_id}`
+        `${import.meta.env.VITE_BACKEND_URL}/user/${userId}/cart_id/${cartId}/book/${item.book_id}`
       );
 
       setCart((prev) => prev.filter((c) => c.book_id !== item.book_id));
@@ -79,7 +79,7 @@ export default function useCart(userId, cartId) {
 
   const clearCart = async () => {
     try {
-      await axios.delete(`http://localhost:5000/user/${userId}/cart/${cartId}`);
+      await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/user/${userId}/cart/${cartId}`);
 
       setCart([]);
       setClearMessage('Votre panier est vide');
@@ -96,7 +96,7 @@ export default function useCart(userId, cartId) {
 
   useEffect(() => {
     axios
-      .get('http://localhost:5000/books')
+      .get(`${import.meta.env.VITE_BACKEND_URL}/books`)
       .then((res) => setBooks(res.data))
       .catch(console.error);
   }, []);

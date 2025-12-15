@@ -8,6 +8,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
+    "start:prod": "cross-env NODE_ENV=production node server.js",
     "lint": "echo '----- Checking Frontend...' && prettier --debug-check . && npx eslint --ext .jsx . && echo '----- Done!'",
     "fix": "npx prettier --write . && npx eslint --fix --ext .jsx .",
     "predeploy": "npm run build",

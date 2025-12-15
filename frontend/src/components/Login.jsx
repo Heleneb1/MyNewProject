@@ -20,7 +20,7 @@ function Login() {
 
     axios
       .post(
-        'http://localhost:5000/auth/login',
+        `${import.meta.env.VITE_BACKEND_URL}/auth/login`,
         {
           email,
           password,
@@ -59,7 +59,7 @@ function Login() {
     }
     console.info(signupEmail);
     axios
-      .post('http://localhost:5000/user', {
+      .post(`${import.meta.env.VITE_BACKEND_URL}/user`, {
         user_name: signupName,
         email: signupEmail,
         password: signupPassword,

@@ -23,7 +23,7 @@ export default function useBooks() {
   // -------- Fetch Books ----------
   const fetchBooks = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/books');
+      const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/books`, { withCredentials: true });
       setBooks(res.data);
       setFilteredBooks(res.data);
     } catch (err) {
@@ -54,7 +54,7 @@ export default function useBooks() {
   // -------- Delete ----------
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/books/${id}`, {
+      await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/books/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       fetchBooks();
@@ -74,7 +74,7 @@ export default function useBooks() {
     const imgData = new FormData();
     imgData.append('avatar', inputRef.current.files[0]);
 
-    const res = await axios.post('http://localhost:5000/avatar', imgData);
+    const res = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/avatar`, imgData);
     return res.data.id;
   };
   const handleImageSubmit = async (event) => {
@@ -83,7 +83,7 @@ export default function useBooks() {
       const imageFormData = new FormData();
       imageFormData.append('avatar', inputRef.current.files[0]);
       const imageResponse = await axios.post(
-        'http://localhost:5000/avatar',
+        `${import.meta.env.VITE_BACKEND_URL}/avatar`,
         imageFormData
       );
 
@@ -94,7 +94,7 @@ export default function useBooks() {
         imageData.append('url_img', newBookPicture);
         imageData.append('books_id', bookId);
         const addImageResponse = await axios.post(
-          'http://localhost:5000/images',
+          `${import.meta.env.VITE_BACKEND_URL}/images`,
           imageData
         );
 
@@ -109,7 +109,7 @@ export default function useBooks() {
         };
 
         const response = await axios.post(
-          'http://localhost:5000/books',
+          `{import.meta.env.VITE_BACKEND_URL}/books`,
           bookData
         );
         console.info('Book added successfully:', response.data);
@@ -134,18 +134,19 @@ export default function useBooks() {
       const imageId = await uploadImage();
 
       const imgDetails = await axios.get(
-        `http://localhost:5000/images/${imageId}`
+        `${import.meta.env.VITE_BACKEND_URL}/images/${imageId}`
       );
+      axios.get(`${import.meta.env.VITE_BACKEND_URL}/endpoint`, { withCredentials: true })
 
       const book = {
         ...formData,
         images_id: imgDetails.data.id,
       };
 
-      const res = await axios.post('http://localhost:5000/books', book);
+      const res = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/books`, book);
 
       // Update image with book ID
-      await axios.put(`http://localhost:5000/images/${imgDetails.data.id}`, {
+      await axios.put(`${import.meta.env.VITE_BACKEND_URL}/images/${imgDetails.data.id}`, {
         books_id: res.data.id,
       });
 
