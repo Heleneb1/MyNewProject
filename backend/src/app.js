@@ -20,7 +20,7 @@ app.get('/health', (req, res) => {
 // Configuration CORS
 const allowedOrigins = [
   'http://localhost:5173',
-  'https://heleneb1.github.io/MyNewProject', // front
+  'https://heleneb1.github.io', // front
   'https://lesmysteresdelegypteantique.fr', // api sous ce nom de domaine
   'https://www.lesmysteresdelegypteantique.fr',
   'http://localhost:4173', // Pour npm run preview
@@ -29,20 +29,14 @@ const allowedOrigins = [
   process.env.FRONTEND_URL
 ].filter(Boolean);
 
-app.use(
-  cors({
-    origin(origin, callback) {
-      // Autoriser les requêtes sans origin (comme CapRover health checks, Postman, etc.)
-      if (!origin) return callback(null, true);
-
-      if (allowedOrigins.some((allowed) => origin.startsWith(allowed))) {
-        return callback(null, true);
-      }
-      return callback(new Error('Not allowed by CORS'));
-    },
-    credentials: true
-  })
-);
+app.use(cors({
+  origin(origin, callback) {
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) return callback(null, true); // use includes plutôt que startsWith
+    return callback(new Error('Not allowed by CORS'));
+  },
+  credentials: true,
+}));
 
 // use some application-level middlewares
 app.use(express.json());
