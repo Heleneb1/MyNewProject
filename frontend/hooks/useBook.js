@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
-import axios from 'axios';
+import api from '../services/api'
 
 export default function useBooks() {
   const [books, setBooks] = useState([]);
@@ -23,7 +23,7 @@ export default function useBooks() {
   // -------- Fetch Books ----------
   const fetchBooks = async () => {
     try {
-      const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/books`, { withCredentials: true });
+      const res = await api.get("/books");
       setBooks(res.data);
       setFilteredBooks(res.data);
     } catch (err) {
@@ -54,7 +54,7 @@ export default function useBooks() {
   // -------- Delete ----------
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/books/${id}`, {
+      await api.delete(`/books/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       fetchBooks();
@@ -74,7 +74,7 @@ export default function useBooks() {
     const imgData = new FormData();
     imgData.append('avatar', inputRef.current.files[0]);
 
-    const res = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/avatar`, imgData);
+    const res = await api.post("/avatar", imgData);
     return res.data.id;
   };
   const handleImageSubmit = async (event) => {
@@ -82,8 +82,8 @@ export default function useBooks() {
     try {
       const imageFormData = new FormData();
       imageFormData.append('avatar', inputRef.current.files[0]);
-      const imageResponse = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/avatar`,
+      const imageResponse = await api.post(
+        `/avatar`,
         imageFormData
       );
 
@@ -93,8 +93,8 @@ export default function useBooks() {
         imageData.append('name_img', inputRef.current.files[0].name_img);
         imageData.append('url_img', newBookPicture);
         imageData.append('books_id', bookId);
-        const addImageResponse = await axios.post(
-          `${import.meta.env.VITE_BACKEND_URL}/images`,
+        const addImageResponse = await api.post(
+          `/images`,
           imageData
         );
 
@@ -108,8 +108,8 @@ export default function useBooks() {
           images_id: addImageResponse.data.id, // Ajouter l'ID de l'image à l'objet bookData
         };
 
-        const response = await axios.post(
-          `{import.meta.env.VITE_BACKEND_URL}/books`,
+        const response = await api.post(
+          `/books`,
           bookData
         );
         console.info('Book added successfully:', response.data);
@@ -133,20 +133,19 @@ export default function useBooks() {
     try {
       const imageId = await uploadImage();
 
-      const imgDetails = await axios.get(
-        `${import.meta.env.VITE_BACKEND_URL}/images/${imageId}`
+      const imgDetails = await api.get(
+        `/images/${imageId}`
       );
-      axios.get(`${import.meta.env.VITE_BACKEND_URL}/endpoint`, { withCredentials: true })
 
       const book = {
         ...formData,
         images_id: imgDetails.data.id,
       };
 
-      const res = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/books`, book);
+      const res = await api.post(`/books`, book);
 
       // Update image with book ID
-      await axios.put(`${import.meta.env.VITE_BACKEND_URL}/images/${imgDetails.data.id}`, {
+      await api.put(`/images/${imgDetails.data.id}`, {
         books_id: res.data.id,
       });
 
