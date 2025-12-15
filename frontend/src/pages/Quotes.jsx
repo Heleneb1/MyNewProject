@@ -9,7 +9,9 @@ export default function Quotes() {
 
   const fetchQuotes = async () => {
     try {
-      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/quotes`);
+      const response = await axios.get(
+        `${import.meta.env.VITE_BACKEND_URL}/quotes`
+      );
       setQuotes(response.data);
       setFilteredQuotes(response.data);
     } catch (error) {

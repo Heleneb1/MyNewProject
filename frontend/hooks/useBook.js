@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
-import api from '../services/api'
+import api from '../src/services/api';
 
 export default function useBooks() {
   const [books, setBooks] = useState([]);
@@ -23,7 +23,7 @@ export default function useBooks() {
   // -------- Fetch Books ----------
   const fetchBooks = async () => {
     try {
-      const res = await api.get("/books");
+      const res = await api.get('/books');
       setBooks(res.data);
       setFilteredBooks(res.data);
     } catch (err) {
@@ -74,7 +74,7 @@ export default function useBooks() {
     const imgData = new FormData();
     imgData.append('avatar', inputRef.current.files[0]);
 
-    const res = await api.post("/avatar", imgData);
+    const res = await api.post('/avatar', imgData);
     return res.data.id;
   };
   const handleImageSubmit = async (event) => {
@@ -82,10 +82,7 @@ export default function useBooks() {
     try {
       const imageFormData = new FormData();
       imageFormData.append('avatar', inputRef.current.files[0]);
-      const imageResponse = await api.post(
-        `/avatar`,
-        imageFormData
-      );
+      const imageResponse = await api.post(`/avatar`, imageFormData);
 
       const newBookPicture = imageResponse.data.picture;
       if (newBookPicture) {
@@ -93,10 +90,7 @@ export default function useBooks() {
         imageData.append('name_img', inputRef.current.files[0].name_img);
         imageData.append('url_img', newBookPicture);
         imageData.append('books_id', bookId);
-        const addImageResponse = await api.post(
-          `/images`,
-          imageData
-        );
+        const addImageResponse = await api.post(`/images`, imageData);
 
         // Ajouter l'ID de l'image au livre
         const bookData = {
@@ -108,10 +102,7 @@ export default function useBooks() {
           images_id: addImageResponse.data.id, // Ajouter l'ID de l'image à l'objet bookData
         };
 
-        const response = await api.post(
-          `/books`,
-          bookData
-        );
+        const response = await api.post(`/books`, bookData);
         console.info('Book added successfully:', response.data);
         alert(`Ce livre est ajouté avec succès`);
       }
@@ -133,9 +124,7 @@ export default function useBooks() {
     try {
       const imageId = await uploadImage();
 
-      const imgDetails = await api.get(
-        `/images/${imageId}`
-      );
+      const imgDetails = await api.get(`/images/${imageId}`);
 
       const book = {
         ...formData,

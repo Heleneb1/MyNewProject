@@ -65,7 +65,9 @@ export default function useCart(userId, cartId) {
   const removeFromCart = async (item) => {
     try {
       await axios.delete(
-        `${import.meta.env.VITE_BACKEND_URL}/user/${userId}/cart_id/${cartId}/book/${item.book_id}`
+        `${
+          import.meta.env.VITE_BACKEND_URL
+        }/user/${userId}/cart_id/${cartId}/book/${item.book_id}`
       );
 
       setCart((prev) => prev.filter((c) => c.book_id !== item.book_id));
@@ -79,7 +81,9 @@ export default function useCart(userId, cartId) {
 
   const clearCart = async () => {
     try {
-      await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/user/${userId}/cart/${cartId}`);
+      await axios.delete(
+        `${import.meta.env.VITE_BACKEND_URL}/user/${userId}/cart/${cartId}`
+      );
 
       setCart([]);
       setClearMessage('Votre panier est vide');
