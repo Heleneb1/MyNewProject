@@ -20,28 +20,27 @@ app.get('/health', (req, res) => {
 // Configuration CORS
 const allowedOrigins = [
   'http://localhost:5173',
-  'https://heleneb1.github.io',//front
-  'https://lesmysteresdelegypteantique.fr',//api sous ce nom de domaine
+  'https://heleneb1.github.io/MyNewProject', // front
+  'https://lesmysteresdelegypteantique.fr', // api sous ce nom de domaine
   'https://www.lesmysteresdelegypteantique.fr',
-  'http://localhost:4173',  // Pour npm run preview
-  'http://localhost:5173',  // Pour npm run dev
-  'http://localhost:3000',  // Au cas où
+  'http://localhost:4173', // Pour npm run preview
+  'http://localhost:5173', // Pour npm run dev
+  'http://localhost:3000', // Au cas où
   process.env.FRONTEND_URL
 ].filter(Boolean);
 
 app.use(
   cors({
-    origin: function (origin, callback) {
+    origin(origin, callback) {
       // Autoriser les requêtes sans origin (comme CapRover health checks, Postman, etc.)
       if (!origin) return callback(null, true);
 
-      if (allowedOrigins.some(allowed => origin.startsWith(allowed))) {
-        callback(null, true);
-      } else {
-        callback(new Error('Not allowed by CORS'));
+      if (allowedOrigins.some((allowed) => origin.startsWith(allowed))) {
+        return callback(null, true);
       }
+      return callback(new Error('Not allowed by CORS'));
     },
-    credentials: true,
+    credentials: true
   })
 );
 
@@ -60,10 +59,6 @@ const reactIndexFile = path.join(__dirname, '..', '..', 'frontend', 'dist', 'ind
 
 if (fs.existsSync(reactIndexFile)) {
   app.use(express.static(path.join(__dirname, '..', '..', 'frontend', 'dist')));
-
-  app.get('*', (req, res) => {
-    res.sendFile(reactIndexFile);
-  });
 }
 
 module.exports = app;
