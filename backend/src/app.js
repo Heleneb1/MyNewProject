@@ -4,77 +4,61 @@ require('dotenv').config();
 const fs = require('node:fs');
 const path = require('node:path');
 const cookieParser = require('cookie-parser');
-// create express app
-
 const express = require('express');
+const cors = require('cors');
 
 const app = express();
-// Middleware pour parser les cookies
 
+// Middleware pour parser les cookies
 app.use(cookieParser());
 
-// eslint-disable-next-line func-names
-app.use(function (req, res, next) {
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5173');
-  res.setHeader('Access-Control-Allow-Credentials', 'true');
-  res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-  next();
+// Route de health check pour CapRover (AVANT les autres middlewares)
+app.get('/health', (req, res) => {
+  res.status(200).send('OK');
 });
 
-// use some application-level middlewares
-
-app.use(express.json()); // on remplie l'objet req.body avec les data envoyer du front ou postman
-
-const cors = require('cors');
+// Configuration CORS
+const allowedOrigins = [
+  'http://localhost:5173',
+  'https://heleneb1.github.io',
+  process.env.FRONTEND_URL
+].filter(Boolean);
 
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL ?? 'http://localhost:5173',
+    origin: function (origin, callback) {
+      // Autoriser les requêtes sans origin (comme CapRover health checks, Postman, etc.)
+      if (!origin) return callback(null, true);
+
+      if (allowedOrigins.some(allowed => origin.startsWith(allowed))) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
     credentials: true,
   })
 );
 
+// use some application-level middlewares
+app.use(express.json());
+
 // import and mount the API routes
-// app.use(function (req, res, next) {
-//   res.setHeader("Access-Control-Allow-Origin", "*");
-//   res.setHeader(
-//     "Access-Control-Allow-Methods",
-//     "GET, POST, OPTIONS, PUT, PATCH, DELETE"
-//   );
-//   res.setHeader(
-//     "Access-Control-Allow-Headers",
-//     "X-Requested-With,content-type"
-//   );
-//   res.setHeader("Access-Control-Allow-Credentials", true);
-//   next();
-// });
+const router = require('./router');
 
-const router = require('./router'); // on importe notre routeur
-
-app.use(router); // on envoie la requet dans le fichier router.js
+app.use(router);
 
 // serve the backend/public folder for public resources
-
 app.use(express.static(path.join(__dirname, '../public')));
-// app.use("/public", express.static("public"));
-// app.get('*', (req, res) => {
-//   res.status(404).json({ message: 'Not found!' })
-// })
+
 const reactIndexFile = path.join(__dirname, '..', '..', 'frontend', 'dist', 'index.html');
 
 if (fs.existsSync(reactIndexFile)) {
-  // serve REACT resources
-
   app.use(express.static(path.join(__dirname, '..', '..', 'frontend', 'dist')));
-
-  // redirect all requests to the REACT index file
 
   app.get('*', (req, res) => {
     res.sendFile(reactIndexFile);
   });
 }
-
-// ready to export
 
 module.exports = app;
