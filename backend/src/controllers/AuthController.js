@@ -12,31 +12,29 @@ const HTTP_SERVER_ERROR = 500;
 const login = async (req, res) => {
   try {
     const errors = validateLogin(req.body);
-    if (errors) {
-      return res.status(HTTP_UNAUTHORIZED).json(errors);
-    }
+    if (errors) return res.status(HTTP_UNAUTHORIZED).json(errors);
 
     const [user] = await models.user.findByEmail(req.body.email);
-    if (!user) {
-      return res.status(HTTP_UNAUTHORIZED).json({ message: 'Invalid Credentials 🥺' });
-    }
+    if (!user) return res.status(HTTP_UNAUTHORIZED).json({ message: 'Invalid Credentials 🥺' });
 
     const passwordVerification = await verifyPassword(req.body.password, user.password);
-    if (!passwordVerification) {
+    if (!passwordVerification)
       return res.status(HTTP_UNAUTHORIZED).json({ message: 'Invalid Credentials 😼' });
-    }
 
     const token = encodeJWT({
       id: user.id,
       user_name: user.user_name,
       role: user.role
     });
-    // res.cookie("auth_token", token, {
-    //   httpOnly: true,
-    //   secure: process.env.NODE_ENV === "production",
-    //   sameSite: "Strict", // ou 'Lax' selon votre cas d'utilisation
-    // });
-    console.info('token', token);
+
+    // Cookie friendly dev
+    res.cookie('auth_token', token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production', // false en dev
+      sameSite: process.env.NODE_ENV === 'production' ? 'Strict' : 'Lax',
+      maxAge: 1000 * 60 * 60 * 24 // 1 jour
+    });
+
     return res.status(HTTP_OK).json({
       user_name: user.user_name,
       id: user.id,
@@ -45,43 +43,24 @@ const login = async (req, res) => {
     });
   } catch (error) {
     console.error(error);
-    return res.sendStatus(HTTP_SERVER_ERROR); // Assurez-vous aussi d'ajouter `return` ici
+    return res.sendStatus(HTTP_SERVER_ERROR);
   }
 };
-// const decodeToken = async (req, res, next) => {
-//   try {
-//     const token = req.cookies.auth_token;
-//     if (!token) {
-//       throw new Error("Token missing");
-//     }
-
-//     const data = decodeJWT(token);
-//     req.userId = data.id;
-//     req.userName = data.user_name;
-//     req.role = data.role;
-
-//     return next();
-//   } catch (error) {
-//     console.error(error);
-//     res.status(HTTP_UNAUTHORIZED).json({ message: "Please authenticate!" });
-//   }
-// };
 
 const logout = (req, res) => {
   try {
-    res
-      // .clearCookie("auth_token", {
-      //   httpOnly: true,
-      //   // secure: process.env.NODE_ENV === "production",
-      //   path: "/",
-      //   sameSite: "Strict",
-      // })
-      .sendStatus(HTTP_OK);
+    res.clearCookie('auth_token', {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: process.env.NODE_ENV === 'production' ? 'Strict' : 'Lax',
+      path: '/'
+    });
+    return res.sendStatus(HTTP_OK);
   } catch (error) {
     console.error('Erreur lors de la déconnexion :', error);
-    res
-      .status(HTTP_SERVER_ERROR)
-      .json({ message: 'Une erreur est survenue lors de la déconnexion.' });
+    return res.status(HTTP_SERVER_ERROR).json({
+      message: 'Une erreur est survenue lors de la déconnexion.'
+    });
   }
 };
 

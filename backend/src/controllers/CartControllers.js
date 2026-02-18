@@ -100,10 +100,14 @@ const editHasCart = (req, res) => {
 };
 
 const addHasCart = async (req, res) => {
-  const { user_id, book_id, cart_id } = req.body;
+  const { cartId, userId } = req.params;
+  const { book_id } = req.body;
+
   try {
-    await models.cart.insertHasCart({ cart_id, book_id });
-    const cartItems = await models.cart.findCartByUser(user_id);
+    await models.cart.insertHasCart({ cart_id: cartId, book_id });
+
+    const cartItems = await models.cart.findCartByUser(userId);
+
     res.status(201).send(cartItems);
   } catch (error) {
     console.error(error);

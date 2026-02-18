@@ -10,6 +10,7 @@ function Contact() {
   const [subject, setSubject] = useState('');
   const [message, setMessage] = useState('');
   const [isSent, setIsSent] = useState(false);
+  const [website, setWebsite] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -19,6 +20,7 @@ function Contact() {
         email,
         subject,
         message,
+        website,
       })
       .then(() => {
         setIsSent(true);
@@ -57,6 +59,16 @@ function Contact() {
                 onChange={(e) => setName(e.target.value)}
               />
             </div>
+            <input
+              type="text"
+              name="website"
+              value={website}
+              onChange={(e) => setWebsite(e.target.value)}
+              autoComplete="off"
+              tabIndex="-1"
+              style={{ position: 'absolute', left: '-9999px' }}
+            />
+
             <div className="email">
               <input
                 type="email"

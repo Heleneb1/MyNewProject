@@ -40,13 +40,12 @@ export default function useCart(userId, cartId) {
     }
 
     try {
-      const res = await api.post(`/cart/${cartId}/user/${userId}`, {
+      await api.post(`/cart/${cartId}/user/${userId}`, {
         book_id: book.id,
-        user_id: userId,
-        cart_id: cartId,
       });
 
-      setCart((prev) => [...prev, { ...res.data, book }]);
+      await getCartData();
+
       setMessage(`Livre ajouté : '${book.title}'`);
       setRemoveMessage('');
       setClearMessage('');
