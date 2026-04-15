@@ -3,6 +3,7 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: flex-start; // ou center
+  animation: fadeInScale 1s ease-in-out;
 
   input[type='text'] {
     background-color: transparent;

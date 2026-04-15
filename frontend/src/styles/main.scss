@@ -230,6 +230,16 @@ h2 {
     opacity: 0;
   }
 }
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
 
 @media screen and (max-width: 768px) {
   h1 {

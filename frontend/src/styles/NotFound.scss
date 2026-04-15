@@ -5,6 +5,7 @@
   justify-content: center;
   align-items: center;
   color: var(--font);
+  animation: fadeInScale 1s ease-in-out;
 
   p {
     font-size: 2rem;
