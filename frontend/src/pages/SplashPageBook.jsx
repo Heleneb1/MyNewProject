@@ -7,6 +7,11 @@ export default function SplashPageBook() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    const img = new Image();
+    img.src = '/assets/slpash_book_red_dt.png';
+  }, []);
+
+  useEffect(() => {
     const openTimer = setTimeout(() => {
       setIsOpen(true);
     }, 500);
