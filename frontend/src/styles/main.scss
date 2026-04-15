@@ -156,6 +156,7 @@ a.Changebook {
   padding: 20px;
   /* pour respirer */
   z-index: 1000;
+  animation: fadeIn 0.3s ease-in-out;
 }
 
 .modal-content {
